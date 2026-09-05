@@ -1,0 +1,182 @@
+# =====================================================================
+# HR-QDE Harmonisation Schema — Säule D
+# Version 0.2.0  ·  2026-08-06
+#
+# Formalises the base ontology designed in the Säule-D thesis
+# (Oberhuber, MA v0.61, Tabelle 3.13 and Tabelle 3.14). Class and
+# relation names follow that design; only the prefix token differs.
+#
+# Author:    Adrian Vogler (FernUniversität in Hagen)
+# Reference: MASTERAND_OBERHUBER.md v0.2
+# License:   CC-BY-SA 4.0
+#
+# Namespace note
+# --------------
+# The harmonisation layer uses the prefix harm:, NOT hrqde:. In the
+# HR-QDE graph hrqde: is bound to http://hr-qde.org/ontology/, which
+# carries the skeleton ontology of pillars A to C. Binding the same
+# token to a second namespace makes neosemantics assign a generated
+# substitute prefix on import, silently renaming every class of this
+# layer. The base URI http://hr-qde.org/harmonised/ is unchanged from
+# spec v0.1. Where the thesis writes hrqde:HarmonisedConcept, this
+# schema writes harm:HarmonisedConcept; the concept is the same.
+#
+# Layer separation
+# ----------------
+# Harmonisation annotations are never written onto ESCO nodes. A
+# concept carrying harm:derivedFrom holds a URI under the harm:
+# namespace. ESCO concepts are referenced through mappings, never
+# re-minted and never annotated. This keeps the reference vocabulary
+# free of curation artefacts and makes the layer removable in one query.
+#
+# Changes against 0.1.0
+# ---------------------
+#   - harm:hasMember withdrawn, harm:harmonises restored (Tabelle 3.14)
+#   - harm:DisjointConcept withdrawn: HarmonisedConcept already IS the
+#     disjoint case in the thesis design (Tabelle 3.13)
+#   - both core classes declared rdfs:subClassOf skos:Concept
+#   - harm:alignedWith withdrawn: the join to Säule B runs transitively
+#     through the shared ESCO skill URI and needs no extra property
+#   - harm:KQR added to give harm:derivedFrom the range the thesis
+#     type signature (C -> KQR) implies
+# =====================================================================
+
+@prefix harm:     <http://hr-qde.org/harmonised/> .
+@prefix hrqde:    <http://hr-qde.org/ontology/> .
+@prefix sssom:    <https://w3id.org/sssom/> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:     <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+
+
+# Ontology header =====================================================
+
+harm:
+  a                 owl:Ontology ;
+  dcterms:title     "HR-QDE Harmonisation Schema"@en ,
+                    "HR-QDE-Harmonisierungsschema"@de ;
+  dcterms:creator   "Adrian Vogler" ;
+  dcterms:created   "2026-08-06"^^xsd:date ;
+  owl:versionInfo   "0.2.0" ;
+  dcterms:source    "Oberhuber, Vergleichende Analyse von Kompetenz-Referenzrahmen, MA v0.61, Tabelle 3.13 und 3.14" ;
+  rdfs:comment      "Vocabulary of the Säule-D harmonisation layer of the HR-QDE domain ontology."@en .
+
+
+# Source frameworks (KQR) =============================================
+# The thesis gives harm:derivedFrom the type signature C -> KQR. This
+# formalises KQR as a class with one individual per input framework, so
+# that provenance is traversable rather than an opaque string.
+
+harm:KQR
+  a                 owl:Class ;
+  rdfs:label        "Competency or Qualification Reference Framework"@en ,
+                    "Kompetenz- oder Qualifikationsreferenzrahmen"@de ;
+  rdfs:comment      "A reference framework from which concepts are drawn into the harmonisation layer."@en .
+
+harm:kqr_esco
+  a                 harm:KQR ;
+  rdfs:label        "ESCO"@en ;
+  rdfs:comment      "European Skills, Competences, Qualifications and Occupations, version 1.2. Hub framework of the HR-QDE graph."@en .
+
+harm:kqr_ecf
+  a                 harm:KQR ;
+  rdfs:label        "e-CF"@en ;
+  rdfs:comment      "European e-Competence Framework 3.0."@en .
+
+harm:kqr_eqf
+  a                 harm:KQR ;
+  rdfs:label        "EQF"@en , "EQR"@de ;
+  rdfs:comment      "European Qualifications Framework."@en .
+
+harm:kqr_dqr
+  a                 harm:KQR ;
+  rdfs:label        "DQR"@en ;
+  rdfs:comment      "Deutscher Qualifikationsrahmen."@en .
+
+
+# Core classes (Tabelle 3.13) =========================================
+
+harm:HarmonisedCluster
+  a                 owl:Class ;
+  rdfs:subClassOf   skos:Concept ;
+  rdfs:label        "Harmonised Cluster"@en , "Harmonisiertes Cluster"@de ;
+  rdfs:comment      "Generated cluster node bundling semantically related concepts from different reference frameworks. Instances are not imported but produced by the harmonisation pipeline. An individual of this class, not a class in its own right, so that membership stays within OWL DL."@en ,
+                    "Generierter Cluster-Knoten, der semantisch verwandte Konzepte aus verschiedenen Referenzrahmen bündelt. Instanzen werden nicht importiert, sondern von der Harmonisierungspipeline erzeugt. Ein Individuum dieser Klasse, keine eigene Klasse, damit die Zugehörigkeit innerhalb von OWL DL bleibt."@de .
+
+harm:HarmonisedConcept
+  a                 owl:Class ;
+  rdfs:subClassOf   skos:Concept ;
+  rdfs:label        "Harmonised Concept"@en , "Harmonisiertes Konzept"@de ;
+  rdfs:comment      "Standalone class for a concept with no correspondence in any other integrated reference framework. This is the disjoint case, not the general case: a concept that could be mapped onto ESCO stays a plain skos:Concept carrying harm:derivedFrom. Every instance requires an integration strategy stating how it is carried into the HR-QDE graph."@en ,
+                    "Eigenständige Klasse für ein Konzept ohne Entsprechung in einem anderen integrierten Referenzrahmen. Dies ist der disjunkte Fall, nicht der Regelfall: Ein Konzept, das auf ESCO abgebildet werden kann, bleibt ein einfaches skos:Concept mit harm:derivedFrom. Jede Instanz benötigt eine Integrationsstrategie."@de .
+
+
+# Mapping classes =====================================================
+# SSSOM records are typed by the layer their object sits on. Only hub
+# mappings contribute to coverage, because all three HR-QDE data
+# pillars reference ESCO skills.
+
+harm:HubMapping
+  a                 owl:Class ;
+  rdfs:subClassOf   sssom:Mapping ;
+  rdfs:label        "Hub Mapping"@en , "Hub-Mapping"@de ;
+  rdfs:comment      "A mapping from a harmonisation layer concept onto an ESCO skill. The productive case: Säule A, B and C all reference ESCO skills, so hub mappings are the ones that join."@en .
+
+harm:LevelMapping
+  a                 owl:Class ;
+  rdfs:subClassOf   sssom:Mapping ;
+  rdfs:label        "Level Mapping"@en , "Niveau-Mapping"@de ;
+  rdfs:comment      "A mapping between qualification levels. Levels are already modelled in the HR-QDE skeleton as hrqde:DQR1 to hrqde:DQR8, each carrying skos:exactMatch to the EQF authority URI under http://data.europa.eu/snb/qf-eu-level/. A delivery references these URIs and does not mint parallel ones, otherwise the assertion joins with nothing and duplicates what the skeleton already states."@en ,
+                    "Ein Mapping zwischen Qualifikationsniveaus. Niveaus sind im HR-QDE-Skelett bereits als hrqde:DQR1 bis hrqde:DQR8 modelliert und tragen je einen skos:exactMatch auf die EQF-Autoritäts-URI. Eine Lieferung referenziert diese URIs und prägt keine parallelen."@de .
+
+harm:OccupationMapping
+  a                 owl:Class ;
+  rdfs:subClassOf   sssom:Mapping ;
+  rdfs:label        "Occupation Mapping"@en , "Berufs-Mapping"@de ;
+  rdfs:comment      "A mapping whose object is an ESCO occupation rather than an ESCO skill. Occupations carry almost no edges on the HR-QDE data side, so such mappings do not contribute to coverage. Kept as a distinct class so that stating an occupation relation is a deliberate act requiring justification, not an accident of URI selection."@en ,
+                    "Ein Mapping, dessen Objekt ein ESCO-Beruf statt eines ESCO-Skills ist. Berufe tragen auf der HR-QDE-Datenseite kaum Kanten, solche Mappings zählen daher nicht zur Coverage. Als eigene Klasse geführt, damit eine Berufs-Relation eine bewusste und begründungspflichtige Entscheidung ist."@de .
+
+
+# Relations (Tabelle 3.14) ============================================
+# owl:sameAs, rdfs:subClassOf and skos:relatedMatch are used as defined
+# by their own vocabularies and are not redeclared here. The thesis
+# restricts skos:relatedMatch to manual curation; that restriction is
+# a delivery rule, stated in the spec, not an OWL axiom.
+
+harm:harmonises
+  a                 owl:ObjectProperty ;
+  rdfs:label        "harmonises"@en , "harmonisiert"@de ;
+  rdfs:domain       harm:HarmonisedCluster ;
+  rdfs:range        skos:Concept ;
+  rdfs:comment      "Relates a generated cluster node to the source concepts whose semantic intersection constitutes it. Type signature HC to C, per Tabelle 3.14."@en .
+
+harm:derivedFrom
+  a                 owl:ObjectProperty ;
+  rdfs:label        "derived from"@en , "abgeleitet aus"@de ;
+  rdfs:domain       skos:Concept ;
+  rdfs:range        harm:KQR ;
+  rdfs:comment      "Provenance reference to the source framework of a concept. Type signature C to KQR, per Tabelle 3.14. An IRI reference rather than a string, so that provenance can be traversed and grouped."@en .
+
+harm:sourceIdentifier
+  a                 owl:DatatypeProperty ;
+  rdfs:label        "source identifier"@en , "Quellkennung"@de ;
+  rdfs:domain       skos:Concept ;
+  rdfs:range        xsd:string ;
+  rdfs:comment      "The identifier a concept holds in its source framework, verbatim. For example B.1 for an e-CF competence."@en .
+
+harm:integrationStrategy
+  a                 owl:DatatypeProperty ;
+  rdfs:label        "integration strategy"@en , "Integrationsstrategie"@de ;
+  rdfs:domain       harm:HarmonisedConcept ;
+  rdfs:range        xsd:string ;
+  rdfs:comment      "How a concept without ESCO correspondence is carried into the HR-QDE graph. Controlled vocabulary, see the SHACL shape. Values use underscores because neosemantics misreads hyphens in generated Cypher."@en .
+
+harm:justification
+  a                 owl:DatatypeProperty ;
+  rdfs:label        "justification"@en , "Begründung"@de ;
+  rdfs:domain       harm:OccupationMapping ;
+  rdfs:range        xsd:string ;
+  rdfs:comment      "Methodological reason why a competence is related to an occupation rather than to a skill. Required on every OccupationMapping."@en .

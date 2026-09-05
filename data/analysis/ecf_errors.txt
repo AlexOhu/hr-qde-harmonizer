@@ -1,0 +1,10 @@
+Analyse: E:\Fernuni\Master\Masterarbeit\hrqde-harmonizer\data\formalized\ecf_draft.ttl
+Konzepte gesamt (skos:Concept): 45
+
+Nach Fehlertyp gruppiert:
+  keine Feld-Fehler.
+
+Nach Konzept gruppiert:
+  keine Konzepte mit fehlenden Pflichtfeldern.
+
+Fehlersummary: 45 Konzepte gesamt, 45 ok, 0 mit Fehlern (0 Fehler gesamt)

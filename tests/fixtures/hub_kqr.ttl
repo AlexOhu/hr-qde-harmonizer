@@ -1,0 +1,49 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix hrqde: <https://hrqde.example.org/ontology#> .
+@prefix esco: <http://hr-qde.org/harmonised/hub_kqr/> .
+
+# Kleines, selbst erstelltes ESCO-artiges Hub-KQR fuer Tests/Demo (kein
+# echtes ESCO-Lieferdatum, vgl. Kapitel-3-Konzeption Tabelle "kqr_schichten").
+
+esco:programming a skos:Concept ;
+    skos:prefLabel "Programming"@en, "Programmierung"@de ;
+    skos:definition "Writing computer programs using programming languages."@en ;
+    dcterms:source "Fixture Hub KQR v1.0" ;
+    hrqde:derivedFrom "hub_kqr" ;
+    hrqde:sourceIdentifier "S1.1" .
+
+esco:project_management a skos:Concept ;
+    skos:prefLabel "Project management"@en, "Projektmanagement"@de ;
+    skos:definition "Planning, organising and overseeing a project to achieve specific goals within time and budget constraints."@en ;
+    dcterms:source "Fixture Hub KQR v1.0" ;
+    hrqde:derivedFrom "hub_kqr" ;
+    hrqde:sourceIdentifier "S1.2" .
+
+esco:database_design a skos:Concept ;
+    skos:prefLabel "Database design"@en, "Datenbankdesign"@de ;
+    skos:definition "Designing structured collections of data for efficient storage and retrieval."@en ;
+    dcterms:source "Fixture Hub KQR v1.0" ;
+    hrqde:derivedFrom "hub_kqr" ;
+    hrqde:sourceIdentifier "S1.3" .
+
+esco:communication a skos:Concept ;
+    skos:prefLabel "Communication"@en, "Kommunikation"@de ;
+    skos:definition "Exchanging information effectively and clearly with others."@en ;
+    dcterms:source "Fixture Hub KQR v1.0" ;
+    hrqde:derivedFrom "hub_kqr" ;
+    hrqde:sourceIdentifier "S1.4" .
+
+esco:teamwork a skos:Concept ;
+    skos:prefLabel "Teamwork"@en, "Teamarbeit"@de ;
+    skos:definition "Working collaboratively with others towards a shared goal."@en ;
+    dcterms:source "Fixture Hub KQR v1.0" ;
+    hrqde:derivedFrom "hub_kqr" ;
+    hrqde:sourceIdentifier "S1.5" .
+
+esco:eqf_level_6 a skos:Concept ;
+    skos:prefLabel "EQF Level 6"@en, "EQR-Niveau 6"@de ;
+    skos:definition "European Qualifications Framework level 6, broadly corresponding to a Bachelor's degree."@en ;
+    dcterms:source "Fixture Hub KQR v1.0" ;
+    hrqde:derivedFrom "hub_kqr" ;
+    hrqde:sourceIdentifier "S1.6" .

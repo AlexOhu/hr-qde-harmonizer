@@ -1,0 +1,45 @@
+# --- Backend / API ---
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.7
+python-dotenv>=1.0
+python-multipart>=0.0.9  # erforderlich für UploadFile/Form (POST /kqr)
+
+# --- RDF / SKOS / OWL ---
+rdflib>=7.0
+pyshacl>=0.26  # SHACL-Validierung des kombinierten Ontologie-Artefakts (hrqde-shape-harmonisation.ttl)
+
+# --- PDF-Textextraktion (Schritt 1, PDF-Quellen wie e-CF) ---
+pypdf>=4.3
+
+# --- Embeddings & Clustering (Schritt 2) ---
+sentence-transformers>=3.0
+hdbscan>=0.8.38
+scikit-learn>=1.5
+numpy>=1.26
+
+# --- Approximate Nearest Neighbor Suche ---
+faiss-cpu>=1.8
+
+# --- LLM-Klassifikation (Schritt 3) ---
+# Nur die Pakete der tatsächlich konfigurierten Anbieter müssen installiert sein.
+anthropic>=0.40          # LLM_PROVIDERS=anthropic
+openai>=1.0              # optional: LLM_PROVIDERS=openai
+google-generativeai>=0.8 # optional: LLM_PROVIDERS=gemini
+mistralai>=1.0           # optional: LLM_PROVIDERS=mistral  (EU-Rechenzentren, DSGVO)
+
+# --- Graph-Datenbank ---
+neo4j>=5.20
+
+# --- SSSOM-Export ---
+pandas>=2.2
+sssom>=0.4  # optional: offizielle SSSOM-Toolkit-Validierung, sonst eigener TSV-Writer ausreichend
+
+# Die Review-Oberfläche ist die React-SPA unter frontend/ (npm, kein Python-Paket).
+
+# --- Tests ---
+pytest>=8.2
+httpx>=0.27
+
+# --- Skripte / Tooling ---
+tqdm>=4.66  # Fortschrittsanzeige beim Streamen grosser Dumps (scripts/00_esco_filter_ict.py)

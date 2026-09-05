@@ -1,0 +1,8 @@
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Lokale Konfiguration (VITE_API_BASE_URL); .env.example ist eingecheckt
+.env.local
+.env*.local

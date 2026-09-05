@@ -1,0 +1,39 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix hrqde: <https://hrqde.example.org/ontology#> .
+@prefix ecf: <http://hr-qde.org/harmonised/satellite_kqr/> .
+@prefix esco: <http://hr-qde.org/harmonised/hub_kqr/> .
+
+# Kleines, selbst erstelltes e-CF-artiges Satelliten-KQR fuer Tests/Demo.
+# ecf:level_5 traegt eine strukturelle Cross-Referenz zum Hub-Konzept
+# esco:eqf_level_6 (Shortcut-Pfad, Abschnitt "Shortcut-Pfad: strukturell
+# ableitbare Paare").
+
+ecf:application_development a skos:Concept ;
+    skos:prefLabel "Application development"@en, "Anwendungsentwicklung"@de ;
+    skos:definition "Develops software applications by implementing established methodologies and programming languages to meet business or user requirements."@en ;
+    dcterms:source "Fixture Satellite KQR v1.0" ;
+    hrqde:derivedFrom "satellite_kqr" ;
+    hrqde:sourceIdentifier "B.1" .
+
+ecf:project_management a skos:Concept ;
+    skos:prefLabel "Project management"@en, "Projektmanagement"@de ;
+    skos:definition "Applies methods to plan, organise, monitor and control a project so that it meets its objectives on time and within budget."@en ;
+    dcterms:source "Fixture Satellite KQR v1.0" ;
+    hrqde:derivedFrom "satellite_kqr" ;
+    hrqde:sourceIdentifier "E.2" .
+
+ecf:level_5 a skos:Concept ;
+    skos:prefLabel "e-CF Level 5"@en, "e-CF-Niveau 5"@de ;
+    skos:definition "Proficiency level 5 of the European e-Competence Framework."@en ;
+    dcterms:source "Fixture Satellite KQR v1.0" ;
+    hrqde:derivedFrom "satellite_kqr" ;
+    hrqde:sourceIdentifier "L5" ;
+    <http://data.europa.eu/esco/model#isPartOf> esco:eqf_level_6 .
+
+ecf:stakeholder_management a skos:Concept ;
+    skos:prefLabel "Stakeholder management"@en, "Stakeholder-Management"@de ;
+    skos:definition "Identifies and manages relationships with individuals or groups who have an interest in or influence over a project's outcome."@en ;
+    dcterms:source "Fixture Satellite KQR v1.0" ;
+    hrqde:derivedFrom "satellite_kqr" ;
+    hrqde:sourceIdentifier "D.4" .

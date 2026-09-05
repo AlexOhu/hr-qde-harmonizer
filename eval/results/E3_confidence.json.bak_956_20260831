@@ -1,0 +1,47 @@
+{
+  "_meta": {
+    "experiment": "E3 Confidence-Schwellen (VH1.7)",
+    "date": "2026-08-31",
+    "provider_model": "mistral/mistral-small-latest",
+    "gold": "eval/gold/G_manual.json (74 Paare)",
+    "n_fs_used": 3,
+    "runs_per_pair": 3,
+    "temperature": 0.0,
+    "llm_calls": "74 x 3 = 222",
+    "few_shot_pool": "eval/G_struct.json (siehe E2)",
+    "theta_star_f1opt": 0.33,
+    "theta_op_precision_biased": 0.33,
+    "vs_original_20260729_nfs1": {
+      "theta_0.33": "P 0.8667->0.8387 | R 0.9811->0.9811 | F1 0.9204->0.9043 | acc 60->62",
+      "theta_0.67": "P 0.9057->0.9630 | R 0.9057->0.4906 | F1 0.9057->0.6500 | acc 53->27",
+      "theta_1.00": "P 0.9057->0.9630 | R 0.9057->0.4906 | F1 0.9057->0.6500 | acc 53->27",
+      "theta_op": "0.67 -> 0.33"
+    },
+    "interpretation": "Der neue Prompt senkt die Self-Consistency: nur 27 statt 53 Paare erreichen Konfidenz >= 0,67 (2/3-Mehrheit). Bei theta=0,67 bricht der Recall auf 0,49 ein (viele wahre K-Paare fallen unter die Schwelle). Der Precision-biased-Selektor kann theta=0,67 nicht mehr waehlen (F1 0,65 < 0,9*best 0,81) und faellt auf theta=0,33 zurueck. Konfundiert durch gleichzeitigen Wechsel von Prompt, Few-Shot-Quelle und n_FS (1->3).",
+    "recommendation": "mapping_confidence_threshold in app/config.py / .env NICHT ungeprueft von 0,67 auf 0,33 aendern -- Nutzerentscheidung noetig (CLAUDE.md Abschn. 6 fixiert 0,67 als bestaetigt). Optionen im RERUN-Dokument."
+  },
+  "n_fs_used": 3,
+  "results": [
+    {
+      "theta": 0.33,
+      "precision": 0.8387,
+      "recall": 0.9811,
+      "f1": 0.9043,
+      "accepted": 62
+    },
+    {
+      "theta": 0.67,
+      "precision": 0.963,
+      "recall": 0.4906,
+      "f1": 0.65,
+      "accepted": 27
+    },
+    {
+      "theta": 1.0,
+      "precision": 0.963,
+      "recall": 0.4906,
+      "f1": 0.65,
+      "accepted": 27
+    }
+  ]
+}

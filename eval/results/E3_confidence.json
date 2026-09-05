@@ -1,0 +1,29 @@
+{
+  "_meta": {
+    "experiment": "E3 Confidence-Schwellen (VH1.7)",
+    "date": "2026-08-31",
+    "nachzug": "Wiederholung im Zuge der Saeule-D-Abgabe. E3 ist korpusunabhaengig: klassifiziert werden feste Goldpaare (eval/gold/G_manual.json, 74 Paare), der Wechsel des ESCO-Hubs (956 -> 1302, ADR-27) beruehrt E3 nicht. Die Abweichung zum Lauf desselben Tages ist reine LLM-/API-Drift (mistral-small-latest).",
+    "vorher": "eval/results/E3_confidence.json.bak_956_20260831",
+    "provider_model": "mistral/mistral-small-latest",
+    "n_fs_used": 3,
+    "runs_per_pair": 3,
+    "temperature": 0.0,
+    "llm_calls": "74 x 3 = 222",
+    "few_shot_pool": "eval/G_struct.json (wie E2)",
+    "theta_star_f1opt": 0.33,
+    "theta_op_precision_biased": 0.33,
+    "vs_lauf_20260831_956": {
+      "theta_0.33": "P 0.8387->0.8644 | R 0.9811->0.9623 | F1 0.9043->0.9107 | acc 62->59",
+      "theta_0.67": "P 0.9630->0.9118 | R 0.4906->0.5849 | F1 0.6500->0.7126 | acc 27->34",
+      "theta_op": "0.33 -> 0.33 (unveraendert)"
+    },
+    "interpretation": "Der Kernbefund des 956er-Laufs bleibt bestehen: bei theta=0,67 liegt der Recall weiterhin deutlich unter 0,90 (0,585), nur 34 statt frueher 53 Paare erreichen die 2/3-Mehrheit. Der Precision-biased-Selektor kann theta=0,67 nicht waehlen (F1 0,713 < 0,9 x 0,911) und faellt auf theta=0,33. Die leichte Verbesserung gegenueber dem 956er-Lauf (acc 27->34) ist API-Drift, kein Effekt des ESCO-Wechsels.",
+    "recommendation": "mapping_confidence_threshold in app/config.py / .env NICHT ungeprueft von 0,67 auf 0,33 aendern -- Nutzerentscheidung noetig. CLAUDE.md Abschn. 6 fixiert 0,67; die E3-Zahlen widersprechen dem. Ursache konfundiert (Prompt + Few-Shot-Quelle + n_FS 1->3 gleichzeitig geaendert)."
+  },
+  "n_fs_used": 3,
+  "results": [
+    { "theta": 0.33, "precision": 0.8644, "recall": 0.9623, "f1": 0.9107, "accepted": 59 },
+    { "theta": 0.67, "precision": 0.9118, "recall": 0.5849, "f1": 0.7126, "accepted": 34 },
+    { "theta": 1.0, "precision": 0.9118, "recall": 0.5849, "f1": 0.7126, "accepted": 34 }
+  ]
+}

@@ -1,0 +1,117 @@
+# ==============================================================================
+# Mini-Artefakt: Ausschnitt der harmonisierten HR-QDE-Ontologie
+# Datum: 2026-08-04
+# Pipeline-Version: HR-QDE-Harmonizer v0.1
+# Verglichene Rahmen: ESCO v1.2 (ICT-Ausschnitt), e-CF 3.0, EQF 2017, DQR 2013
+#
+# Zweck: Zeigt anhand von drei repräsentativen Szenarien alle drei
+# Ergebnistypen der Harmonisierungspipeline:
+#   1. Konjunktes Konzeptpaar (K), match_type = llm  (e-CF B.1 <-> ESCO)
+#   2. Konjunktes Konzeptpaar mit strukturellem Shortcut, match_type = struct
+#      (EQF Level 6 <-> DQR-Niveau 6, normativ aus dem German EQF
+#      Referencing Report 2012/2013)
+#   3. Disjunktes Konzept (D) mit Integrationsentscheidung standalone_class
+#      (DQR-Dimension "Sozialkompetenz", Niveau 6)
+#
+# Alle Konzept-URIs sind unverändert aus den formalisierten Quelldateien
+# in data/formalized/ übernommen (ecf.ttl, esco_v1_2_ict_ausschnitt.ttl,
+# eqf_2017.ttl, dqr_2013.ttl).
+# ==============================================================================
+
+@prefix hrqde:   <http://hr-qde.org/harmonised/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sssom:   <https://w3id.org/sssom/> .
+
+# Quell-KQR-Präfixe, Basis-URIs identisch zu data/formalized/*.ttl
+@prefix ecf:     <http://hr-qde.org/harmonised/ecf/> .
+@prefix esco:    <http://hr-qde.org/harmonised/hub_kqr/> .
+# ESCO-Occupation-Konzepte selbst liegen in esco_v1_2_ict_ausschnitt.ttl als
+# volle data.europa.eu-IRIs vor (der esco:-Präfix wird dort deklariert, aber
+# für diese Einträge nicht verwendet) -- escooc: bildet exakt dieselbe Basis-URI
+# ab, um die dortige URI unverändert referenzieren zu können.
+@prefix escooc:  <http://data.europa.eu/esco/occupation/> .
+@prefix eqf:     <http://data.europa.eu/snb/eqf/> .
+@prefix dqr:     <http://data.bmbf.de/dqr/> .
+
+# ==============================================================================
+# Szenario 1 -- Konjunktes Konzeptpaar aus K, match_type = llm
+# e-CF B.1 "Application Development" (gröber) <-> ESCO "ICT application
+# developer" (feiner granuliert), ermittelt per LLM-Dreifachklassifikation
+# mit Mehrheitsentscheid A_SUBSUMES_B.
+# ==============================================================================
+
+ecf:B.1 a hrqde:HarmonisedConcept ;
+    skos:prefLabel "Application Development"@en, "Anwendungsentwicklung"@de ;
+    hrqde:derivedFrom "ecf" ;
+    hrqde:sourceIdentifier "B.1" .
+
+escooc:bd272aee-adc9-4a06-a15c-a73b4b4a46a7 a hrqde:HarmonisedConcept ;
+    skos:prefLabel "ICT application developer"@en,
+        "IT-Anwendungsentwickler/IT-Anwendungsentwicklerin"@de ;
+    hrqde:derivedFrom "esco" ;
+    hrqde:sourceIdentifier "bd272aee-adc9-4a06-a15c-a73b4b4a46a7" .
+
+ecf:B.1 skos:broadMatch escooc:bd272aee-adc9-4a06-a15c-a73b4b4a46a7 .
+
+hrqde:mapping_1 a sssom:MappingSet ;
+    sssom:subject_id ecf:B.1 ;
+    sssom:object_id escooc:bd272aee-adc9-4a06-a15c-a73b4b4a46a7 ;
+    sssom:predicate_id "skos:broadMatch" ;
+    sssom:mapping_confidence 0.89 ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1" ;
+    sssom:match_type "llm" ;
+    sssom:comment "Dreifachklassifikation (Majority-Vote): e-CF B.1 subsumiert den feiner granulierten ESCO-Skill 'ICT application developer'."@de .
+
+hrqde:HarmonisedCluster_SoftwareEngineering a owl:Class ;
+    rdfs:label "Software Engineering (harmonisiert)"@de,
+        "Software Engineering (harmonised)"@en ;
+    rdfs:comment "Konjunkte Schnittmenge aus e-CF B.1 und verwandten ESCO-ICT-Skills." ;
+    hrqde:harmonises ecf:B.1, escooc:bd272aee-adc9-4a06-a15c-a73b4b4a46a7 .
+
+# ==============================================================================
+# Szenario 2 -- Konjunktes Konzeptpaar mit strukturellem Shortcut,
+# match_type = struct
+# EQF Level 6 <-> DQR-Niveau 6. Die Cross-Referenz ist bereits in
+# eqf_2017.ttl als skos:exactMatch zwischen eqf:Level6 und dqr:Level6
+# hinterlegt (normativ aus dem German EQF Referencing Report 2012/2013)
+# und wird vom Vorfilter als Shortcut ohne LLM-Klassifikation übernommen.
+# ==============================================================================
+
+eqf:Level6 a hrqde:HarmonisedConcept ;
+    skos:prefLabel "EQF Level 6"@en ;
+    hrqde:derivedFrom "eqf" ;
+    hrqde:sourceIdentifier "Level6" .
+
+dqr:Level6 a hrqde:HarmonisedConcept ;
+    skos:prefLabel "DQR Level 6"@en, "DQR-Niveau 6"@de ;
+    hrqde:derivedFrom "dqr" ;
+    hrqde:sourceIdentifier "Level6" .
+
+eqf:Level6 skos:exactMatch dqr:Level6 .
+
+hrqde:mapping_2 a sssom:MappingSet ;
+    sssom:subject_id eqf:Level6 ;
+    sssom:object_id dqr:Level6 ;
+    sssom:predicate_id "skos:exactMatch" ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1" ;
+    sssom:match_type "struct" ;
+    sssom:comment "Struktureller Shortcut: in eqf_2017.ttl als skos:exactMatch zwischen eqf:Level6 und dqr:Level6 hinterlegte Cross-Referenz, normativ aus dem German EQF Referencing Report (2012/2013)."@de .
+
+# ==============================================================================
+# Szenario 3 -- Disjunktes Konzept (D), Integrationsstrategie standalone_class
+# DQR-Dimension "Sozialkompetenz - Niveau 6" hat kein direktes ESCO-Pendant,
+# da ESCO Sozialkompetenzen nicht als eigenständige, niveaugestufte
+# Kompetenzdimension modelliert.
+# ==============================================================================
+
+dqr:L6_SocialCompetence a hrqde:HarmonisedConcept ;
+    skos:prefLabel "Social Skills – Level 6"@en, "Sozialkompetenz – Niveau 6"@de ;
+    hrqde:derivedFrom "dqr" ;
+    hrqde:sourceIdentifier "L6_SocialCompetence" ;
+    hrqde:integrationStrategy "standalone_class" ;
+    rdfs:comment "Kein korrespondierendes ESCO-Konzept im ICT-Ausschnitt vorhanden: ESCO modelliert Sozialkompetenz nicht als eigenständige, niveaugestufte Kompetenzdimension wie der DQR. Das Konzept wird daher als eigenständige hrqde:HarmonisedConcept-Klasse ohne Anbindung an einen bestehenden Hub-Knoten übernommen."@de .

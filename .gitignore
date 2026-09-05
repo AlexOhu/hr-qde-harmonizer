@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Umgebungsvariablen
+.env
+
+# Daten (können groß werden / enthalten evtl. lizenzierte Quellen wie e-CF-PDF)
+data/raw/*
+data/formalized/*
+data/sssom/*
+!data/raw/.gitkeep
+!data/formalized/.gitkeep
+!data/sssom/.gitkeep
+
+# Neo4j
+neo4j_data/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# LaTeX-Artefakte
+*.fls
+*.aux
+*.fdb_latexmk
+*.log
+texput.*
+
+# Test-Cache
+.pytest_cache/
+
+# Backup-Dateien
+*.bak
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Laufzeitdaten
+data/projects/
+data/classification_jobs.json
+data/kqr_registry.json
+data/walkthrough_slice/
+scratchpad*.log

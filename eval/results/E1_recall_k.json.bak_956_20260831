@@ -1,0 +1,86 @@
+{
+  "_meta": {
+    "experiment": "E1 Recall@k (VH1.5)",
+    "date": "2026-08-31",
+    "k_decision": "k=20 beibehalten (Recall@20=1,00 auf G_struct; CLAUDE.md 6 unveraendert)",
+    "runs": 3,
+    "determinism": "identisch ueber 3 Laeufe, reproduziert den Stand vom 2026-07-30",
+    "caveat": "G_struct bettet DQR (dqr_2) und EQF (eqf_2017) Niveaukonzepte nur zur Messung ein; der Produktivpfad bettet Typ-2/LevelConcepts nicht ein.",
+    "g_struct_n": 32,
+    "g_manual_n_evaluable": 9
+  },
+  "g_struct": [
+    {
+      "k": 5,
+      "recall": 0.8438,
+      "hits": 27,
+      "new_hits": 27,
+      "total_evaluable": 32
+    },
+    {
+      "k": 10,
+      "recall": 0.9062,
+      "hits": 29,
+      "new_hits": 2,
+      "total_evaluable": 32
+    },
+    {
+      "k": 15,
+      "recall": 0.9375,
+      "hits": 30,
+      "new_hits": 1,
+      "total_evaluable": 32
+    },
+    {
+      "k": 20,
+      "recall": 1.0,
+      "hits": 32,
+      "new_hits": 2,
+      "total_evaluable": 32
+    },
+    {
+      "k": 30,
+      "recall": 1.0,
+      "hits": 32,
+      "new_hits": 0,
+      "total_evaluable": 32
+    }
+  ],
+  "g_manual": [
+    {
+      "k": 5,
+      "recall": 0.6667,
+      "hits": 6,
+      "new_hits": 6,
+      "total_evaluable": 9
+    },
+    {
+      "k": 10,
+      "recall": 1.0,
+      "hits": 9,
+      "new_hits": 3,
+      "total_evaluable": 9
+    },
+    {
+      "k": 15,
+      "recall": 1.0,
+      "hits": 9,
+      "new_hits": 0,
+      "total_evaluable": 9
+    },
+    {
+      "k": 20,
+      "recall": 1.0,
+      "hits": 9,
+      "new_hits": 0,
+      "total_evaluable": 9
+    },
+    {
+      "k": 30,
+      "recall": 1.0,
+      "hits": 9,
+      "new_hits": 0,
+      "total_evaluable": 9
+    }
+  ]
+}

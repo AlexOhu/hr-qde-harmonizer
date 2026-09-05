@@ -1,0 +1,3359 @@
+@prefix harm: <http://hr-qde.org/harmonised/> .
+@prefix harm-ecf: <http://hr-qde.org/harmonised/source/ecf/> .
+@prefix hrqde: <http://hr-qde.org/ontology/> .
+@prefix semapv: <https://w3id.org/semapv/vocab/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sssom: <https://w3id.org/sssom/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://hr-qde.org/harmonised/mappingset/oberhuber-v0.2> a sssom:MappingSet ;
+    sssom:mapping_set_version "0.2" ;
+    sssom:mappings <http://hr-qde.org/harmonised/levelmapping/DQR1__EQF1>,
+        <http://hr-qde.org/harmonised/levelmapping/DQR2__EQF2>,
+        <http://hr-qde.org/harmonised/levelmapping/DQR3__EQF3>,
+        <http://hr-qde.org/harmonised/levelmapping/DQR4__EQF4>,
+        <http://hr-qde.org/harmonised/levelmapping/DQR5__EQF5>,
+        <http://hr-qde.org/harmonised/levelmapping/DQR6__EQF6>,
+        <http://hr-qde.org/harmonised/levelmapping/DQR7__EQF7>,
+        <http://hr-qde.org/harmonised/levelmapping/DQR8__EQF8>,
+        <http://hr-qde.org/harmonised/mapping/00033c78-debe-4213-9978-64c82ecb0026>,
+        <http://hr-qde.org/harmonised/mapping/0017c665-58ba-4d5f-98d4-504db33088f4>,
+        <http://hr-qde.org/harmonised/mapping/00295653-2571-480a-94f0-c7bc627f3fba>,
+        <http://hr-qde.org/harmonised/mapping/00d4e686-d3e5-4b8b-b3a2-47f3f1c2a355>,
+        <http://hr-qde.org/harmonised/mapping/00f3fe92-a139-43ae-ae10-b991b0e93d5a>,
+        <http://hr-qde.org/harmonised/mapping/03bcae99-f708-4dbf-893f-a1da33593d74>,
+        <http://hr-qde.org/harmonised/mapping/03c024c9-1a45-4b32-9932-83d4f27663d3>,
+        <http://hr-qde.org/harmonised/mapping/03c56a93-ab09-4a7f-8a90-fa60e1bf86b4>,
+        <http://hr-qde.org/harmonised/mapping/04952e61-9061-471d-98f9-ceadbf1ba63a>,
+        <http://hr-qde.org/harmonised/mapping/05337a2e-5731-48cd-9305-16dcb615adf4>,
+        <http://hr-qde.org/harmonised/mapping/06efca9d-353e-41d2-b630-88799797981a>,
+        <http://hr-qde.org/harmonised/mapping/095607ed-ce13-4f91-a281-f583548ec607>,
+        <http://hr-qde.org/harmonised/mapping/09f3b089-2d19-453b-87ca-23f25aa386f3>,
+        <http://hr-qde.org/harmonised/mapping/0e7ebf20-c52e-4a33-be3e-4abc3c5ed0a9>,
+        <http://hr-qde.org/harmonised/mapping/0ed3610a-3e6f-440e-b528-1181707fc9c7>,
+        <http://hr-qde.org/harmonised/mapping/0f1faa9d-13a5-4f94-912c-60dc677c06ba>,
+        <http://hr-qde.org/harmonised/mapping/0f41e712-cab2-42f5-b54b-fe179e3160bb>,
+        <http://hr-qde.org/harmonised/mapping/0fd464ed-d70d-477b-886a-44f273e28456>,
+        <http://hr-qde.org/harmonised/mapping/1032124d-ac85-44e9-87f3-c92f075a6fd9>,
+        <http://hr-qde.org/harmonised/mapping/10343b40-c574-440d-ba45-af5e8aeb2ebf>,
+        <http://hr-qde.org/harmonised/mapping/10b176a0-de45-4535-a3f3-e9fc550b075b>,
+        <http://hr-qde.org/harmonised/mapping/11c4f4fd-b03b-4a5e-bf22-1235f7e687ec>,
+        <http://hr-qde.org/harmonised/mapping/135af077-4732-4954-9e5a-20d52e1874f9>,
+        <http://hr-qde.org/harmonised/mapping/13a3ac71-3dc9-44b2-8ed5-8baea6020d98>,
+        <http://hr-qde.org/harmonised/mapping/144ceea5-7403-4092-a146-928be645c34f>,
+        <http://hr-qde.org/harmonised/mapping/1735d6a6-c1dd-46e4-882f-53d32c01404b>,
+        <http://hr-qde.org/harmonised/mapping/17b01699-cf03-412d-a919-ea392ecdfc1f>,
+        <http://hr-qde.org/harmonised/mapping/17cbed89-1760-489a-a1b1-a80b880740fd>,
+        <http://hr-qde.org/harmonised/mapping/19276712-811c-497e-b187-b0d247b46728>,
+        <http://hr-qde.org/harmonised/mapping/195594a2-8402-4615-b7eb-1b097b36c74c>,
+        <http://hr-qde.org/harmonised/mapping/1ab029f2-db7c-41b4-bde2-2c1d496ee14f>,
+        <http://hr-qde.org/harmonised/mapping/1ad4d8fe-1d57-4b76-8c2d-fa8fcf6657a6>,
+        <http://hr-qde.org/harmonised/mapping/1b583616-7e86-41af-a559-28a709f53d53>,
+        <http://hr-qde.org/harmonised/mapping/1b8b1ea1-0278-4e41-b5fa-e46da3ff87ad>,
+        <http://hr-qde.org/harmonised/mapping/1c8d05fa-f884-4bb5-aafb-5ea93d3e4b8a>,
+        <http://hr-qde.org/harmonised/mapping/1ccd7fac-ea6c-4b9e-8b33-90098eb152b0>,
+        <http://hr-qde.org/harmonised/mapping/1cd87dcd-8952-41f1-9c84-8d04096e45f7>,
+        <http://hr-qde.org/harmonised/mapping/1ce1a170-b581-4d79-833b-2f858eef266b>,
+        <http://hr-qde.org/harmonised/mapping/1d409d33-0193-42f9-8f21-eb63f082c502>,
+        <http://hr-qde.org/harmonised/mapping/1f1d9d02-bfc1-4072-b5db-bf88f0609f45>,
+        <http://hr-qde.org/harmonised/mapping/1f503e35-d8aa-499b-842d-863d8e767304>,
+        <http://hr-qde.org/harmonised/mapping/1f80e4ef-e1c2-4436-84f7-e67ab42c6360>,
+        <http://hr-qde.org/harmonised/mapping/20473562-89b4-4390-8d1f-7f0b9428aa8d>,
+        <http://hr-qde.org/harmonised/mapping/21b47176-6fb7-455b-9070-0f670d039cad>,
+        <http://hr-qde.org/harmonised/mapping/2253cfc1-94c7-4499-9622-f5d91df0123d>,
+        <http://hr-qde.org/harmonised/mapping/24b3e702-e023-498c-808d-8de6fcb7e91f>,
+        <http://hr-qde.org/harmonised/mapping/24c30dc5-7186-4256-956b-f6bb0814ab41>,
+        <http://hr-qde.org/harmonised/mapping/24f66b38-0d2b-424d-b737-66bec516b443>,
+        <http://hr-qde.org/harmonised/mapping/25f03e7a-fe38-4ce9-ba09-85ddc2ecb506>,
+        <http://hr-qde.org/harmonised/mapping/271865ae-5aca-4c0e-abfe-454c9ad42e25>,
+        <http://hr-qde.org/harmonised/mapping/2748a366-3139-49fa-a27f-3d717d566368>,
+        <http://hr-qde.org/harmonised/mapping/27fe4c46-6d65-44c4-97c0-6748240e224f>,
+        <http://hr-qde.org/harmonised/mapping/292f567f-9915-46fd-bacc-bacc7456d2f0>,
+        <http://hr-qde.org/harmonised/mapping/2a624319-90e5-4bbb-be33-b259d3c7f068>,
+        <http://hr-qde.org/harmonised/mapping/2a64ecff-e05b-4378-ad78-caf4782e5f7d>,
+        <http://hr-qde.org/harmonised/mapping/2b074ce8-1e2a-4e30-bfa0-080ee349b8fc>,
+        <http://hr-qde.org/harmonised/mapping/2d339ff5-977e-4710-9423-d5653f24c854>,
+        <http://hr-qde.org/harmonised/mapping/2e5c1a98-f6d6-4609-b25f-cf4185f066b5>,
+        <http://hr-qde.org/harmonised/mapping/2e6ed42e-7a0c-45b3-8b8a-baaf493e0d63>,
+        <http://hr-qde.org/harmonised/mapping/2e98da95-6856-4f35-a1be-597f6d41895c>,
+        <http://hr-qde.org/harmonised/mapping/2f5f0a23-4f7c-4961-9585-c85f0553ce9d>,
+        <http://hr-qde.org/harmonised/mapping/30be241a-31cf-412d-b72e-cbe555e0946c>,
+        <http://hr-qde.org/harmonised/mapping/320a03ea-6b21-489f-85b2-c6a18afe63d1>,
+        <http://hr-qde.org/harmonised/mapping/329fe0d7-b6c7-4bf4-bba5-95562321840d>,
+        <http://hr-qde.org/harmonised/mapping/336b2e1d-bd53-4ac1-a398-1d2e5e5343d9>,
+        <http://hr-qde.org/harmonised/mapping/33b21812-4de8-4ca0-a790-c5f75ea811d0>,
+        <http://hr-qde.org/harmonised/mapping/34d71cba-8022-4adc-8a89-9959b036608c>,
+        <http://hr-qde.org/harmonised/mapping/34f0e8e7-89a5-42f5-85e3-9348fa0bc4aa>,
+        <http://hr-qde.org/harmonised/mapping/3509381a-1f9c-40d7-b5ab-785ccfc72dfd>,
+        <http://hr-qde.org/harmonised/mapping/35eee641-14e5-48ef-884b-2d090081abf2>,
+        <http://hr-qde.org/harmonised/mapping/36291128-5ee0-4b4f-b88b-c34e4d3b4706>,
+        <http://hr-qde.org/harmonised/mapping/36789efd-b25d-42ac-a9bd-f4c9877f5241>,
+        <http://hr-qde.org/harmonised/mapping/368e9b9c-062f-468e-9937-4c3455b60d63>,
+        <http://hr-qde.org/harmonised/mapping/36cf15eb-90b5-4cce-bd1c-f93fff270652>,
+        <http://hr-qde.org/harmonised/mapping/3767f6e8-de21-4cfe-acd9-1a11e7f10e20>,
+        <http://hr-qde.org/harmonised/mapping/37f4b6f9-1cc1-46b0-9433-0ac01db0602c>,
+        <http://hr-qde.org/harmonised/mapping/39f7b1bb-1dc2-43f4-a09a-600f70252d47>,
+        <http://hr-qde.org/harmonised/mapping/3d15c9b1-4e5f-4d92-951a-b414fbb5e77c>,
+        <http://hr-qde.org/harmonised/mapping/3d2be814-5a8c-426e-9cec-11d251b191f6>,
+        <http://hr-qde.org/harmonised/mapping/3d3373f8-6fa0-4ae4-84c2-700abc217be6>,
+        <http://hr-qde.org/harmonised/mapping/3deab3b3-93df-46dd-ae45-1a0ccf70bf99>,
+        <http://hr-qde.org/harmonised/mapping/3dededee-2fec-4e59-9509-cdbf344b606c>,
+        <http://hr-qde.org/harmonised/mapping/3e27c969-a9a5-42ce-b67a-6153632b06d5>,
+        <http://hr-qde.org/harmonised/mapping/3ea4821e-0d72-4718-a520-8fafe0f0885a>,
+        <http://hr-qde.org/harmonised/mapping/3eb8d347-3ff4-4adf-82ec-d2a2a2724d11>,
+        <http://hr-qde.org/harmonised/mapping/412ed9d0-b256-42cd-b000-c4cd14110df9>,
+        <http://hr-qde.org/harmonised/mapping/4147e663-b96a-4089-90b3-846c1da142f0>,
+        <http://hr-qde.org/harmonised/mapping/417c180c-f6ee-4c74-bcc7-649acecb0543>,
+        <http://hr-qde.org/harmonised/mapping/4365e757-518c-43a9-b657-9d9f81b929ad>,
+        <http://hr-qde.org/harmonised/mapping/43af1e92-4d9e-47eb-8876-b28e0e86deaf>,
+        <http://hr-qde.org/harmonised/mapping/43c539c7-4bc7-4475-8370-900aaf3f57c4>,
+        <http://hr-qde.org/harmonised/mapping/43ecdd80-354f-482e-936e-fc6431c249d8>,
+        <http://hr-qde.org/harmonised/mapping/44ebfefa-8c87-49a6-9381-8213d0b6d8ba>,
+        <http://hr-qde.org/harmonised/mapping/45c55eca-2fb3-4679-863e-5a69520736e3>,
+        <http://hr-qde.org/harmonised/mapping/4655b1a5-b21f-4257-b5a6-f9ff7af6009c>,
+        <http://hr-qde.org/harmonised/mapping/4753bfc4-eaec-46b0-993e-f70b5af9028f>,
+        <http://hr-qde.org/harmonised/mapping/47665566-364a-42d5-a7c4-c447d949225e>,
+        <http://hr-qde.org/harmonised/mapping/476bbb0b-0bb1-4cec-a938-db1e8001f712>,
+        <http://hr-qde.org/harmonised/mapping/47d41a2d-e1f6-48d4-ad92-b247200eccc1>,
+        <http://hr-qde.org/harmonised/mapping/494fc5b8-7aa1-44c3-b353-63228ccb4873>,
+        <http://hr-qde.org/harmonised/mapping/498f61d8-3d3b-4471-8c10-76a46f02c400>,
+        <http://hr-qde.org/harmonised/mapping/4b56ba2b-4387-49c1-a5ca-fa834dfffd51>,
+        <http://hr-qde.org/harmonised/mapping/4bdc83e9-cf6e-46c7-a300-1ca4d06d3d2f>,
+        <http://hr-qde.org/harmonised/mapping/4d8a845a-b34f-4692-8266-577eeb163327>,
+        <http://hr-qde.org/harmonised/mapping/4eb958e0-3f18-4eca-b28f-0167fb87cd65>,
+        <http://hr-qde.org/harmonised/mapping/4ffaf80c-1713-4a8b-9be5-85b301aa9aa2>,
+        <http://hr-qde.org/harmonised/mapping/500e1f2d-fc54-464a-ad44-4c8d224c0647>,
+        <http://hr-qde.org/harmonised/mapping/50782a88-c3cc-4003-bed8-2ddaaf41f6e0>,
+        <http://hr-qde.org/harmonised/mapping/509aba9c-6709-4248-8bb1-da80d31f289f>,
+        <http://hr-qde.org/harmonised/mapping/51c1113e-f8e5-41b5-9ff0-a95a66508aaa>,
+        <http://hr-qde.org/harmonised/mapping/5266e4e5-db42-4ef3-809c-dba100c71b15>,
+        <http://hr-qde.org/harmonised/mapping/52aacb86-c8e9-4b6f-b24d-acc1c4181a85>,
+        <http://hr-qde.org/harmonised/mapping/5334dd3f-c76f-4320-b2ff-1ada5fb93ffd>,
+        <http://hr-qde.org/harmonised/mapping/538c4382-a84b-4fff-8ebb-ea8e12348f6d>,
+        <http://hr-qde.org/harmonised/mapping/53e77c09-1159-4a65-ab7d-6a7124e9b4fb>,
+        <http://hr-qde.org/harmonised/mapping/54065524-57c7-4e2b-81b0-8d1c90e29603>,
+        <http://hr-qde.org/harmonised/mapping/55c0a6fb-75b5-407b-9612-ebf0fe48f38d>,
+        <http://hr-qde.org/harmonised/mapping/56e80098-3f1d-4a4f-9603-bcba5f115f20>,
+        <http://hr-qde.org/harmonised/mapping/56f77b42-e902-4c93-9955-d759bd3c1736>,
+        <http://hr-qde.org/harmonised/mapping/5712837e-641d-4444-97e5-288908deb5a5>,
+        <http://hr-qde.org/harmonised/mapping/582e19ab-a2b9-43ac-ad77-fc262d93ae47>,
+        <http://hr-qde.org/harmonised/mapping/586d178c-07c1-4d00-8124-f43a0610c098>,
+        <http://hr-qde.org/harmonised/mapping/5883548e-db5e-493d-97ac-272cc2475ba2>,
+        <http://hr-qde.org/harmonised/mapping/58baf834-416c-4032-966f-a68b5e4b3d04>,
+        <http://hr-qde.org/harmonised/mapping/59390a0d-ffd2-48d9-b747-3b45c3cc1f2c>,
+        <http://hr-qde.org/harmonised/mapping/596348ef-d428-4d47-bb49-ab33e0d1abc6>,
+        <http://hr-qde.org/harmonised/mapping/5980931a-8515-47d8-9a4f-3f1a51ea4302>,
+        <http://hr-qde.org/harmonised/mapping/59868859-90f1-4e25-822c-5330b4cd1cb6>,
+        <http://hr-qde.org/harmonised/mapping/59f606ea-a7ed-4018-a1d5-6371f14044f4>,
+        <http://hr-qde.org/harmonised/mapping/5a42f483-22fa-4a4d-a009-3bc035a95327>,
+        <http://hr-qde.org/harmonised/mapping/5aea38ec-db56-48fa-b626-e930d52b75bb>,
+        <http://hr-qde.org/harmonised/mapping/5aeb2bbf-61ee-4b44-859e-478dd0d60e91>,
+        <http://hr-qde.org/harmonised/mapping/5b3a222c-ca6d-4051-a679-782019b905d4>,
+        <http://hr-qde.org/harmonised/mapping/5b402102-9852-472f-a52d-fba5b2d58575>,
+        <http://hr-qde.org/harmonised/mapping/5b4589b3-286a-419c-b2e0-2d72fa29c46f>,
+        <http://hr-qde.org/harmonised/mapping/5bc3862f-c074-48e3-8459-7c66d5233d4b>,
+        <http://hr-qde.org/harmonised/mapping/5c1dcfe8-913a-4f87-85ed-cc478799d662>,
+        <http://hr-qde.org/harmonised/mapping/5d69f0d4-cd86-48a2-80d9-e13729c443ea>,
+        <http://hr-qde.org/harmonised/mapping/5e924cff-ea44-4c88-bfeb-0e0904078003>,
+        <http://hr-qde.org/harmonised/mapping/5f1cd92e-edfa-4040-96b4-f3a4d3aaf141>,
+        <http://hr-qde.org/harmonised/mapping/5f2d1344-32d3-4aea-9853-555952b968fe>,
+        <http://hr-qde.org/harmonised/mapping/5fa24075-a83b-410a-a841-4ead438bf8c6>,
+        <http://hr-qde.org/harmonised/mapping/5fe04ddc-25c3-43a2-a7a3-9ecf9e902d3d>,
+        <http://hr-qde.org/harmonised/mapping/5fe2f4f0-73e8-43d9-99b6-cc14ec1be74f>,
+        <http://hr-qde.org/harmonised/mapping/600c3d72-aab9-44f6-ad50-018bb89ad3c9>,
+        <http://hr-qde.org/harmonised/mapping/61b6f269-6940-4e32-9af6-8498254569fe>,
+        <http://hr-qde.org/harmonised/mapping/62180fcc-8ccd-4faf-a63a-62ad7ddd266a>,
+        <http://hr-qde.org/harmonised/mapping/62e11cb6-6295-4753-b89d-ec461dbeb439>,
+        <http://hr-qde.org/harmonised/mapping/64436566-0017-473d-9ae1-7862aaf0de68>,
+        <http://hr-qde.org/harmonised/mapping/64c3d440-0e5e-459e-a03c-5531e7ecb88e>,
+        <http://hr-qde.org/harmonised/mapping/64eaf77f-aae0-4485-894d-0eb03014e0df>,
+        <http://hr-qde.org/harmonised/mapping/65169284-9e12-4cf5-ad0d-fe020aa26320>,
+        <http://hr-qde.org/harmonised/mapping/65d33f2a-5d19-49b7-a49d-e5abe8f81196>,
+        <http://hr-qde.org/harmonised/mapping/6658cde9-943f-41ff-b2f2-53abe7f96b14>,
+        <http://hr-qde.org/harmonised/mapping/66b96662-c2d6-4557-bbbc-3909579d3ea3>,
+        <http://hr-qde.org/harmonised/mapping/687fba07-d3cb-4536-8288-406cc57179bf>,
+        <http://hr-qde.org/harmonised/mapping/68ec9d10-5ef6-437f-b1d2-657f5df04906>,
+        <http://hr-qde.org/harmonised/mapping/694d6542-103a-471e-8d63-d40b04cbd6f5>,
+        <http://hr-qde.org/harmonised/mapping/69e9747e-05ac-4b26-8849-335f83450191>,
+        <http://hr-qde.org/harmonised/mapping/6a2938c6-6d59-49bb-bf56-86e131779981>,
+        <http://hr-qde.org/harmonised/mapping/6ef2d430-841b-4a81-af46-07164584f020>,
+        <http://hr-qde.org/harmonised/mapping/6f6ea37b-e77c-48ae-b7fb-63c4791ae9a1>,
+        <http://hr-qde.org/harmonised/mapping/709533de-2b45-4400-bba2-b2152f787235>,
+        <http://hr-qde.org/harmonised/mapping/720daf4c-6cd5-4f31-ab79-20b502c89a1e>,
+        <http://hr-qde.org/harmonised/mapping/72eb3789-e5c7-4547-a8dd-04b8d440f312>,
+        <http://hr-qde.org/harmonised/mapping/72f41698-d5a6-4402-81c8-9f4c58a28b4c>,
+        <http://hr-qde.org/harmonised/mapping/7345c916-9f93-4990-a6eb-de1b57e5be0b>,
+        <http://hr-qde.org/harmonised/mapping/7370292d-ad49-41b4-a71c-f12d4a2d20b1>,
+        <http://hr-qde.org/harmonised/mapping/740436f2-5657-44d8-b67e-cb042e636711>,
+        <http://hr-qde.org/harmonised/mapping/746aa352-7951-4806-ab20-e758baff085d>,
+        <http://hr-qde.org/harmonised/mapping/74fe93e5-f59d-4a67-8b94-b2090ca5592d>,
+        <http://hr-qde.org/harmonised/mapping/75193579-d339-4b63-9a06-504f7f5e285b>,
+        <http://hr-qde.org/harmonised/mapping/7671e406-0732-43ef-9904-b6ccbc2059a7>,
+        <http://hr-qde.org/harmonised/mapping/7702f61f-c2bb-4a0c-953b-1d6e0a7d4cca>,
+        <http://hr-qde.org/harmonised/mapping/772a0e60-e071-45c1-8bc7-039f2d0f0bc2>,
+        <http://hr-qde.org/harmonised/mapping/773f40ef-fc71-4da8-9b7b-7f64a707551b>,
+        <http://hr-qde.org/harmonised/mapping/775413b3-0b5b-41db-afdd-5b0537886b0e>,
+        <http://hr-qde.org/harmonised/mapping/77a68b41-8daa-4ad3-956a-db3532428606>,
+        <http://hr-qde.org/harmonised/mapping/7845b3e0-cad8-41ec-8cc5-3be9a6a990b4>,
+        <http://hr-qde.org/harmonised/mapping/79b7bcfb-b341-45d2-a472-eee6aa01896b>,
+        <http://hr-qde.org/harmonised/mapping/7a3e4c1f-c2c0-4bdf-ac23-cfcc3042e873>,
+        <http://hr-qde.org/harmonised/mapping/7c406114-9735-4ecf-8dd2-17fb95161179>,
+        <http://hr-qde.org/harmonised/mapping/7d2b118b-8107-4750-928d-c05791308808>,
+        <http://hr-qde.org/harmonised/mapping/7ec7d0b7-719f-4bed-b071-17d397d8ded2>,
+        <http://hr-qde.org/harmonised/mapping/7f1b376f-1378-49ab-842c-28ea0a917fee>,
+        <http://hr-qde.org/harmonised/mapping/7f1c137b-19c1-4caa-8725-1cd9726145ba>,
+        <http://hr-qde.org/harmonised/mapping/816e9aa4-d9c9-4ef8-ab4d-71147f297592>,
+        <http://hr-qde.org/harmonised/mapping/819afdfa-459f-4387-8d3c-f4144679a343>,
+        <http://hr-qde.org/harmonised/mapping/81b308ff-e78e-4f1c-9c88-b4e28ca6bb87>,
+        <http://hr-qde.org/harmonised/mapping/81ee3b98-24e8-4868-bf58-f30a830f8d61>,
+        <http://hr-qde.org/harmonised/mapping/82407d5f-2cf4-4dd5-ab6e-c509225f59e4>,
+        <http://hr-qde.org/harmonised/mapping/84514d7c-c8dc-4e39-b4d7-3fd99d5c3f6b>,
+        <http://hr-qde.org/harmonised/mapping/8470ce20-a4d0-4876-bfc6-e116ee0837ff>,
+        <http://hr-qde.org/harmonised/mapping/85236086-c198-4c33-9ed5-47fd81588e01>,
+        <http://hr-qde.org/harmonised/mapping/854806ca-a4c7-49a1-be92-e50d4b3aa2c7>,
+        <http://hr-qde.org/harmonised/mapping/8722a0bf-e7d7-408e-b917-c30b513f411b>,
+        <http://hr-qde.org/harmonised/mapping/87aa76a3-f080-41ab-9f67-260ff62ec79d>,
+        <http://hr-qde.org/harmonised/mapping/88c471aa-77c6-4db0-8d2f-bf88d0e7575f>,
+        <http://hr-qde.org/harmonised/mapping/89744708-b29b-4f3a-b900-925e9f240563>,
+        <http://hr-qde.org/harmonised/mapping/8ab63d90-c94c-4b35-af94-a1c94b10885c>,
+        <http://hr-qde.org/harmonised/mapping/8b4ce5e3-8fcc-4434-b702-498fc94530bc>,
+        <http://hr-qde.org/harmonised/mapping/8cebf731-4bda-47ab-8b74-71eec9e59724>,
+        <http://hr-qde.org/harmonised/mapping/8dce642c-cc9f-4c3e-80a7-97f1c7ab331a>,
+        <http://hr-qde.org/harmonised/mapping/8e99b39c-8f47-45ab-9a78-c4bcad867447>,
+        <http://hr-qde.org/harmonised/mapping/8eb92e83-9384-422f-90f5-af3ec6502208>,
+        <http://hr-qde.org/harmonised/mapping/900ea7e2-bdd9-4e96-b51f-f4d7ec628986>,
+        <http://hr-qde.org/harmonised/mapping/92376a97-d794-4b8d-98a8-64ed760831c5>,
+        <http://hr-qde.org/harmonised/mapping/927a82be-5b76-4e89-b19e-2e24bfc94db0>,
+        <http://hr-qde.org/harmonised/mapping/94377f17-9d0f-4055-8964-04b4905fee87>,
+        <http://hr-qde.org/harmonised/mapping/951bf003-f6b0-4500-9d2a-6a2e6cc2b47c>,
+        <http://hr-qde.org/harmonised/mapping/985e118a-ac8a-4198-8e5a-7ecd9f2115f4>,
+        <http://hr-qde.org/harmonised/mapping/988bf1c4-cca9-4ae5-8875-920d250775f8>,
+        <http://hr-qde.org/harmonised/mapping/98b143eb-de6b-44b2-bab5-dcd96597e8de>,
+        <http://hr-qde.org/harmonised/mapping/98fe31f0-156e-4549-ae6d-cb4a6f32099d>,
+        <http://hr-qde.org/harmonised/mapping/99344613-309c-4aa7-81b8-f778faf3ba55>,
+        <http://hr-qde.org/harmonised/mapping/9a090a18-0aed-477e-8588-663739862208>,
+        <http://hr-qde.org/harmonised/mapping/9be59cd5-0d4b-4c0f-bc76-bb1c1fadb656>,
+        <http://hr-qde.org/harmonised/mapping/9c0ce1a1-edfc-4a45-adc9-a59de9383194>,
+        <http://hr-qde.org/harmonised/mapping/9c848093-1ef8-4ebf-9347-d1f63fe4b306>,
+        <http://hr-qde.org/harmonised/mapping/9ce2f2b4-6ade-431d-8d05-1dcf3b4ac9c7>,
+        <http://hr-qde.org/harmonised/mapping/9d31f2b0-bef8-431a-b0a3-3ef98217adb3>,
+        <http://hr-qde.org/harmonised/mapping/9e438cc9-343d-4051-8f0c-a47d28c565c6>,
+        <http://hr-qde.org/harmonised/mapping/9ed5324c-52a6-4a2f-9ed6-9a8153c7d8e7>,
+        <http://hr-qde.org/harmonised/mapping/a091c765-72bf-4ac2-ac31-9012259a6aa7>,
+        <http://hr-qde.org/harmonised/mapping/a200c068-296f-4c5f-b35c-fc6be6432303>,
+        <http://hr-qde.org/harmonised/mapping/a296c137-8bea-4a39-b0d7-f949a9804fd0>,
+        <http://hr-qde.org/harmonised/mapping/a3595917-cd77-448b-8525-f3f3c6f4e8c5>,
+        <http://hr-qde.org/harmonised/mapping/a4a68146-dacd-4d3f-9b26-a34e3603b2bf>,
+        <http://hr-qde.org/harmonised/mapping/a4dffa66-fbd2-49a1-af74-69eff6d25714>,
+        <http://hr-qde.org/harmonised/mapping/a52bbfb4-3de3-4b4c-8295-2c6aca7dcc99>,
+        <http://hr-qde.org/harmonised/mapping/a5b5ba90-fa57-4e56-b35c-eb0898532997>,
+        <http://hr-qde.org/harmonised/mapping/a5ee79bb-2b4f-417b-88c2-a076c3a05d99>,
+        <http://hr-qde.org/harmonised/mapping/a6310e3e-9a48-451e-a2bf-4166ef35d1eb>,
+        <http://hr-qde.org/harmonised/mapping/a65ddf4d-84c1-4345-b8f5-e31e075db0a1>,
+        <http://hr-qde.org/harmonised/mapping/a7786119-c22c-479f-acbf-82fca432b10d>,
+        <http://hr-qde.org/harmonised/mapping/a85e1bf8-bf1e-4f86-a28c-32041193a7bd>,
+        <http://hr-qde.org/harmonised/mapping/a8f7cf88-abfd-41cd-a340-9debe7b448d8>,
+        <http://hr-qde.org/harmonised/mapping/a9e275e0-1cfd-43ac-8cce-46463584d7cb>,
+        <http://hr-qde.org/harmonised/mapping/aa17af47-ebfb-4f75-905e-02359d3a538a>,
+        <http://hr-qde.org/harmonised/mapping/aa428bf7-b3a5-404b-9adc-15f3624cc5e4>,
+        <http://hr-qde.org/harmonised/mapping/aa4a7b84-fe91-44b1-a3fb-96615887a2ba>,
+        <http://hr-qde.org/harmonised/mapping/aa9ec080-f3ab-484c-9128-041883de7ce7>,
+        <http://hr-qde.org/harmonised/mapping/aaa4e888-3a7d-4ea1-8c2e-720a9bb87c25>,
+        <http://hr-qde.org/harmonised/mapping/ab98d0b7-b52f-45d5-8e12-eb109a49e51f>,
+        <http://hr-qde.org/harmonised/mapping/abc0dbf9-b9d9-4003-b717-7025f5ce1e01>,
+        <http://hr-qde.org/harmonised/mapping/acc8e224-5fe2-49f5-8808-05a0ae7531b6>,
+        <http://hr-qde.org/harmonised/mapping/ae6f1e80-128f-4fe3-a2b7-59d6532a5098>,
+        <http://hr-qde.org/harmonised/mapping/af115bf2-0f61-44fc-9d77-f6e8caa16c7e>,
+        <http://hr-qde.org/harmonised/mapping/af9d376a-5574-4f75-af1a-77c65c320ec8>,
+        <http://hr-qde.org/harmonised/mapping/afbece0b-5306-47c2-b4e0-41c4299974e3>,
+        <http://hr-qde.org/harmonised/mapping/b0064bd4-29b9-42db-a7f1-d66a9b738f76>,
+        <http://hr-qde.org/harmonised/mapping/b0945939-30a3-46d9-8db3-9c7334f62a29>,
+        <http://hr-qde.org/harmonised/mapping/b109e1a1-cd20-4e08-a973-95b3d0644df1>,
+        <http://hr-qde.org/harmonised/mapping/b1b006ca-6b26-4229-b7e9-e7d41b5f6625>,
+        <http://hr-qde.org/harmonised/mapping/b29f77f5-8c56-4282-aa77-43c5f63d197a>,
+        <http://hr-qde.org/harmonised/mapping/b318548e-79bf-4ef1-93ac-ec1b5aeffde0>,
+        <http://hr-qde.org/harmonised/mapping/b4c41843-6588-44c1-9f47-17ef436ac514>,
+        <http://hr-qde.org/harmonised/mapping/b53d5dd5-bd92-4a8b-b323-f425571f0d34>,
+        <http://hr-qde.org/harmonised/mapping/b64e46b2-dcec-4868-9b4a-451d970bd216>,
+        <http://hr-qde.org/harmonised/mapping/b6c36140-86b2-44fb-9506-92d2f08b40f0>,
+        <http://hr-qde.org/harmonised/mapping/b6e19a49-4ab7-4f83-ab67-1356253b8d4e>,
+        <http://hr-qde.org/harmonised/mapping/b7375bd9-e76a-4a26-a349-4e60bb09b39a>,
+        <http://hr-qde.org/harmonised/mapping/b88aa29d-e367-4a7d-8fea-87fa066cf7bc>,
+        <http://hr-qde.org/harmonised/mapping/b89cce1b-f672-44ae-a555-8c70b7796e94>,
+        <http://hr-qde.org/harmonised/mapping/b8a32a4f-3e4f-489e-aa48-63b5d0463ba9>,
+        <http://hr-qde.org/harmonised/mapping/b8ad7513-7b87-47c6-86a8-1afb9feed781>,
+        <http://hr-qde.org/harmonised/mapping/b917e748-1e6a-47e6-a5df-fb312e05df5f>,
+        <http://hr-qde.org/harmonised/mapping/b98d57c3-1d4f-4db3-b9cf-1cfd8fa4ac2c>,
+        <http://hr-qde.org/harmonised/mapping/b9d3cf86-0433-466a-b5d4-7c5e54a0569a>,
+        <http://hr-qde.org/harmonised/mapping/ba07d529-340f-478e-8563-4e9018a9d9ee>,
+        <http://hr-qde.org/harmonised/mapping/bac8dd38-b9a3-448a-955b-222d598058af>,
+        <http://hr-qde.org/harmonised/mapping/bb60cf1f-c331-4c14-a466-2a6d160d8b14>,
+        <http://hr-qde.org/harmonised/mapping/bba50aa3-3552-43fc-8577-a48c2e682b0d>,
+        <http://hr-qde.org/harmonised/mapping/bbde9f13-34e6-433f-bbc5-701bd897d338>,
+        <http://hr-qde.org/harmonised/mapping/be62efe5-01a0-4bb8-a4ba-1dc5cd1a1f32>,
+        <http://hr-qde.org/harmonised/mapping/be7465a0-de9e-4125-9b2f-1b1b9c8f1779>,
+        <http://hr-qde.org/harmonised/mapping/bea7c584-e0e3-461c-9c1b-09c8bf8c582a>,
+        <http://hr-qde.org/harmonised/mapping/bedd7b8d-2b24-437d-b98d-5c77692180d2>,
+        <http://hr-qde.org/harmonised/mapping/bf6eaed4-40b9-48ef-94c5-a3f7c996e10c>,
+        <http://hr-qde.org/harmonised/mapping/bf758a0d-e9a9-40b6-8675-349f9423cb8e>,
+        <http://hr-qde.org/harmonised/mapping/bfebe695-9251-441c-aa95-0e66d92744a1>,
+        <http://hr-qde.org/harmonised/mapping/bfecb5b1-89ba-44d1-a5a0-14b4b9ff7a71>,
+        <http://hr-qde.org/harmonised/mapping/c0b72606-ace3-46da-8676-3a8f431507bd>,
+        <http://hr-qde.org/harmonised/mapping/c0befd0a-58bb-49ca-9ba4-b46aeca9204c>,
+        <http://hr-qde.org/harmonised/mapping/c276c9c9-d2a2-4bac-b111-77eb04743711>,
+        <http://hr-qde.org/harmonised/mapping/c44c68db-6ffc-4140-a9a8-a21527c3221d>,
+        <http://hr-qde.org/harmonised/mapping/c514c707-5fa1-4d96-aeb2-da3987abf97b>,
+        <http://hr-qde.org/harmonised/mapping/c564f764-fe18-4254-a9ff-cde132e8741c>,
+        <http://hr-qde.org/harmonised/mapping/c5904025-e9fa-4dc0-80b0-c77742c4b375>,
+        <http://hr-qde.org/harmonised/mapping/c647b335-c385-40ec-a732-f9470d031826>,
+        <http://hr-qde.org/harmonised/mapping/c6ca0779-d872-47f6-a49a-7961ae27a47f>,
+        <http://hr-qde.org/harmonised/mapping/c73e7881-69a2-4353-8ac2-ef449cea457c>,
+        <http://hr-qde.org/harmonised/mapping/c82d455d-f6e3-4e03-9cf0-eec32ec3b226>,
+        <http://hr-qde.org/harmonised/mapping/c9744411-eb5b-403e-b4ad-080832c0f705>,
+        <http://hr-qde.org/harmonised/mapping/cae1a765-b814-45c5-b0be-54caea35fe4d>,
+        <http://hr-qde.org/harmonised/mapping/cbf20d46-7ae1-43d6-8596-c7e6bc83dd42>,
+        <http://hr-qde.org/harmonised/mapping/cc320f93-595c-4495-a9ff-41c6c222d077>,
+        <http://hr-qde.org/harmonised/mapping/cc421f94-9413-4b53-b9c7-b311ee9a2739>,
+        <http://hr-qde.org/harmonised/mapping/cd4e93d9-0c56-444b-af0b-bac386b1f148>,
+        <http://hr-qde.org/harmonised/mapping/cdb06833-c84d-4105-96cd-f65859ca065a>,
+        <http://hr-qde.org/harmonised/mapping/cdbea3f9-8788-4acf-a115-8c81840f4c7d>,
+        <http://hr-qde.org/harmonised/mapping/cde231f8-34a1-4cfb-b726-3dce1faddb3e>,
+        <http://hr-qde.org/harmonised/mapping/ce0d36f8-47a3-472f-897f-46d9bf9a1d8a>,
+        <http://hr-qde.org/harmonised/mapping/ce1f2c8f-95b2-4e32-b13a-341ba72eef89>,
+        <http://hr-qde.org/harmonised/mapping/ce8ec616-cb42-42d0-a2f5-098a1ec02488>,
+        <http://hr-qde.org/harmonised/mapping/ced9e222-d0d9-4723-ac69-98994562779d>,
+        <http://hr-qde.org/harmonised/mapping/d316e912-7282-49ef-b85e-8f9baa1ca2b0>,
+        <http://hr-qde.org/harmonised/mapping/d55de7b7-75e2-46cd-9ac8-57277416305f>,
+        <http://hr-qde.org/harmonised/mapping/d734c79f-a0eb-4819-a055-7f0a3ecf9693>,
+        <http://hr-qde.org/harmonised/mapping/d7be50f9-a547-4fe4-9604-89d659bd2d6e>,
+        <http://hr-qde.org/harmonised/mapping/d7f7d773-4dc0-4130-a54e-74a6db98d243>,
+        <http://hr-qde.org/harmonised/mapping/d85daf64-9f55-48e0-bf1a-bcce916cb904>,
+        <http://hr-qde.org/harmonised/mapping/d88b6dec-dc19-48ae-bd2a-bb6a4365a517>,
+        <http://hr-qde.org/harmonised/mapping/d9862912-cb72-4a07-b3f5-f20abaa3966b>,
+        <http://hr-qde.org/harmonised/mapping/d9b9c466-3087-4b26-96de-b9c64732e368>,
+        <http://hr-qde.org/harmonised/mapping/dbe07e48-ab1e-4be9-b570-e118ba37db17>,
+        <http://hr-qde.org/harmonised/mapping/de691d54-5a90-478d-8466-226a73f9b673>,
+        <http://hr-qde.org/harmonised/mapping/debce2db-7046-48e0-944f-ab34b79debad>,
+        <http://hr-qde.org/harmonised/mapping/dece40ef-a50c-425c-92d3-73816883ff38>,
+        <http://hr-qde.org/harmonised/mapping/dee20745-cf26-4e38-8834-6b6409abcf4b>,
+        <http://hr-qde.org/harmonised/mapping/defb6c71-aded-4499-b937-f865f86e5c6e>,
+        <http://hr-qde.org/harmonised/mapping/e05a346b-1951-438b-8241-d640594fe926>,
+        <http://hr-qde.org/harmonised/mapping/e17f107d-29b4-42bc-b9a2-733681d0678b>,
+        <http://hr-qde.org/harmonised/mapping/e36c54d5-9489-4b6c-aa72-15b3a6fad1fc>,
+        <http://hr-qde.org/harmonised/mapping/e3e94a8c-6dfa-4f62-bcf4-c4826f7fa773>,
+        <http://hr-qde.org/harmonised/mapping/e5149b42-f944-4708-a798-09d3dedd38a6>,
+        <http://hr-qde.org/harmonised/mapping/e579f6d4-2105-4eea-9615-168ca7a8ed07>,
+        <http://hr-qde.org/harmonised/mapping/e5f7a38b-dce7-4a6c-baab-dc0da7631c86>,
+        <http://hr-qde.org/harmonised/mapping/e6c58fb3-880d-46f2-adba-67955e1ff9b2>,
+        <http://hr-qde.org/harmonised/mapping/e6cea56f-7b73-4fac-9320-44655a5dec97>,
+        <http://hr-qde.org/harmonised/mapping/e6fd3078-e930-4630-aaa2-45431bebf7f9>,
+        <http://hr-qde.org/harmonised/mapping/e776e502-b177-4bcf-81fd-27f824aee416>,
+        <http://hr-qde.org/harmonised/mapping/e77fa348-eabe-4178-9d3c-34951db5c0c2>,
+        <http://hr-qde.org/harmonised/mapping/e86b01d1-0f22-4ace-bcc9-4acf63eb4feb>,
+        <http://hr-qde.org/harmonised/mapping/e9ace9c7-f6a3-4868-ae81-90a9c6b59e75>,
+        <http://hr-qde.org/harmonised/mapping/ea0020ff-1270-4168-8102-c7a98bdbf897>,
+        <http://hr-qde.org/harmonised/mapping/ea1b9143-0a0e-4b05-aacc-b22e74fa8bf5>,
+        <http://hr-qde.org/harmonised/mapping/eae48ba7-2a9d-436d-8cf9-bc7d3732b182>,
+        <http://hr-qde.org/harmonised/mapping/ecbd79d5-d0a8-49c4-a0a6-8ee2c246d94e>,
+        <http://hr-qde.org/harmonised/mapping/ecf4e129-99ee-4da3-83e6-e624b8a5299b>,
+        <http://hr-qde.org/harmonised/mapping/ed96f3ab-c8f7-4d01-8185-6cd2bb7367a5>,
+        <http://hr-qde.org/harmonised/mapping/edfe1720-d6c4-4363-af3e-ebd7b3d6eee9>,
+        <http://hr-qde.org/harmonised/mapping/ee79d588-810c-4cca-8521-015cee288296>,
+        <http://hr-qde.org/harmonised/mapping/eee9357f-a322-4776-9f70-4af96ee49f86>,
+        <http://hr-qde.org/harmonised/mapping/ef4235cc-4499-4b9e-a4b9-d3f91d62a3b9>,
+        <http://hr-qde.org/harmonised/mapping/f06a3b86-6000-4e3b-b143-a189a29df5d0>,
+        <http://hr-qde.org/harmonised/mapping/f072e649-26e2-4074-81dc-9980b36328fd>,
+        <http://hr-qde.org/harmonised/mapping/f411d328-605f-4b75-8dbe-d363217daa8f>,
+        <http://hr-qde.org/harmonised/mapping/f41940c2-71d4-478f-87e1-398c8cf1dc37>,
+        <http://hr-qde.org/harmonised/mapping/f444507d-fc52-4c72-ba80-89e37959f964>,
+        <http://hr-qde.org/harmonised/mapping/f4c70455-6e05-4992-9052-9b5e0c817027>,
+        <http://hr-qde.org/harmonised/mapping/f53b119e-677f-4288-a90a-e330093f7113>,
+        <http://hr-qde.org/harmonised/mapping/f57735fd-dc15-4af4-93a1-18dbe971de6c>,
+        <http://hr-qde.org/harmonised/mapping/f60d5257-f5af-4f2f-8397-6543cd56b75d>,
+        <http://hr-qde.org/harmonised/mapping/f8651039-4f4f-4c65-a533-88776840cbdc>,
+        <http://hr-qde.org/harmonised/mapping/f8e0e854-2f8c-422a-bcb9-3865826c0e6e>,
+        <http://hr-qde.org/harmonised/mapping/f8fb5335-83b2-4631-aa2a-0ecba7f8af87>,
+        <http://hr-qde.org/harmonised/mapping/fa1f80d5-3e6e-4e51-9444-c8602f9e054c>,
+        <http://hr-qde.org/harmonised/mapping/faad5548-85e0-48b7-8afc-0bcb8a003111>,
+        <http://hr-qde.org/harmonised/mapping/faeb3ebc-4e99-4cdc-85ce-423b0ec0eb90>,
+        <http://hr-qde.org/harmonised/mapping/fb610331-f514-41b3-9842-078e46495d9a>,
+        <http://hr-qde.org/harmonised/mapping/fc63d1a9-eb22-4df0-ad92-7c060f440812>,
+        <http://hr-qde.org/harmonised/mapping/ff4e8842-3a31-48d9-bb85-0309d6d28e15>,
+        <http://hr-qde.org/harmonised/mapping/ffa23066-1c51-44f7-844b-af2e6def7eda> .
+
+<http://hr-qde.org/harmonised/levelmapping/DQR1__EQF1> a harm:LevelMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:ManualMappingCuration ;
+    sssom:mapping_tool "Deutscher EQR-Zuordnungsbericht 2013"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/snb/qf-eu-level/1> ;
+    sssom:predicate_id skos:exactMatch ;
+    sssom:subject_id hrqde:DQR1 .
+
+<http://hr-qde.org/harmonised/levelmapping/DQR2__EQF2> a harm:LevelMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:ManualMappingCuration ;
+    sssom:mapping_tool "Deutscher EQR-Zuordnungsbericht 2013"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/snb/qf-eu-level/2> ;
+    sssom:predicate_id skos:exactMatch ;
+    sssom:subject_id hrqde:DQR2 .
+
+<http://hr-qde.org/harmonised/levelmapping/DQR3__EQF3> a harm:LevelMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:ManualMappingCuration ;
+    sssom:mapping_tool "Deutscher EQR-Zuordnungsbericht 2013"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/snb/qf-eu-level/3> ;
+    sssom:predicate_id skos:exactMatch ;
+    sssom:subject_id hrqde:DQR3 .
+
+<http://hr-qde.org/harmonised/levelmapping/DQR4__EQF4> a harm:LevelMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:ManualMappingCuration ;
+    sssom:mapping_tool "Deutscher EQR-Zuordnungsbericht 2013"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/snb/qf-eu-level/4> ;
+    sssom:predicate_id skos:exactMatch ;
+    sssom:subject_id hrqde:DQR4 .
+
+<http://hr-qde.org/harmonised/levelmapping/DQR5__EQF5> a harm:LevelMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:ManualMappingCuration ;
+    sssom:mapping_tool "Deutscher EQR-Zuordnungsbericht 2013"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/snb/qf-eu-level/5> ;
+    sssom:predicate_id skos:exactMatch ;
+    sssom:subject_id hrqde:DQR5 .
+
+<http://hr-qde.org/harmonised/levelmapping/DQR6__EQF6> a harm:LevelMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:ManualMappingCuration ;
+    sssom:mapping_tool "Deutscher EQR-Zuordnungsbericht 2013"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/snb/qf-eu-level/6> ;
+    sssom:predicate_id skos:exactMatch ;
+    sssom:subject_id hrqde:DQR6 .
+
+<http://hr-qde.org/harmonised/levelmapping/DQR7__EQF7> a harm:LevelMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:ManualMappingCuration ;
+    sssom:mapping_tool "Deutscher EQR-Zuordnungsbericht 2013"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/snb/qf-eu-level/7> ;
+    sssom:predicate_id skos:exactMatch ;
+    sssom:subject_id hrqde:DQR7 .
+
+<http://hr-qde.org/harmonised/levelmapping/DQR8__EQF8> a harm:LevelMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:ManualMappingCuration ;
+    sssom:mapping_tool "Deutscher EQR-Zuordnungsbericht 2013"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/snb/qf-eu-level/8> ;
+    sssom:predicate_id skos:exactMatch ;
+    sssom:subject_id hrqde:DQR8 .
+
+<http://hr-qde.org/harmonised/mapping/00033c78-debe-4213-9978-64c82ecb0026> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/1d6c7de4-350e-4868-a47b-333b4b0d9650> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/0017c665-58ba-4d5f-98d4-504db33088f4> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/1ebc1454-b6cb-4e45-a96a-17399961ad39> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:run .
+
+<http://hr-qde.org/harmonised/mapping/00295653-2571-480a-94f0-c7bc627f3fba> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/17c9a790-5664-4673-8237-c4cf3c5a8da5> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.1 .
+
+<http://hr-qde.org/harmonised/mapping/00d4e686-d3e5-4b8b-b3a2-47f3f1c2a355> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/418a56a2-7cfc-4b6d-8cf5-5c2add99a849> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.3 .
+
+<http://hr-qde.org/harmonised/mapping/00f3fe92-a139-43ae-ae10-b991b0e93d5a> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f0393af3-bcd9-41af-a36e-0cfb83b60081> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:E.7 .
+
+<http://hr-qde.org/harmonised/mapping/03bcae99-f708-4dbf-893f-a1da33593d74> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/7961413f-61d0-4722-9cd9-20a050a29899> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/03c024c9-1a45-4b32-9932-83d4f27663d3> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/74cb80c4-df6b-4d79-a153-cb7b3b3b6eb0> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.12 .
+
+<http://hr-qde.org/harmonised/mapping/03c56a93-ab09-4a7f-8a90-fa60e1bf86b4> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ce354460-500e-4eaa-8e95-8f243fcea3db> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.6 .
+
+<http://hr-qde.org/harmonised/mapping/04952e61-9061-471d-98f9-ceadbf1ba63a> a harm:HubMapping ;
+    sssom:mapping_confidence 0.8333 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/0daaf096-1639-461c-bf1a-bbeea77e6b67> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/05337a2e-5731-48cd-9305-16dcb615adf4> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/4918ec9a-0204-4935-8b09-b0112370daa8> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.8 .
+
+<http://hr-qde.org/harmonised/mapping/06efca9d-353e-41d2-b630-88799797981a> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/8181aa4c-42bc-4036-a3d2-5cb6bbb34239> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/095607ed-ce13-4f91-a281-f583548ec607> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/db36f7f1-5900-45bd-9ffb-f2b19c4362ac> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:C.1 .
+
+<http://hr-qde.org/harmonised/mapping/09f3b089-2d19-453b-87ca-23f25aa386f3> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f6868852-9bf6-4899-a5d6-5f9532fb877d> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/0e7ebf20-c52e-4a33-be3e-4abc3c5ed0a9> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/2450c3b3-e78e-435b-b84d-e05d984e71dc> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.5 .
+
+<http://hr-qde.org/harmonised/mapping/0ed3610a-3e6f-440e-b528-1181707fc9c7> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/3ff589b7-68df-4ea5-ae41-b395bdb2378f> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:D.1 .
+
+<http://hr-qde.org/harmonised/mapping/0f1faa9d-13a5-4f94-912c-60dc677c06ba> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/2c28fc20-8a60-4311-8899-5ef8729c05b3> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.5 .
+
+<http://hr-qde.org/harmonised/mapping/0f41e712-cab2-42f5-b54b-fe179e3160bb> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/978db6a1-7297-4c89-819a-47605f2c3ba8> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.4 .
+
+<http://hr-qde.org/harmonised/mapping/0fd464ed-d70d-477b-886a-44f273e28456> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/14d1e367-3efe-4ec5-86ae-eca48710ee4e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/1032124d-ac85-44e9-87f3-c92f075a6fd9> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/64e09849-a7db-4d6b-a932-66264420eb97> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/10343b40-c574-440d-ba45-af5e8aeb2ebf> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f28617ad-afdd-4041-814c-216153a38998> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.6 .
+
+<http://hr-qde.org/harmonised/mapping/10b176a0-de45-4535-a3f3-e9fc550b075b> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/7961413f-61d0-4722-9cd9-20a050a29899> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.3 .
+
+<http://hr-qde.org/harmonised/mapping/11c4f4fd-b03b-4a5e-bf22-1235f7e687ec> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/edf081e4-d2dc-4a60-8c49-7b7e45b5ebe3> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/135af077-4732-4954-9e5a-20d52e1874f9> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/9bb7a97a-1a16-431e-8ea6-ad0f9f59aa0a> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:E.9 .
+
+<http://hr-qde.org/harmonised/mapping/13a3ac71-3dc9-44b2-8ed5-8baea6020d98> a harm:HubMapping ;
+    sssom:mapping_confidence 0.8889 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ed8de897-adbe-4f0e-b4d2-534953e64c72> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/144ceea5-7403-4092-a146-928be645c34f> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/1e7ed56a-6d6b-422f-962e-38543d150755> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:E.5 .
+
+<http://hr-qde.org/harmonised/mapping/1735d6a6-c1dd-46e4-882f-53d32c01404b> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/06358891-8424-43c5-891e-d40f226bef40> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/17b01699-cf03-412d-a919-ea392ecdfc1f> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/7f27f1ff-2e17-4b69-990e-c23334478313> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/17cbed89-1760-489a-a1b1-a80b880740fd> a harm:HubMapping ;
+    sssom:mapping_confidence 0.75 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/1e7ed56a-6d6b-422f-962e-38543d150755> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/19276712-811c-497e-b187-b0d247b46728> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/fae27053-8924-4bfd-b565-c9fe502044c9> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/195594a2-8402-4615-b7eb-1b097b36c74c> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/2857540c-180b-4208-9127-e94a01871966> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/1ab029f2-db7c-41b4-bde2-2c1d496ee14f> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ed8de897-adbe-4f0e-b4d2-534953e64c72> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.4 .
+
+<http://hr-qde.org/harmonised/mapping/1ad4d8fe-1d57-4b76-8c2d-fa8fcf6657a6> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/8764d4b1-e069-44f2-8baa-fb1eee1850ec> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/1b583616-7e86-41af-a559-28a709f53d53> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ddfe79e2-c2e3-4ba7-9bdf-3820b4f75b54> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.11 .
+
+<http://hr-qde.org/harmonised/mapping/1b8b1ea1-0278-4e41-b5fa-e46da3ff87ad> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/09f2f811-a3fb-4de3-a70f-6420a6935575> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/1c8d05fa-f884-4bb5-aafb-5ea93d3e4b8a> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/feb717ff-fba6-4a91-aa10-ee11cf2da6b4> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/1ccd7fac-ea6c-4b9e-8b33-90098eb152b0> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/fbbcb9ab-4b95-4e57-a756-30d08b7da7a5> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/1cd87dcd-8952-41f1-9c84-8d04096e45f7> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/d5a59ca8-2e91-472e-8571-d12ce4478679> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:E.2 .
+
+<http://hr-qde.org/harmonised/mapping/1ce1a170-b581-4d79-833b-2f858eef266b> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/3c6fe585-7d12-4315-b579-e30c042088ce> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/1d409d33-0193-42f9-8f21-eb63f082c502> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/1e7ed56a-6d6b-422f-962e-38543d150755> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.9 .
+
+<http://hr-qde.org/harmonised/mapping/1f1d9d02-bfc1-4072-b5db-bf88f0609f45> a harm:HubMapping ;
+    sssom:mapping_confidence 0.8333 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/e1e99428-b91b-45e1-8ede-ed0cbf161930> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:run .
+
+<http://hr-qde.org/harmonised/mapping/1f503e35-d8aa-499b-842d-863d8e767304> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/e665d919-f28d-4ac4-adf0-8903ac66540e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/1f80e4ef-e1c2-4436-84f7-e67ab42c6360> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f7e2eb04-3e50-4561-bce1-7e51a1fec308> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/20473562-89b4-4390-8d1f-7f0b9428aa8d> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ea412de3-9d7a-4943-8d8c-c6d3c7495d0e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.2 .
+
+<http://hr-qde.org/harmonised/mapping/21b47176-6fb7-455b-9070-0f670d039cad> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/74cb80c4-df6b-4d79-a153-cb7b3b3b6eb0> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/2253cfc1-94c7-4499-9622-f5d91df0123d> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/14d1e367-3efe-4ec5-86ae-eca48710ee4e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.1 .
+
+<http://hr-qde.org/harmonised/mapping/24b3e702-e023-498c-808d-8de6fcb7e91f> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/7f27f1ff-2e17-4b69-990e-c23334478313> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.3 .
+
+<http://hr-qde.org/harmonised/mapping/24c30dc5-7186-4256-956b-f6bb0814ab41> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/e043aeeb-78f5-4049-afbf-12bba52225bc> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.5 .
+
+<http://hr-qde.org/harmonised/mapping/24f66b38-0d2b-424d-b737-66bec516b443> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/71c2f41e-14de-4b23-82ad-5dbcd54ba5b0> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.4 .
+
+<http://hr-qde.org/harmonised/mapping/25f03e7a-fe38-4ce9-ba09-85ddc2ecb506> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/2a3a96a3-709e-4d60-81f6-d247d6933f13> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:C.3 .
+
+<http://hr-qde.org/harmonised/mapping/271865ae-5aca-4c0e-abfe-454c9ad42e25> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/eb2ae1c7-ba57-4695-8f29-9dd41c26e01e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.3 .
+
+<http://hr-qde.org/harmonised/mapping/2748a366-3139-49fa-a27f-3d717d566368> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/2a3a96a3-709e-4d60-81f6-d247d6933f13> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:run .
+
+<http://hr-qde.org/harmonised/mapping/27fe4c46-6d65-44c4-97c0-6748240e224f> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/43dfbe7f-9e10-4871-b171-e5076737b4cf> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.12 .
+
+<http://hr-qde.org/harmonised/mapping/292f567f-9915-46fd-bacc-bacc7456d2f0> a harm:HubMapping ;
+    sssom:mapping_confidence 0.8333 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/fae27053-8924-4bfd-b565-c9fe502044c9> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/2a624319-90e5-4bbb-be33-b259d3c7f068> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/114c9698-c999-4369-8498-81bf641fe871> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:E.8 .
+
+<http://hr-qde.org/harmonised/mapping/2a64ecff-e05b-4378-ad78-caf4782e5f7d> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/a9dc215e-4e26-4ac0-b1e8-a721a88af813> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/2b074ce8-1e2a-4e30-bfa0-080ee349b8fc> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/54d774a3-de3b-4425-b0d7-c03bc99a0937> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/2d339ff5-977e-4710-9423-d5653f24c854> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/fe1c2b32-7fe9-4668-affa-07ff658a68cf> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.8 .
+
+<http://hr-qde.org/harmonised/mapping/2e5c1a98-f6d6-4609-b25f-cf4185f066b5> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/172020d1-e151-445b-8173-e2a5fb16fe51> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.6 .
+
+<http://hr-qde.org/harmonised/mapping/2e6ed42e-7a0c-45b3-8b8a-baaf493e0d63> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/94dd823c-148e-4614-a6e8-99249b16357d> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.2 .
+
+<http://hr-qde.org/harmonised/mapping/2e98da95-6856-4f35-a1be-597f6d41895c> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/c453cf81-6197-428e-84c6-70c773b63f27> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/2f5f0a23-4f7c-4961-9585-c85f0553ce9d> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/5865c47c-cf1a-4dcb-8871-d4a1ea4b047b> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:B.5 .
+
+<http://hr-qde.org/harmonised/mapping/30be241a-31cf-412d-b72e-cbe555e0946c> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/e043aeeb-78f5-4049-afbf-12bba52225bc> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/320a03ea-6b21-489f-85b2-c6a18afe63d1> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/7dfbe0f3-076f-4a19-9eaa-db4d6db704b6> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/329fe0d7-b6c7-4bf4-bba5-95562321840d> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f4346299-e22a-4686-8e61-2c9b0cd51c7d> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/336b2e1d-bd53-4ac1-a398-1d2e5e5343d9> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/c13fb093-5ffb-491a-b8b7-fa2d42a57e2e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:run .
+
+<http://hr-qde.org/harmonised/mapping/33b21812-4de8-4ca0-a790-c5f75ea811d0> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/2c28fc20-8a60-4311-8899-5ef8729c05b3> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/34d71cba-8022-4adc-8a89-9959b036608c> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/4918ec9a-0204-4935-8b09-b0112370daa8> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/34f0e8e7-89a5-42f5-85e3-9348fa0bc4aa> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/3ff589b7-68df-4ea5-ae41-b395bdb2378f> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/3509381a-1f9c-40d7-b5ab-785ccfc72dfd> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/fafe0b9d-dbd9-46bd-b770-26299539ce66> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/35eee641-14e5-48ef-884b-2d090081abf2> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/14d1e367-3efe-4ec5-86ae-eca48710ee4e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:C.3 .
+
+<http://hr-qde.org/harmonised/mapping/36291128-5ee0-4b4f-b88b-c34e4d3b4706> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/9bb7a97a-1a16-431e-8ea6-ad0f9f59aa0a> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/36789efd-b25d-42ac-a9bd-f4c9877f5241> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/2450c3b3-e78e-435b-b84d-e05d984e71dc> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/368e9b9c-062f-468e-9937-4c3455b60d63> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/b8271c8a-cba6-4baa-80f5-6361af3f07e3> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:run .
+
+<http://hr-qde.org/harmonised/mapping/36cf15eb-90b5-4cce-bd1c-f93fff270652> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/7557f0f4-b8bc-4ac0-b91e-222ab1ba744f> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.3 .
+
+<http://hr-qde.org/harmonised/mapping/3767f6e8-de21-4cfe-acd9-1a11e7f10e20> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/b0096dc5-2e2d-4bc1-8172-05bf486c3968> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/37f4b6f9-1cc1-46b0-9433-0ac01db0602c> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/3ff589b7-68df-4ea5-ae41-b395bdb2378f> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.8 .
+
+<http://hr-qde.org/harmonised/mapping/39f7b1bb-1dc2-43f4-a09a-600f70252d47> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ed8de897-adbe-4f0e-b4d2-534953e64c72> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.2 .
+
+<http://hr-qde.org/harmonised/mapping/3d15c9b1-4e5f-4d92-951a-b414fbb5e77c> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/b8271c8a-cba6-4baa-80f5-6361af3f07e3> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/3d2be814-5a8c-426e-9cec-11d251b191f6> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ce354460-500e-4eaa-8e95-8f243fcea3db> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.3 .
+
+<http://hr-qde.org/harmonised/mapping/3d3373f8-6fa0-4ae4-84c2-700abc217be6> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/17c9a790-5664-4673-8237-c4cf3c5a8da5> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:E.5 .
+
+<http://hr-qde.org/harmonised/mapping/3deab3b3-93df-46dd-ae45-1a0ccf70bf99> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/53456d90-8c0d-4bd2-9f1b-312619b6e2a6> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.3 .
+
+<http://hr-qde.org/harmonised/mapping/3dededee-2fec-4e59-9509-cdbf344b606c> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/4918ec9a-0204-4935-8b09-b0112370daa8> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:C.3 .
+
+<http://hr-qde.org/harmonised/mapping/3e27c969-a9a5-42ce-b67a-6153632b06d5> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ed39edd3-44d0-4a16-9796-bfb99f92baf3> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/3ea4821e-0d72-4718-a520-8fafe0f0885a> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/4918ec9a-0204-4935-8b09-b0112370daa8> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:run .
+
+<http://hr-qde.org/harmonised/mapping/3eb8d347-3ff4-4adf-82ec-d2a2a2724d11> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/8327754d-3990-4056-b07e-4faa49cfcd26> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:A.9 .
+
+<http://hr-qde.org/harmonised/mapping/412ed9d0-b256-42cd-b000-c4cd14110df9> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/bc067d2e-e151-408f-8e34-24effd2b7fd6> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.4 .
+
+<http://hr-qde.org/harmonised/mapping/4147e663-b96a-4089-90b3-846c1da142f0> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/83b33952-3872-46ec-9a2e-b28f91303a7e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.6 .
+
+<http://hr-qde.org/harmonised/mapping/417c180c-f6ee-4c74-bcc7-649acecb0543> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/b3c8eada-b0a8-4b61-968b-b354fbfb6874> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/4365e757-518c-43a9-b657-9d9f81b929ad> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/69cfc5ed-6569-4aca-a4cc-fd782ba51d9c> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.3 .
+
+<http://hr-qde.org/harmonised/mapping/43af1e92-4d9e-47eb-8876-b28e0e86deaf> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/9e06bac6-6b91-48ca-8b7d-c1f48cdecd7c> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/43c539c7-4bc7-4475-8370-900aaf3f57c4> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/07e51c60-763a-4335-b4ec-70a15f66d328> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:A.3 .
+
+<http://hr-qde.org/harmonised/mapping/43ecdd80-354f-482e-936e-fc6431c249d8> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/bec4359e-cb92-468f-a997-8fb28e32fba9> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/44ebfefa-8c87-49a6-9381-8213d0b6d8ba> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/83b33952-3872-46ec-9a2e-b28f91303a7e> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:B.1 .
+
+<http://hr-qde.org/harmonised/mapping/45c55eca-2fb3-4679-863e-5a69520736e3> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/8327754d-3990-4056-b07e-4faa49cfcd26> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/4655b1a5-b21f-4257-b5a6-f9ff7af6009c> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/42fcf80d-7b45-40f3-bd2f-5411c4c0dfa0> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.7 .
+
+<http://hr-qde.org/harmonised/mapping/4753bfc4-eaec-46b0-993e-f70b5af9028f> a harm:HubMapping ;
+    sssom:mapping_confidence 0.8333 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/8ff015a0-98ea-4d80-a23e-1f68110a919e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/47665566-364a-42d5-a7c4-c447d949225e> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/4918ec9a-0204-4935-8b09-b0112370daa8> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.1 .
+
+<http://hr-qde.org/harmonised/mapping/476bbb0b-0bb1-4cec-a938-db1e8001f712> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/6fa1c2c0-a012-4ca0-9642-e01569ba322c> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.2 .
+
+<http://hr-qde.org/harmonised/mapping/47d41a2d-e1f6-48d4-ad92-b247200eccc1> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/dba46f87-0831-49cd-a1c7-340a653c0221> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/494fc5b8-7aa1-44c3-b353-63228ccb4873> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/90be83d9-56f1-46a4-a6bc-96c51f6c9025> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.2 .
+
+<http://hr-qde.org/harmonised/mapping/498f61d8-3d3b-4471-8c10-76a46f02c400> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/42fcf80d-7b45-40f3-bd2f-5411c4c0dfa0> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:D.11 .
+
+<http://hr-qde.org/harmonised/mapping/4b56ba2b-4387-49c1-a5ca-fa834dfffd51> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/1e7ed56a-6d6b-422f-962e-38543d150755> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:C.2 .
+
+<http://hr-qde.org/harmonised/mapping/4bdc83e9-cf6e-46c7-a300-1ca4d06d3d2f> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/4d97e3c3-f335-47cc-a4ee-0d779fd42222> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.10 .
+
+<http://hr-qde.org/harmonised/mapping/4d8a845a-b34f-4692-8266-577eeb163327> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/8181aa4c-42bc-4036-a3d2-5cb6bbb34239> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.8 .
+
+<http://hr-qde.org/harmonised/mapping/4eb958e0-3f18-4eca-b28f-0167fb87cd65> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/a3ce2bf7-5562-4639-9b52-fdb4850a3904> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:run .
+
+<http://hr-qde.org/harmonised/mapping/4ffaf80c-1713-4a8b-9be5-85b301aa9aa2> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/17c9a790-5664-4673-8237-c4cf3c5a8da5> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.7 .
+
+<http://hr-qde.org/harmonised/mapping/500e1f2d-fc54-464a-ad44-4c8d224c0647> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/378caeec-10a0-4162-b75c-ab374a42e93d> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/50782a88-c3cc-4003-bed8-2ddaaf41f6e0> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/69cfc5ed-6569-4aca-a4cc-fd782ba51d9c> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/509aba9c-6709-4248-8bb1-da80d31f289f> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/17c9a790-5664-4673-8237-c4cf3c5a8da5> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/51c1113e-f8e5-41b5-9ff0-a95a66508aaa> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f4346299-e22a-4686-8e61-2c9b0cd51c7d> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.8 .
+
+<http://hr-qde.org/harmonised/mapping/5266e4e5-db42-4ef3-809c-dba100c71b15> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/69cfc5ed-6569-4aca-a4cc-fd782ba51d9c> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/52aacb86-c8e9-4b6f-b24d-acc1c4181a85> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/fbbcb9ab-4b95-4e57-a756-30d08b7da7a5> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.6 .
+
+<http://hr-qde.org/harmonised/mapping/5334dd3f-c76f-4320-b2ff-1ada5fb93ffd> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/c2296e2e-5fef-4f24-a24f-e5b3792268be> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:run .
+
+<http://hr-qde.org/harmonised/mapping/538c4382-a84b-4fff-8ebb-ea8e12348f6d> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/fe1c2b32-7fe9-4668-affa-07ff658a68cf> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.1 .
+
+<http://hr-qde.org/harmonised/mapping/53e77c09-1159-4a65-ab7d-6a7124e9b4fb> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/e1e99428-b91b-45e1-8ede-ed0cbf161930> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:C.3 .
+
+<http://hr-qde.org/harmonised/mapping/54065524-57c7-4e2b-81b0-8d1c90e29603> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/1ebc1454-b6cb-4e45-a96a-17399961ad39> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.8 .
+
+<http://hr-qde.org/harmonised/mapping/55c0a6fb-75b5-407b-9612-ebf0fe48f38d> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/114c9698-c999-4369-8498-81bf641fe871> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:D.1 .
+
+<http://hr-qde.org/harmonised/mapping/56e80098-3f1d-4a4f-9603-bcba5f115f20> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ac516e9b-8bfa-4b72-8e3e-340b0a3a51d5> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.2 .
+
+<http://hr-qde.org/harmonised/mapping/56f77b42-e902-4c93-9955-d759bd3c1736> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.1 .
+
+<http://hr-qde.org/harmonised/mapping/5712837e-641d-4444-97e5-288908deb5a5> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/0a9acb6b-1139-4be9-b431-3a80a959f2f4> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/582e19ab-a2b9-43ac-ad77-fc262d93ae47> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f0393af3-bcd9-41af-a36e-0cfb83b60081> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:E.9 .
+
+<http://hr-qde.org/harmonised/mapping/586d178c-07c1-4d00-8124-f43a0610c098> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/11eebd42-44ab-401d-8a2c-bdb9fc9beb50> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/5883548e-db5e-493d-97ac-272cc2475ba2> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/60d48be0-4260-4b2e-85b9-aedff7a9b7d9> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/58baf834-416c-4032-966f-a68b5e4b3d04> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/4918ec9a-0204-4935-8b09-b0112370daa8> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:E.9 .
+
+<http://hr-qde.org/harmonised/mapping/59390a0d-ffd2-48d9-b747-3b45c3cc1f2c> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/fe1c2b32-7fe9-4668-affa-07ff658a68cf> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/596348ef-d428-4d47-bb49-ab33e0d1abc6> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/be64bb4c-84ac-4c83-8cc7-fc8593e15136> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.3 .
+
+<http://hr-qde.org/harmonised/mapping/5980931a-8515-47d8-9a4f-3f1a51ea4302> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/07dd856d-6141-48a7-a228-918f88494812> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/59868859-90f1-4e25-822c-5330b4cd1cb6> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ea412de3-9d7a-4943-8d8c-c6d3c7495d0e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.3 .
+
+<http://hr-qde.org/harmonised/mapping/59f606ea-a7ed-4018-a1d5-6371f14044f4> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/06358891-8424-43c5-891e-d40f226bef40> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:C.3 .
+
+<http://hr-qde.org/harmonised/mapping/5a42f483-22fa-4a4d-a009-3bc035a95327> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/bec4359e-cb92-468f-a997-8fb28e32fba9> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.2 .
+
+<http://hr-qde.org/harmonised/mapping/5aea38ec-db56-48fa-b626-e930d52b75bb> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/1e7ed56a-6d6b-422f-962e-38543d150755> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.7 .
+
+<http://hr-qde.org/harmonised/mapping/5aeb2bbf-61ee-4b44-859e-478dd0d60e91> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/a9dc215e-4e26-4ac0-b1e8-a721a88af813> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.3 .
+
+<http://hr-qde.org/harmonised/mapping/5b3a222c-ca6d-4051-a679-782019b905d4> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/861313ba-3a1a-4d33-842a-1b8e45e2415b> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/5b402102-9852-472f-a52d-fba5b2d58575> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/1f0fbd17-56b7-45cd-b841-e7d9e2a5a14e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/5b4589b3-286a-419c-b2e0-2d72fa29c46f> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/fafe0b9d-dbd9-46bd-b770-26299539ce66> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.2 .
+
+<http://hr-qde.org/harmonised/mapping/5bc3862f-c074-48e3-8459-7c66d5233d4b> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/5c1dcfe8-913a-4f87-85ed-cc478799d662> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/11c56452-fcec-4b00-9695-cca4728e5048> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/5d69f0d4-cd86-48a2-80d9-e13729c443ea> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/64e09849-a7db-4d6b-a932-66264420eb97> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.12 .
+
+<http://hr-qde.org/harmonised/mapping/5e924cff-ea44-4c88-bfeb-0e0904078003> a harm:HubMapping ;
+    sssom:mapping_confidence 0.8889 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/4918ec9a-0204-4935-8b09-b0112370daa8> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/5f1cd92e-edfa-4040-96b4-f3a4d3aaf141> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/861313ba-3a1a-4d33-842a-1b8e45e2415b> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:A.1 .
+
+<http://hr-qde.org/harmonised/mapping/5f2d1344-32d3-4aea-9853-555952b968fe> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ae57a9c3-f761-4b03-be2b-99a781704c73> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.1 .
+
+<http://hr-qde.org/harmonised/mapping/5fa24075-a83b-410a-a841-4ead438bf8c6> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/db36f7f1-5900-45bd-9ffb-f2b19c4362ac> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:run .
+
+<http://hr-qde.org/harmonised/mapping/5fe04ddc-25c3-43a2-a7a3-9ecf9e902d3d> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/edf081e4-d2dc-4a60-8c49-7b7e45b5ebe3> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.3 .
+
+<http://hr-qde.org/harmonised/mapping/5fe2f4f0-73e8-43d9-99b6-cc14ec1be74f> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/114c9698-c999-4369-8498-81bf641fe871> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/600c3d72-aab9-44f6-ad50-018bb89ad3c9> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/07e51c60-763a-4335-b4ec-70a15f66d328> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.1 .
+
+<http://hr-qde.org/harmonised/mapping/61b6f269-6940-4e32-9af6-8498254569fe> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/42cb7669-c371-4903-9c0b-13db67b2e4bb> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.7 .
+
+<http://hr-qde.org/harmonised/mapping/62180fcc-8ccd-4faf-a63a-62ad7ddd266a> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/736ef286-fbd3-4e5c-a4b4-d1e2008c9898> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.12 .
+
+<http://hr-qde.org/harmonised/mapping/62e11cb6-6295-4753-b89d-ec461dbeb439> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/2857540c-180b-4208-9127-e94a01871966> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.6 .
+
+<http://hr-qde.org/harmonised/mapping/64436566-0017-473d-9ae1-7862aaf0de68> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/14d1e367-3efe-4ec5-86ae-eca48710ee4e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.8 .
+
+<http://hr-qde.org/harmonised/mapping/64c3d440-0e5e-459e-a03c-5531e7ecb88e> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/dba46f87-0831-49cd-a1c7-340a653c0221> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:B.1 .
+
+<http://hr-qde.org/harmonised/mapping/64eaf77f-aae0-4485-894d-0eb03014e0df> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/11eebd42-44ab-401d-8a2c-bdb9fc9beb50> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.8 .
+
+<http://hr-qde.org/harmonised/mapping/65169284-9e12-4cf5-ad0d-fe020aa26320> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/b8271c8a-cba6-4baa-80f5-6361af3f07e3> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.6 .
+
+<http://hr-qde.org/harmonised/mapping/65d33f2a-5d19-49b7-a49d-e5abe8f81196> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/96eb286a-58b7-45ff-a916-5578d0b79b8c> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.6 .
+
+<http://hr-qde.org/harmonised/mapping/6658cde9-943f-41ff-b2f2-53abe7f96b14> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/17c9a790-5664-4673-8237-c4cf3c5a8da5> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/66b96662-c2d6-4557-bbbc-3909579d3ea3> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.6 .
+
+<http://hr-qde.org/harmonised/mapping/687fba07-d3cb-4536-8288-406cc57179bf> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/7dfbe0f3-076f-4a19-9eaa-db4d6db704b6> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.7 .
+
+<http://hr-qde.org/harmonised/mapping/68ec9d10-5ef6-437f-b1d2-657f5df04906> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/07dd856d-6141-48a7-a228-918f88494812> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.9 .
+
+<http://hr-qde.org/harmonised/mapping/694d6542-103a-471e-8d63-d40b04cbd6f5> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ab20726a-14dd-4536-9aa1-6166bc1a5832> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.4 .
+
+<http://hr-qde.org/harmonised/mapping/69e9747e-05ac-4b26-8849-335f83450191> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/3c6fe585-7d12-4315-b579-e30c042088ce> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.6 .
+
+<http://hr-qde.org/harmonised/mapping/6a2938c6-6d59-49bb-bf56-86e131779981> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/114c9698-c999-4369-8498-81bf641fe871> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/6ef2d430-841b-4a81-af46-07164584f020> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/fafe0b9d-dbd9-46bd-b770-26299539ce66> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.6 .
+
+<http://hr-qde.org/harmonised/mapping/6f6ea37b-e77c-48ae-b7fb-63c4791ae9a1> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/3bddfd7c-ab6d-40c2-883d-5e97fb7640ba> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:B.1 .
+
+<http://hr-qde.org/harmonised/mapping/709533de-2b45-4400-bba2-b2152f787235> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/8327754d-3990-4056-b07e-4faa49cfcd26> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.7 .
+
+<http://hr-qde.org/harmonised/mapping/720daf4c-6cd5-4f31-ab79-20b502c89a1e> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/60d48be0-4260-4b2e-85b9-aedff7a9b7d9> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.1 .
+
+<http://hr-qde.org/harmonised/mapping/72eb3789-e5c7-4547-a8dd-04b8d440f312> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/2b7a79e5-84d8-4880-be66-3d9bb05bea17> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/72f41698-d5a6-4402-81c8-9f4c58a28b4c> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ee02393d-27dd-438a-8879-b8088ce45e79> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/7345c916-9f93-4990-a6eb-de1b57e5be0b> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/2a3a96a3-709e-4d60-81f6-d247d6933f13> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/7370292d-ad49-41b4-a71c-f12d4a2d20b1> a harm:HubMapping ;
+    sssom:mapping_confidence 0.8333 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/3bddfd7c-ab6d-40c2-883d-5e97fb7640ba> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/740436f2-5657-44d8-b67e-cb042e636711> a harm:HubMapping ;
+    sssom:mapping_confidence 0.8889 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/07e51c60-763a-4335-b4ec-70a15f66d328> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/746aa352-7951-4806-ab20-e758baff085d> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/9bb7a97a-1a16-431e-8ea6-ad0f9f59aa0a> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.8 .
+
+<http://hr-qde.org/harmonised/mapping/74fe93e5-f59d-4a67-8b94-b2090ca5592d> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/1e7ed56a-6d6b-422f-962e-38543d150755> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:run .
+
+<http://hr-qde.org/harmonised/mapping/75193579-d339-4b63-9a06-504f7f5e285b> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/bc067d2e-e151-408f-8e34-24effd2b7fd6> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/7671e406-0732-43ef-9904-b6ccbc2059a7> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/172020d1-e151-445b-8173-e2a5fb16fe51> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/7702f61f-c2bb-4a0c-953b-1d6e0a7d4cca> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/06358891-8424-43c5-891e-d40f226bef40> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/772a0e60-e071-45c1-8bc7-039f2d0f0bc2> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/9e06bac6-6b91-48ca-8b7d-c1f48cdecd7c> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.4 .
+
+<http://hr-qde.org/harmonised/mapping/773f40ef-fc71-4da8-9b7b-7f64a707551b> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/14d1e367-3efe-4ec5-86ae-eca48710ee4e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/775413b3-0b5b-41db-afdd-5b0537886b0e> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/913e7e83-b8f8-4574-b1ca-1b38f3fd974a> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.3 .
+
+<http://hr-qde.org/harmonised/mapping/77a68b41-8daa-4ad3-956a-db3532428606> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/0a099c81-6a0c-4f00-bb3b-990d23ec03a5> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/7845b3e0-cad8-41ec-8cc5-3be9a6a990b4> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/be64bb4c-84ac-4c83-8cc7-fc8593e15136> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/79b7bcfb-b341-45d2-a472-eee6aa01896b> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/418a56a2-7cfc-4b6d-8cf5-5c2add99a849> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/7a3e4c1f-c2c0-4bdf-ac23-cfcc3042e873> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/83b33952-3872-46ec-9a2e-b28f91303a7e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/7c406114-9735-4ecf-8dd2-17fb95161179> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ddfe79e2-c2e3-4ba7-9bdf-3820b4f75b54> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/7d2b118b-8107-4750-928d-c05791308808> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/750f86d2-18be-4015-84b1-d4a26d9b2d88> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.12 .
+
+<http://hr-qde.org/harmonised/mapping/7ec7d0b7-719f-4bed-b071-17d397d8ded2> a harm:HubMapping ;
+    sssom:mapping_confidence 0.8333 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/90be83d9-56f1-46a4-a6bc-96c51f6c9025> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/7f1b376f-1378-49ab-842c-28ea0a917fee> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/90be83d9-56f1-46a4-a6bc-96c51f6c9025> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:B.6 .
+
+<http://hr-qde.org/harmonised/mapping/7f1c137b-19c1-4caa-8725-1cd9726145ba> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/1ebc1454-b6cb-4e45-a96a-17399961ad39> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/816e9aa4-d9c9-4ef8-ab4d-71147f297592> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/e1e99428-b91b-45e1-8ede-ed0cbf161930> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.5 .
+
+<http://hr-qde.org/harmonised/mapping/819afdfa-459f-4387-8d3c-f4144679a343> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f8e7c608-a92d-4b61-b84f-e2453b0aa4a4> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:C.1 .
+
+<http://hr-qde.org/harmonised/mapping/81b308ff-e78e-4f1c-9c88-b4e28ca6bb87> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/8ff015a0-98ea-4d80-a23e-1f68110a919e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.6 .
+
+<http://hr-qde.org/harmonised/mapping/81ee3b98-24e8-4868-bf58-f30a830f8d61> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/1d6c7de4-350e-4868-a47b-333b4b0d9650> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:D.12 .
+
+<http://hr-qde.org/harmonised/mapping/82407d5f-2cf4-4dd5-ab6e-c509225f59e4> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ab20726a-14dd-4536-9aa1-6166bc1a5832> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/84514d7c-c8dc-4e39-b4d7-3fd99d5c3f6b> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/c13fb093-5ffb-491a-b8b7-fa2d42a57e2e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:C.3 .
+
+<http://hr-qde.org/harmonised/mapping/8470ce20-a4d0-4876-bfc6-e116ee0837ff> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/0a099c81-6a0c-4f00-bb3b-990d23ec03a5> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.7 .
+
+<http://hr-qde.org/harmonised/mapping/85236086-c198-4c33-9ed5-47fd81588e01> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/42cb7669-c371-4903-9c0b-13db67b2e4bb> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/854806ca-a4c7-49a1-be92-e50d4b3aa2c7> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/11eebd42-44ab-401d-8a2c-bdb9fc9beb50> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.1 .
+
+<http://hr-qde.org/harmonised/mapping/8722a0bf-e7d7-408e-b917-c30b513f411b> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/5d74614d-32c8-4ca4-9818-6980e52424b1> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.3 .
+
+<http://hr-qde.org/harmonised/mapping/87aa76a3-f080-41ab-9f67-260ff62ec79d> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/7f0b1a66-ebaf-4c8a-b606-4c1844eb692e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:run .
+
+<http://hr-qde.org/harmonised/mapping/88c471aa-77c6-4db0-8d2f-bf88d0e7575f> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/17c9a790-5664-4673-8237-c4cf3c5a8da5> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.2 .
+
+<http://hr-qde.org/harmonised/mapping/89744708-b29b-4f3a-b900-925e9f240563> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/1f0fbd17-56b7-45cd-b841-e7d9e2a5a14e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.9 .
+
+<http://hr-qde.org/harmonised/mapping/8ab63d90-c94c-4b35-af94-a1c94b10885c> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/17c9a790-5664-4673-8237-c4cf3c5a8da5> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/8b4ce5e3-8fcc-4434-b702-498fc94530bc> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/1e7ed56a-6d6b-422f-962e-38543d150755> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.2 .
+
+<http://hr-qde.org/harmonised/mapping/8cebf731-4bda-47ab-8b74-71eec9e59724> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/94dd823c-148e-4614-a6e8-99249b16357d> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/8dce642c-cc9f-4c3e-80a7-97f1c7ab331a> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/25df422a-bf0a-4f76-8631-d0be91cb8751> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.6 .
+
+<http://hr-qde.org/harmonised/mapping/8e99b39c-8f47-45ab-9a78-c4bcad867447> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/8eb92e83-9384-422f-90f5-af3ec6502208> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f7e2eb04-3e50-4561-bce1-7e51a1fec308> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.5 .
+
+<http://hr-qde.org/harmonised/mapping/900ea7e2-bdd9-4e96-b51f-f4d7ec628986> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/3be6b84a-fa78-42b9-a8df-150cdb40b9d7> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/92376a97-d794-4b8d-98a8-64ed760831c5> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ed39edd3-44d0-4a16-9796-bfb99f92baf3> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:E.5 .
+
+<http://hr-qde.org/harmonised/mapping/927a82be-5b76-4e89-b19e-2e24bfc94db0> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/2a3a96a3-709e-4d60-81f6-d247d6933f13> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.8 .
+
+<http://hr-qde.org/harmonised/mapping/94377f17-9d0f-4055-8964-04b4905fee87> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/4b51e76e-9e8a-455f-a289-5b48246345c4> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/951bf003-f6b0-4500-9d2a-6a2e6cc2b47c> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/7814e88f-c133-4c3b-b27f-857afa145d42> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/985e118a-ac8a-4198-8e5a-7ecd9f2115f4> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/1ebc1454-b6cb-4e45-a96a-17399961ad39> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.1 .
+
+<http://hr-qde.org/harmonised/mapping/988bf1c4-cca9-4ae5-8875-920d250775f8> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/c2296e2e-5fef-4f24-a24f-e5b3792268be> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:C.1 .
+
+<http://hr-qde.org/harmonised/mapping/98b143eb-de6b-44b2-bab5-dcd96597e8de> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/a3ce2bf7-5562-4639-9b52-fdb4850a3904> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:C.4 .
+
+<http://hr-qde.org/harmonised/mapping/98fe31f0-156e-4549-ae6d-cb4a6f32099d> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/14d1e367-3efe-4ec5-86ae-eca48710ee4e> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:C.2 .
+
+<http://hr-qde.org/harmonised/mapping/99344613-309c-4aa7-81b8-f778faf3ba55> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/0e78d9c9-7c3c-4c5c-82cb-205c16edbcb8> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.8 .
+
+<http://hr-qde.org/harmonised/mapping/9a090a18-0aed-477e-8588-663739862208> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/bb562019-5222-45db-a16c-730edbb1d27c> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/9be59cd5-0d4b-4c0f-bc76-bb1c1fadb656> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/83b493c8-4837-41e3-9800-cff1df06cf38> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/9c0ce1a1-edfc-4a45-adc9-a59de9383194> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/e665d919-f28d-4ac4-adf0-8903ac66540e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.4 .
+
+<http://hr-qde.org/harmonised/mapping/9c848093-1ef8-4ebf-9347-d1f63fe4b306> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/feb717ff-fba6-4a91-aa10-ee11cf2da6b4> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.6 .
+
+<http://hr-qde.org/harmonised/mapping/9ce2f2b4-6ade-431d-8d05-1dcf3b4ac9c7> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/3be6b84a-fa78-42b9-a8df-150cdb40b9d7> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:D.2 .
+
+<http://hr-qde.org/harmonised/mapping/9d31f2b0-bef8-431a-b0a3-3ef98217adb3> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/bb562019-5222-45db-a16c-730edbb1d27c> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.1 .
+
+<http://hr-qde.org/harmonised/mapping/9e438cc9-343d-4051-8f0c-a47d28c565c6> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/1a4cc54f-1e53-442b-a6d2-1682dc8ef8f9> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:A.9 .
+
+<http://hr-qde.org/harmonised/mapping/9ed5324c-52a6-4a2f-9ed6-9a8153c7d8e7> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/06358891-8424-43c5-891e-d40f226bef40> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.1 .
+
+<http://hr-qde.org/harmonised/mapping/a091c765-72bf-4ac2-ac31-9012259a6aa7> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f6868852-9bf6-4899-a5d6-5f9532fb877d> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.5 .
+
+<http://hr-qde.org/harmonised/mapping/a200c068-296f-4c5f-b35c-fc6be6432303> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/3bddfd7c-ab6d-40c2-883d-5e97fb7640ba> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.5 .
+
+<http://hr-qde.org/harmonised/mapping/a296c137-8bea-4a39-b0d7-f949a9804fd0> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/9e06bac6-6b91-48ca-8b7d-c1f48cdecd7c> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:run .
+
+<http://hr-qde.org/harmonised/mapping/a3595917-cd77-448b-8525-f3f3c6f4e8c5> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/3ff589b7-68df-4ea5-ae41-b395bdb2378f> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/a4a68146-dacd-4d3f-9b26-a34e3603b2bf> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/b0096dc5-2e2d-4bc1-8172-05bf486c3968> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.6 .
+
+<http://hr-qde.org/harmonised/mapping/a4dffa66-fbd2-49a1-af74-69eff6d25714> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/e1e99428-b91b-45e1-8ede-ed0cbf161930> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:C.1 .
+
+<http://hr-qde.org/harmonised/mapping/a52bbfb4-3de3-4b4c-8295-2c6aca7dcc99> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/c4ba12d1-4698-42fa-8abb-789462ea2586> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/a5b5ba90-fa57-4e56-b35c-eb0898532997> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/69cfc5ed-6569-4aca-a4cc-fd782ba51d9c> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.1 .
+
+<http://hr-qde.org/harmonised/mapping/a5ee79bb-2b4f-417b-88c2-a076c3a05d99> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f6868852-9bf6-4899-a5d6-5f9532fb877d> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.2 .
+
+<http://hr-qde.org/harmonised/mapping/a6310e3e-9a48-451e-a2bf-4166ef35d1eb> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/17c9a790-5664-4673-8237-c4cf3c5a8da5> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.3 .
+
+<http://hr-qde.org/harmonised/mapping/a65ddf4d-84c1-4345-b8f5-e31e075db0a1> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/0e78d9c9-7c3c-4c5c-82cb-205c16edbcb8> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/a7786119-c22c-479f-acbf-82fca432b10d> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f7e2eb04-3e50-4561-bce1-7e51a1fec308> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:A.6 .
+
+<http://hr-qde.org/harmonised/mapping/a85e1bf8-bf1e-4f86-a28c-32041193a7bd> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/0daaf096-1639-461c-bf1a-bbeea77e6b67> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.3 .
+
+<http://hr-qde.org/harmonised/mapping/a8f7cf88-abfd-41cd-a340-9debe7b448d8> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/3cfa46e9-b7da-44ac-b09e-9596dffe0425> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/a9e275e0-1cfd-43ac-8cce-46463584d7cb> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/2450c3b3-e78e-435b-b84d-e05d984e71dc> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.6 .
+
+<http://hr-qde.org/harmonised/mapping/aa17af47-ebfb-4f75-905e-02359d3a538a> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/913e7e83-b8f8-4574-b1ca-1b38f3fd974a> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/aa428bf7-b3a5-404b-9adc-15f3624cc5e4> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/8ff015a0-98ea-4d80-a23e-1f68110a919e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.5 .
+
+<http://hr-qde.org/harmonised/mapping/aa4a7b84-fe91-44b1-a3fb-96615887a2ba> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/6a322874-e32f-4cd8-9683-badce67a7f73> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.3 .
+
+<http://hr-qde.org/harmonised/mapping/aa9ec080-f3ab-484c-9128-041883de7ce7> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f28617ad-afdd-4041-814c-216153a38998> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/aaa4e888-3a7d-4ea1-8c2e-720a9bb87c25> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/4918ec9a-0204-4935-8b09-b0112370daa8> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.3 .
+
+<http://hr-qde.org/harmonised/mapping/ab98d0b7-b52f-45d5-8e12-eb109a49e51f> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/6a322874-e32f-4cd8-9683-badce67a7f73> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/abc0dbf9-b9d9-4003-b717-7025f5ce1e01> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/5d74614d-32c8-4ca4-9818-6980e52424b1> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/acc8e224-5fe2-49f5-8808-05a0ae7531b6> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/b8271c8a-cba6-4baa-80f5-6361af3f07e3> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:C.3 .
+
+<http://hr-qde.org/harmonised/mapping/ae6f1e80-128f-4fe3-a2b7-59d6532a5098> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/42fcf80d-7b45-40f3-bd2f-5411c4c0dfa0> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/af115bf2-0f61-44fc-9d77-f6e8caa16c7e> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/53456d90-8c0d-4bd2-9f1b-312619b6e2a6> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/af9d376a-5574-4f75-af1a-77c65c320ec8> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/fae27053-8924-4bfd-b565-c9fe502044c9> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.6 .
+
+<http://hr-qde.org/harmonised/mapping/afbece0b-5306-47c2-b4e0-41c4299974e3> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/11eebd42-44ab-401d-8a2c-bdb9fc9beb50> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/b0064bd4-29b9-42db-a7f1-d66a9b738f76> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/978db6a1-7297-4c89-819a-47605f2c3ba8> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/b0945939-30a3-46d9-8db3-9c7334f62a29> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f6868852-9bf6-4899-a5d6-5f9532fb877d> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/b109e1a1-cd20-4e08-a973-95b3d0644df1> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f7e2eb04-3e50-4561-bce1-7e51a1fec308> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/b1b006ca-6b26-4229-b7e9-e7d41b5f6625> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/3bddfd7c-ab6d-40c2-883d-5e97fb7640ba> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/b29f77f5-8c56-4282-aa77-43c5f63d197a> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/8764d4b1-e069-44f2-8baa-fb1eee1850ec> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:B.1 .
+
+<http://hr-qde.org/harmonised/mapping/b318548e-79bf-4ef1-93ac-ec1b5aeffde0> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ed1d8bd4-cd2a-4c64-b665-56d70651026c> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/b4c41843-6588-44c1-9f47-17ef436ac514> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/11c56452-fcec-4b00-9695-cca4728e5048> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/b53d5dd5-bd92-4a8b-b323-f425571f0d34> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/cbe2c304-1e7d-489a-97d9-a7d3e37a9db6> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/b64e46b2-dcec-4868-9b4a-451d970bd216> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f4a85869-1855-45d5-a43c-7ee8cd451996> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/b6c36140-86b2-44fb-9506-92d2f08b40f0> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ed5bbc64-7017-4e2e-b44e-65df88013a84> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.9 .
+
+<http://hr-qde.org/harmonised/mapping/b6e19a49-4ab7-4f83-ab67-1356253b8d4e> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ae57a9c3-f761-4b03-be2b-99a781704c73> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/b7375bd9-e76a-4a26-a349-4e60bb09b39a> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/fe1c2b32-7fe9-4668-affa-07ff658a68cf> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/b88aa29d-e367-4a7d-8fea-87fa066cf7bc> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/07e51c60-763a-4335-b4ec-70a15f66d328> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:A.9 .
+
+<http://hr-qde.org/harmonised/mapping/b89cce1b-f672-44ae-a555-8c70b7796e94> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/b8271c8a-cba6-4baa-80f5-6361af3f07e3> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.2 .
+
+<http://hr-qde.org/harmonised/mapping/b8a32a4f-3e4f-489e-aa48-63b5d0463ba9> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/1a4cc54f-1e53-442b-a6d2-1682dc8ef8f9> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/b8ad7513-7b87-47c6-86a8-1afb9feed781> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ae57a9c3-f761-4b03-be2b-99a781704c73> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.7 .
+
+<http://hr-qde.org/harmonised/mapping/b917e748-1e6a-47e6-a5df-fb312e05df5f> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/9e06bac6-6b91-48ca-8b7d-c1f48cdecd7c> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:C.4 .
+
+<http://hr-qde.org/harmonised/mapping/b98d57c3-1d4f-4db3-b9cf-1cfd8fa4ac2c> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/52b38e90-3d05-4042-a9e2-d19dec8dd7c1> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/b9d3cf86-0433-466a-b5d4-7c5e54a0569a> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/736ef286-fbd3-4e5c-a4b4-d1e2008c9898> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/ba07d529-340f-478e-8563-4e9018a9d9ee> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/0daaf096-1639-461c-bf1a-bbeea77e6b67> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:E.9 .
+
+<http://hr-qde.org/harmonised/mapping/bac8dd38-b9a3-448a-955b-222d598058af> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/2450c3b3-e78e-435b-b84d-e05d984e71dc> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.6 .
+
+<http://hr-qde.org/harmonised/mapping/bb60cf1f-c331-4c14-a466-2a6d160d8b14> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ed8de897-adbe-4f0e-b4d2-534953e64c72> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.6 .
+
+<http://hr-qde.org/harmonised/mapping/bba50aa3-3552-43fc-8577-a48c2e682b0d> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/b8271c8a-cba6-4baa-80f5-6361af3f07e3> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/bbde9f13-34e6-433f-bbc5-701bd897d338> a harm:HubMapping ;
+    sssom:mapping_confidence 0.8333 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ce354460-500e-4eaa-8e95-8f243fcea3db> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/be62efe5-01a0-4bb8-a4ba-1dc5cd1a1f32> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/2857540c-180b-4208-9127-e94a01871966> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.2 .
+
+<http://hr-qde.org/harmonised/mapping/be7465a0-de9e-4125-9b2f-1b1b9c8f1779> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/54d774a3-de3b-4425-b0d7-c03bc99a0937> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.3 .
+
+<http://hr-qde.org/harmonised/mapping/bea7c584-e0e3-461c-9c1b-09c8bf8c582a> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/78b26c92-da70-4c72-9f10-7a8c8b9db02e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.7 .
+
+<http://hr-qde.org/harmonised/mapping/bedd7b8d-2b24-437d-b98d-5c77692180d2> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/b8271c8a-cba6-4baa-80f5-6361af3f07e3> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.1 .
+
+<http://hr-qde.org/harmonised/mapping/bf6eaed4-40b9-48ef-94c5-a3f7c996e10c> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/78a74fd1-efc6-49dc-adb1-1b0fbe35c22c> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/bf758a0d-e9a9-40b6-8675-349f9423cb8e> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/b3c8eada-b0a8-4b61-968b-b354fbfb6874> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.4 .
+
+<http://hr-qde.org/harmonised/mapping/bfebe695-9251-441c-aa95-0e66d92744a1> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/7f0b1a66-ebaf-4c8a-b606-4c1844eb692e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:C.3 .
+
+<http://hr-qde.org/harmonised/mapping/bfecb5b1-89ba-44d1-a5a0-14b4b9ff7a71> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/7557f0f4-b8bc-4ac0-b91e-222ab1ba744f> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/c0b72606-ace3-46da-8676-3a8f431507bd> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/2450c3b3-e78e-435b-b84d-e05d984e71dc> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/c0befd0a-58bb-49ca-9ba4-b46aeca9204c> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/78a74fd1-efc6-49dc-adb1-1b0fbe35c22c> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.3 .
+
+<http://hr-qde.org/harmonised/mapping/c276c9c9-d2a2-4bac-b111-77eb04743711> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/78b26c92-da70-4c72-9f10-7a8c8b9db02e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/c44c68db-6ffc-4140-a9a8-a21527c3221d> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/5865c47c-cf1a-4dcb-8871-d4a1ea4b047b> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/c514c707-5fa1-4d96-aeb2-da3987abf97b> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f4a85869-1855-45d5-a43c-7ee8cd451996> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.3 .
+
+<http://hr-qde.org/harmonised/mapping/c564f764-fe18-4254-a9ff-cde132e8741c> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/5303169c-75d6-4751-9136-a4b88343388c> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/c5904025-e9fa-4dc0-80b0-c77742c4b375> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/5303169c-75d6-4751-9136-a4b88343388c> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.12 .
+
+<http://hr-qde.org/harmonised/mapping/c647b335-c385-40ec-a732-f9470d031826> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/54d774a3-de3b-4425-b0d7-c03bc99a0937> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.1 .
+
+<http://hr-qde.org/harmonised/mapping/c6ca0779-d872-47f6-a49a-7961ae27a47f> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ee3b1553-2dc5-434b-8dcf-4ae3a40b3a48> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/c73e7881-69a2-4353-8ac2-ef449cea457c> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/e1e99428-b91b-45e1-8ede-ed0cbf161930> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:E.4 .
+
+<http://hr-qde.org/harmonised/mapping/c82d455d-f6e3-4e03-9cf0-eec32ec3b226> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/fafe0b9d-dbd9-46bd-b770-26299539ce66> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/c9744411-eb5b-403e-b4ad-080832c0f705> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/96eb286a-58b7-45ff-a916-5578d0b79b8c> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/cae1a765-b814-45c5-b0be-54caea35fe4d> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f28617ad-afdd-4041-814c-216153a38998> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.6 .
+
+<http://hr-qde.org/harmonised/mapping/cbf20d46-7ae1-43d6-8596-c7e6bc83dd42> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/3cfa46e9-b7da-44ac-b09e-9596dffe0425> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.1 .
+
+<http://hr-qde.org/harmonised/mapping/cc320f93-595c-4495-a9ff-41c6c222d077> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/b8271c8a-cba6-4baa-80f5-6361af3f07e3> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/cc421f94-9413-4b53-b9c7-b311ee9a2739> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/750f86d2-18be-4015-84b1-d4a26d9b2d88> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/cd4e93d9-0c56-444b-af0b-bac386b1f148> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/6fa1c2c0-a012-4ca0-9642-e01569ba322c> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/cdb06833-c84d-4105-96cd-f65859ca065a> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/83b493c8-4837-41e3-9800-cff1df06cf38> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.2 .
+
+<http://hr-qde.org/harmonised/mapping/cdbea3f9-8788-4acf-a115-8c81840f4c7d> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/94dd823c-148e-4614-a6e8-99249b16357d> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:D.2 .
+
+<http://hr-qde.org/harmonised/mapping/cde231f8-34a1-4cfb-b726-3dce1faddb3e> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/b8271c8a-cba6-4baa-80f5-6361af3f07e3> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.9 .
+
+<http://hr-qde.org/harmonised/mapping/ce0d36f8-47a3-472f-897f-46d9bf9a1d8a> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f28617ad-afdd-4041-814c-216153a38998> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/ce1f2c8f-95b2-4e32-b13a-341ba72eef89> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ee02393d-27dd-438a-8879-b8088ce45e79> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:A.8 .
+
+<http://hr-qde.org/harmonised/mapping/ce8ec616-cb42-42d0-a2f5-098a1ec02488> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/fae27053-8924-4bfd-b565-c9fe502044c9> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.6 .
+
+<http://hr-qde.org/harmonised/mapping/ced9e222-d0d9-4723-ac69-98994562779d> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/8ff015a0-98ea-4d80-a23e-1f68110a919e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.6 .
+
+<http://hr-qde.org/harmonised/mapping/d316e912-7282-49ef-b85e-8f9baa1ca2b0> a harm:HubMapping ;
+    sssom:mapping_confidence 0.8333 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/14d1e367-3efe-4ec5-86ae-eca48710ee4e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:run .
+
+<http://hr-qde.org/harmonised/mapping/d55de7b7-75e2-46cd-9ac8-57277416305f> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/83b33952-3872-46ec-9a2e-b28f91303a7e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.6 .
+
+<http://hr-qde.org/harmonised/mapping/d734c79f-a0eb-4819-a055-7f0a3ecf9693> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ae57a9c3-f761-4b03-be2b-99a781704c73> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/d7be50f9-a547-4fe4-9604-89d659bd2d6e> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/9bb7a97a-1a16-431e-8ea6-ad0f9f59aa0a> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/d7f7d773-4dc0-4130-a54e-74a6db98d243> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/94dd823c-148e-4614-a6e8-99249b16357d> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/d85daf64-9f55-48e0-bf1a-bcce916cb904> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ef069fe6-305b-4452-8f7d-0c572e98effc> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.12 .
+
+<http://hr-qde.org/harmonised/mapping/d88b6dec-dc19-48ae-bd2a-bb6a4365a517> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/83b33952-3872-46ec-9a2e-b28f91303a7e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/d9862912-cb72-4a07-b3f5-f20abaa3966b> a harm:HubMapping ;
+    sssom:mapping_confidence 0.8333 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f0393af3-bcd9-41af-a36e-0cfb83b60081> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/d9b9c466-3087-4b26-96de-b9c64732e368> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ac516e9b-8bfa-4b72-8e3e-340b0a3a51d5> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/dbe07e48-ab1e-4be9-b570-e118ba37db17> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ef069fe6-305b-4452-8f7d-0c572e98effc> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/de691d54-5a90-478d-8466-226a73f9b673> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/4b51e76e-9e8a-455f-a289-5b48246345c4> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.2 .
+
+<http://hr-qde.org/harmonised/mapping/debce2db-7046-48e0-944f-ab34b79debad> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/fbbcb9ab-4b95-4e57-a756-30d08b7da7a5> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:C.2 .
+
+<http://hr-qde.org/harmonised/mapping/dece40ef-a50c-425c-92d3-73816883ff38> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f7e2eb04-3e50-4561-bce1-7e51a1fec308> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.6 .
+
+<http://hr-qde.org/harmonised/mapping/dee20745-cf26-4e38-8834-6b6409abcf4b> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/fbbcb9ab-4b95-4e57-a756-30d08b7da7a5> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:run .
+
+<http://hr-qde.org/harmonised/mapping/defb6c71-aded-4499-b937-f865f86e5c6e> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/42fcf80d-7b45-40f3-bd2f-5411c4c0dfa0> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/e05a346b-1951-438b-8241-d640594fe926> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/09f2f811-a3fb-4de3-a70f-6420a6935575> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.6 .
+
+<http://hr-qde.org/harmonised/mapping/e17f107d-29b4-42bc-b9a2-733681d0678b> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/eb2ae1c7-ba57-4695-8f29-9dd41c26e01e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:plan .
+
+<http://hr-qde.org/harmonised/mapping/e36c54d5-9489-4b6c-aa72-15b3a6fad1fc> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/fae27053-8924-4bfd-b565-c9fe502044c9> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.5 .
+
+<http://hr-qde.org/harmonised/mapping/e3e94a8c-6dfa-4f62-bcf4-c4826f7fa773> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/509909a2-4a8f-4ead-8ad0-968df63b77cc> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.12 .
+
+<http://hr-qde.org/harmonised/mapping/e5149b42-f944-4708-a798-09d3dedd38a6> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f7e2eb04-3e50-4561-bce1-7e51a1fec308> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:B.1 .
+
+<http://hr-qde.org/harmonised/mapping/e579f6d4-2105-4eea-9615-168ca7a8ed07> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/3bddfd7c-ab6d-40c2-883d-5e97fb7640ba> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.6 .
+
+<http://hr-qde.org/harmonised/mapping/e5f7a38b-dce7-4a6c-baab-dc0da7631c86> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/0868eef3-2213-4572-9343-74931345a7d3> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:run .
+
+<http://hr-qde.org/harmonised/mapping/e6c58fb3-880d-46f2-adba-67955e1ff9b2> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/fe1c2b32-7fe9-4668-affa-07ff658a68cf> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.3 .
+
+<http://hr-qde.org/harmonised/mapping/e6cea56f-7b73-4fac-9320-44655a5dec97> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/378caeec-10a0-4162-b75c-ab374a42e93d> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.4 .
+
+<http://hr-qde.org/harmonised/mapping/e6fd3078-e930-4630-aaa2-45431bebf7f9> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/11c56452-fcec-4b00-9695-cca4728e5048> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.12 .
+
+<http://hr-qde.org/harmonised/mapping/e776e502-b177-4bcf-81fd-27f824aee416> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/52b38e90-3d05-4042-a9e2-d19dec8dd7c1> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.3 .
+
+<http://hr-qde.org/harmonised/mapping/e77fa348-eabe-4178-9d3c-34951db5c0c2> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/07e51c60-763a-4335-b4ec-70a15f66d328> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:D.11 .
+
+<http://hr-qde.org/harmonised/mapping/e86b01d1-0f22-4ace-bcc9-4acf63eb4feb> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/07e51c60-763a-4335-b4ec-70a15f66d328> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/e9ace9c7-f6a3-4868-ae81-90a9c6b59e75> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/509909a2-4a8f-4ead-8ad0-968df63b77cc> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/ea0020ff-1270-4168-8102-c7a98bdbf897> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/43dfbe7f-9e10-4871-b171-e5076737b4cf> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/ea1b9143-0a0e-4b05-aacc-b22e74fa8bf5> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/7253d98c-4a6d-4e37-8b6c-accca9f4b639> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/eae48ba7-2a9d-436d-8cf9-bc7d3732b182> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/0a9acb6b-1139-4be9-b431-3a80a959f2f4> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.2 .
+
+<http://hr-qde.org/harmonised/mapping/ecbd79d5-d0a8-49c4-a0a6-8ee2c246d94e> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/c4ba12d1-4698-42fa-8abb-789462ea2586> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.8 .
+
+<http://hr-qde.org/harmonised/mapping/ecf4e129-99ee-4da3-83e6-e624b8a5299b> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/d5a59ca8-2e91-472e-8571-d12ce4478679> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/ed96f3ab-c8f7-4d01-8185-6cd2bb7367a5> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/797a4416-0b8d-44f3-8fcd-eb10bd0be6b4> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.9 .
+
+<http://hr-qde.org/harmonised/mapping/edfe1720-d6c4-4363-af3e-ebd7b3d6eee9> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ed5bbc64-7017-4e2e-b44e-65df88013a84> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/ee79d588-810c-4cca-8521-015cee288296> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/7814e88f-c133-4c3b-b27f-857afa145d42> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:E.8 .
+
+<http://hr-qde.org/harmonised/mapping/eee9357f-a322-4776-9f70-4af96ee49f86> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ed1d8bd4-cd2a-4c64-b665-56d70651026c> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:A.9 .
+
+<http://hr-qde.org/harmonised/mapping/ef4235cc-4499-4b9e-a4b9-d3f91d62a3b9> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/c453cf81-6197-428e-84c6-70c773b63f27> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:A.5 .
+
+<http://hr-qde.org/harmonised/mapping/f06a3b86-6000-4e3b-b143-a189a29df5d0> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/cbe2c304-1e7d-489a-97d9-a7d3e37a9db6> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:B.6 .
+
+<http://hr-qde.org/harmonised/mapping/f072e649-26e2-4074-81dc-9980b36328fd> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/f8e7c608-a92d-4b61-b84f-e2453b0aa4a4> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:run .
+
+<http://hr-qde.org/harmonised/mapping/f411d328-605f-4b75-8dbe-d363217daa8f> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/e1e99428-b91b-45e1-8ede-ed0cbf161930> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/f41940c2-71d4-478f-87e1-398c8cf1dc37> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/1ebc1454-b6cb-4e45-a96a-17399961ad39> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:C.3 .
+
+<http://hr-qde.org/harmonised/mapping/f444507d-fc52-4c72-ba80-89e37959f964> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ea412de3-9d7a-4943-8d8c-c6d3c7495d0e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/f4c70455-6e05-4992-9052-9b5e0c817027> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/7253d98c-4a6d-4e37-8b6c-accca9f4b639> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.3 .
+
+<http://hr-qde.org/harmonised/mapping/f53b119e-677f-4288-a90a-e330093f7113> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/4d97e3c3-f335-47cc-a4ee-0d779fd42222> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:enable .
+
+<http://hr-qde.org/harmonised/mapping/f57735fd-dc15-4af4-93a1-18dbe971de6c> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/25df422a-bf0a-4f76-8631-d0be91cb8751> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/f60d5257-f5af-4f2f-8397-6543cd56b75d> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/06358891-8424-43c5-891e-d40f226bef40> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.8 .
+
+<http://hr-qde.org/harmonised/mapping/f8651039-4f4f-4c65-a533-88776840cbdc> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/2b7a79e5-84d8-4880-be66-3d9bb05bea17> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:A.5 .
+
+<http://hr-qde.org/harmonised/mapping/f8e0e854-2f8c-422a-bcb9-3865826c0e6e> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/ee3b1553-2dc5-434b-8dcf-4ae3a40b3a48> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:B.3 .
+
+<http://hr-qde.org/harmonised/mapping/f8fb5335-83b2-4631-aa2a-0ecba7f8af87> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/0868eef3-2213-4572-9343-74931345a7d3> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:C.3 .
+
+<http://hr-qde.org/harmonised/mapping/fa1f80d5-3e6e-4e51-9444-c8602f9e054c> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/8ff015a0-98ea-4d80-a23e-1f68110a919e> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/faad5548-85e0-48b7-8afc-0bcb8a003111> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/06358891-8424-43c5-891e-d40f226bef40> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:run .
+
+<http://hr-qde.org/harmonised/mapping/faeb3ebc-4e99-4cdc-85ce-423b0ec0eb90> a harm:HubMapping ;
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/1ebc1454-b6cb-4e45-a96a-17399961ad39> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:manage .
+
+<http://hr-qde.org/harmonised/mapping/fb610331-f514-41b3-9842-078e46495d9a> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LogicalReasoning ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/71c2f41e-14de-4b23-82ad-5dbcd54ba5b0> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:build .
+
+<http://hr-qde.org/harmonised/mapping/fc63d1a9-eb22-4df0-ad92-7c060f440812> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/42cb7669-c371-4903-9c0b-13db67b2e4bb> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:A.9 .
+
+<http://hr-qde.org/harmonised/mapping/ff4e8842-3a31-48d9-bb85-0309d6d28e15> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/9bb7a97a-1a16-431e-8ea6-ad0f9f59aa0a> ;
+    sssom:predicate_id skos:broadMatch ;
+    sssom:subject_id harm-ecf:D.1 .
+
+<http://hr-qde.org/harmonised/mapping/ffa23066-1c51-44f7-844b-af2e6def7eda> a harm:HubMapping ;
+    sssom:mapping_confidence 0.6667 ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1"^^xsd:string ;
+    sssom:object_id <http://data.europa.eu/esco/skill/11c56452-fcec-4b00-9695-cca4728e5048> ;
+    sssom:predicate_id skos:narrowMatch ;
+    sssom:subject_id harm-ecf:E.1 .
+

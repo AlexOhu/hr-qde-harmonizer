@@ -1,0 +1,43 @@
+[BLOCK 1 — Rollendefinition]
+Du bist ein Ontologie-Alignment-Experte. Deine Aufgabe ist es, Kompetenzkonzepte
+aus unterschiedlichen Rahmenwerken (KQR) hinsichtlich ihrer semantischen
+Beziehung zu vergleichen.
+
+[FEW-SHOT-BEISPIELE — hier einfügen, aus der Crosswalk-Goldmenge (Schritt 2)]
+{few_shot_examples}
+
+[BLOCK 2 — Konzept A]
+prefLabel: {concept_a_pref_label}
+definition: {concept_a_definition}
+KQR-Zugehörigkeit: {concept_a_kqr}
+
+[BLOCK 3 — Konzept B]
+prefLabel: {concept_b_pref_label}
+definition: {concept_b_definition}
+KQR-Zugehörigkeit: {concept_b_kqr}
+
+[BLOCK 4 — Ausgabeformat]
+Bestimme die semantische Beziehung zwischen Konzept A (Block 2) und Konzept B
+(Block 3). "X ist Oberbegriff von Y" bedeutet: Y ist ein Spezialfall von X, jede
+Instanz von Y ist auch eine Instanz von X; Y ist damit das engere,
+spezifischere Konzept, X das weitere, allgemeinere.
+
+Erlaubte Werte für RELATION:
+- EQUIVALENT      Konzept A und Konzept B bezeichnen dasselbe Konzept.
+- A_SUBSUMES_B    Konzept A ist Oberbegriff von Konzept B. Das heißt: Konzept B
+                  ist enger/spezifischer, Konzept A ist weiter/allgemeiner.
+- B_SUBSUMES_A    Konzept B ist Oberbegriff von Konzept A. Das heißt: Konzept A
+                  ist enger/spezifischer, Konzept B ist weiter/allgemeiner.
+- RELATED         Thematisch verwandt, aber weder äquivalent, noch ist eines der
+                  beiden Konzepte Oberbegriff des anderen.
+
+Prüfe zuerst, welches der beiden Konzepte das engere (spezifischere) ist, und
+leite daraus die Relation ab. Ist Konzept B das engere, lautet die Relation
+A_SUBSUMES_B; ist Konzept A das engere, lautet sie B_SUBSUMES_A.
+
+Antworte mit GENAU einer dieser Relationen, gefolgt von einer einzeiligen
+Begründung, im Format:
+
+RELATION | Begründung
+
+Keine weitere Ausgabe, kein zusätzlicher Text.

@@ -1,0 +1,262 @@
+# =====================================================================
+# HR-QDE SHACL Shapes — Säule D (Harmonisation Layer)
+# Version 0.2.0  ·  2026-08-06
+#
+# Shape module for the harmonisation layer. Intended to be merged into
+# hrqde-shapes-all.ttl (then v0.3.0), because
+# n10s.validation.shacl.import.fetch overwrites previous shape sets and
+# only one combined file can be active per database.
+#
+# Conventions carried over from hrqde-shapes-all.ttl v0.2.0:
+#   - no single quotes in sh:message (neosemantics does not escape them
+#     when generating the validation query)
+#   - no hyphens in sh:in values (read as subtraction operator)
+#   - ESCO skill URIs in canonical UUID form, so that a delivery which
+#     validates is also a delivery that joins
+#
+# Design note
+# -----------
+# The central shape does not target a class. It targets every subject
+# of harm:derivedFrom, because in the Säule-D model most delivered
+# concepts are plain skos:Concept instances; harm:HarmonisedConcept is
+# reserved for the disjoint case. Targeting skos:Concept instead would
+# make the shape fire on all 1.7 million ESCO nodes in the graph.
+#
+# Coverage rule
+# -------------
+# Only harm:HubMapping contributes to coverage. In the HR-QDE graph all
+# three data pillars meet on the skill layer (targetsCompetence,
+# refersToCompetence, acquiredCompetenceOf). Occupations carry a single
+# edge in the entire graph and that one comes from a toolkit example.
+# =====================================================================
+
+@prefix harm:        <http://hr-qde.org/harmonised/> .
+@prefix hrqde:       <http://hr-qde.org/ontology/> .
+@prefix hrqde-shape: <http://hr-qde.org/shapes/> .
+@prefix sssom:       <https://w3id.org/sssom/> .
+@prefix sh:          <http://www.w3.org/ns/shacl#> .
+@prefix rdf:         <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:        <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:        <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:         <http://www.w3.org/2001/XMLSchema#> .
+
+
+# Every concept carrying provenance ===================================
+
+hrqde-shape:HarmonisationSourceConceptShape
+  a                 sh:NodeShape ;
+  sh:targetSubjectsOf harm:derivedFrom ;
+  sh:nodeKind       sh:IRI ;
+  sh:pattern        "^http://hr-qde\\.org/harmonised/" ;
+  sh:message        "A concept carrying harm:derivedFrom must hold a URI under the harmonisation namespace. ESCO concepts are referenced through mappings, not annotated, otherwise the reference vocabulary layer is stamped with curation artefacts."@en ,
+                    "Ein Konzept mit harm:derivedFrom muss eine URI im Harmonisierungs-Namensraum tragen. ESCO-Konzepte werden über Mappings referenziert, nicht annotiert, sonst wird die Referenzvokabular-Schicht mit Kurationsartefakten überschrieben."@de ;
+  sh:property [
+    sh:path         harm:derivedFrom ;
+    sh:minCount     1 ;
+    sh:maxCount     1 ;
+    sh:nodeKind     sh:IRI ;
+    sh:in           (harm:kqr_esco harm:kqr_ecf harm:kqr_eqf harm:kqr_dqr) ;
+    sh:message      "Concept must reference exactly one source framework as an IRI, not as a string."@en ,
+                    "Konzept muss genau einen Quellrahmen als IRI referenzieren, nicht als Zeichenkette."@de ;
+  ] ;
+  sh:property [
+    sh:path         harm:sourceIdentifier ;
+    sh:datatype     xsd:string ;
+    sh:minCount     1 ;
+    sh:maxCount     1 ;
+    sh:message      "Concept must carry exactly one sourceIdentifier."@en ,
+                    "Konzept muss genau eine Quellkennung tragen."@de ;
+  ] ;
+  sh:property [
+    sh:path         skos:prefLabel ;
+    sh:minCount     1 ;
+    sh:uniqueLang   true ;
+    sh:message      "Concept must carry at least one prefLabel, at most one per language."@en ,
+                    "Konzept muss mindestens ein prefLabel tragen, je Sprache höchstens eines."@de ;
+  ] .
+
+
+# Disjoint concepts (FZ 3.2) ==========================================
+
+hrqde-shape:HarmonisedConceptShape
+  a                 sh:NodeShape ;
+  sh:targetClass    harm:HarmonisedConcept ;
+  sh:property [
+    sh:path         harm:integrationStrategy ;
+    sh:datatype     xsd:string ;
+    sh:minCount     1 ;
+    sh:maxCount     1 ;
+    sh:in           ("own_class" "attach_to_skeleton" "map_to_nearest" "out_of_scope") ;
+    sh:message      "HarmonisedConcept is the disjoint case and must state exactly one integration strategy: own_class, attach_to_skeleton, map_to_nearest or out_of_scope. The value pending is not accepted in a delivery."@en ,
+                    "HarmonisedConcept ist der disjunkte Fall und muss genau eine Integrationsstrategie angeben: own_class, attach_to_skeleton, map_to_nearest oder out_of_scope. Der Wert pending ist in einer Lieferung nicht zulässig."@de ;
+  ] ;
+  sh:property [
+    sh:path         rdfs:comment ;
+    sh:minCount     1 ;
+    sh:message      "HarmonisedConcept must carry a comment explaining why no correspondence in another framework was found."@en ,
+                    "HarmonisedConcept muss einen Kommentar tragen, der begründet, warum keine Entsprechung in einem anderen Rahmen gefunden wurde."@de ;
+  ] .
+
+
+# Generated cluster nodes (FZ 2.2) ====================================
+
+hrqde-shape:HarmonisedClusterShape
+  a                 sh:NodeShape ;
+  sh:targetClass    harm:HarmonisedCluster ;
+  sh:nodeKind       sh:IRI ;
+  sh:pattern        "^http://hr-qde\\.org/harmonised/" ;
+  sh:property [
+    sh:path         harm:harmonises ;
+    sh:minCount     2 ;
+    sh:nodeKind     sh:IRI ;
+    sh:message      "A cluster must harmonise at least two concepts, otherwise it asserts nothing."@en ,
+                    "Ein Cluster muss mindestens zwei Konzepte harmonisieren, sonst behauptet es nichts."@de ;
+  ] ;
+  sh:property [
+    sh:path         skos:prefLabel ;
+    sh:minCount     1 ;
+    sh:uniqueLang   true ;
+  ] .
+
+
+# Mappings, common constraints ========================================
+
+hrqde-shape:MappingShape
+  a                 sh:NodeShape ;
+  sh:targetClass    sssom:Mapping ;
+  sh:targetClass    harm:HubMapping ;
+  sh:targetClass    harm:LevelMapping ;
+  sh:targetClass    harm:OccupationMapping ;
+  sh:property [
+    sh:path         sssom:subject_id ;
+    sh:minCount     1 ;
+    sh:maxCount     1 ;
+    sh:nodeKind     sh:IRI ;
+    sh:message      "Mapping must have exactly one subject, given as an IRI. The admissible URI form depends on the mapping subclass."@en ,
+                    "Mapping muss genau ein Subjekt haben, angegeben als IRI. Die zulässige URI-Form richtet sich nach der Mapping-Unterklasse."@de ;
+  ] ;
+  sh:property [
+    sh:path         sssom:object_id ;
+    sh:minCount     1 ;
+    sh:maxCount     1 ;
+    sh:nodeKind     sh:IRI ;
+    sh:message      "Mapping must have exactly one object, given as an IRI."@en ,
+                    "Mapping muss genau ein Objekt haben, angegeben als IRI."@de ;
+  ] ;
+  sh:property [
+    sh:path         sssom:predicate_id ;
+    sh:minCount     1 ;
+    sh:maxCount     1 ;
+    sh:nodeKind     sh:IRI ;
+    sh:in           (skos:exactMatch skos:closeMatch skos:broadMatch
+                     skos:narrowMatch skos:relatedMatch) ;
+    sh:message      "Mapping predicate must be one SKOS mapping relation, given as an IRI and not as a string."@en ,
+                    "Mapping-Prädikat muss genau eine SKOS-Mapping-Relation sein, als IRI und nicht als Zeichenkette."@de ;
+  ] ;
+  sh:property [
+    sh:path         sssom:mapping_confidence ;
+    sh:datatype     xsd:decimal ;
+    sh:minCount     1 ;
+    sh:maxCount     1 ;
+    sh:minInclusive "0.0"^^xsd:decimal ;
+    sh:maxInclusive "1.0"^^xsd:decimal ;
+    sh:message      "Mapping confidence must be a decimal between 0.0 and 1.0."@en ,
+                    "Mapping-Konfidenz muss ein Dezimalwert zwischen 0.0 und 1.0 sein."@de ;
+  ] ;
+  sh:property [
+    sh:path         sssom:mapping_justification ;
+    sh:minCount     1 ;
+    sh:maxCount     1 ;
+    sh:nodeKind     sh:IRI ;
+    sh:pattern      "^https://w3id\\.org/semapv/" ;
+    sh:message      "Mapping must state a justification from the SEMAPV vocabulary as an IRI, per section 2.2.2 of the thesis. The slot match_type is not used."@en ,
+                    "Mapping muss eine Justification aus dem SEMAPV-Vokabular als IRI angeben, gemäß Abschnitt 2.2.2 der Arbeit. Der Slot match_type wird nicht verwendet."@de ;
+  ] ;
+  sh:property [
+    sh:path         sssom:mapping_tool ;
+    sh:datatype     xsd:string ;
+    sh:minCount     1 ;
+    sh:maxCount     1 ;
+  ] .
+
+
+# Hub mappings (counted towards coverage) =============================
+
+hrqde-shape:HubMappingShape
+  a                 sh:NodeShape ;
+  sh:targetClass    harm:HubMapping ;
+  sh:property [
+    sh:path         sssom:subject_id ;
+    sh:nodeKind     sh:IRI ;
+    sh:pattern      "^http://hr-qde\\.org/harmonised/" ;
+    sh:message      "HubMapping subject must be a concept of the harmonisation layer."@en ,
+                    "HubMapping-Subjekt muss ein Konzept der Harmonisierungsschicht sein."@de ;
+  ] ;
+  sh:property [
+    sh:path         sssom:object_id ;
+    sh:nodeKind     sh:IRI ;
+    sh:pattern      "^http://data\\.europa\\.eu/esco/skill/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$" ;
+    sh:message      "HubMapping object must be an ESCO skill URI in canonical UUID form. Placeholder or bootstrap URIs do not join with the supply and demand side. For a mapping onto an ESCO occupation use the class OccupationMapping."@en ,
+                    "HubMapping-Objekt muss eine ESCO-Skill-URI in kanonischer UUID-Form sein. Platzhalter-URIs verbinden sich nicht mit Angebots- und Nachfrageseite. Für ein Mapping auf einen ESCO-Beruf ist die Klasse OccupationMapping zu verwenden."@de ;
+  ] .
+
+
+# Level mappings (reference the skeleton, do not mint) ================
+
+hrqde-shape:LevelMappingShape
+  a                 sh:NodeShape ;
+  sh:targetClass    harm:LevelMapping ;
+  sh:property [
+    sh:path         sssom:subject_id ;
+    sh:nodeKind     sh:IRI ;
+    sh:pattern      "^(http://hr-qde\\.org/ontology/DQR[1-8]|http://data\\.europa\\.eu/snb/qf-eu-level/[1-8])$" ;
+    sh:message      "LevelMapping subject must be a level of the HR-QDE skeleton (hrqde:DQR1 to DQR8) or an EQF authority URI under data.europa.eu/snb/qf-eu-level/. Parallel level vocabularies join with nothing."@en ,
+                    "LevelMapping-Subjekt muss ein Niveau des HR-QDE-Skeletts (hrqde:DQR1 bis DQR8) oder eine EQF-Autoritaets-URI sein. Parallele Niveau-Vokabulare verbinden sich mit nichts."@de ;
+  ] ;
+  sh:property [
+    sh:path         sssom:object_id ;
+    sh:nodeKind     sh:IRI ;
+    sh:pattern      "^(http://hr-qde\\.org/ontology/DQR[1-8]|http://data\\.europa\\.eu/snb/qf-eu-level/[1-8])$" ;
+    sh:message      "LevelMapping object must be a level of the HR-QDE skeleton or an EQF authority URI."@en ,
+                    "LevelMapping-Objekt muss ein Niveau des HR-QDE-Skeletts oder eine EQF-Autoritaets-URI sein."@de ;
+  ] .
+
+
+# Occupation mappings (deliberate, outside coverage) ==================
+
+hrqde-shape:OccupationMappingShape
+  a                 sh:NodeShape ;
+  sh:targetClass    harm:OccupationMapping ;
+  sh:property [
+    sh:path         sssom:object_id ;
+    sh:nodeKind     sh:IRI ;
+    sh:pattern      "^http://data\\.europa\\.eu/esco/occupation/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$" ;
+    sh:message      "OccupationMapping object must be an ESCO occupation URI in canonical UUID form."@en ,
+                    "OccupationMapping-Objekt muss eine ESCO-Berufs-URI in kanonischer UUID-Form sein."@de ;
+  ] ;
+  sh:property [
+    sh:path         harm:justification ;
+    sh:datatype     xsd:string ;
+    sh:minCount     1 ;
+    sh:message      "OccupationMapping must state why a competence is related to an occupation rather than to a skill."@en ,
+                    "OccupationMapping muss begründen, warum eine Kompetenz auf einen Beruf statt auf einen Skill bezogen wird."@de ;
+  ] .
+
+
+# Mapping sets ========================================================
+
+hrqde-shape:MappingSetShape
+  a                 sh:NodeShape ;
+  sh:targetClass    sssom:MappingSet ;
+  sh:property [
+    sh:path         sssom:mappings ;
+    sh:minCount     1 ;
+    sh:nodeKind     sh:IRI ;
+    sh:message      "A MappingSet must contain at least one Mapping. Mapping slots such as subject_id belong on the Mapping, not on the set."@en ,
+                    "Ein MappingSet muss mindestens ein Mapping enthalten. Mapping-Slots wie subject_id gehören an das Mapping, nicht an das Set."@de ;
+  ] ;
+  sh:property [
+    sh:path         sssom:mapping_set_version ;
+    sh:minCount     1 ;
+    sh:maxCount     1 ;
+  ] .

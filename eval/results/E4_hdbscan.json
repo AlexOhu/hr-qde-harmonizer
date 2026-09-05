@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "experiment": "E4 HDBSCAN-Parametersweep (VH2.3) + Hopkins (VH2.4)",
+    "date": "2026-08-31",
+    "embedding_space": "esco_v1_2_ict_ausschnitt (956) + ecf (45) = 1001 Konzepte",
+    "space_change": "DQR (dqr_2013, 32 Typ-2/LevelConcept) am 2026-08-31 aus dem Clustering-Raum entfernt (analog EQF); nur harm:CompetenceConcept-KQR. Vorher committet: 1033 inkl. DQR.",
+    "embedding_model": "paraphrase-multilingual-mpnet-base-v2",
+    "hdbscan_metric": "euclidean",
+    "runs": 3,
+    "determinism": "identisch ueber 3 Laeufe (HDBSCAN deterministisch, Hopkins random_state=42)",
+    "hopkins_n_samples": "max(50, n//10)"
+  },
+  "hopkins_h": 0.6514,
+  "results": [
+    {
+      "m": 3,
+      "silhouette": 0.037,
+      "davies_bouldin": 1.7596,
+      "n_clusters": 20,
+      "noise_rate": 0.7153,
+      "n_noise": 716,
+      "n_total": 1001
+    },
+    {
+      "m": 5,
+      "silhouette": 0.1009,
+      "davies_bouldin": 1.6978,
+      "n_clusters": 3,
+      "noise_rate": 0.7682,
+      "n_noise": 769,
+      "n_total": 1001
+    },
+    {
+      "m": 8,
+      "silhouette": 0.0988,
+      "davies_bouldin": 1.9266,
+      "n_clusters": 2,
+      "noise_rate": 0.6523,
+      "n_noise": 653,
+      "n_total": 1001
+    },
+    {
+      "m": 10,
+      "silhouette": 0.1,
+      "davies_bouldin": 2.2099,
+      "n_clusters": 2,
+      "noise_rate": 0.8472,
+      "n_noise": 848,
+      "n_total": 1001
+    },
+    {
+      "m": 15,
+      "silhouette": NaN,
+      "davies_bouldin": NaN,
+      "n_clusters": 0,
+      "noise_rate": 1.0,
+      "n_noise": 1001,
+      "n_total": 1001
+    }
+  ]
+}

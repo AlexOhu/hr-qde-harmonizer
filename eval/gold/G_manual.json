@@ -1,0 +1,520 @@
+[
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/B.4",
+    "subject_label": "Solution Deployment",
+    "object_id": "http://data.europa.eu/esco/skill/1d86f05e-e9cc-40ce-99d8-2b21cc71b16b",
+    "object_label": "solution deployment",
+    "gold_relation": "EQUIVALENT"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/E.3",
+    "subject_label": "Risk Management",
+    "object_id": "http://data.europa.eu/esco/skill/6eff134b-e34f-4d6e-a6e8-5e47cf2228d0",
+    "object_label": "risk management",
+    "gold_relation": "EQUIVALENT"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/D.1",
+    "subject_label": "Information Security Strategy Development",
+    "object_id": "http://data.europa.eu/esco/skill/3579208e-49b3-4ce4-98e7-20e41b1ce8d4",
+    "object_label": "develop information security strategy",
+    "gold_relation": "EQUIVALENT"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/D.12",
+    "subject_label": "Digital Marketing",
+    "object_id": "http://data.europa.eu/esco/skill/43dfbe7f-9e10-4871-b171-e5076737b4cf",
+    "object_label": "digital marketing techniques",
+    "gold_relation": "EQUIVALENT"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/E.7",
+    "subject_label": "Business Change Management",
+    "object_id": "http://data.europa.eu/esco/skill/3c03ee71-4a23-448f-b79e-81fd75d27dca",
+    "object_label": "apply change management",
+    "gold_relation": "EQUIVALENT"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/E.8",
+    "subject_label": "Information Security Management",
+    "object_id": "http://data.europa.eu/esco/skill/6833e58b-eceb-4599-9375-1b7e6ec64087",
+    "object_label": "ensure information security",
+    "gold_relation": "EQUIVALENT"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/C.4",
+    "subject_label": "Problem Management",
+    "object_id": "http://data.europa.eu/esco/skill/a3ce2bf7-5562-4639-9b52-fdb4850a3904",
+    "object_label": "ICT problem management techniques",
+    "gold_relation": "EQUIVALENT"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/E.6",
+    "subject_label": "ICT Quality Management",
+    "object_id": "http://data.europa.eu/esco/occupation/a28dff76-74df-46ee-929f-d1fffbb63cd7",
+    "object_label": "ICT quality assurance manager",
+    "gold_relation": "RELATED"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/B.1",
+    "subject_label": "Application Development",
+    "object_id": "http://data.europa.eu/esco/skill/33d49d4f-31ec-473f-9b8a-b555aa5116bb",
+    "object_label": "iterative development",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/B.3",
+    "subject_label": "Testing",
+    "object_id": "http://data.europa.eu/esco/skill/5d74614d-32c8-4ca4-9818-6980e52424b1",
+    "object_label": "plan software testing",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/A.6",
+    "subject_label": "Application Design",
+    "object_id": "http://data.europa.eu/esco/skill/fae27053-8924-4bfd-b565-c9fe502044c9",
+    "object_label": "system design",
+    "gold_relation": "EQUIVALENT"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/E.8",
+    "subject_label": "Information Security Management",
+    "object_id": "http://data.europa.eu/esco/skill/4918ec9a-0204-4935-8b09-b0112370daa8",
+    "object_label": "establish an Information Security Management System",
+    "gold_relation": "EQUIVALENT"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/C.1",
+    "subject_label": "User Support",
+    "object_id": "http://data.europa.eu/esco/skill/c2296e2e-5fef-4f24-a24f-e5b3792268be",
+    "object_label": "provide ICT support",
+    "gold_relation": "EQUIVALENT"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/D.11",
+    "subject_label": "Needs Identification",
+    "object_id": "http://data.europa.eu/esco/skill/42fcf80d-7b45-40f3-bd2f-5411c4c0dfa0",
+    "object_label": "identify technological needs",
+    "gold_relation": "EQUIVALENT"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/plan",
+    "subject_label": "PLAN",
+    "object_id": "http://data.europa.eu/esco/skill/a2fef437-6719-47c2-8552-73b9fe81df86",
+    "object_label": "plan ICT capacity",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/plan",
+    "subject_label": "PLAN",
+    "object_id": "http://data.europa.eu/esco/skill/ed0718f6-5823-4c74-9749-2936c9c06203",
+    "object_label": "develop audit plan",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/manage",
+    "subject_label": "MANAGE",
+    "object_id": "http://data.europa.eu/esco/skill/cb668e89-6ef5-4ff3-ab4a-506010e7e70b",
+    "object_label": "manage a team",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/manage",
+    "subject_label": "MANAGE",
+    "object_id": "http://data.europa.eu/esco/skill/41bf7ede-fc84-4a57-8c89-b548d11b0ba1",
+    "object_label": "manage business knowledge",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/manage",
+    "subject_label": "MANAGE",
+    "object_id": "http://data.europa.eu/esco/skill/3c76296d-4bbd-44ba-8eaa-95bf275f79b7",
+    "object_label": "manage ICT project",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/A.5",
+    "subject_label": "Architecture Design",
+    "object_id": "http://data.europa.eu/esco/skill/ee3c1d54-f46a-43c7-a0f9-0ba3648164d0",
+    "object_label": "design enterprise architecture",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/E.2",
+    "subject_label": "Project and Portfolio Management",
+    "object_id": "http://data.europa.eu/esco/skill/7111b95d-0ce3-441a-9d92-4c75d05c4388",
+    "object_label": "project management",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/E.2",
+    "subject_label": "Project and Portfolio Management",
+    "object_id": "http://data.europa.eu/esco/skill/0a9acb6b-1139-4be9-b431-3a80a959f2f4",
+    "object_label": "Agile project management",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/B.3",
+    "subject_label": "Testing",
+    "object_id": "http://data.europa.eu/esco/skill/ea412de3-9d7a-4943-8d8c-c6d3c7495d0e",
+    "object_label": "execute integration testing",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/B.3",
+    "subject_label": "Testing",
+    "object_id": "http://data.europa.eu/esco/skill/53456d90-8c0d-4bd2-9f1b-312619b6e2a6",
+    "object_label": "hardware testing methods",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/D.12",
+    "subject_label": "Digital Marketing",
+    "object_id": "http://data.europa.eu/esco/skill/736ef286-fbd3-4e5c-a4b4-d1e2008c9898",
+    "object_label": "plan digital marketing",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/D.12",
+    "subject_label": "Digital Marketing",
+    "object_id": "http://data.europa.eu/esco/skill/ef069fe6-305b-4452-8f7d-0c572e98effc",
+    "object_label": "mobile marketing",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/D.1",
+    "subject_label": "Information Security Strategy Development",
+    "object_id": "http://data.europa.eu/esco/skill/86d2e2ea-1ba2-4aa6-b465-8a1f9abc81b8",
+    "object_label": "apply information security policies",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/E.6",
+    "subject_label": "ICT Quality Management",
+    "object_id": "http://data.europa.eu/esco/skill/7f0b1a66-ebaf-4c8a-b606-4c1844eb692e",
+    "object_label": "attend to ICT systems quality",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/B.6",
+    "subject_label": "Systems Engineering",
+    "object_id": "http://data.europa.eu/esco/skill/72a74f69-5cf1-43c5-99b9-62a444578919",
+    "object_label": "engineering processes",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/E.1",
+    "subject_label": "Forecast Development",
+    "object_id": "http://data.europa.eu/esco/skill/875eeec4-fc70-4e6a-80ef-4d18356976e3",
+    "object_label": "forecast workload",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/D.7",
+    "subject_label": "Sales Management",
+    "object_id": "http://data.europa.eu/esco/skill/e7219848-a27a-4bf4-8775-d367707be7c9",
+    "object_label": "sales strategies",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/A.6",
+    "subject_label": "Application Design",
+    "object_id": "http://data.europa.eu/esco/skill/b0096dc5-2e2d-4bc1-8172-05bf486c3968",
+    "object_label": "design application interfaces",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/B.5",
+    "subject_label": "Documentation Production",
+    "object_id": "http://data.europa.eu/esco/skill/327d15c8-29ff-4ad4-a4fe-6536d777a45f",
+    "object_label": "documentation types",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/E.6",
+    "subject_label": "ICT Quality Management",
+    "object_id": "http://data.europa.eu/esco/skill/94dd823c-148e-4614-a6e8-99249b16357d",
+    "object_label": "ICT project management",
+    "gold_relation": "A_SUBSUMES_B"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/E.6",
+    "subject_label": "ICT Quality Management",
+    "object_id": "http://data.europa.eu/esco/occupation/a28dff76-74df-46ee-929f-d1fffbb63cd7",
+    "object_label": "ICT quality assurance manager",
+    "gold_relation": "B_SUBSUMES_A"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/D.2",
+    "subject_label": "ICT Quality Strategy Development",
+    "object_id": "http://data.europa.eu/esco/occupation/a28dff76-74df-46ee-929f-d1fffbb63cd7",
+    "object_label": "ICT quality assurance manager",
+    "gold_relation": "B_SUBSUMES_A"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/B.2",
+    "subject_label": "Component Integration",
+    "object_id": "http://data.europa.eu/esco/occupation/07e60525-1aad-4099-aaf3-2c7014c92212",
+    "object_label": "integration engineer",
+    "gold_relation": "B_SUBSUMES_A"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/C.1",
+    "subject_label": "User Support",
+    "object_id": "http://data.europa.eu/esco/occupation/faed411a-f920-4100-86a8-b877928b429c",
+    "object_label": "user experience analyst",
+    "gold_relation": "B_SUBSUMES_A"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/E.3",
+    "subject_label": "Risk Management",
+    "object_id": "http://data.europa.eu/esco/occupation/7754d570-9519-48c2-b1c9-8e165f8bca0f",
+    "object_label": "cybersecurity risk manager",
+    "gold_relation": "B_SUBSUMES_A"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/B.2",
+    "subject_label": "Component Integration",
+    "object_id": "http://data.europa.eu/esco/occupation/731f38f1-b08f-4dd5-a25e-f8627c038273",
+    "object_label": "ICT integration tester",
+    "gold_relation": "B_SUBSUMES_A"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/B.1",
+    "subject_label": "Application Development",
+    "object_id": "http://data.europa.eu/esco/occupation/2ed56c3f-61d6-4f7e-9ef8-8849eb102e4c",
+    "object_label": "mobile application developer",
+    "gold_relation": "B_SUBSUMES_A"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/A.6",
+    "subject_label": "Application Design",
+    "object_id": "http://data.europa.eu/esco/occupation/456ed487-02f2-45c9-9213-d0fd8e9a069d",
+    "object_label": "ICT application configurator",
+    "gold_relation": "B_SUBSUMES_A"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/D.10",
+    "subject_label": "Information and Knowledge Management",
+    "object_id": "http://data.europa.eu/esco/occupation/812c217d-32b7-4f6a-9faf-993d3577ac7f",
+    "object_label": "knowledge engineer",
+    "gold_relation": "B_SUBSUMES_A"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/E.8",
+    "subject_label": "Information Security Management",
+    "object_id": "http://data.europa.eu/esco/occupation/0464b062-cea6-4164-b10d-956c61956ae7",
+    "object_label": "ICT security administrator",
+    "gold_relation": "B_SUBSUMES_A"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/B.2",
+    "subject_label": "Component Integration",
+    "object_id": "http://data.europa.eu/esco/occupation/bd9d395a-d587-45c6-8d72-ceef226df9e1",
+    "object_label": "ICT system integration consultant",
+    "gold_relation": "B_SUBSUMES_A"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/E.7",
+    "subject_label": "Business Change Management",
+    "object_id": "http://data.europa.eu/esco/occupation/fe0fa514-b48d-4a53-9757-a283c0baacf0",
+    "object_label": "ICT business analyst",
+    "gold_relation": "B_SUBSUMES_A"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/D.1",
+    "subject_label": "Information Security Strategy Development",
+    "object_id": "http://data.europa.eu/esco/occupation/0464b062-cea6-4164-b10d-956c61956ae7",
+    "object_label": "ICT security administrator",
+    "gold_relation": "B_SUBSUMES_A"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/E.8",
+    "subject_label": "Information Security Management",
+    "object_id": "http://data.europa.eu/esco/occupation/276ba420-ef09-4a0e-b215-2c2e2f80ad28",
+    "object_label": "chief ICT security officer",
+    "gold_relation": "B_SUBSUMES_A"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/D.2",
+    "subject_label": "ICT Quality Strategy Development",
+    "object_id": "http://data.europa.eu/esco/occupation/a7c1d23d-aeca-4bee-9a08-5993ed98b135",
+    "object_label": "ICT system developer",
+    "gold_relation": "B_SUBSUMES_A"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/E.6",
+    "subject_label": "ICT Quality Management",
+    "object_id": "http://data.europa.eu/esco/occupation/4b3201cb-ffc5-4f61-9fc3-5c0f0038fa5f",
+    "object_label": "ICT business analysis manager",
+    "gold_relation": "B_SUBSUMES_A"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/C.2",
+    "subject_label": "Change Support",
+    "object_id": "http://data.europa.eu/esco/occupation/3b1ea27c-781c-41eb-821f-214285260dd2",
+    "object_label": "ICT change and configuration manager",
+    "gold_relation": "B_SUBSUMES_A"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/A.3",
+    "subject_label": "Business Plan Development",
+    "object_id": "http://data.europa.eu/esco/occupation/4b3201cb-ffc5-4f61-9fc3-5c0f0038fa5f",
+    "object_label": "ICT business analysis manager",
+    "gold_relation": "B_SUBSUMES_A"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/A.1",
+    "subject_label": "IS and Business Strategy Alignment",
+    "object_id": "http://data.europa.eu/esco/occupation/fe0fa514-b48d-4a53-9757-a283c0baacf0",
+    "object_label": "ICT business analyst",
+    "gold_relation": "B_SUBSUMES_A"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/E.2",
+    "subject_label": "Project and Portfolio Management",
+    "object_id": "http://data.europa.eu/esco/occupation/3b1ea27c-781c-41eb-821f-214285260dd2",
+    "object_label": "ICT change and configuration manager",
+    "gold_relation": "B_SUBSUMES_A"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/build",
+    "subject_label": "BUILD",
+    "object_id": "http://data.europa.eu/esco/skill/d54a1355-05c8-45eb-9c42-267d2cfcdf44",
+    "object_label": "provide technical training",
+    "gold_relation": "RELATED"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/A.2",
+    "subject_label": "Service Level Management",
+    "object_id": "http://data.europa.eu/esco/skill/cb668e89-6ef5-4ff3-ab4a-506010e7e70b",
+    "object_label": "manage a team",
+    "gold_relation": "RELATED"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/A.2",
+    "subject_label": "Service Level Management",
+    "object_id": "http://data.europa.eu/esco/skill/83218cac-3599-417e-93d2-26013cdccd98",
+    "object_label": "service-oriented modelling",
+    "gold_relation": "RELATED"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/A.3",
+    "subject_label": "Business Plan Development",
+    "object_id": "http://data.europa.eu/esco/skill/11eebd42-44ab-401d-8a2c-bdb9fc9beb50",
+    "object_label": "information security strategy",
+    "gold_relation": "RELATED"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/A.8",
+    "subject_label": "Sustainable Development",
+    "object_id": "http://data.europa.eu/esco/skill/bec4359e-cb92-468f-a997-8fb28e32fba9",
+    "object_label": "ICT project management methodologies",
+    "gold_relation": "RELATED"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/B.4",
+    "subject_label": "Solution Deployment",
+    "object_id": "http://data.europa.eu/esco/skill/e6b8f934-7f35-4dc6-9a64-f6c43acdc00b",
+    "object_label": "software components suppliers",
+    "gold_relation": "RELATED"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/B.5",
+    "subject_label": "Documentation Production",
+    "object_id": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
+    "object_label": "manage budgets",
+    "gold_relation": "RELATED"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/C.1",
+    "subject_label": "User Support",
+    "object_id": "http://data.europa.eu/esco/skill/be64bb4c-84ac-4c83-8cc7-fc8593e15136",
+    "object_label": "test system accessibility for users with special needs",
+    "gold_relation": "RELATED"
+  },
+  {
+    "subject_id": "http://data.bmbf.de/dqr/L8_Knowledge",
+    "subject_label": "Knowledge – Level 8",
+    "object_id": "http://data.europa.eu/esco/occupation/812c217d-32b7-4f6a-9faf-993d3577ac7f",
+    "object_label": "knowledge engineer",
+    "gold_relation": "RELATED"
+  },
+  {
+    "subject_id": "http://data.bmbf.de/dqr/L5_Knowledge",
+    "subject_label": "Knowledge – Level 5",
+    "object_id": "http://data.europa.eu/esco/skill/0dc7aa1b-b5af-4f4b-81ce-ee22ed8b6926",
+    "object_label": "assess ICT knowledge",
+    "gold_relation": "RELATED"
+  },
+  {
+    "subject_id": "http://data.bmbf.de/dqr/L5_SocialCompetence",
+    "subject_label": "Social Competence – Level 5",
+    "object_id": "http://data.europa.eu/esco/skill/33e584f9-ff7a-4979-bfc0-5a3a374a145a",
+    "object_label": "social network analysis",
+    "gold_relation": "RELATED"
+  },
+  {
+    "subject_id": "http://data.bmbf.de/dqr/L3_SocialCompetence",
+    "subject_label": "Social Competence – Level 3",
+    "object_id": "http://data.europa.eu/esco/skill/33e584f9-ff7a-4979-bfc0-5a3a374a145a",
+    "object_label": "social network analysis",
+    "gold_relation": "RELATED"
+  },
+  {
+    "subject_id": "http://data.bmbf.de/dqr/L4_SocialCompetence",
+    "subject_label": "Social Competence – Level 4",
+    "object_id": "http://data.europa.eu/esco/skill/33e584f9-ff7a-4979-bfc0-5a3a374a145a",
+    "object_label": "social network analysis",
+    "gold_relation": "RELATED"
+  },
+  {
+    "subject_id": "http://data.bmbf.de/dqr/L3_Knowledge",
+    "subject_label": "Knowledge – Level 3",
+    "object_id": "http://data.europa.eu/esco/skill/41bf7ede-fc84-4a57-8c89-b548d11b0ba1",
+    "object_label": "manage business knowledge",
+    "gold_relation": "RELATED"
+  },
+  {
+    "subject_id": "http://data.bmbf.de/dqr/L6_Knowledge",
+    "subject_label": "Knowledge – Level 6",
+    "object_id": "http://data.europa.eu/esco/skill/0dc7aa1b-b5af-4f4b-81ce-ee22ed8b6926",
+    "object_label": "assess ICT knowledge",
+    "gold_relation": "RELATED"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/C.4",
+    "subject_label": "Problem Management",
+    "object_id": "http://data.europa.eu/esco/skill/6eff134b-e34f-4d6e-a6e8-5e47cf2228d0",
+    "object_label": "risk management",
+    "gold_relation": "RELATED"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/D.8",
+    "subject_label": "Contract Management",
+    "object_id": "http://data.europa.eu/esco/skill/7111b95d-0ce3-441a-9d92-4c75d05c4388",
+    "object_label": "project management",
+    "gold_relation": "RELATED"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/E.4",
+    "subject_label": "Relationship Management",
+    "object_id": "http://data.europa.eu/esco/skill/7111b95d-0ce3-441a-9d92-4c75d05c4388",
+    "object_label": "project management",
+    "gold_relation": "RELATED"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/D.9",
+    "subject_label": "Personnel Development",
+    "object_id": "http://data.europa.eu/esco/skill/33d49d4f-31ec-473f-9b8a-b555aa5116bb",
+    "object_label": "iterative development",
+    "gold_relation": "RELATED"
+  },
+  {
+    "subject_id": "http://hr-qde.org/harmonised/ecf/D.12",
+    "subject_label": "Digital Marketing",
+    "object_id": "http://data.europa.eu/esco/skill/397da142-ab35-48fe-b154-7c38f447adfb",
+    "object_label": "digital systems",
+    "gold_relation": "RELATED"
+  }
+]

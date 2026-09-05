@@ -1,0 +1,148 @@
+{
+  "_meta": {
+    "experiment": "E2 Few-Shot-Ablation (VH1.6)",
+    "date": "2026-08-31",
+    "provider_model": "mistral/mistral-small-latest",
+    "gold": "eval/gold/G_manual.json (74 Paare)",
+    "runs_per_pair": 3,
+    "temperature": 0.0,
+    "llm_calls": "74 x 4 n_FS x 3 = 888",
+    "few_shot_pool": "eval/G_struct.json (32 DQR<->EQF-Crosswalks) -- Abweichung vom Original (persistierte struct-Mappings, nicht mehr vorhanden). Domain-Mismatch (Niveau- statt Kompetenzkonzepte) begrenzt die Vergleichbarkeit.",
+    "vs_original_20260729": {
+      "macro_f1": {
+        "0": "0.3147->0.3181",
+        "1": "0.3578->0.3233",
+        "3": "0.3250->0.3544",
+        "5": "0.3045->0.3155"
+      },
+      "n_fs_star": "1 -> 3",
+      "f1_equiv": "0 bei n_FS in {0,3,5} -> 0 bei ALLEN n_FS"
+    },
+    "recommendation": "Produktions-Few-Shot-Anzahl (limit=3 in _build_few_shot_text) NICHT auf Basis dieses Re-Runs aendern: Anker-Quelle gewechselt, Macro-F1-Spanne 0.316-0.354 ist klein und verrauscht. Robuster Befund: F1[EQUIVALENT]=0 unabhaengig von n_FS."
+  },
+  "results": [
+    {
+      "n_fs": 0,
+      "per_class": {
+        "EQUIVALENT": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "RELATED": {
+          "precision": 0.8181818181818182,
+          "recall": 0.8571428571428571,
+          "f1": 0.8372093023255814
+        },
+        "A_SUBSUMES_B": {
+          "precision": 0.40476190476190477,
+          "recall": 0.7727272727272727,
+          "f1": 0.5312499999999999
+        },
+        "B_SUBSUMES_A": {
+          "precision": 0.42857142857142855,
+          "recall": 0.15,
+          "f1": 0.2222222222222222
+        },
+        "UNRESOLVED": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      },
+      "macro_f1": 0.3181363049095607,
+      "accuracy": 0.5135135135135135
+    },
+    {
+      "n_fs": 1,
+      "per_class": {
+        "EQUIVALENT": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "RELATED": {
+          "precision": 0.7894736842105263,
+          "recall": 0.7142857142857143,
+          "f1": 0.7500000000000001
+        },
+        "A_SUBSUMES_B": {
+          "precision": 0.43243243243243246,
+          "recall": 0.7272727272727273,
+          "f1": 0.5423728813559323
+        },
+        "B_SUBSUMES_A": {
+          "precision": 0.35294117647058826,
+          "recall": 0.3,
+          "f1": 0.3243243243243243
+        },
+        "UNRESOLVED": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      },
+      "macro_f1": 0.3233394411360514,
+      "accuracy": 0.5
+    },
+    {
+      "n_fs": 3,
+      "per_class": {
+        "EQUIVALENT": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "RELATED": {
+          "precision": 0.9090909090909091,
+          "recall": 0.47619047619047616,
+          "f1": 0.6249999999999999
+        },
+        "A_SUBSUMES_B": {
+          "precision": 0.38095238095238093,
+          "recall": 0.7272727272727273,
+          "f1": 0.5
+        },
+        "B_SUBSUMES_A": {
+          "precision": 0.2857142857142857,
+          "recall": 0.3,
+          "f1": 0.2926829268292683
+        }
+      },
+      "macro_f1": 0.3544207317073171,
+      "accuracy": 0.43243243243243246
+    },
+    {
+      "n_fs": 5,
+      "per_class": {
+        "EQUIVALENT": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "RELATED": {
+          "precision": 1.0,
+          "recall": 0.5238095238095238,
+          "f1": 0.6875000000000001
+        },
+        "A_SUBSUMES_B": {
+          "precision": 0.40476190476190477,
+          "recall": 0.7727272727272727,
+          "f1": 0.5312499999999999
+        },
+        "B_SUBSUMES_A": {
+          "precision": 0.3684210526315789,
+          "recall": 0.35,
+          "f1": 0.358974358974359
+        },
+        "UNRESOLVED": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      },
+      "macro_f1": 0.3155448717948718,
+      "accuracy": 0.47297297297297297
+    }
+  ]
+}

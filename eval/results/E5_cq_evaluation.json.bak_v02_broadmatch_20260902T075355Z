@@ -1,0 +1,76 @@
+{
+  "mode": "delivery",
+  "_meta": {
+    "experiment": "E5 Kompetenzfragen CQ1-CQ4",
+    "date": "2026-08-31",
+    "nachzug": "Wiederholung gegen die drei Lieferartefakte nach MASTERAND_OBERHUBER.md v0.2 (oberhuber-harmonised-ontology-v0.2.ttl + oberhuber-mappings-v0.2.ttl; ESCO-Labels aus data/formalized/esco_skeleton_oberhuber.ttl). Vorher (v0.3-Artefakt aus dem V0.7-Projekt): eval/results/E5_cq_evaluation.json.bak_v03_20260831.",
+    "basis_run": "scripts/run_saeule_d_delivery.py, Projekt saeule_d_lieferung_informatik_korridor_20260831T171750Z, 800 e-CF<->ESCO-Klassifikationen",
+    "query_anpassung": "Mappings liegen reifiziert als harm:HubMapping (sssom:subject_id/object_id/predicate_id) statt als direkte SKOS-Kanten; CQ3 zielt auf harm:HarmonisedConcept + harm:integrationStrategy; CQ4 prueft zusaetzlich harm:harmonises. Prefix harm: statt hrqde:.",
+    "vs_v03": {
+      "CQ1": "0 -> 0 (unveraendert: kein EQUIVALENT im 800-Paar-Lauf)",
+      "CQ2": "283 -> 156 (nur noch echte HubMappings mit skos:narrowMatch, e-CF ⊒ ESCO; Container-abgeleitete broadMatch zaehlen nicht zu CQ2)",
+      "CQ3": "730 -> 5 (spec-konformer Scope: harm:HarmonisedConcept nur fuer disjunkte e-CF-Blaetter; DQR-Niveaus sind Skelett-Referenzen, ESCO wird referenziert statt annotiert)",
+      "CQ4": "0 -> 0 (kein Clustering im Lieferartefakt; HDBSCAN-Negativbefund, ADR/Plan)"
+    },
+    "verdikt": "unveraendert: CQ2 und CQ3 erfuellt, CQ1 und CQ4 nicht erfuellt (E5 teilweise erfuellt)."
+  },
+  "results": [
+    {
+      "cq": "CQ1",
+      "label": "Semantisch äquivalente Konzeptpaare (harm:HubMapping, skos:exactMatch)",
+      "n_results": 0,
+      "fulfilled": false,
+      "examples": []
+    },
+    {
+      "cq": "CQ2",
+      "label": "Subsumierte ESCO-Skills unter e-CF-Konzepten (harm:HubMapping, skos:narrowMatch)",
+      "n_results": 156,
+      "fulfilled": true,
+      "examples": [
+        {
+          "ecfLabel": "Application Design",
+          "escoLabel": "analyse software specifications"
+        },
+        {
+          "ecfLabel": "Application Design",
+          "escoLabel": "Rapid application development"
+        },
+        {
+          "ecfLabel": "Application Design",
+          "escoLabel": "develop software prototype"
+        }
+      ]
+    },
+    {
+      "cq": "CQ3",
+      "label": "Disjunkte Konzepte mit Integrationsstrategie (harm:HarmonisedConcept)",
+      "n_results": 5,
+      "fulfilled": true,
+      "examples": [
+        {
+          "concept": "http://hr-qde.org/harmonised/ecf/A.2",
+          "label": "Service Level Management",
+          "strategy": "own_class"
+        },
+        {
+          "concept": "http://hr-qde.org/harmonised/ecf/D.5",
+          "label": "Sales Proposal Development",
+          "strategy": "own_class"
+        },
+        {
+          "concept": "http://hr-qde.org/harmonised/ecf/D.6",
+          "label": "Channel Management",
+          "strategy": "own_class"
+        }
+      ]
+    },
+    {
+      "cq": "CQ4",
+      "label": "Transitive Hierarchie (rdfs:subClassOf+ / harm:harmonises)",
+      "n_results": 0,
+      "fulfilled": false,
+      "examples": []
+    }
+  ]
+}

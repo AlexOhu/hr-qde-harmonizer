@@ -1,0 +1,26 @@
+services:
+  neo4j:
+    image: neo4j:5.26-community
+    container_name: hrqde-neo4j
+    ports:
+      - "7474:7474"   # Browser-UI
+      - "7687:7687"   # Bolt-Protokoll
+    environment:
+      NEO4J_AUTH: "neo4j/${NEO4J_PASSWORD:-changeme123}"
+      # Neosemantics (n10s) als Plugin aktivieren, um RDF/OWL/SKOS
+      # direkt nach Neo4j zu importieren (vgl. Abschnitt 2.2.4.4)
+      NEO4J_PLUGINS: '["n10s"]'
+      NEO4J_dbms_security_procedures_unrestricted: "n10s.*"
+      NEO4J_dbms_security_procedures_allowlist: "n10s.*"
+    volumes:
+      - neo4j_data:/data
+      - neo4j_import:/import
+    healthcheck:
+      test: ["CMD", "cypher-shell", "-u", "neo4j", "-p", "${NEO4J_PASSWORD:-changeme123}", "RETURN 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  neo4j_data:
+  neo4j_import:

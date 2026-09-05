@@ -1,0 +1,380 @@
+{
+  "m": 3,
+  "n_concepts_total": 1001,
+  "n_noise": 716,
+  "clusters": [
+    {
+      "cluster_id": 0,
+      "size": 4,
+      "kqr_distribution": {
+        "esco_v1_2_ict_ausschnitt": 4
+      },
+      "centroid_uri": "http://data.europa.eu/esco/occupation/1c5a45b9-440e-4726-b565-16a952abd341",
+      "centroid_label": "computer vision engineer",
+      "top20_labels": [
+        "computer vision engineer",
+        "computer vision",
+        "artificial intelligence engineer",
+        "computer graphics"
+      ],
+      "llm_label": "**Semantischer Cluster:**\n*Fachkräfte und Technologien für visuelle Datenverarbeitung und KI-gestützte Bildanalyse.*"
+    },
+    {
+      "cluster_id": 1,
+      "size": 5,
+      "kqr_distribution": {
+        "esco_v1_2_ict_ausschnitt": 5
+      },
+      "centroid_uri": "http://data.europa.eu/esco/skill/b0a3bb25-a02f-43ed-ab1f-994fa66a424a",
+      "centroid_label": "online analytical processing",
+      "top20_labels": [
+        "online analytical processing",
+        "digital data processing",
+        "web analytics",
+        "perform online data analysis",
+        "digital forensics expert"
+      ],
+      "llm_label": "\"Analyse und Verarbeitung digitaler Daten für Erkenntnisse und Sicherheit.\""
+    },
+    {
+      "cluster_id": 2,
+      "size": 4,
+      "kqr_distribution": {
+        "esco_v1_2_ict_ausschnitt": 3,
+        "ecf": 1
+      },
+      "centroid_uri": "http://hr-qde.org/harmonised/ecf/A.9",
+      "centroid_label": "Innovating",
+      "top20_labels": [
+        "Innovating",
+        "innovate in ICT",
+        "innovation processes",
+        "creatively use digital technologies"
+      ],
+      "llm_label": "**Semantischer Cluster:** *Digitale Innovation durch kreative Nutzung von IKT-Prozessen.*"
+    },
+    {
+      "cluster_id": 3,
+      "size": 4,
+      "kqr_distribution": {
+        "esco_v1_2_ict_ausschnitt": 4
+      },
+      "centroid_uri": "http://data.europa.eu/esco/skill/d8829a1d-dbde-435b-b921-29d6462f35c9",
+      "centroid_label": "Android (mobile operating systems)",
+      "top20_labels": [
+        "Android (mobile operating systems)",
+        "mobile operating systems",
+        "iOS",
+        "BlackBerry"
+      ],
+      "llm_label": "\"Semantischer Cluster: Betriebssysteme für mobile Endgeräte.\""
+    },
+    {
+      "cluster_id": 4,
+      "size": 3,
+      "kqr_distribution": {
+        "esco_v1_2_ict_ausschnitt": 3
+      },
+      "centroid_uri": "http://data.europa.eu/esco/skill/a71577b2-7550-4222-88ee-dcbd2d881516",
+      "centroid_label": "graphics editor software",
+      "top20_labels": [
+        "graphics editor software",
+        "Adobe Illustrator",
+        "CAD software"
+      ],
+      "llm_label": "Der semantische Cluster umfasst **professionelle Software zur Erstellung und Bearbeitung digitaler Grafiken und technischer Zeichnungen**."
+    },
+    {
+      "cluster_id": 5,
+      "size": 8,
+      "kqr_distribution": {
+        "esco_v1_2_ict_ausschnitt": 8
+      },
+      "centroid_uri": "http://data.europa.eu/esco/skill/485cdafb-3c7f-4104-ab1c-773e6131a39a",
+      "centroid_label": "conduct scholarly research",
+      "top20_labels": [
+        "conduct scholarly research",
+        "conduct research across disciplines",
+        "scientific research methodology",
+        "perform scientific research",
+        "apply research ethics and scientific integrity principles in research activities",
+        "publish academic research",
+        "conduct quantitative research",
+        "conduct qualitative research"
+      ],
+      "llm_label": "Der semantische Cluster beschreibt **wissenschaftliche Forschungstätigkeiten** mit Fokus auf Methoden, Ethik und Publikation."
+    },
+    {
+      "cluster_id": 6,
+      "size": 3,
+      "kqr_distribution": {
+        "esco_v1_2_ict_ausschnitt": 3
+      },
+      "centroid_uri": "http://data.europa.eu/esco/skill/a8b3957f-08b4-4a76-927d-0b2e3d0dbd39",
+      "centroid_label": "synthesise research publications",
+      "top20_labels": [
+        "synthesise research publications",
+        "write scientific publications",
+        "write research proposals"
+      ],
+      "llm_label": "**Gemeinsame Thematik:**\n*Erstellung und Veröffentlichung wissenschaftlicher Inhalte in Forschungskontexten.*"
+    },
+    {
+      "cluster_id": 7,
+      "size": 4,
+      "kqr_distribution": {
+        "esco_v1_2_ict_ausschnitt": 4
+      },
+      "centroid_uri": "http://data.europa.eu/esco/skill/28a0fe16-4e03-4d5e-8f0e-5198309e77a9",
+      "centroid_label": "perform forensic preservations of digital devices",
+      "top20_labels": [
+        "perform forensic preservations of digital devices",
+        "store digital data and systems",
+        "computer forensics",
+        "perform backups"
+      ],
+      "llm_label": "**Semantischer Cluster:** *Sicherung und Analyse digitaler Beweismittel sowie Datensicherung in der Computerforensik.*"
+    },
+    {
+      "cluster_id": 8,
+      "size": 5,
+      "kqr_distribution": {
+        "esco_v1_2_ict_ausschnitt": 3,
+        "ecf": 2
+      },
+      "centroid_uri": "http://data.europa.eu/esco/skill/f14ff4b7-be1e-4b55-b39b-520005f8a97e",
+      "centroid_label": "liaise with managers",
+      "top20_labels": [
+        "liaise with managers",
+        "Relationship Management",
+        "communicate with stakeholders",
+        "build business relationships",
+        "Contract Management"
+      ],
+      "llm_label": "**Zusammenfassung:**\n*\"Aufbau und Pflege von Kontakten zu Entscheidungsträgern und Partnern im geschäftlichen Umfeld.\"*"
+    },
+    {
+      "cluster_id": 9,
+      "size": 13,
+      "kqr_distribution": {
+        "esco_v1_2_ict_ausschnitt": 13
+      },
+      "centroid_uri": "http://data.europa.eu/esco/skill/14062e1c-6540-4cb6-b343-ad419e3d10ac",
+      "centroid_label": "blockchain components",
+      "top20_labels": [
+        "blockchain components",
+        "blockchain platforms",
+        "blockchain concept application",
+        "blockchain-based business models",
+        "blockchain",
+        "blockchain consensus mechanisms",
+        "blockchain architecture",
+        "blockchain terminology",
+        "blockchain applications",
+        "develop blockchain technology",
+        "blockchain application areas",
+        "recognise blockchain application areas",
+        "analyse blockchain use cases"
+      ],
+      "llm_label": "**Semantischer Cluster:**\n*Blockchain-Technologie und ihre Anwendungen, Architekturen, Plattformen sowie Geschäftsmodelle und Konsensmechanismen.*"
+    },
+    {
+      "cluster_id": 10,
+      "size": 4,
+      "kqr_distribution": {
+        "esco_v1_2_ict_ausschnitt": 4
+      },
+      "centroid_uri": "http://data.europa.eu/esco/skill/11430d93-c835-48ed-8e70-285fa69c9ae6",
+      "centroid_label": "design cloud architecture",
+      "top20_labels": [
+        "design cloud architecture",
+        "design database in the cloud",
+        "design cloud networks",
+        "plan migration to cloud"
+      ],
+      "llm_label": "**Gemeinsame Thematik:**\n*Entwurf und Planung von Cloud-Infrastrukturen und -Migrationen im IKT-Bereich.*"
+    },
+    {
+      "cluster_id": 11,
+      "size": 3,
+      "kqr_distribution": {
+        "esco_v1_2_ict_ausschnitt": 2,
+        "ecf": 1
+      },
+      "centroid_uri": "http://hr-qde.org/harmonised/ecf/A.8",
+      "centroid_label": "Sustainable Development",
+      "top20_labels": [
+        "Sustainable Development",
+        "sustainability consulting",
+        "green ICT consultant"
+      ],
+      "llm_label": "**\"Nachhaltigkeitsberatung und grüne IKT-Lösungen für ökologisch und ökonomisch verantwortungsvolles Handeln.\"**"
+    },
+    {
+      "cluster_id": 12,
+      "size": 7,
+      "kqr_distribution": {
+        "esco_v1_2_ict_ausschnitt": 7
+      },
+      "centroid_uri": "http://data.europa.eu/esco/skill/e74f4f21-8d45-412c-b5c3-652e6167ee32",
+      "centroid_label": "content development processes",
+      "top20_labels": [
+        "content development processes",
+        "manage content development projects",
+        "apply tools for content development",
+        "digital content creation",
+        "provide guidelines for content development",
+        "develop documentation in accordance with legal requirements",
+        "provide user documentation"
+      ],
+      "llm_label": "**Semantischer Cluster:**\n*\"Entwicklung, Steuerung und Qualitätssicherung digitaler Inhalte nach rechtlichen und nutzerorientierten Vorgaben.\"*"
+    },
+    {
+      "cluster_id": 13,
+      "size": 17,
+      "kqr_distribution": {
+        "esco_v1_2_ict_ausschnitt": 17
+      },
+      "centroid_uri": "http://data.europa.eu/esco/skill/ab1e97ed-2319-4293-a8b7-072d2648822f",
+      "centroid_label": "database management systems",
+      "top20_labels": [
+        "database management systems",
+        "manage database",
+        "operate relational database management system",
+        "SQL Server",
+        "use databases",
+        "MySQL",
+        "database developer",
+        "Oracle Relational Database",
+        "database development tools",
+        "database",
+        "design database scheme",
+        "SQL",
+        "create database diagrams",
+        "Oracle Warehouse Builder",
+        "database designer",
+        "query languages",
+        "SPARQL"
+      ],
+      "llm_label": "**Semantischer Cluster:**\n*\"Technologien, Werkzeuge und Rollen zur Verwaltung, Entwicklung und Abfrage von relationalen Datenbanken und Datenbankmanagementsystemen.\"*"
+    },
+    {
+      "cluster_id": 14,
+      "size": 5,
+      "kqr_distribution": {
+        "esco_v1_2_ict_ausschnitt": 5
+      },
+      "centroid_uri": "http://data.europa.eu/esco/skill/e5a6e1e0-1b07-4432-83ba-77d593b2cb47",
+      "centroid_label": "SAS Data Management",
+      "top20_labels": [
+        "SAS Data Management",
+        "statistical analysis system software",
+        "Sass",
+        "SAS language",
+        "SQL Server Integration Services"
+      ],
+      "llm_label": "\"Software-Tools und Sprachen für Datenmanagement und statistische Analysen in IT-Systemen.\""
+    },
+    {
+      "cluster_id": 15,
+      "size": 3,
+      "kqr_distribution": {
+        "esco_v1_2_ict_ausschnitt": 3
+      },
+      "centroid_uri": "http://data.europa.eu/esco/skill/48db96bf-3314-45c6-bad8-fdb6e20e5639",
+      "centroid_label": "data engineering",
+      "top20_labels": [
+        "data engineering",
+        "establish data processes",
+        "data science"
+      ],
+      "llm_label": "**Gemeinsame Thematik:**\n*\"Entwicklung und Optimierung von Datenverarbeitungsprozessen für datengetriebene Lösungen.\"*"
+    },
+    {
+      "cluster_id": 16,
+      "size": 3,
+      "kqr_distribution": {
+        "esco_v1_2_ict_ausschnitt": 3
+      },
+      "centroid_uri": "http://data.europa.eu/esco/skill/68ef0e4d-5542-4e64-84f4-752cce5a3c22",
+      "centroid_label": "statistical modeling techniques",
+      "top20_labels": [
+        "statistical modeling techniques",
+        "apply statistical analysis techniques",
+        "data analytics"
+      ],
+      "llm_label": "**Semantischer Cluster:**\n*Anwendung statistischer Analyseverfahren und Datenanalyse-Methoden.*"
+    },
+    {
+      "cluster_id": 17,
+      "size": 4,
+      "kqr_distribution": {
+        "esco_v1_2_ict_ausschnitt": 4
+      },
+      "centroid_uri": "http://data.europa.eu/esco/skill/fc2f1d4f-a46f-471e-a618-cbd4d0496a53",
+      "centroid_label": "implement ICT recovery system",
+      "top20_labels": [
+        "implement ICT recovery system",
+        "ICT disaster recovery analyst",
+        "manage disaster recovery plans",
+        "ICT resilience manager"
+      ],
+      "llm_label": "**Semantischer Cluster:** Strategien und Verantwortlichkeiten zur Sicherstellung der ICT-Resilienz und Wiederherstellung nach Störungen."
+    },
+    {
+      "cluster_id": 18,
+      "size": 176,
+      "kqr_distribution": {
+        "esco_v1_2_ict_ausschnitt": 161,
+        "ecf": 15
+      },
+      "centroid_uri": "http://data.europa.eu/esco/skill/7adb8473-bcc6-4ff8-9850-76d945d40092",
+      "centroid_label": "analyse ICT system",
+      "top20_labels": [
+        "analyse ICT system",
+        "ICT system analyst",
+        "attend to ICT systems quality",
+        "ICT system user requirements",
+        "apply ICT systems theory",
+        "ICT infrastructure",
+        "implement ICT network diagnostic tools",
+        "manage ICT data architecture",
+        "ICT system programming",
+        "identify ICT user needs",
+        "design information system",
+        "conduct impact evaluation of ICT processes on business",
+        "administer ICT system",
+        "ICT system integration",
+        "ICT system architect",
+        "maintain ICT system",
+        "deploy ICT systems",
+        "ICT business analyst",
+        "assess users' interaction with ICT applications",
+        "configure ICT system"
+      ],
+      "llm_label": "Der semantische Cluster thematisiert **Planung, Entwicklung, Betrieb und Bewertung von IKT-Systemen und -Infrastrukturen** entlang ihres gesamten Lebenszyklus."
+    },
+    {
+      "cluster_id": 19,
+      "size": 10,
+      "kqr_distribution": {
+        "esco_v1_2_ict_ausschnitt": 10
+      },
+      "centroid_uri": "http://data.europa.eu/esco/skill/c7cc6dc5-d56b-4323-8e5c-47c4022f615f",
+      "centroid_label": "quality assurance methodologies",
+      "top20_labels": [
+        "quality assurance methodologies",
+        "quality standards",
+        "set quality assurance objectives",
+        "define quality standards",
+        "perform quality audits",
+        "oversee quality control",
+        "conduct content quality assurance",
+        "implement data quality processes",
+        "database quality standards",
+        "define data quality criteria"
+      ],
+      "llm_label": "**Semantischer Cluster:** *Definition, Umsetzung und Kontrolle von Qualitätsstandards und -prozessen in Datenbanken und Inhalten.*"
+    }
+  ]
+}

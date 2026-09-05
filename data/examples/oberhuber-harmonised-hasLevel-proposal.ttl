@@ -1,0 +1,272 @@
+# =============================================================================
+# Proposal: Schemaerweiterung harm:hasLevel
+# Basis: mini-artefakt-v0.2.ttl
+# Datum: 2026-09-04
+#
+# Diese Datei dient als Diskussionsgrundlage für die Schemaerweiterung
+# harm:hasLevel. Sie baut auf dem Mini-Artefakt v0.2 auf und zeigt:
+#   (A) Korrekturen gemäß Schema v0.2
+#       (hrqde-harmonisation-schema.ttl, oberhuber-harmonised-example-v0.2.ttl)
+#   (B) Den Proposal-Abschnitt für harm:hasLevel (e-CF Dimension 3)
+#
+# ACHTUNG: Diese Datei besteht die aktuelle SHACL-Validierung absichtlich
+# nicht. harm:hasLevel ist im Schema noch nicht deklariert. Das ist der
+# Abstimmungspunkt.
+# =============================================================================
+
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix semapv:  <https://w3id.org/semapv/vocab/> .
+@prefix sssom:   <https://w3id.org/sssom/> .
+
+# KORR: Präfix-Block gem. Schema v0.2 (hrqde-harmonisation-schema.ttl,
+# oberhuber-harmonised-example-v0.2.ttl). Alle folgenden Präfix-Korrekturen
+# im Dokument ergeben sich aus diesem Block.
+@prefix harm:      <http://hr-qde.org/harmonised/> .
+    # KORR: neu — bezeichnet die Harmonisierungsschicht (vorher fälschlich
+    # unter hrqde: geführt)
+@prefix harm-ecf:  <http://hr-qde.org/harmonised/source/ecf/> .
+    # KORR: ersetzt ecf: <http://hr-qde.org/harmonised/ecf/>
+    # (URI-Schema /source/ecf/ gem. Spec §7)
+@prefix harm-dqr:  <http://hr-qde.org/harmonised/source/dqr/> .
+    # KORR: ersetzt dqr: <http://data.bmbf.de/dqr/>
+    # (URI-Schema /source/dqr/ gem. Spec §7)
+@prefix harm-map:  <http://hr-qde.org/harmonised/mapping/> .
+    # KORR: neu — eigener Namespace für Mapping-Individuen (harm:HubMapping,
+    # harm:LevelMapping), statt sie direkt unter harm: zu führen
+@prefix harm-cl:   <http://hr-qde.org/harmonised/cluster/> .
+    # KORR: neu — eigener Namespace für Cluster-Individuen
+    # (harm:HarmonisedCluster)
+@prefix hrqde:     <http://hr-qde.org/ontology/> .
+    # KORR: hrqde: bezeichnet ab hier ausschließlich das Skelett, nicht mehr
+    # die Harmonisierungsschicht (Präfix-Trennung ADR-19)
+@prefix eqf:       <http://data.europa.eu/snb/eqf/> .
+    # Namespace für EQF-Dimensionskonzepte (G_struct.json), z.B.
+    # eqf:L2_ResponsibilityAutonomy. Der Top-Level-Niveau-Anker
+    # (/snb/qf-eu-level/5) liegt im Voglers Skelett (hrqde:DQR5
+    # skos:exactMatch) und wird hier nicht neu deklariert.
+@prefix eqf-level: <http://data.europa.eu/snb/qf-eu-level/> .
+    # KORR (P1): Zweiter EQF-Prefix für die Top-Level-Anker aus dem Skelett,
+    # getrennt von den Dimensionskonzepten (eqf:). Skelett-Anker werden
+    # nicht neu geprägt, nur referenziert.
+
+# Quell-KQR-Präfixe für unveränderte Namespaces
+@prefix escoskill: <http://data.europa.eu/esco/skill/> .
+
+# ==============================================================================
+# Szenario 1 -- Konjunktes Konzeptpaar aus K, mapping_justification =
+# semapv:LLMBasedMatching
+# e-CF B.1 "Application Development" (gröber) <-> ESCO-Skill "develop
+# software prototype" (feiner granuliert), ermittelt per LLM-Dreifach-
+# klassifikation mit Mehrheitsentscheid A_SUBSUMES_B.
+# ==============================================================================
+
+harm-ecf:B.1 a skos:Concept ;
+    # KORR: ecf:B.1 → harm-ecf:B.1 (Präfix ecf: → harm-ecf:, URI-Schema
+    # /source/ecf/ gem. Spec §7)
+    skos:prefLabel "Application Development"@en, "Anwendungsentwicklung"@de ;
+    dcterms:source "e-CF 3.0" ;
+    harm:derivedFrom harm:kqr_ecf ;
+    # KORR: hrqde:derivedFrom "ecf" → harm:derivedFrom harm:kqr_ecf
+    # (derivedFrom als IRI statt String, traversierbar per SPARQL/Cypher)
+    harm:sourceIdentifier "B.1" .
+    # KORR: hrqde:sourceIdentifier → harm:sourceIdentifier
+    # (Präfix hrqde: → harm: für Harmonisierungsschicht-Properties)
+
+escoskill:797a4416-0b8d-44f3-8fcd-eb10bd0be6b4 a skos:Concept ;
+    skos:prefLabel "develop software prototype"@en,
+        "Softwareprototyp entwickeln"@de ;
+    dcterms:source "ESCO v1.2" .
+    # KORR: hrqde:derivedFrom "esco" und hrqde:sourceIdentifier vollständig
+    # entfernt — ESCO-Knoten erhalten keine harm:-Annotationen
+    # (Layer-Separation)
+
+harm-ecf:B.1 skos:broadMatch escoskill:797a4416-0b8d-44f3-8fcd-eb10bd0be6b4 .
+
+harm-map:m1 a harm:HubMapping ;
+    # KORR: hrqde:mapping_1 a sssom:MappingSet → harm-map:m1 a
+    # harm:HubMapping (Mapping-Typ ist harm:HubMapping, subClassOf
+    # sssom:Mapping, nicht MappingSet)
+    sssom:subject_id harm-ecf:B.1 ;
+    sssom:object_id escoskill:797a4416-0b8d-44f3-8fcd-eb10bd0be6b4 ;
+    sssom:predicate_id skos:broadMatch ;
+    # KORR: sssom:predicate_id "skos:broadMatch" → sssom:predicate_id
+    # skos:broadMatch (predicate_id als IRI, nicht String — sonst nicht per
+    # SPARQL traversierbar)
+    sssom:mapping_confidence 0.89 ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1" ;
+    sssom:mapping_justification semapv:LLMBasedMatching ;
+    sssom:comment "Dreifachklassifikation (Majority-Vote): e-CF B.1 subsumiert den feiner granulierten ESCO-Skill 'develop software prototype'."@de .
+
+harm-cl:software_engineering a harm:HarmonisedCluster ;
+    # KORR: hrqde:HarmonisedCluster_SoftwareEngineering a owl:Class →
+    # harm-cl:software_engineering a harm:HarmonisedCluster (Cluster ist
+    # Individuum von harm:HarmonisedCluster, keine owl:Class — OWL DL
+    # erfordert Individuen, nicht Klassen als Subjekte von harm:harmonises)
+    rdfs:label "Software Engineering (harmonisiert)"@de,
+        "Software Engineering (harmonised)"@en ;
+    rdfs:comment "Konjunkte Schnittmenge aus e-CF B.1 und verwandten ESCO-ICT-Skills." ;
+    harm:harmonises harm-ecf:B.1, escoskill:797a4416-0b8d-44f3-8fcd-eb10bd0be6b4 .
+    # KORR: hrqde:harmonises → harm:harmonises (Präfix)
+
+# ==============================================================================
+# Szenario 2 -- Konjunktes Konzeptpaar mit strukturellem Shortcut,
+# mapping_justification = semapv:StructuralMatching
+# DQR "Wissen – Niveau 5" <-> EQF "Knowledge – EQF Level 5". Die Cross-
+# Referenz auf Dimensionsebene ist normativ aus dem German EQF Referencing
+# Report (2012/2013) abgeleitet (vgl. eval/G_struct.json, 32 DQR<->EQF-
+# Dimensionspaare) und wird vom Vorfilter als Shortcut ohne LLM-
+# Klassifikation übernommen.
+# ==============================================================================
+
+harm-dqr:L5_Knowledge a skos:Concept ;
+    # KORR: dqr:L5_Knowledge → harm-dqr:L5_Knowledge (Präfix dqr: →
+    # harm-dqr:, URI-Schema /source/dqr/ gem. Spec §7)
+    owl:sameAs <http://data.bmbf.de/dqr/L5_Knowledge> ;
+    # KORR (P2, Option B): sameAs-Brücke auf die G_struct.json-URI, damit
+    # der strukturelle Shortcut in der Pipeline den harm-dqr:-Knoten über
+    # die data.bmbf.de-URI auflösen kann. harm-dqr:-Präfix bleibt gem.
+    # Spec §7.
+    skos:prefLabel "Wissen – Niveau 5"@de, "Knowledge – Level 5"@en ;
+    dcterms:source "Deutscher Qualifikationsrahmen 2013" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    # KORR: hrqde:derivedFrom "dqr" → harm:derivedFrom harm:kqr_dqr
+    # (derivedFrom als IRI)
+    harm:sourceIdentifier "L5_Knowledge" .
+    # KORR: Präfix hrqde: → harm:
+
+eqf:L5_Knowledge a skos:Concept ;
+    # KORR (P1): URI-Basis bleibt /snb/eqf/ (G_struct.json-Namespace für
+    # Dimensionskonzepte). /snb/qf-eu-level/ ist ausschließlich für die
+    # Top-Level-Niveau-Anker des Skeletts (eqf-level:5 etc.).
+    skos:prefLabel "Knowledge – EQF Level 5"@en ;
+    dcterms:source "OJ C 189, 15.6.2017, Annex II" ;
+    harm:derivedFrom harm:kqr_eqf ;
+    # KORR: hrqde:derivedFrom "eqf" → harm:derivedFrom harm:kqr_eqf
+    # (derivedFrom als IRI)
+    harm:sourceIdentifier "L5_Knowledge" .
+    # KORR: Präfix hrqde: → harm:
+
+harm-dqr:L5_Knowledge skos:narrowMatch eqf:L5_Knowledge .
+# KORR (P3): exactMatch → narrowMatch — DQR-Dimensionskonzept ist feiner
+# als das EQF-Pendant. DQR trennt Wissen und Fertigkeiten; EQF fasst beide
+# unter Knowledge/Skills zusammen. DQR-Knoten ist Teilmenge des EQF-Knotens.
+
+harm-map:m2 a harm:LevelMapping ;
+    # KORR: hrqde:mapping_2 a sssom:MappingSet → harm-map:m2 a
+    # harm:LevelMapping (Mapping-Typ ist harm:LevelMapping)
+    sssom:subject_id harm-dqr:L5_Knowledge ;
+    sssom:object_id eqf:L5_Knowledge ;
+    sssom:predicate_id skos:narrowMatch ;
+    # KORR (P3): predicate_id skos:exactMatch → skos:narrowMatch (DQR-
+    # Dimensionskonzept ist feiner als EQF-Pendant, kein exactMatch)
+    sssom:mapping_confidence 1.0 ;
+    sssom:mapping_tool "HR-QDE-Harmonizer-v0.1" ;
+    sssom:mapping_justification semapv:StructuralMatching ;
+    sssom:comment "Struktureller Shortcut: Dimensionspaar 'Wissen'/'Knowledge' auf Niveau 5, normativ aus dem German EQF Referencing Report (2012/2013), vgl. G_struct.json. narrowMatch, da DQR-Dimension feiner als EQF-Entsprechung."@de .
+
+# ==============================================================================
+# Szenario 3 -- Disjunktes Konzept (D), Integrationsstrategie own_class
+# DQR-Dimension "Sozialkompetenz - Niveau 6" hat kein direktes ESCO-Pendant,
+# da ESCO Sozialkompetenzen nicht als eigenständige, niveaugestufte
+# Kompetenzdimension modelliert.
+# ==============================================================================
+
+harm-dqr:L6_SocialCompetence a harm:HarmonisedConcept ;
+    # KORR: dqr:L6_SocialCompetence → harm-dqr:L6_SocialCompetence (Präfix);
+    # a hrqde:HarmonisedConcept → a harm:HarmonisedConcept (Präfix)
+    skos:prefLabel "Social Skills – Level 6"@en, "Sozialkompetenz – Niveau 6"@de ;
+    dcterms:source "Deutscher Qualifikationsrahmen 2013" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    # KORR: hrqde:derivedFrom "dqr" → harm:derivedFrom harm:kqr_dqr
+    # (derivedFrom als IRI)
+    harm:sourceIdentifier "L6_SocialCompetence" ;
+    # KORR: Präfix hrqde: → harm:
+    harm:integrationStrategy "own_class" ;
+    # KORR: hrqde:integrationStrategy "standalone_class" →
+    # harm:integrationStrategy "own_class" (kontrolliertes Vokabular gem.
+    # Spec §6 — Wert "own_class", nicht "standalone_class". Unterstriche
+    # wegen Cypher-Kompatibilität korrekt, aber der Wert selbst war falsch.)
+    rdfs:comment "Kein korrespondierendes ESCO-Konzept im ICT-Ausschnitt vorhanden: ESCO modelliert Sozialkompetenz nicht als eigenständige, niveaugestufte Kompetenzdimension wie der DQR. Das Konzept wird daher als eigenständige harm:HarmonisedConcept-Klasse ohne Anbindung an einen bestehenden Hub-Knoten übernommen."@de .
+
+# =============================================================================
+# PROPOSAL — Abschnitt B: Schemaerweiterung harm:hasLevel
+#
+# Motivation: e-CF Dimension 3 beschreibt pro Kompetenz Proficiency-Level-
+# Beschreibungen (Stufen 1–5), die inhaltlich auf EQF-Niveaus referenzieren.
+# ADR-24 hatte diesen Crosswalk als narrativ dokumentiert, weil die Zuordnung
+# dreidimensional ist (Kompetenz × Proficiency-Stufe → Niveau) und sich nicht
+# verlustfrei in das zweidimensionale SSSOM-Modell überführen lässt.
+#
+# Lösung: Die Proficiency-Level-Beschreibungen werden als eigenständige
+# skos:Concept-Knoten formalisiert (Muster: dqr:L5_Knowledge in Szenario 2)
+# und regulär durch die Pipeline gegen DQR-Konzepte klassifiziert.
+# harm:hasLevel verbindet den Kompetenzknoten mit seinen Niveauknoten.
+#
+# Abstimmungsbedarf:
+#   (1) Aufnahme von harm:hasLevel in hrqde-harmonisation-schema.ttl
+#   (2) SHACL-Abdeckung oder Auslassung aus der Shape
+#   (3) Optional: harm:CompetenceConcept und harm:LevelConcept als
+#       rdfs:subClassOf skos:Concept für formal ausdrückbare Constraints
+# =============================================================================
+
+# PROPOSAL: Deklaration der neuen Property (gehört in hrqde-harmonisation-schema.ttl)
+harm:hasLevel
+    a            owl:ObjectProperty ;
+    rdfs:domain  skos:Concept ;
+    rdfs:range   skos:Concept ;
+    rdfs:label   "has proficiency level"@en ,
+                 "hat Kompetenzniveau"@de ;
+    rdfs:comment """Verbindet einen e-CF-Kompetenzknoten (Dimension 2) mit seinen
+                  Proficiency-Level-Beschreibungen (Dimension 3). Domain und Range
+                  als skos:Concept deklariert, konsistent mit der Entscheidung,
+                  Typ-Unterscheidungen (Kompetenz- vs. Niveaukonzept) auf
+                  Laufzeitebene über harm:conceptRole zu halten."""@de .
+    # KORR (Syntax): Mehrzeiliges Literal auf """...""" umgestellt — ein
+    # einfach-quotiertes "..."-Literal darf in Turtle keinen Zeilenumbruch
+    # enthalten (STRING_LITERAL_QUOTE, Turtle-Grammatik §19)
+
+# PROPOSAL: Kompetenzknoten e-CF B.6 (Systemintegration) — Dimension 2
+harm-ecf:B.6
+    a                      skos:Concept ;
+    harm:derivedFrom       harm:kqr_ecf ;
+    harm:sourceIdentifier  "B.6" ;
+    skos:prefLabel         "Systems Integration"@en ,
+                           "Systemintegration"@de ;
+    skos:definition        """Ensures the integration and interfacing between
+                            components and related systems including own or
+                            third-party components."""@en ;
+    # KORR (Syntax): """...""" statt "..." für das mehrzeilige Literal
+    harm:hasLevel          harm-ecf:B.6.Niveau3 ;
+    harm:hasLevel          harm-ecf:B.6.Niveau4 .
+
+# PROPOSAL: Niveauknoten B.6 Proficiency 3 — Dimension 3
+# Muster analog zu harm-dqr:L5_Knowledge (Szenario 2)
+harm-ecf:B.6.Niveau3
+    a                      skos:Concept ;
+    harm:derivedFrom       harm:kqr_ecf ;
+    harm:sourceIdentifier  "B.6 Niveau 3" ;
+    skos:prefLabel         "B.6 – Systemintegration, Proficiency 3"@de ,
+                           "B.6 – Systems Integration, Proficiency 3"@en ;
+    skos:definition        """Stellt die Interoperabilität der Systemkomponenten
+                            sicher. Nutzt weitreichendes Fachwissen, um
+                            vollständige Systeme zu entwickeln, die den
+                            Anforderungen gerecht werden und die
+                            Kundenerwartungen erfüllen."""@de .
+    # KORR (Syntax): """...""" statt "..." für das mehrzeilige Literal
+
+# PROPOSAL: Niveauknoten B.6 Proficiency 4 — Dimension 3
+harm-ecf:B.6.Niveau4
+    a                      skos:Concept ;
+    harm:derivedFrom       harm:kqr_ecf ;
+    harm:sourceIdentifier  "B.6 Niveau 4" ;
+    skos:prefLabel         "B.6 – Systemintegration, Proficiency 4"@de ,
+                           "B.6 – Systems Integration, Proficiency 4"@en ;
+    skos:definition        """Plant und leitet komplexe Systemintegrationsvorhaben.
+                            Antizipiert die Kompatibilität neuer Lösungen mit
+                            bestehenden Systemen und stellt die Einhaltung
+                            relevanter Standards sicher."""@de .
+    # KORR (Syntax): """...""" statt "..." für das mehrzeilige Literal
