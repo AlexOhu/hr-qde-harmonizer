@@ -8,6 +8,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   decideConcept,
   getDisjointSummary,
+  listAnchorCandidates,
   listDecisions,
   listUnmappedConcepts,
   suggestStrategy,
@@ -61,6 +62,20 @@ export function useStrategySuggestion(
     queryKey: queryKeys.project.strategySuggestion(projectId ?? "", conceptId ?? ""),
     queryFn: ({ signal }) => suggestStrategy(projectId!, conceptId!, signal),
     enabled: Boolean(projectId) && Boolean(conceptId) && enabled,
+    staleTime: 60_000,
+  });
+}
+
+/** Auswahlliste fuer die Ankerklasse; nur geladen, solange sie gebraucht wird. */
+export function useAnchorCandidates(
+  projectId: string | undefined,
+  conceptId: string | undefined,
+  enabled = true,
+) {
+  return useQuery({
+    queryKey: queryKeys.project.anchorCandidates(projectId ?? "", conceptId ?? ""),
+    queryFn: ({ signal }) => listAnchorCandidates(projectId!, conceptId, signal),
+    enabled: Boolean(projectId) && enabled,
     staleTime: 60_000,
   });
 }

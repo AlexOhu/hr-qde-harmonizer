@@ -30,6 +30,13 @@ def test_end_to_end_pipeline_produces_sssom(
         is_hub=False,
     )
 
+    assert hub_kqr.status == "formalisiert"
+    assert satellite_kqr.status == "formalisiert"
+
+    # Ein valider Import formalisiert nur. Der separate Embedding-Schritt
+    # macht den KQR erst vergleichsbereit.
+    kqr_service.get_embeddings(hub_kqr.id)
+    kqr_service.get_embeddings(satellite_kqr.id)
     assert hub_kqr.status == "bereit"
     assert satellite_kqr.status == "bereit"
 
@@ -70,6 +77,122 @@ def test_end_to_end_pipeline_produces_sssom(
         "author_id",
     ]:
         assert field in header
+
+
+_ROLE_HUB_TTL = """
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix harm: <http://hr-qde.org/harmonised/> .
+@prefix ex:   <http://example.org/hub/> .
+
+ex:Comp a skos:Concept ; skos:prefLabel "Hub Competence"@en ;
+    harm:conceptRole harm:CompetenceConcept .
+"""
+
+_ROLE_SATELLITE_TTL = """
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix harm: <http://hr-qde.org/harmonised/> .
+@prefix ex:   <http://example.org/sat/> .
+
+ex:Comp a skos:Concept ; skos:prefLabel "Satellite Competence"@en ;
+    harm:conceptRole harm:CompetenceConcept .
+ex:Level a skos:Concept ; skos:prefLabel "Satellite Level"@en ;
+    harm:conceptRole harm:LevelConcept .
+"""
+
+
+def test_role_matched_pairing_skips_level_concept_without_counterpart_on_hub(
+    isolated_services, mock_sentence_transformer, mock_anthropic
+):
+    """Befund 2026-09-05: harm:conceptRole harm:LevelConcept darf nicht mehr
+    unbedingt aus der Pipeline ausgeschlossen werden -- es wird nur dann kein
+    Kandidatenpaar gebildet, wenn die Gegenseite gar keine Konzepte dieser
+    Rolle hat (hier: der Hub hat nur CompetenceConcept). Das
+    CompetenceConcept-Paar muss trotzdem ganz normal klassifiziert werden."""
+    mock_anthropic("EQUIVALENT | Testbegründung")
+
+    hub_kqr = kqr_service.register_kqr(
+        name="Role Hub", source_format="turtle", filename="hub.ttl",
+        content=_ROLE_HUB_TTL.encode("utf-8"), is_hub=True,
+    )
+    satellite_kqr = kqr_service.register_kqr(
+        name="Role Satellite", source_format="turtle", filename="satellite.ttl",
+        content=_ROLE_SATELLITE_TTL.encode("utf-8"), is_hub=False,
+    )
+
+    job_id = classification_service.start_classification_job(satellite_kqr.id, hub_kqr.id)
+
+    deadline = time.time() + 20
+    progress = classification_service.get_job_progress(job_id)
+    while progress["status"] == "running" and time.time() < deadline:
+        time.sleep(0.1)
+        progress = classification_service.get_job_progress(job_id)
+
+    assert progress["status"] == "completed", progress
+
+    mappings = mapping_service.list_mappings()
+    subjects_and_objects = {m.subject_id for m in mappings} | {m.object_id for m in mappings}
+
+    assert "http://example.org/sat/Comp" in subjects_and_objects, (
+        "Das CompetenceConcept-Paar (Satellit hat ein Gegenstueck im Hub) muss klassifiziert worden sein."
+    )
+    assert "http://example.org/sat/Level" not in subjects_and_objects, (
+        "Das LevelConcept darf kein Mapping erhalten haben -- der Hub hat keine "
+        "LevelConcept-Gegenseite, also darf gar kein Kandidatenpaar entstanden sein."
+    )
+
+
+def test_restarted_job_does_not_duplicate_structural_shortcut_mappings(
+    isolated_services, hub_ttl, satellite_ttl, mock_sentence_transformer, mock_anthropic
+):
+    """Befund 2026-09-05: find_structural_shortcuts()/add_mappings() hatte
+    -- anders als die LLM-Klassifikation -- keinen Wiederaufnahme-Schutz.
+    Ein erneuter start_classification_job()-Aufruf fuer dasselbe Paar (z. B.
+    nach einem Server-Neustart mitten im Lauf) durfte den bereits per
+    strukturellem Shortcut entschiedenen Paaren (hub_kqr/satellite_kqr
+    enthalten laut Fixture einen Shortcut, s. test_end_to_end_pipeline_
+    produces_sssom) kein zweites Mapping hinzufuegen."""
+    mock_anthropic("EQUIVALENT | Testbegründung")
+
+    hub_kqr = kqr_service.register_kqr(
+        name="Hub KQR", source_format="turtle", filename="hub.ttl",
+        content=hub_ttl.encode("utf-8"), is_hub=True,
+    )
+    satellite_kqr = kqr_service.register_kqr(
+        name="Satellite KQR", source_format="turtle", filename="satellite.ttl",
+        content=satellite_ttl.encode("utf-8"), is_hub=False,
+    )
+
+    job_id = classification_service.start_classification_job(hub_kqr.id, satellite_kqr.id)
+    deadline = time.time() + 20
+    progress = classification_service.get_job_progress(job_id)
+    while progress["status"] == "running" and time.time() < deadline:
+        time.sleep(0.05)
+        progress = classification_service.get_job_progress(job_id)
+    assert progress["status"] == "completed", progress
+
+    structural_after_first_run = [
+        m for m in mapping_service.list_mappings() if m.mapping_justification.value == "semapv:StructuralMatching"
+    ]
+    assert len(structural_after_first_run) > 0, "Fixture-Paar sollte mindestens einen strukturellen Shortcut enthalten."
+
+    # Prozess-Neustart simulieren (In-Memory-Job-Registry geleert, persistierte
+    # Mappings bleiben unberuehrt) und denselben Lauf erneut anstossen.
+    classification_service._jobs.clear()
+    second_job_id = classification_service.start_classification_job(hub_kqr.id, satellite_kqr.id)
+    deadline = time.time() + 20
+    progress = classification_service.get_job_progress(second_job_id)
+    while progress["status"] == "running" and time.time() < deadline:
+        time.sleep(0.05)
+        progress = classification_service.get_job_progress(second_job_id)
+    assert progress["status"] == "completed", progress
+
+    structural_after_second_run = [
+        m for m in mapping_service.list_mappings() if m.mapping_justification.value == "semapv:StructuralMatching"
+    ]
+    assert len(structural_after_second_run) == len(structural_after_first_run), (
+        "Der zweite Lauf fuer dasselbe Paar darf keine zusaetzlichen strukturellen "
+        "Shortcut-Mappings anlegen (Duplikate)."
+    )
 
 
 def test_restarted_job_skips_already_classified_pairs(

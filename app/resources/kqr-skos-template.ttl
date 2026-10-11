@@ -1,0 +1,44 @@
+# HR-QDE-KQR-Importvorlage (Turtle, UTF-8)
+#
+# Diese Datei zeigt den technischen Übergabestandard für einen kuratierten
+# Import. Sie automatisiert nicht die fachliche Überführung eines KQR:
+# Benennungen, Abgrenzungen, Rollen und Hierarchien werden vom KQR-Experten
+# verantwortet. Entfernen Sie die Beispielkonzepte und ersetzen Sie die
+# example.org-URIs durch einen stabilen Namensraum Ihres Rahmenwerks.
+
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix harm: <http://hr-qde.org/harmonised/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ex: <https://example.org/my-kqr/> .
+
+# Ein ConceptScheme fasst alle Konzepte des KQR zusammen. Jedes Konzept
+# verweist über skos:inScheme auf dieses Schema.
+ex:scheme a skos:ConceptScheme ;
+    dcterms:title "Mein Kompetenzrahmen"@de ;
+    skos:hasTopConcept ex:software_development, ex:level_4 .
+
+# CompetenceConcept: eine Kompetenz oder ein Skill, etwa eine e-CF-Kompetenz
+# der Dimension 2 oder ein ESCO-Skill. skos:definition ist für gute
+# Embeddings sehr empfehlenswert.
+ex:software_development a skos:Concept, harm:CompetenceConcept ;
+    skos:inScheme ex:scheme ;
+    skos:prefLabel "Softwareentwicklung"@de ;
+    skos:definition "Entwicklung und Pflege von Software."@de ;
+    skos:narrower ex:software_testing .
+
+# Hierarchien verbinden ausschliesslich skos:Concept-Knoten. Die inverse
+# Schreibweise am Kind ist gleichwertig: ex:software_testing skos:broader
+# ex:software_development. Verwenden Sie keine selbstreferenzierten Kanten.
+ex:software_testing a skos:Concept, harm:CompetenceConcept ;
+    skos:inScheme ex:scheme ;
+    skos:prefLabel "Software testen"@de ;
+    skos:definition "Prüfung von Software gegen Anforderungen."@de ;
+    skos:broader ex:software_development .
+
+# LevelConcept: ein Qualifikations- oder Beherrschungsniveau, etwa ein
+# DQR-Niveaukonzept oder eine e-CF-Proficiency-Beschreibung. Ein Konzept darf
+# nicht gleichzeitig CompetenceConcept und LevelConcept sein.
+ex:level_4 a skos:Concept, harm:LevelConcept ;
+    skos:inScheme ex:scheme ;
+    skos:prefLabel "Niveau 4"@de ;
+    skos:definition "Selbstständige Bearbeitung fachlicher Aufgaben."@de .

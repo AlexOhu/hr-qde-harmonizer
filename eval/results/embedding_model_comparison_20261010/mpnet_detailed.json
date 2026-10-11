@@ -1,0 +1,3384 @@
+{
+  "model_role": "mpnet",
+  "model_id": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+  "snapshot_path": "C:\\Users\\Alex\\.cache\\huggingface\\hub\\models--sentence-transformers--paraphrase-multilingual-mpnet-base-v2\\snapshots\\4328cf26390c98c5e3c738b4460a05b95f4911f5",
+  "snapshot_revision": "4328cf26390c98c5e3c738b4460a05b95f4911f5",
+  "device": "cpu",
+  "batch_size": 16,
+  "query_instruction": null,
+  "query_template": "{text}",
+  "target_template": "{text}",
+  "normalization": "SentenceTransformer.encode(normalize_embeddings=True)",
+  "tie_rule": "rank = 1 + count(score > gold_score)",
+  "timing_seconds": {
+    "model_load": 2.2517561000131536,
+    "query_encoding": 5.472106699991855,
+    "target_encoding_by_kqr": {
+      "dqr_1d": 0.21767659999022726,
+      "eqf_2d": 1.1367976000037743,
+      "esco_skeleton_oberhuber": 6.887714700002107,
+      "esco_v1_2_ict_ausschnitt": 22.921074899990344
+    },
+    "ranking": 0.03150540000933688,
+    "total": 39.73974839999573
+  },
+  "peak_process_rss_bytes": 1305337856,
+  "results": {
+    "G_manual": {
+      "target_kqr": "esco_skeleton_oberhuber",
+      "pool_policy": "complete_target_kqr",
+      "pool_size": 1302,
+      "pairs_total": 74,
+      "pairs_evaluable": 26,
+      "k_values": [
+        5,
+        10,
+        15,
+        20,
+        30,
+        50,
+        100
+      ],
+      "recall": {
+        "5": 0.6153846153846154,
+        "10": 0.7692307692307693,
+        "15": 0.8461538461538461,
+        "20": 0.8846153846153846,
+        "30": 0.8846153846153846,
+        "50": 0.9615384615384616,
+        "100": 0.9615384615384616
+      },
+      "median_rank": 3.5,
+      "max_rank": 196,
+      "pairs": [
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/B.4",
+          "object_id": "http://data.europa.eu/esco/skill/1d86f05e-e9cc-40ce-99d8-2b21cc71b16b",
+          "gold_score": 0.8125198483467102,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/D.12",
+          "object_id": "http://data.europa.eu/esco/skill/43dfbe7f-9e10-4871-b171-e5076737b4cf",
+          "gold_score": 0.7049147486686707,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/C.4",
+          "object_id": "http://data.europa.eu/esco/skill/a3ce2bf7-5562-4639-9b52-fdb4850a3904",
+          "gold_score": 0.5974866151809692,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/B.1",
+          "object_id": "http://data.europa.eu/esco/skill/33d49d4f-31ec-473f-9b8a-b555aa5116bb",
+          "gold_score": 0.4851214289665222,
+          "rank": 43,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": false,
+            "20": false,
+            "30": false,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/B.3",
+          "object_id": "http://data.europa.eu/esco/skill/5d74614d-32c8-4ca4-9818-6980e52424b1",
+          "gold_score": 0.6920531988143921,
+          "rank": 12,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/A.6",
+          "object_id": "http://data.europa.eu/esco/skill/fae27053-8924-4bfd-b565-c9fe502044c9",
+          "gold_score": 0.6046079397201538,
+          "rank": 10,
+          "hits": {
+            "5": false,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.8",
+          "object_id": "http://data.europa.eu/esco/skill/4918ec9a-0204-4935-8b09-b0112370daa8",
+          "gold_score": 0.7939823269844055,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/C.1",
+          "object_id": "http://data.europa.eu/esco/skill/c2296e2e-5fef-4f24-a24f-e5b3792268be",
+          "gold_score": 0.5397722125053406,
+          "rank": 5,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/D.11",
+          "object_id": "http://data.europa.eu/esco/skill/42fcf80d-7b45-40f3-bd2f-5411c4c0dfa0",
+          "gold_score": 0.6203595995903015,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/plan",
+          "object_id": "http://data.europa.eu/esco/skill/a2fef437-6719-47c2-8552-73b9fe81df86",
+          "gold_score": 0.6240568161010742,
+          "rank": 3,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.2",
+          "object_id": "http://data.europa.eu/esco/skill/0a9acb6b-1139-4be9-b431-3a80a959f2f4",
+          "gold_score": 0.6086496710777283,
+          "rank": 4,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/B.3",
+          "object_id": "http://data.europa.eu/esco/skill/ea412de3-9d7a-4943-8d8c-c6d3c7495d0e",
+          "gold_score": 0.7064506411552429,
+          "rank": 10,
+          "hits": {
+            "5": false,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/B.3",
+          "object_id": "http://data.europa.eu/esco/skill/53456d90-8c0d-4bd2-9f1b-312619b6e2a6",
+          "gold_score": 0.7222954034805298,
+          "rank": 7,
+          "hits": {
+            "5": false,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/D.12",
+          "object_id": "http://data.europa.eu/esco/skill/736ef286-fbd3-4e5c-a4b4-d1e2008c9898",
+          "gold_score": 0.6723982095718384,
+          "rank": 2,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/D.12",
+          "object_id": "http://data.europa.eu/esco/skill/ef069fe6-305b-4452-8f7d-0c572e98effc",
+          "gold_score": 0.4640083909034729,
+          "rank": 15,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.6",
+          "object_id": "http://data.europa.eu/esco/skill/7f0b1a66-ebaf-4c8a-b606-4c1844eb692e",
+          "gold_score": 0.7594934701919556,
+          "rank": 2,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/A.6",
+          "object_id": "http://data.europa.eu/esco/skill/b0096dc5-2e2d-4bc1-8172-05bf486c3968",
+          "gold_score": 0.6817086935043335,
+          "rank": 2,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.6",
+          "object_id": "http://data.europa.eu/esco/skill/94dd823c-148e-4614-a6e8-99249b16357d",
+          "gold_score": 0.6947036385536194,
+          "rank": 5,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/A.2",
+          "object_id": "http://data.europa.eu/esco/skill/83218cac-3599-417e-93d2-26013cdccd98",
+          "gold_score": 0.6014736890792847,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/A.3",
+          "object_id": "http://data.europa.eu/esco/skill/11eebd42-44ab-401d-8a2c-bdb9fc9beb50",
+          "gold_score": 0.2629789113998413,
+          "rank": 196,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": false,
+            "20": false,
+            "30": false,
+            "50": false,
+            "100": false
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/A.8",
+          "object_id": "http://data.europa.eu/esco/skill/bec4359e-cb92-468f-a997-8fb28e32fba9",
+          "gold_score": 0.6322542428970337,
+          "rank": 2,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/B.4",
+          "object_id": "http://data.europa.eu/esco/skill/e6b8f934-7f35-4dc6-9a64-f6c43acdc00b",
+          "gold_score": 0.5800668001174927,
+          "rank": 7,
+          "hits": {
+            "5": false,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/C.1",
+          "object_id": "http://data.europa.eu/esco/skill/be64bb4c-84ac-4c83-8cc7-fc8593e15136",
+          "gold_score": 0.4488053023815155,
+          "rank": 20,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": false,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://data.bmbf.de/dqr/L6_Knowledge",
+          "object_id": "http://data.europa.eu/esco/skill/0dc7aa1b-b5af-4f4b-81ce-ee22ed8b6926",
+          "gold_score": 0.5506905317306519,
+          "rank": 2,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/D.9",
+          "object_id": "http://data.europa.eu/esco/skill/33d49d4f-31ec-473f-9b8a-b555aa5116bb",
+          "gold_score": 0.46397310495376587,
+          "rank": 3,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/D.12",
+          "object_id": "http://data.europa.eu/esco/skill/397da142-ab35-48fe-b154-7c38f447adfb",
+          "gold_score": 0.4290786385536194,
+          "rank": 35,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": false,
+            "20": false,
+            "30": false,
+            "50": true,
+            "100": true
+          }
+        }
+      ]
+    },
+    "G_manual@956": {
+      "target_kqr": "esco_v1_2_ict_ausschnitt",
+      "pool_policy": "complete_target_kqr",
+      "pool_size": 956,
+      "pairs_total": 74,
+      "pairs_evaluable": 68,
+      "k_values": [
+        5,
+        10,
+        15,
+        20,
+        30,
+        50,
+        100
+      ],
+      "recall": {
+        "5": 0.4852941176470588,
+        "10": 0.6911764705882353,
+        "15": 0.8088235294117647,
+        "20": 1.0,
+        "30": 1.0,
+        "50": 1.0,
+        "100": 1.0
+      },
+      "median_rank": 6.0,
+      "max_rank": 20,
+      "pairs": [
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/B.4",
+          "object_id": "http://data.europa.eu/esco/skill/1d86f05e-e9cc-40ce-99d8-2b21cc71b16b",
+          "gold_score": 0.8561183214187622,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.3",
+          "object_id": "http://data.europa.eu/esco/skill/6eff134b-e34f-4d6e-a6e8-5e47cf2228d0",
+          "gold_score": 0.8568640947341919,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/D.1",
+          "object_id": "http://data.europa.eu/esco/skill/3579208e-49b3-4ce4-98e7-20e41b1ce8d4",
+          "gold_score": 0.8073793053627014,
+          "rank": 2,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/D.12",
+          "object_id": "http://data.europa.eu/esco/skill/43dfbe7f-9e10-4871-b171-e5076737b4cf",
+          "gold_score": 0.7733727693557739,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.7",
+          "object_id": "http://data.europa.eu/esco/skill/3c03ee71-4a23-448f-b79e-81fd75d27dca",
+          "gold_score": 0.7149491310119629,
+          "rank": 3,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.8",
+          "object_id": "http://data.europa.eu/esco/skill/6833e58b-eceb-4599-9375-1b7e6ec64087",
+          "gold_score": 0.6385584473609924,
+          "rank": 20,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": false,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/C.4",
+          "object_id": "http://data.europa.eu/esco/skill/a3ce2bf7-5562-4639-9b52-fdb4850a3904",
+          "gold_score": 0.7015944719314575,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.6",
+          "object_id": "http://data.europa.eu/esco/occupation/a28dff76-74df-46ee-929f-d1fffbb63cd7",
+          "gold_score": 0.8924755454063416,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/B.1",
+          "object_id": "http://data.europa.eu/esco/skill/33d49d4f-31ec-473f-9b8a-b555aa5116bb",
+          "gold_score": 0.6471781730651855,
+          "rank": 10,
+          "hits": {
+            "5": false,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/B.3",
+          "object_id": "http://data.europa.eu/esco/skill/5d74614d-32c8-4ca4-9818-6980e52424b1",
+          "gold_score": 0.6993165612220764,
+          "rank": 16,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": false,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/A.6",
+          "object_id": "http://data.europa.eu/esco/skill/fae27053-8924-4bfd-b565-c9fe502044c9",
+          "gold_score": 0.6805455088615417,
+          "rank": 6,
+          "hits": {
+            "5": false,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.8",
+          "object_id": "http://data.europa.eu/esco/skill/4918ec9a-0204-4935-8b09-b0112370daa8",
+          "gold_score": 0.7988182306289673,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/C.1",
+          "object_id": "http://data.europa.eu/esco/skill/c2296e2e-5fef-4f24-a24f-e5b3792268be",
+          "gold_score": 0.5617564916610718,
+          "rank": 5,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/D.11",
+          "object_id": "http://data.europa.eu/esco/skill/42fcf80d-7b45-40f3-bd2f-5411c4c0dfa0",
+          "gold_score": 0.6080870032310486,
+          "rank": 8,
+          "hits": {
+            "5": false,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/plan",
+          "object_id": "http://data.europa.eu/esco/skill/a2fef437-6719-47c2-8552-73b9fe81df86",
+          "gold_score": 0.6076484322547913,
+          "rank": 6,
+          "hits": {
+            "5": false,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/plan",
+          "object_id": "http://data.europa.eu/esco/skill/ed0718f6-5823-4c74-9749-2936c9c06203",
+          "gold_score": 0.5622900724411011,
+          "rank": 19,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": false,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/manage",
+          "object_id": "http://data.europa.eu/esco/skill/cb668e89-6ef5-4ff3-ab4a-506010e7e70b",
+          "gold_score": 0.6127711534500122,
+          "rank": 17,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": false,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/manage",
+          "object_id": "http://data.europa.eu/esco/skill/41bf7ede-fc84-4a57-8c89-b548d11b0ba1",
+          "gold_score": 0.5940911769866943,
+          "rank": 20,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": false,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/manage",
+          "object_id": "http://data.europa.eu/esco/skill/3c76296d-4bbd-44ba-8eaa-95bf275f79b7",
+          "gold_score": 0.7312272191047668,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/A.5",
+          "object_id": "http://data.europa.eu/esco/skill/ee3c1d54-f46a-43c7-a0f9-0ba3648164d0",
+          "gold_score": 0.7376627922058105,
+          "rank": 5,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.2",
+          "object_id": "http://data.europa.eu/esco/skill/7111b95d-0ce3-441a-9d92-4c75d05c4388",
+          "gold_score": 0.7798575758934021,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.2",
+          "object_id": "http://data.europa.eu/esco/skill/0a9acb6b-1139-4be9-b431-3a80a959f2f4",
+          "gold_score": 0.6093066930770874,
+          "rank": 16,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": false,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/B.3",
+          "object_id": "http://data.europa.eu/esco/skill/ea412de3-9d7a-4943-8d8c-c6d3c7495d0e",
+          "gold_score": 0.729460597038269,
+          "rank": 12,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/B.3",
+          "object_id": "http://data.europa.eu/esco/skill/53456d90-8c0d-4bd2-9f1b-312619b6e2a6",
+          "gold_score": 0.7852095365524292,
+          "rank": 4,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/D.12",
+          "object_id": "http://data.europa.eu/esco/skill/736ef286-fbd3-4e5c-a4b4-d1e2008c9898",
+          "gold_score": 0.6524693965911865,
+          "rank": 2,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/D.12",
+          "object_id": "http://data.europa.eu/esco/skill/ef069fe6-305b-4452-8f7d-0c572e98effc",
+          "gold_score": 0.6023169755935669,
+          "rank": 5,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/D.1",
+          "object_id": "http://data.europa.eu/esco/skill/86d2e2ea-1ba2-4aa6-b465-8a1f9abc81b8",
+          "gold_score": 0.6362457275390625,
+          "rank": 12,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.6",
+          "object_id": "http://data.europa.eu/esco/skill/7f0b1a66-ebaf-4c8a-b606-4c1844eb692e",
+          "gold_score": 0.777454137802124,
+          "rank": 4,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/B.6",
+          "object_id": "http://data.europa.eu/esco/skill/72a74f69-5cf1-43c5-99b9-62a444578919",
+          "gold_score": 0.7014883756637573,
+          "rank": 8,
+          "hits": {
+            "5": false,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.1",
+          "object_id": "http://data.europa.eu/esco/skill/875eeec4-fc70-4e6a-80ef-4d18356976e3",
+          "gold_score": 0.5387850999832153,
+          "rank": 9,
+          "hits": {
+            "5": false,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/D.7",
+          "object_id": "http://data.europa.eu/esco/skill/e7219848-a27a-4bf4-8775-d367707be7c9",
+          "gold_score": 0.7880291938781738,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/A.6",
+          "object_id": "http://data.europa.eu/esco/skill/b0096dc5-2e2d-4bc1-8172-05bf486c3968",
+          "gold_score": 0.7127952575683594,
+          "rank": 2,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/B.5",
+          "object_id": "http://data.europa.eu/esco/skill/327d15c8-29ff-4ad4-a4fe-6536d777a45f",
+          "gold_score": 0.5769039392471313,
+          "rank": 8,
+          "hits": {
+            "5": false,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.6",
+          "object_id": "http://data.europa.eu/esco/skill/94dd823c-148e-4614-a6e8-99249b16357d",
+          "gold_score": 0.7625231146812439,
+          "rank": 5,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.6",
+          "object_id": "http://data.europa.eu/esco/occupation/a28dff76-74df-46ee-929f-d1fffbb63cd7",
+          "gold_score": 0.8924755454063416,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/D.2",
+          "object_id": "http://data.europa.eu/esco/occupation/a28dff76-74df-46ee-929f-d1fffbb63cd7",
+          "gold_score": 0.7147495746612549,
+          "rank": 4,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/B.2",
+          "object_id": "http://data.europa.eu/esco/occupation/07e60525-1aad-4099-aaf3-2c7014c92212",
+          "gold_score": 0.6482141613960266,
+          "rank": 8,
+          "hits": {
+            "5": false,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/C.1",
+          "object_id": "http://data.europa.eu/esco/occupation/faed411a-f920-4100-86a8-b877928b429c",
+          "gold_score": 0.6265633702278137,
+          "rank": 2,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.3",
+          "object_id": "http://data.europa.eu/esco/occupation/7754d570-9519-48c2-b1c9-8e165f8bca0f",
+          "gold_score": 0.7875814437866211,
+          "rank": 2,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/B.2",
+          "object_id": "http://data.europa.eu/esco/occupation/731f38f1-b08f-4dd5-a25e-f8627c038273",
+          "gold_score": 0.6637752056121826,
+          "rank": 5,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/B.1",
+          "object_id": "http://data.europa.eu/esco/occupation/2ed56c3f-61d6-4f7e-9ef8-8849eb102e4c",
+          "gold_score": 0.7744729518890381,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/A.6",
+          "object_id": "http://data.europa.eu/esco/occupation/456ed487-02f2-45c9-9213-d0fd8e9a069d",
+          "gold_score": 0.6506146192550659,
+          "rank": 13,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/D.10",
+          "object_id": "http://data.europa.eu/esco/occupation/812c217d-32b7-4f6a-9faf-993d3577ac7f",
+          "gold_score": 0.5553849339485168,
+          "rank": 19,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": false,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.8",
+          "object_id": "http://data.europa.eu/esco/occupation/0464b062-cea6-4164-b10d-956c61956ae7",
+          "gold_score": 0.7351946830749512,
+          "rank": 6,
+          "hits": {
+            "5": false,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/B.2",
+          "object_id": "http://data.europa.eu/esco/occupation/bd9d395a-d587-45c6-8d72-ceef226df9e1",
+          "gold_score": 0.5957802534103394,
+          "rank": 15,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.7",
+          "object_id": "http://data.europa.eu/esco/occupation/fe0fa514-b48d-4a53-9757-a283c0baacf0",
+          "gold_score": 0.702006459236145,
+          "rank": 4,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/D.1",
+          "object_id": "http://data.europa.eu/esco/occupation/0464b062-cea6-4164-b10d-956c61956ae7",
+          "gold_score": 0.6187905669212341,
+          "rank": 14,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.8",
+          "object_id": "http://data.europa.eu/esco/occupation/276ba420-ef09-4a0e-b215-2c2e2f80ad28",
+          "gold_score": 0.6582701206207275,
+          "rank": 16,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": false,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/D.2",
+          "object_id": "http://data.europa.eu/esco/occupation/a7c1d23d-aeca-4bee-9a08-5993ed98b135",
+          "gold_score": 0.6182657480239868,
+          "rank": 18,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": false,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.6",
+          "object_id": "http://data.europa.eu/esco/occupation/4b3201cb-ffc5-4f61-9fc3-5c0f0038fa5f",
+          "gold_score": 0.6848800182342529,
+          "rank": 9,
+          "hits": {
+            "5": false,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/C.2",
+          "object_id": "http://data.europa.eu/esco/occupation/3b1ea27c-781c-41eb-821f-214285260dd2",
+          "gold_score": 0.6243510842323303,
+          "rank": 4,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/A.3",
+          "object_id": "http://data.europa.eu/esco/occupation/4b3201cb-ffc5-4f61-9fc3-5c0f0038fa5f",
+          "gold_score": 0.5920646786689758,
+          "rank": 6,
+          "hits": {
+            "5": false,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/A.1",
+          "object_id": "http://data.europa.eu/esco/occupation/fe0fa514-b48d-4a53-9757-a283c0baacf0",
+          "gold_score": 0.6107627153396606,
+          "rank": 2,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.2",
+          "object_id": "http://data.europa.eu/esco/occupation/3b1ea27c-781c-41eb-821f-214285260dd2",
+          "gold_score": 0.6683791875839233,
+          "rank": 8,
+          "hits": {
+            "5": false,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/build",
+          "object_id": "http://data.europa.eu/esco/skill/d54a1355-05c8-45eb-9c42-267d2cfcdf44",
+          "gold_score": 0.5590355396270752,
+          "rank": 16,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": false,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/A.2",
+          "object_id": "http://data.europa.eu/esco/skill/cb668e89-6ef5-4ff3-ab4a-506010e7e70b",
+          "gold_score": 0.5926735997200012,
+          "rank": 4,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/A.2",
+          "object_id": "http://data.europa.eu/esco/skill/83218cac-3599-417e-93d2-26013cdccd98",
+          "gold_score": 0.5912461280822754,
+          "rank": 5,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/A.3",
+          "object_id": "http://data.europa.eu/esco/skill/11eebd42-44ab-401d-8a2c-bdb9fc9beb50",
+          "gold_score": 0.5818861722946167,
+          "rank": 7,
+          "hits": {
+            "5": false,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/A.8",
+          "object_id": "http://data.europa.eu/esco/skill/bec4359e-cb92-468f-a997-8fb28e32fba9",
+          "gold_score": 0.6034682989120483,
+          "rank": 10,
+          "hits": {
+            "5": false,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/B.4",
+          "object_id": "http://data.europa.eu/esco/skill/e6b8f934-7f35-4dc6-9a64-f6c43acdc00b",
+          "gold_score": 0.6043269038200378,
+          "rank": 5,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/B.5",
+          "object_id": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
+          "gold_score": 0.5406045913696289,
+          "rank": 11,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/C.1",
+          "object_id": "http://data.europa.eu/esco/skill/be64bb4c-84ac-4c83-8cc7-fc8593e15136",
+          "gold_score": 0.5141652822494507,
+          "rank": 12,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://data.bmbf.de/dqr/L6_Knowledge",
+          "object_id": "http://data.europa.eu/esco/skill/0dc7aa1b-b5af-4f4b-81ce-ee22ed8b6926",
+          "gold_score": 0.5232948064804077,
+          "rank": 3,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/C.4",
+          "object_id": "http://data.europa.eu/esco/skill/6eff134b-e34f-4d6e-a6e8-5e47cf2228d0",
+          "gold_score": 0.6133506298065186,
+          "rank": 3,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/D.8",
+          "object_id": "http://data.europa.eu/esco/skill/7111b95d-0ce3-441a-9d92-4c75d05c4388",
+          "gold_score": 0.583125114440918,
+          "rank": 20,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": false,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/E.4",
+          "object_id": "http://data.europa.eu/esco/skill/7111b95d-0ce3-441a-9d92-4c75d05c4388",
+          "gold_score": 0.5230097770690918,
+          "rank": 18,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": false,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/D.9",
+          "object_id": "http://data.europa.eu/esco/skill/33d49d4f-31ec-473f-9b8a-b555aa5116bb",
+          "gold_score": 0.5121997594833374,
+          "rank": 16,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": false,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/ecf/D.12",
+          "object_id": "http://data.europa.eu/esco/skill/397da142-ab35-48fe-b154-7c38f447adfb",
+          "gold_score": 0.5132731795310974,
+          "rank": 15,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        }
+      ]
+    },
+    "G_struct": {
+      "target_kqr": "eqf_2d",
+      "pool_policy": "complete_target_kqr",
+      "pool_size": 32,
+      "pairs_total": 32,
+      "pairs_evaluable": 32,
+      "k_values": [
+        5,
+        10,
+        15,
+        20,
+        30,
+        50,
+        100
+      ],
+      "recall": {
+        "5": 0.8125,
+        "10": 0.90625,
+        "15": 0.90625,
+        "20": 0.9375,
+        "30": 1.0,
+        "50": 1.0,
+        "100": 1.0
+      },
+      "median_rank": 2.0,
+      "max_rank": 26,
+      "pairs": [
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L1_Knowledge",
+          "object_id": "http://data.europa.eu/snb/eqf/L1_Knowledge",
+          "gold_score": 0.7433285713195801,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L1_Skills",
+          "object_id": "http://data.europa.eu/snb/eqf/L1_Skills",
+          "gold_score": 0.755423903465271,
+          "rank": 2,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L1_SocialCompetence",
+          "object_id": "http://data.europa.eu/snb/eqf/L1_ResponsibilityAutonomy",
+          "gold_score": 0.42861050367355347,
+          "rank": 26,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": false,
+            "20": false,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L1_Autonomy",
+          "object_id": "http://data.europa.eu/snb/eqf/L1_ResponsibilityAutonomy",
+          "gold_score": 0.7397979497909546,
+          "rank": 2,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L2_Knowledge",
+          "object_id": "http://data.europa.eu/snb/eqf/L2_Knowledge",
+          "gold_score": 0.7116439342498779,
+          "rank": 3,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L2_Skills",
+          "object_id": "http://data.europa.eu/snb/eqf/L2_Skills",
+          "gold_score": 0.7516268491744995,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L2_SocialCompetence",
+          "object_id": "http://data.europa.eu/snb/eqf/L2_ResponsibilityAutonomy",
+          "gold_score": 0.4238136410713196,
+          "rank": 19,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": false,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L2_Autonomy",
+          "object_id": "http://data.europa.eu/snb/eqf/L2_ResponsibilityAutonomy",
+          "gold_score": 0.7730658054351807,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L3_Knowledge",
+          "object_id": "http://data.europa.eu/snb/eqf/L3_Knowledge",
+          "gold_score": 0.7034841775894165,
+          "rank": 3,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L3_Skills",
+          "object_id": "http://data.europa.eu/snb/eqf/L3_Skills",
+          "gold_score": 0.7485213279724121,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L3_SocialCompetence",
+          "object_id": "http://data.europa.eu/snb/eqf/L3_ResponsibilityAutonomy",
+          "gold_score": 0.5690727233886719,
+          "rank": 2,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L3_Autonomy",
+          "object_id": "http://data.europa.eu/snb/eqf/L3_ResponsibilityAutonomy",
+          "gold_score": 0.7107704281806946,
+          "rank": 4,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L4_Knowledge",
+          "object_id": "http://data.europa.eu/snb/eqf/L4_Knowledge",
+          "gold_score": 0.7014880776405334,
+          "rank": 6,
+          "hits": {
+            "5": false,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L4_Skills",
+          "object_id": "http://data.europa.eu/snb/eqf/L4_Skills",
+          "gold_score": 0.7380185723304749,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L4_SocialCompetence",
+          "object_id": "http://data.europa.eu/snb/eqf/L4_ResponsibilityAutonomy",
+          "gold_score": 0.5206371545791626,
+          "rank": 8,
+          "hits": {
+            "5": false,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L4_Autonomy",
+          "object_id": "http://data.europa.eu/snb/eqf/L4_ResponsibilityAutonomy",
+          "gold_score": 0.7361641526222229,
+          "rank": 2,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L5_Knowledge",
+          "object_id": "http://data.europa.eu/snb/eqf/L5_Knowledge",
+          "gold_score": 0.7215696573257446,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L5_Skills",
+          "object_id": "http://data.europa.eu/snb/eqf/L5_Skills",
+          "gold_score": 0.6776670217514038,
+          "rank": 2,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L5_SocialCompetence",
+          "object_id": "http://data.europa.eu/snb/eqf/L5_ResponsibilityAutonomy",
+          "gold_score": 0.4619028568267822,
+          "rank": 26,
+          "hits": {
+            "5": false,
+            "10": false,
+            "15": false,
+            "20": false,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L5_Autonomy",
+          "object_id": "http://data.europa.eu/snb/eqf/L5_ResponsibilityAutonomy",
+          "gold_score": 0.6844844818115234,
+          "rank": 7,
+          "hits": {
+            "5": false,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L6_Knowledge",
+          "object_id": "http://data.europa.eu/snb/eqf/L6_Knowledge",
+          "gold_score": 0.7538934350013733,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L6_Skills",
+          "object_id": "http://data.europa.eu/snb/eqf/L6_Skills",
+          "gold_score": 0.7524537444114685,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L6_SocialCompetence",
+          "object_id": "http://data.europa.eu/snb/eqf/L6_ResponsibilityAutonomy",
+          "gold_score": 0.6410520076751709,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L6_Autonomy",
+          "object_id": "http://data.europa.eu/snb/eqf/L6_ResponsibilityAutonomy",
+          "gold_score": 0.6983953714370728,
+          "rank": 4,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L7_Knowledge",
+          "object_id": "http://data.europa.eu/snb/eqf/L7_Knowledge",
+          "gold_score": 0.7586464285850525,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L7_Skills",
+          "object_id": "http://data.europa.eu/snb/eqf/L7_Skills",
+          "gold_score": 0.7401924133300781,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L7_SocialCompetence",
+          "object_id": "http://data.europa.eu/snb/eqf/L7_ResponsibilityAutonomy",
+          "gold_score": 0.6119128465652466,
+          "rank": 2,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L7_Autonomy",
+          "object_id": "http://data.europa.eu/snb/eqf/L7_ResponsibilityAutonomy",
+          "gold_score": 0.6853659152984619,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L8_Knowledge",
+          "object_id": "http://data.europa.eu/snb/eqf/L8_Knowledge",
+          "gold_score": 0.7123777866363525,
+          "rank": 3,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L8_Skills",
+          "object_id": "http://data.europa.eu/snb/eqf/L8_Skills",
+          "gold_score": 0.7906437516212463,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L8_SocialCompetence",
+          "object_id": "http://data.europa.eu/snb/eqf/L8_ResponsibilityAutonomy",
+          "gold_score": 0.5684992074966431,
+          "rank": 3,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/dqr/L8_Autonomy",
+          "object_id": "http://data.europa.eu/snb/eqf/L8_ResponsibilityAutonomy",
+          "gold_score": 0.7114427089691162,
+          "rank": 1,
+          "hits": {
+            "5": true,
+            "10": true,
+            "15": true,
+            "20": true,
+            "30": true,
+            "50": true,
+            "100": true
+          }
+        }
+      ]
+    },
+    "G_levels": {
+      "target_kqr": "dqr_1d",
+      "pool_policy": "evaluable_gold_objects",
+      "pool_size": 6,
+      "pairs_total": 113,
+      "pairs_evaluable": 113,
+      "k_values": [
+        1,
+        3,
+        5,
+        8
+      ],
+      "recall": {
+        "1": 0.22123893805309736,
+        "3": 0.5752212389380531,
+        "5": 0.8938053097345132,
+        "8": 1.0
+      },
+      "median_rank": 3.0,
+      "max_rank": 6,
+      "pairs": [
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.1.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.4950686991214752,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.1.Niveau5",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L8",
+          "gold_score": 0.3618406653404236,
+          "rank": 6,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": false,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.2.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.47910740971565247,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.2.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.5360754728317261,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.3.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.5269705653190613,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.3.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.44105833768844604,
+          "rank": 5,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.3.Niveau5",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L8",
+          "gold_score": 0.43902748823165894,
+          "rank": 6,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": false,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.4.Niveau2",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L5",
+          "gold_score": 0.4845799505710602,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.4.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.5833538770675659,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.4.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.5437368750572205,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.5.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.4695611000061035,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.5.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.46347957849502563,
+          "rank": 4,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.5.Niveau5",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L8",
+          "gold_score": 0.3835417330265045,
+          "rank": 6,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": false,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.6.Niveau1",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L3",
+          "gold_score": 0.4793439507484436,
+          "rank": 5,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.6.Niveau1",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L4",
+          "gold_score": 0.5131289958953857,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.6.Niveau2",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L5",
+          "gold_score": 0.5194527506828308,
+          "rank": 2,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.6.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.6263526082038879,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.7.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.5169041752815247,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.7.Niveau5",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L8",
+          "gold_score": 0.4116343855857849,
+          "rank": 6,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": false,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.8.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.5000350475311279,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.8.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.44002586603164673,
+          "rank": 2,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.9.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.5203199982643127,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/A.9.Niveau5",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L8",
+          "gold_score": 0.568576991558075,
+          "rank": 2,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.1.Niveau1",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L3",
+          "gold_score": 0.49984970688819885,
+          "rank": 4,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.1.Niveau1",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L4",
+          "gold_score": 0.4994075298309326,
+          "rank": 5,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.1.Niveau2",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L5",
+          "gold_score": 0.47591710090637207,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.1.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.5470572710037231,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.2.Niveau2",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L5",
+          "gold_score": 0.3680243492126465,
+          "rank": 2,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.2.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.523932933807373,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.2.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.4788956642150879,
+          "rank": 4,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.3.Niveau1",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L3",
+          "gold_score": 0.5168240070343018,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.3.Niveau1",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L4",
+          "gold_score": 0.4111745357513428,
+          "rank": 6,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": false,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.3.Niveau2",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L5",
+          "gold_score": 0.47461360692977905,
+          "rank": 4,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.3.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.5669702291488647,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.3.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.5332385301589966,
+          "rank": 4,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.4.Niveau1",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L3",
+          "gold_score": 0.4141772985458374,
+          "rank": 5,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.4.Niveau1",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L4",
+          "gold_score": 0.4585575461387634,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.4.Niveau2",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L5",
+          "gold_score": 0.4626002907752991,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.4.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.5623443126678467,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.5.Niveau1",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L3",
+          "gold_score": 0.49244967103004456,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.5.Niveau1",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L4",
+          "gold_score": 0.461995929479599,
+          "rank": 5,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.5.Niveau2",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L5",
+          "gold_score": 0.49897608160972595,
+          "rank": 2,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.5.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.5043334364891052,
+          "rank": 2,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.6.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.48860663175582886,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/B.6.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.5663151741027832,
+          "rank": 2,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/C.1.Niveau1",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L3",
+          "gold_score": 0.46658429503440857,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/C.1.Niveau1",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L4",
+          "gold_score": 0.4437626302242279,
+          "rank": 4,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/C.1.Niveau2",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L5",
+          "gold_score": 0.4487399756908417,
+          "rank": 4,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/C.1.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.5168759822845459,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/C.2.Niveau2",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L5",
+          "gold_score": 0.43420645594596863,
+          "rank": 5,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/C.2.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.3942617177963257,
+          "rank": 2,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/C.3.Niveau1",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L3",
+          "gold_score": 0.49185842275619507,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/C.3.Niveau1",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L4",
+          "gold_score": 0.44925612211227417,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/C.3.Niveau2",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L5",
+          "gold_score": 0.4322574734687805,
+          "rank": 4,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/C.3.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.5150361657142639,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/C.4.Niveau2",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L5",
+          "gold_score": 0.4140304923057556,
+          "rank": 4,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/C.4.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.5373112559318542,
+          "rank": 2,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/C.4.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.6109585762023926,
+          "rank": 2,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.1.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.5240989327430725,
+          "rank": 4,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.1.Niveau5",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L8",
+          "gold_score": 0.4038291573524475,
+          "rank": 6,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": false,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.2.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.5817934274673462,
+          "rank": 5,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.2.Niveau5",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L8",
+          "gold_score": 0.4640663266181946,
+          "rank": 6,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": false,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.3.Niveau2",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L5",
+          "gold_score": 0.6864343285560608,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.3.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.6094522476196289,
+          "rank": 4,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.4.Niveau2",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L5",
+          "gold_score": 0.40355998277664185,
+          "rank": 5,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.4.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.4906110465526581,
+          "rank": 2,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.4.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.43382105231285095,
+          "rank": 4,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.5.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.5406315922737122,
+          "rank": 2,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.5.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.5399357080459595,
+          "rank": 4,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.6.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.5171088576316833,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.6.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.4630071818828583,
+          "rank": 5,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.7.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.4667661786079407,
+          "rank": 4,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.7.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.5006367564201355,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.7.Niveau5",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L8",
+          "gold_score": 0.4036339521408081,
+          "rank": 6,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": false,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.8.Niveau2",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L5",
+          "gold_score": 0.4208609163761139,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.8.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.4953206777572632,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.8.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.43048322200775146,
+          "rank": 2,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.9.Niveau2",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L5",
+          "gold_score": 0.6371769905090332,
+          "rank": 2,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.9.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.650166392326355,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.9.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.5968989729881287,
+          "rank": 5,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.10.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.5118154287338257,
+          "rank": 5,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.10.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.5707118511199951,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.10.Niveau5",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L8",
+          "gold_score": 0.5024001598358154,
+          "rank": 5,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.11.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.47217798233032227,
+          "rank": 4,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.11.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.5601269006729126,
+          "rank": 4,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.11.Niveau5",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L8",
+          "gold_score": 0.49251070618629456,
+          "rank": 6,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": false,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.12.Niveau2",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L5",
+          "gold_score": 0.46707963943481445,
+          "rank": 2,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.12.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.4261890649795532,
+          "rank": 4,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/D.12.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.44863831996917725,
+          "rank": 5,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.1.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.4661451280117035,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.1.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.4939018785953522,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.2.Niveau2",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L5",
+          "gold_score": 0.4418139159679413,
+          "rank": 4,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.2.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.5485833287239075,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.2.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.530859112739563,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.2.Niveau5",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L8",
+          "gold_score": 0.44743889570236206,
+          "rank": 6,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": false,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.3.Niveau2",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L5",
+          "gold_score": 0.4346349835395813,
+          "rank": 4,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.3.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.5204010009765625,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.3.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.5607712268829346,
+          "rank": 2,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.4.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.4868099093437195,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.4.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.4618040919303894,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.5.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.5453393459320068,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.5.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.5271176099777222,
+          "rank": 2,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.6.Niveau2",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L5",
+          "gold_score": 0.494294136762619,
+          "rank": 4,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.6.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.5470098853111267,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.6.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.51133131980896,
+          "rank": 5,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.7.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.5200848579406738,
+          "rank": 5,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.7.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.5395482182502747,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.7.Niveau5",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L8",
+          "gold_score": 0.4269322156906128,
+          "rank": 6,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": false,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.8.Niveau2",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L5",
+          "gold_score": 0.3977663516998291,
+          "rank": 4,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.8.Niveau3",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L6",
+          "gold_score": 0.44527992606163025,
+          "rank": 1,
+          "hits": {
+            "1": true,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.8.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.38229283690452576,
+          "rank": 3,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.9.Niveau4",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L7",
+          "gold_score": 0.43045634031295776,
+          "rank": 2,
+          "hits": {
+            "1": false,
+            "3": true,
+            "5": true,
+            "8": true
+          }
+        },
+        {
+          "subject_id": "http://hr-qde.org/harmonised/source/ecf/E.9.Niveau5",
+          "object_id": "http://hr-qde.org/harmonised/source/dqr/L8",
+          "gold_score": 0.3569287657737732,
+          "rank": 6,
+          "hits": {
+            "1": false,
+            "3": false,
+            "5": false,
+            "8": true
+          }
+        }
+      ]
+    }
+  }
+}

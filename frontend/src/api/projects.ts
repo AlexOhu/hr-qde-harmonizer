@@ -55,7 +55,7 @@ export function getPipelineStatus(
   });
 }
 
-/** Friert das Projekt als schreibgeschuetzte Kopie ein (ADR-06). */
+/** Friert das Projekt als schreibgeschuetzte Kopie ein (ADR-13). */
 export function createSnapshot(projectId: string, versionLabel: string): Promise<Project> {
   return request<Project>(`/projects/${encodeURIComponent(projectId)}/snapshot`, {
     method: "POST",

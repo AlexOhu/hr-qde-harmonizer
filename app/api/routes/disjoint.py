@@ -51,11 +51,32 @@ def list_disjoint_concepts(
     return disjoint_service.list_disjoint_concepts(kqr_id=kqr_id, project_id=project_id)
 
 
+class AnchorCandidate(BaseModel):
+    """Eintrag der Auswahlliste fuer die Ankerklasse (attach_to_skeleton)."""
+
+    uri: str
+    label: str
+    kqr_id: str
+    group: str  # "related" | "hub"
+    depth: int
+    parent: str | None = None
+
+
+@router.get("/anchor-candidates", response_model=list[AnchorCandidate])
+def anchor_candidates(
+    concept_id: str | None = None, project_id: str = Query(default="default")
+) -> list[dict]:
+    """Eingabehilfe fuer die Ankerklasse: RELATED-Kandidaten des Konzepts und
+    der Hub des Projekts als skos:broader-Baum. Nicht bindend, die Ankerklasse
+    bleibt freier Text."""
+    return disjoint_service.list_anchor_candidates(concept_id, project_id=project_id)
+
+
 @router.get("/concepts/{concept_id:path}/suggest")
 def suggest_strategy(concept_id: str, project_id: str = Query(default="default")) -> dict:
     """Heuristischer Strategievorschlag (Mixed Initiative), keine Bindung."""
     try:
-        concept = disjoint_service.find_concept(concept_id)
+        concept = disjoint_service.find_concept(concept_id, project_id=project_id)
     except KeyError as exc:
         raise HTTPException(status_code=404, detail=str(exc)) from exc
     return {
@@ -105,7 +126,7 @@ def decide(
         raise HTTPException(status_code=404, detail=str(exc)) from exc
     except ValueError as exc:
         # project_service.ensure_writable(): Projekt ist ein schreibgeschuetzter
-        # Snapshot (ADR-06). Ohne diesen Zweig quittierte die Route das mit 500,
+        # Snapshot (ADR-13). Ohne diesen Zweig quittierte die Route das mit 500,
         # obwohl es ein Zustandskonflikt ist -- analog zu classification.start.
         raise HTTPException(status_code=409, detail=str(exc)) from exc
 

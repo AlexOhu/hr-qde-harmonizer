@@ -1,0 +1,554 @@
+{
+  "_meta": {
+    "gold": "eval\\gold\\G_manual.json",
+    "n": 74,
+    "class_counts": {
+      "EQUIVALENT": 11,
+      "RELATED": 21,
+      "A_SUBSUMES_B": 22,
+      "B_SUBSUMES_A": 20
+    },
+    "embedding_model": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+    "label_fallback_uris": [
+      "http://data.bmbf.de/dqr/L3_Knowledge",
+      "http://data.bmbf.de/dqr/L3_SocialCompetence",
+      "http://data.bmbf.de/dqr/L4_SocialCompetence",
+      "http://data.bmbf.de/dqr/L5_Knowledge",
+      "http://data.bmbf.de/dqr/L5_SocialCompetence",
+      "http://data.bmbf.de/dqr/L8_Knowledge"
+    ],
+    "note": "B1/B2-Schwellen auf G_manual optimiert (optimistische Obergrenze)."
+  },
+  "B0_all_in_K": {
+    "precision": 0.7162162162162162,
+    "recall": 1.0,
+    "f1": 0.8346456692913385,
+    "accepted": 74
+  },
+  "B0_majority_class": {
+    "class": "A_SUBSUMES_B",
+    "per_class_f1": {
+      "EQUIVALENT": 0.0,
+      "A_SUBSUMES_B": 0.4583333333333333,
+      "B_SUBSUMES_A": 0.0,
+      "RELATED": 0.0
+    },
+    "macro_f1": 0.11458333333333333,
+    "accuracy": 0.2972972972972973
+  },
+  "B0_stratified_random_expected_macro_f1": 0.25,
+  "B1_cosine_k_best": {
+    "threshold": 0.4640083909034729,
+    "precision": 0.803030303030303,
+    "recall": 1.0,
+    "f1": 0.8907563025210083,
+    "accepted": 66
+  },
+  "B1_auc_k_vs_related": 0.862084456424079,
+  "B2_three_band_best": {
+    "t_lo": 0.5940911173820496,
+    "t_hi": 0.7939823865890503,
+    "per_class_f1": {
+      "EQUIVALENT": 0.4705882352941177,
+      "A_SUBSUMES_B": 0.515151515151515,
+      "B_SUBSUMES_A": 0.0,
+      "RELATED": 0.7111111111111111
+    },
+    "macro_f1": 0.4242127153891859,
+    "accuracy": 0.5
+  },
+  "B3_label_match_equivalent": {
+    "precision": 1.0,
+    "recall": 0.18181818181818182,
+    "f1": 0.3076923076923077,
+    "matches": 2
+  },
+  "B1_cosine_k_loocv": {
+    "precision": 0.7903225806451613,
+    "recall": 0.9245283018867925,
+    "f1": 0.8521739130434782,
+    "accepted": 62
+  },
+  "B2_three_band_loocv": {
+    "per_class_f1": {
+      "EQUIVALENT": 0.37499999999999994,
+      "A_SUBSUMES_B": 0.417910447761194,
+      "B_SUBSUMES_A": 0.0,
+      "RELATED": 0.5777777777777778
+    },
+    "macro_f1": 0.34267205638474296,
+    "accuracy": 0.40540540540540543
+  },
+  "E2_fix": [
+    {
+      "n_fs": 0,
+      "macro_f1_reported": 0.3181363049095607,
+      "macro_f1_4_gold_classes": 0.39767038113695086,
+      "unresolved_counted_as_class": true
+    },
+    {
+      "n_fs": 1,
+      "macro_f1_reported": 0.3233394411360514,
+      "macro_f1_4_gold_classes": 0.40417430142006416,
+      "unresolved_counted_as_class": true
+    },
+    {
+      "n_fs": 3,
+      "macro_f1_reported": 0.3544207317073171,
+      "macro_f1_4_gold_classes": 0.354420731707317,
+      "unresolved_counted_as_class": false
+    },
+    {
+      "n_fs": 5,
+      "macro_f1_reported": 0.3155448717948718,
+      "macro_f1_4_gold_classes": 0.39443108974358976,
+      "unresolved_counted_as_class": true
+    }
+  ],
+  "pairs": [
+    {
+      "subject_label": "Solution Deployment",
+      "object_label": "solution deployment",
+      "gold": "EQUIVALENT",
+      "cosine": 0.8125
+    },
+    {
+      "subject_label": "Risk Management",
+      "object_label": "risk management",
+      "gold": "EQUIVALENT",
+      "cosine": 0.8569
+    },
+    {
+      "subject_label": "Information Security Strategy Development",
+      "object_label": "develop information security strategy",
+      "gold": "EQUIVALENT",
+      "cosine": 0.8074
+    },
+    {
+      "subject_label": "Digital Marketing",
+      "object_label": "digital marketing techniques",
+      "gold": "EQUIVALENT",
+      "cosine": 0.7049
+    },
+    {
+      "subject_label": "Business Change Management",
+      "object_label": "apply change management",
+      "gold": "EQUIVALENT",
+      "cosine": 0.7149
+    },
+    {
+      "subject_label": "Information Security Management",
+      "object_label": "ensure information security",
+      "gold": "EQUIVALENT",
+      "cosine": 0.6386
+    },
+    {
+      "subject_label": "Problem Management",
+      "object_label": "ICT problem management techniques",
+      "gold": "EQUIVALENT",
+      "cosine": 0.5975
+    },
+    {
+      "subject_label": "ICT Quality Management",
+      "object_label": "ICT quality assurance manager",
+      "gold": "RELATED",
+      "cosine": 0.8925
+    },
+    {
+      "subject_label": "Application Development",
+      "object_label": "iterative development",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.4851
+    },
+    {
+      "subject_label": "Testing",
+      "object_label": "plan software testing",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.6921
+    },
+    {
+      "subject_label": "Application Design",
+      "object_label": "system design",
+      "gold": "EQUIVALENT",
+      "cosine": 0.6046
+    },
+    {
+      "subject_label": "Information Security Management",
+      "object_label": "establish an Information Security Management System",
+      "gold": "EQUIVALENT",
+      "cosine": 0.794
+    },
+    {
+      "subject_label": "User Support",
+      "object_label": "provide ICT support",
+      "gold": "EQUIVALENT",
+      "cosine": 0.5398
+    },
+    {
+      "subject_label": "Needs Identification",
+      "object_label": "identify technological needs",
+      "gold": "EQUIVALENT",
+      "cosine": 0.6204
+    },
+    {
+      "subject_label": "PLAN",
+      "object_label": "plan ICT capacity",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.6241
+    },
+    {
+      "subject_label": "PLAN",
+      "object_label": "develop audit plan",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.5623
+    },
+    {
+      "subject_label": "MANAGE",
+      "object_label": "manage a team",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.6128
+    },
+    {
+      "subject_label": "MANAGE",
+      "object_label": "manage business knowledge",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.5941
+    },
+    {
+      "subject_label": "MANAGE",
+      "object_label": "manage ICT project",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.7312
+    },
+    {
+      "subject_label": "Architecture Design",
+      "object_label": "design enterprise architecture",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.7377
+    },
+    {
+      "subject_label": "Project and Portfolio Management",
+      "object_label": "project management",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.7799
+    },
+    {
+      "subject_label": "Project and Portfolio Management",
+      "object_label": "Agile project management",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.6086
+    },
+    {
+      "subject_label": "Testing",
+      "object_label": "execute integration testing",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.7065
+    },
+    {
+      "subject_label": "Testing",
+      "object_label": "hardware testing methods",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.7223
+    },
+    {
+      "subject_label": "Digital Marketing",
+      "object_label": "plan digital marketing",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.6724
+    },
+    {
+      "subject_label": "Digital Marketing",
+      "object_label": "mobile marketing",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.464
+    },
+    {
+      "subject_label": "Information Security Strategy Development",
+      "object_label": "apply information security policies",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.6362
+    },
+    {
+      "subject_label": "ICT Quality Management",
+      "object_label": "attend to ICT systems quality",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.7595
+    },
+    {
+      "subject_label": "Systems Engineering",
+      "object_label": "engineering processes",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.7015
+    },
+    {
+      "subject_label": "Forecast Development",
+      "object_label": "forecast workload",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.5388
+    },
+    {
+      "subject_label": "Sales Management",
+      "object_label": "sales strategies",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.788
+    },
+    {
+      "subject_label": "Application Design",
+      "object_label": "design application interfaces",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.6817
+    },
+    {
+      "subject_label": "Documentation Production",
+      "object_label": "documentation types",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.5769
+    },
+    {
+      "subject_label": "ICT Quality Management",
+      "object_label": "ICT project management",
+      "gold": "A_SUBSUMES_B",
+      "cosine": 0.6947
+    },
+    {
+      "subject_label": "ICT Quality Management",
+      "object_label": "ICT quality assurance manager",
+      "gold": "B_SUBSUMES_A",
+      "cosine": 0.8925
+    },
+    {
+      "subject_label": "ICT Quality Strategy Development",
+      "object_label": "ICT quality assurance manager",
+      "gold": "B_SUBSUMES_A",
+      "cosine": 0.7147
+    },
+    {
+      "subject_label": "Component Integration",
+      "object_label": "integration engineer",
+      "gold": "B_SUBSUMES_A",
+      "cosine": 0.6482
+    },
+    {
+      "subject_label": "User Support",
+      "object_label": "user experience analyst",
+      "gold": "B_SUBSUMES_A",
+      "cosine": 0.6266
+    },
+    {
+      "subject_label": "Risk Management",
+      "object_label": "cybersecurity risk manager",
+      "gold": "B_SUBSUMES_A",
+      "cosine": 0.7876
+    },
+    {
+      "subject_label": "Component Integration",
+      "object_label": "ICT integration tester",
+      "gold": "B_SUBSUMES_A",
+      "cosine": 0.6638
+    },
+    {
+      "subject_label": "Application Development",
+      "object_label": "mobile application developer",
+      "gold": "B_SUBSUMES_A",
+      "cosine": 0.7745
+    },
+    {
+      "subject_label": "Application Design",
+      "object_label": "ICT application configurator",
+      "gold": "B_SUBSUMES_A",
+      "cosine": 0.6506
+    },
+    {
+      "subject_label": "Information and Knowledge Management",
+      "object_label": "knowledge engineer",
+      "gold": "B_SUBSUMES_A",
+      "cosine": 0.5554
+    },
+    {
+      "subject_label": "Information Security Management",
+      "object_label": "ICT security administrator",
+      "gold": "B_SUBSUMES_A",
+      "cosine": 0.7352
+    },
+    {
+      "subject_label": "Component Integration",
+      "object_label": "ICT system integration consultant",
+      "gold": "B_SUBSUMES_A",
+      "cosine": 0.5958
+    },
+    {
+      "subject_label": "Business Change Management",
+      "object_label": "ICT business analyst",
+      "gold": "B_SUBSUMES_A",
+      "cosine": 0.702
+    },
+    {
+      "subject_label": "Information Security Strategy Development",
+      "object_label": "ICT security administrator",
+      "gold": "B_SUBSUMES_A",
+      "cosine": 0.6188
+    },
+    {
+      "subject_label": "Information Security Management",
+      "object_label": "chief ICT security officer",
+      "gold": "B_SUBSUMES_A",
+      "cosine": 0.6583
+    },
+    {
+      "subject_label": "ICT Quality Strategy Development",
+      "object_label": "ICT system developer",
+      "gold": "B_SUBSUMES_A",
+      "cosine": 0.6183
+    },
+    {
+      "subject_label": "ICT Quality Management",
+      "object_label": "ICT business analysis manager",
+      "gold": "B_SUBSUMES_A",
+      "cosine": 0.6849
+    },
+    {
+      "subject_label": "Change Support",
+      "object_label": "ICT change and configuration manager",
+      "gold": "B_SUBSUMES_A",
+      "cosine": 0.6244
+    },
+    {
+      "subject_label": "Business Plan Development",
+      "object_label": "ICT business analysis manager",
+      "gold": "B_SUBSUMES_A",
+      "cosine": 0.5921
+    },
+    {
+      "subject_label": "IS and Business Strategy Alignment",
+      "object_label": "ICT business analyst",
+      "gold": "B_SUBSUMES_A",
+      "cosine": 0.6108
+    },
+    {
+      "subject_label": "Project and Portfolio Management",
+      "object_label": "ICT change and configuration manager",
+      "gold": "B_SUBSUMES_A",
+      "cosine": 0.6684
+    },
+    {
+      "subject_label": "BUILD",
+      "object_label": "provide technical training",
+      "gold": "RELATED",
+      "cosine": 0.559
+    },
+    {
+      "subject_label": "Service Level Management",
+      "object_label": "manage a team",
+      "gold": "RELATED",
+      "cosine": 0.5927
+    },
+    {
+      "subject_label": "Service Level Management",
+      "object_label": "service-oriented modelling",
+      "gold": "RELATED",
+      "cosine": 0.6015
+    },
+    {
+      "subject_label": "Business Plan Development",
+      "object_label": "information security strategy",
+      "gold": "RELATED",
+      "cosine": 0.263
+    },
+    {
+      "subject_label": "Sustainable Development",
+      "object_label": "ICT project management methodologies",
+      "gold": "RELATED",
+      "cosine": 0.6323
+    },
+    {
+      "subject_label": "Solution Deployment",
+      "object_label": "software components suppliers",
+      "gold": "RELATED",
+      "cosine": 0.5801
+    },
+    {
+      "subject_label": "Documentation Production",
+      "object_label": "manage budgets",
+      "gold": "RELATED",
+      "cosine": 0.5406
+    },
+    {
+      "subject_label": "User Support",
+      "object_label": "test system accessibility for users with special needs",
+      "gold": "RELATED",
+      "cosine": 0.4488
+    },
+    {
+      "subject_label": "Knowledge – Level 8",
+      "object_label": "knowledge engineer",
+      "gold": "RELATED",
+      "cosine": 0.4345
+    },
+    {
+      "subject_label": "Knowledge – Level 5",
+      "object_label": "assess ICT knowledge",
+      "gold": "RELATED",
+      "cosine": 0.6129
+    },
+    {
+      "subject_label": "Social Competence – Level 5",
+      "object_label": "social network analysis",
+      "gold": "RELATED",
+      "cosine": 0.4122
+    },
+    {
+      "subject_label": "Social Competence – Level 3",
+      "object_label": "social network analysis",
+      "gold": "RELATED",
+      "cosine": 0.439
+    },
+    {
+      "subject_label": "Social Competence – Level 4",
+      "object_label": "social network analysis",
+      "gold": "RELATED",
+      "cosine": 0.419
+    },
+    {
+      "subject_label": "Knowledge – Level 3",
+      "object_label": "manage business knowledge",
+      "gold": "RELATED",
+      "cosine": 0.4999
+    },
+    {
+      "subject_label": "Knowledge – Level 6",
+      "object_label": "assess ICT knowledge",
+      "gold": "RELATED",
+      "cosine": 0.5507
+    },
+    {
+      "subject_label": "Problem Management",
+      "object_label": "risk management",
+      "gold": "RELATED",
+      "cosine": 0.6134
+    },
+    {
+      "subject_label": "Contract Management",
+      "object_label": "project management",
+      "gold": "RELATED",
+      "cosine": 0.5831
+    },
+    {
+      "subject_label": "Relationship Management",
+      "object_label": "project management",
+      "gold": "RELATED",
+      "cosine": 0.523
+    },
+    {
+      "subject_label": "Personnel Development",
+      "object_label": "iterative development",
+      "gold": "RELATED",
+      "cosine": 0.464
+    },
+    {
+      "subject_label": "Digital Marketing",
+      "object_label": "digital systems",
+      "gold": "RELATED",
+      "cosine": 0.4291
+    }
+  ]
+}

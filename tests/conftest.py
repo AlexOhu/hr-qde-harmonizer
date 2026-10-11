@@ -142,7 +142,7 @@ def isolated_services(tmp_path, monkeypatch):
     ontology_service leiten ihre Dateipfade ausschließlich über
     project_service.get_project_data_dir(project_id) ab -- ein einziges
     Monkeypatch von project_service.DATA_DIR genügt daher, um alle vier
-    Services gleichzeitig zu isolieren (ADR-01/ADR-02)."""
+    Services gleichzeitig zu isolieren (ADR-13)."""
     from app.services import classification_service, disjoint_service, kqr_service, mapping_service, ontology_service, project_service
 
     data_dir = tmp_path / "data"

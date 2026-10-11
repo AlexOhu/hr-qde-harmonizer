@@ -1,0 +1,1312 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix harm: <http://hr-qde.org/harmonised/> .
+@prefix harm-ecf: <http://hr-qde.org/harmonised/source/ecf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+harm:kqr_dqr a harm:KQR ;
+    rdfs:label "Deutscher Qualifikationsrahmen (2013)"@en .
+
+harm:kqr_eqf a harm:KQR ;
+    rdfs:label "European Qualifications Framework (2017)"@en .
+
+harm:kqr_esco a harm:KQR ;
+    rdfs:label "ESCO v1.2 (Informatik-Korridor)"@en .
+
+harm:oberhuber-harmonised-ontology a owl:Ontology ;
+    dcterms:created "2026-10-04"^^xsd:date ;
+    dcterms:source "DQR 2013",
+        "EQF 2017 (OJ C 189)",
+        "ESCO v1.2 (Informatik-Korridor)",
+        "e-CF 3.0 (CWA 16234-1:2014)" ;
+    dcterms:title "HR-QDE harmonisierte Basis-Ontologie (Informatik-Korridor)"@de ;
+    owl:versionInfo "0.4" .
+
+harm-ecf:A.1 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:A.1.Niveau4,
+        harm-ecf:A.1.Niveau5 ;
+    harm:sourceIdentifier "A.1" ;
+    skos:definition "Anticipates long-term business requirements, contributes to the further development of the efficiency and effectiveness of processes in the organization. Determines the technological direction of the ICT infrastructure and its security in line with the company policy. Makes strategic decisions for ICT strategies in the company, including procurement strategies."@en ;
+    skos:prefLabel "Ausrichtung ITK-Geschäftsstrategie"@de,
+        "IS and Business Strategy Alignment"@en .
+
+harm-ecf:A.2 a harm:CompetenceConcept,
+        harm:HarmonisedConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:A.2.Niveau3,
+        harm-ecf:A.2.Niveau4 ;
+    harm:integrationStrategy "own_class" ;
+    harm:sourceIdentifier "A.2" ;
+    rdfs:comment "Kein e-CF-Blatt-Mapping in K nach LLM-Klassifikation und Review; als eigenstaendige Klasse der Harmonisierungsschicht gefuehrt."@de ;
+    skos:definition "Defines service level agreements and underlying performance contracts, validates them and ensures their applicability. Negotiates, taking into account the requirements and capacities of customers and companies, the performance level in the service area."@en ;
+    skos:prefLabel "Dienstleistungsmanagement"@de,
+        "Service Level Management"@en .
+
+harm-ecf:A.3 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:A.3.Niveau3,
+        harm-ecf:A.3.Niveau4,
+        harm-ecf:A.3.Niveau5 ;
+    harm:sourceIdentifier "A.3" ;
+    skos:definition "Deals with the development and the structure of a business or product plan. This includes the identification of alternative approaches such as revenue forecasts. Considers possible and applicable procurement models. Presents cost-benefit analyses and well-considered arguments to support the chosen strategy. Ensures that business and technology strategy are considered. Communicates and markets the business planning to relevant actors. Considers political, financial and organizational interests."@en ;
+    skos:prefLabel "Entwicklung von Geschäftsplänen"@de,
+        "Business Plan Development"@en .
+
+harm-ecf:A.4 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:A.4.Niveau2,
+        harm-ecf:A.4.Niveau3,
+        harm-ecf:A.4.Niveau4 ;
+    harm:sourceIdentifier "A.4" ;
+    skos:definition "Analyzes and defines the current and the desired status. Critically estimates cost effectiveness, risks and opportunities, strengths and weaknesses. Designs structure plans, sets up time and milestone plans, ensures the optimization of activities and resources. Manages change requests. Defines the delivery status and ensures an overview of the resulting requirements for the documentation. Ensures the correct handling of products, including legal requirements in line with current regulations."@en ;
+    skos:prefLabel "Produkt- / Serviceplanung"@de,
+        "Product / Service Planning"@en .
+
+harm-ecf:A.5 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:A.5.Niveau3,
+        harm-ecf:A.5.Niveau4,
+        harm-ecf:A.5.Niveau5 ;
+    harm:sourceIdentifier "A.5" ;
+    skos:definition "Specifies, refines and updates a system model necessary for the implementation of solutions so that the system architecture can be developed and implemented. Makes the system model available. Identifies necessary changes and required components: hardware, software, applications, processes, information technology platform. Ensures that interoperability, scalability, usability and security are considered in all technical decisions. Ensures alignment between business and technical development."@en ;
+    skos:prefLabel "Architekturspezifikation"@de,
+        "Architecture Design"@en .
+
+harm-ecf:A.6 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:A.6.Niveau1,
+        harm-ecf:A.6.Niveau2,
+        harm-ecf:A.6.Niveau3 ;
+    harm:sourceIdentifier "A.6" ;
+    skos:definition "Analyzes, specifies and updates an implementation model for the application in line with the system technical rules and the user and customer requirements. Makes the model accessible. Accurately estimates the costs of development, installation and maintenance of the application. Selects appropriate technical options for the development of the solution. Develops with the help of modeling languages illustrative data and system structures based on the analysis results. Ensures that interoperability, usability and security are always considered. Identifies a pilot application and environment to validate the model with representative users based on appropriate development methods (e.g. an iterative approach)."@en ;
+    skos:prefLabel "Anwendungsspezifikation"@de,
+        "Application Design"@en .
+
+harm-ecf:A.7 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:A.7.Niveau4,
+        harm-ecf:A.7.Niveau5 ;
+    harm:sourceIdentifier "A.7" ;
+    skos:definition "Examines current technical developments in ICT to build an understanding of new technologies. Designs innovative proposals to integrate new technologies into existing products, applications or services or to develop completely new solutions."@en ;
+    skos:prefLabel "Trendschau Technologie und Innovation"@de,
+        "Technology Trend Watching"@en .
+
+harm-ecf:A.8 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:A.8.Niveau3,
+        harm-ecf:A.8.Niveau4 ;
+    harm:sourceIdentifier "A.8" ;
+    skos:definition "Estimates the importance of ICT solutions, in particular their energy consumption, with regard to ecological responsibility. Advises economically and ICT responsible persons on sustainable alternatives that are in line with the company strategy. Applies an ICT procurement and sales strategy that meets ecological responsibility."@en ;
+    skos:prefLabel "Nachhaltige Entwicklung"@de,
+        "Sustainable Development"@en .
+
+harm-ecf:A.9 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:A.9.Niveau4,
+        harm-ecf:A.9.Niveau5 ;
+    harm:sourceIdentifier "A.9" ;
+    skos:definition "Develops creative solutions within the framework of developing new concepts, ideas, products or services. Leaves well-trodden paths and develops unconventional ideas to make technological progress usable for business or social needs or to stimulate further research."@en ;
+    skos:prefLabel "Erfinden"@de,
+        "Innovating"@en .
+
+harm-ecf:B.1 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:B.1.Niveau1,
+        harm-ecf:B.1.Niveau2,
+        harm-ecf:B.1.Niveau3 ;
+    harm:sourceIdentifier "B.1" ;
+    skos:definition "Uses the application specification to develop a suitable application under consideration of customer needs. Adapts existing solutions, e.g. by porting an application to another operating system. Codes, searches and eliminates errors, tests and documents and communicates the status of the product development process. Selects appropriate technical solutions for development such as reuse, improvement or reconfiguration of existing components. Optimizes the ratio of efficiency, cost and quality. Validates the results with representative users, integrates them into the overall solution and puts them into operation."@en ;
+    skos:prefLabel "Anwendungsentwicklung"@de,
+        "Application Development"@en .
+
+harm-ecf:B.2 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:B.2.Niveau2,
+        harm-ecf:B.2.Niveau3,
+        harm-ecf:B.2.Niveau4 ;
+    harm:sourceIdentifier "B.2" ;
+    skos:definition "Integrates hardware, software or other components into an existing or proposed system. Meets the introduced processes and procedures (e.g. configuration or package management). Considers the compatibility of new with existing modules to guarantee integrity, interoperability and ICT security. Tests and ensures the capacity and performance of the overall system and documents the successful integration."@en ;
+    skos:prefLabel "Komponentenintegration"@de,
+        "Component Integration"@en .
+
+harm-ecf:B.3 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:B.3.Niveau1,
+        harm-ecf:B.3.Niveau2,
+        harm-ecf:B.3.Niveau3,
+        harm-ecf:B.3.Niveau4 ;
+    harm:sourceIdentifier "B.3" ;
+    skos:definition "Develops systematic test procedures for ICT systems or customer user requirements and carries them out so that design specifications are met. Ensures that new or revised components or systems function as expected. Secures the fulfillment of internal, external, national and international standards including health and safety regulations for usability, performance, reliability or compatibility. Prepares documents and reports to prove compliance with requirements."@en ;
+    skos:prefLabel "Testen"@de,
+        "Testing"@en .
+
+harm-ecf:B.4 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:B.4.Niveau1,
+        harm-ecf:B.4.Niveau2,
+        harm-ecf:B.4.Niveau3 ;
+    harm:sourceIdentifier "B.4" ;
+    skos:definition "Carries out planned and necessary interventions to implement solutions, including installation, upgrading, or decommissioning. Follows predefined procedural standards. Configures hardware, software or networks to ensure interoperability of system components and eliminates resulting errors or incompatibilities. Involves additional professional resources if necessary, for example external network providers. Hands over to the user ready-to-use, validated solutions. Completes the documentation and records all relevant information, including equipment recipients, configuration and performance data."@en ;
+    skos:prefLabel "Lösungsimplementierung"@de,
+        "Solution Deployment"@en .
+
+harm-ecf:B.5 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:B.5.Niveau1,
+        harm-ecf:B.5.Niveau2,
+        harm-ecf:B.5.Niveau3 ;
+    harm:sourceIdentifier "B.5" ;
+    skos:definition "Creates documentation that describes products, services, components or applications so that they meet all relevant documentation requirements. Selects appropriate presentation methods and media for the presentation of the material. Creates templates for the document management system. Ensures that functions and features are described in an appropriate manner. Ensures that existing documents are current and valid."@en ;
+    skos:prefLabel "Erstellen von Dokumentationen"@de,
+        "Documentation Production"@en .
+
+harm-ecf:B.6 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:B.6.Niveau3,
+        harm-ecf:B.6.Niveau4 ;
+    harm:sourceIdentifier "B.6" ;
+    skos:definition "Develops software and/or hardware components according to the requirements of the solution, including technical specifications, cost, quality, time, energy efficiency, ICT security and data protection. Follows a systematic methodology to analyze and create the required components and interfaces. Models the system structures and simulates the corresponding system behavior. Carries out module and system tests and ensures that the functional and performance criteria are met."@en ;
+    skos:prefLabel "Systementwicklung"@de,
+        "Systems Engineering"@en .
+
+harm-ecf:C.1 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:C.1.Niveau1,
+        harm-ecf:C.1.Niveau2,
+        harm-ecf:C.1.Niveau3 ;
+    harm:sourceIdentifier "C.1" ;
+    skos:definition "Responds to user requests and problems; records relevant information. Resolves incidents or forwards them and optimizes system performance in accordance with agreed service levels (SLAs). Understands how solutions or results and the resulting customer satisfaction are to be monitored."@en ;
+    skos:prefLabel "Anwenderbetreuung"@de,
+        "User Support"@en .
+
+harm-ecf:C.2 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:C.2.Niveau2,
+        harm-ecf:C.2.Niveau3 ;
+    harm:sourceIdentifier "C.2" ;
+    skos:definition "Advises on the further development of an ICT solution and implements the changes in the system. Controls and plans software and hardware changes and thus avoids that several upgrades lead to unpredictable results. Minimizes service disruptions that may result from the changes and complies with the performance contract. Ensures the consideration and observance of ICT security guidelines."@en ;
+    skos:prefLabel "Veränderungsunterstützung"@de,
+        "Change Support"@en .
+
+harm-ecf:C.3 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:C.3.Niveau1,
+        harm-ecf:C.3.Niveau2,
+        harm-ecf:C.3.Niveau3 ;
+    harm:sourceIdentifier "C.3" ;
+    skos:definition "Ensures the administration of services in accordance with the applicable service level agreements (SLAs). Takes proactive measures to guarantee a consistent and secure application and ICT infrastructure and to avoid possible service interruptions. Considers capacity planning such as ICT security. Updates the operational document library and logs all operational events. Maintains observation and control tools (i.e. scripts, procedures, etc.). Administers the ICT services, measures proactively."@en ;
+    skos:prefLabel "Service-Administration"@de,
+        "Service Delivery"@en .
+
+harm-ecf:C.4 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:C.4.Niveau2,
+        harm-ecf:C.4.Niveau3,
+        harm-ecf:C.4.Niveau4 ;
+    harm:sourceIdentifier "C.4" ;
+    skos:definition "Identifies and eliminates the cause of an incident within the information system. Attempts to prevent the causes of incidents preventively. Uses a knowledge management system in which recurring incidents are recorded."@en ;
+    skos:prefLabel "Problemmanagement"@de,
+        "Problem Management"@en .
+
+harm-ecf:D.1 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:D.1.Niveau4,
+        harm-ecf:D.1.Niveau5 ;
+    harm:sourceIdentifier "D.1" ;
+    skos:definition "Defines a formal organizational strategy including organizational scope and culture and makes it applicable with the aim of guaranteeing information security and data integrity against internal and external threats, e.g. through digital forensic or intrusion investigations in companies. Provides the basis for information security management, identifies roles and assigns responsibilities. Uses defined standards to make target agreements on information integrity and availability as well as data protection."@en ;
+    skos:prefLabel "Entwicklung von Informationssicherheitsstrategien"@de,
+        "Information Security Strategy Development"@en .
+
+harm-ecf:D.10 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:D.10.Niveau3,
+        harm-ecf:D.10.Niveau4,
+        harm-ecf:D.10.Niveau5 ;
+    harm:sourceIdentifier "D.10" ;
+    skos:definition "Identifies and organizes structured and unstructured information and considers the guidelines for information distribution. Develops communication structures that enable the exploitation and optimization of information for business benefit. Understands to use appropriate tools to generate, select, support, renew and disseminate business knowledge so that benefit can be derived from the information stock."@en ;
+    skos:prefLabel "Informations- u. Wissensmanagement"@de,
+        "Information and Knowledge Management"@en .
+
+harm-ecf:D.11 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:D.11.Niveau3,
+        harm-ecf:D.11.Niveau4,
+        harm-ecf:D.11.Niveau5 ;
+    harm:sourceIdentifier "D.11" ;
+    skos:definition "Actively listens to internal and external customers, formulates and clarifies their needs. Organizes the involvement of all stakeholders to ensure that the solution is in line with business requirements. Proposes different solutions (e.g. make-or-buy), also based on analysis of the context, to achieve a user-desired development. Advises the customer on the selection of appropriate solutions. Ensures that the wishes of the customer are actually implemented during the implementation and configuration of the chosen solution."@en ;
+    skos:prefLabel "Bedarfserkennung"@de,
+        "Needs Identification"@en .
+
+harm-ecf:D.12 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:D.12.Niveau2,
+        harm-ecf:D.12.Niveau3,
+        harm-ecf:D.12.Niveau4 ;
+    harm:sourceIdentifier "D.12" ;
+    skos:definition "Understands the fundamental principles of digital marketing, distinguishes between traditional and approaches for the social media age. Evaluates the importance of the available channels. Reviews the effectiveness of the various approaches and applies rigorous measurement methods. Plans coherent strategies using the most effective means. Considers the protection of data and privacy in the implementation of marketing strategies."@en ;
+    skos:prefLabel "Digitales Marketing"@de,
+        "Digital Marketing"@en .
+
+harm-ecf:D.2 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:D.2.Niveau4,
+        harm-ecf:D.2.Niveau5 ;
+    harm:sourceIdentifier "D.2" ;
+    skos:definition "Defines, improves and refines formal strategies to meet customer expectations and improve business results. Identifies critical processes that affect service delivery and product performance to define them in ICT quality management systems. Uses defined standards to formulate objectives for service management and product and process quality and identifies responsibilities in ICT quality management."@en ;
+    skos:prefLabel "Entwicklung von ITK-Qualitätsstrategien"@de,
+        "ICT Quality Strategy Development"@en .
+
+harm-ecf:D.3 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:D.3.Niveau2,
+        harm-ecf:D.3.Niveau3 ;
+    harm:sourceIdentifier "D.3" ;
+    skos:definition "Defines and implements the ICT qualification strategy according to the educational needs and skill gaps in the company. Structures, organizes and plans training measures and evaluates their quality through feedback processes. Implements processes for continuous improvement (CIP). Adapts training plans and measures to changing needs."@en ;
+    skos:prefLabel "Bestimmung von Aus- und Weiterbildungsmaßnahmen"@de,
+        "Education and Training Provision"@en .
+
+harm-ecf:D.4 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:D.4.Niveau2,
+        harm-ecf:D.4.Niveau3,
+        harm-ecf:D.4.Niveau4 ;
+    harm:sourceIdentifier "D.4" ;
+    skos:definition "Applies a uniform procurement procedure and follows the subprocesses requirement specification, supplier identification, offer analysis, contract negotiation, selection of the service provider, contract award. Ensures that the procurement process is conducive to the objective and creates added business value for the company, in line with formal and legal requirements."@en ;
+    skos:prefLabel "Beschaffung"@de,
+        "Purchasing"@en .
+
+harm-ecf:D.5 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:D.5.Niveau3,
+        harm-ecf:D.5.Niveau4 ;
+    harm:sourceIdentifier "D.5" ;
+    skos:definition "Develops technical offers that correspond to the customer's solution requirements and provides the sales staff with a competitive offer. Emphasizes in this context the energy efficiency and environmental impact of the solution. Coordinates with colleagues the alignment of the service or product solution with the company's delivery capacity."@en ;
+    skos:prefLabel "Angebotserstellung"@de,
+        "Sales Proposal Development"@en .
+
+harm-ecf:D.6 a harm:CompetenceConcept,
+        harm:HarmonisedConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:D.6.Niveau3,
+        harm-ecf:D.6.Niveau4 ;
+    harm:integrationStrategy "own_class" ;
+    harm:sourceIdentifier "D.6" ;
+    rdfs:comment "Kein e-CF-Blatt-Mapping in K nach LLM-Klassifikation und Review; als eigenstaendige Klasse der Harmonisierungsschicht gefuehrt."@de ;
+    skos:definition "Develops strategies for managing third-party sales channels. Ensures optimal commercial performance of the reseller by providing a coherent business and marketing strategy. Defines objectives for volume, geographical reach and the industry sector to commit resellers and structures incentive programs to achieve additional sales results."@en ;
+    skos:prefLabel "Steuerung von Vertriebskanälen"@de,
+        "Channel Management"@en .
+
+harm-ecf:D.7 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:D.7.Niveau3,
+        harm-ecf:D.7.Niveau4,
+        harm-ecf:D.7.Niveau5 ;
+    harm:sourceIdentifier "D.7" ;
+    skos:definition "Promotes the achievement of sales targets by building a sales strategy. Demonstrates to potential or existing customers the added value of the company's products and services. Establishes a sales support process that provides effective responses to sales requests and is in line with company strategy and policy. Understands customer needs and establishes a systematic approach to the entire sales process, including forecasting, prospective assessments, negotiation tactics and closing."@en ;
+    skos:prefLabel "Vertriebsmanagement"@de,
+        "Sales Management"@en .
+
+harm-ecf:D.8 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:D.8.Niveau2,
+        harm-ecf:D.8.Niveau3,
+        harm-ecf:D.8.Niveau4 ;
+    harm:sourceIdentifier "D.8" ;
+    skos:definition "Negotiates and provides contracts in line with organizational processes. Ensures that contract conclusion and deliveries are made on time and meet quality standards and conformity requirements. Deals with cases of non-compliance, extends essential aspects, operates refund plans and changes contracts if necessary. Maintains budget integrity. Evaluates and ensures compliance with legal, health and safety standards on the part of suppliers. Actively maintains regular communication with suppliers."@en ;
+    skos:prefLabel "Vertragsmanagement"@de,
+        "Contract Management"@en .
+
+harm-ecf:D.9 a harm:CompetenceConcept,
+        harm:HarmonisedConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:D.9.Niveau2,
+        harm-ecf:D.9.Niveau3,
+        harm-ecf:D.9.Niveau4 ;
+    harm:integrationStrategy "own_class" ;
+    harm:sourceIdentifier "D.9" ;
+    rdfs:comment "Kein e-CF-Blatt-Mapping in K nach LLM-Klassifikation und Review; als eigenstaendige Klasse der Harmonisierungsschicht gefuehrt."@de ;
+    skos:definition "Establishes individual and team competences, identifies skill gaps and needs. Examines options for qualification and development and selects appropriate methods that meet individual, project-related and business needs. Advises individuals and teams on their learning needs and supports them as a coach and/or mentor."@en ;
+    skos:prefLabel "Personalentwicklung"@de,
+        "Personnel Development"@en .
+
+harm-ecf:E.1 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:E.1.Niveau3,
+        harm-ecf:E.1.Niveau4 ;
+    harm:sourceIdentifier "E.1" ;
+    skos:definition "Interprets market demand and evaluates the market acceptance of products and services. Evaluates the potential of the company to meet future production and quality requirements. Uses appropriate mechanisms to support production, marketing, sales and distribution with accurate decisions."@en ;
+    skos:prefLabel "Prognoseerstellung"@de,
+        "Forecast Development"@en .
+
+harm-ecf:E.2 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:E.2.Niveau2,
+        harm-ecf:E.2.Niveau3,
+        harm-ecf:E.2.Niveau4,
+        harm-ecf:E.2.Niveau5 ;
+    harm:sourceIdentifier "E.2" ;
+    skos:definition "Implements plans for change programs. Plans and controls individual ICT projects or project portfolios, ensuring coordination and control of interactions. Coordinates projects to develop or implement new internal or external processes and to meet specific business needs. Defines activities, responsibilities, critical milestones, resources, qualification needs, interfaces and budget, optimizes the ratio between cost and schedule, avoids waste and strives for high quality. Develops contingency plans to respond to potential implementation problems. Completes the project on time and within budget and in accordance with the original requirements. Creates and maintains documents that facilitate the monitoring of project progress."@en ;
+    skos:prefLabel "Projekt- und Portfoliomanagement"@de,
+        "Project and Portfolio Management"@en .
+
+harm-ecf:E.3 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:E.3.Niveau2,
+        harm-ecf:E.3.Niveau3,
+        harm-ecf:E.3.Niveau4 ;
+    harm:sourceIdentifier "E.3" ;
+    skos:definition "Implements risk management in all information systems and applies the company-defined risk management strategies and procedures. Evaluates business risks of the company, including those from the use of Internet or cloud resources as well as mobile devices. Documents potential risks and damage limitation plans."@en ;
+    skos:prefLabel "Risikomanagement"@de,
+        "Risk Management"@en .
+
+harm-ecf:E.4 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:E.4.Niveau3,
+        harm-ecf:E.4.Niveau4 ;
+    harm:sourceIdentifier "E.4" ;
+    skos:definition "Establishes and maintains positive business relationships between all stakeholders (internal and external) using and in line with organizational processes. Maintains regular communication with customers/partners/suppliers and responds to their needs with empathy, manages communication beyond the supply chain. Ensures that needs, concerns or complaints of all stakeholders are understood and resolved in line with organizational policy."@en ;
+    skos:prefLabel "Management von Geschäftsbeziehungen"@de,
+        "Relationship Management"@en .
+
+harm-ecf:E.5 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:E.5.Niveau3,
+        harm-ecf:E.5.Niveau4 ;
+    harm:sourceIdentifier "E.5" ;
+    skos:definition "Measures the effectiveness of existing ICT processes. Researches and evaluates ICT process designs from different sources. Follows a systematic methodology for evaluation, design and implementation of process or technology changes with the aim of measurable business gain. Evaluates potential adverse effects of process changes."@en ;
+    skos:prefLabel "Prozessoptimierung"@de,
+        "Process Improvement"@en .
+
+harm-ecf:E.6 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:E.6.Niveau2,
+        harm-ecf:E.6.Niveau3,
+        harm-ecf:E.6.Niveau4 ;
+    harm:sourceIdentifier "E.6" ;
+    skos:definition "Implements ICT quality strategies to maintain and improve the delivery of services and products. Plans and defines indicators for quality management with regard to the ICT strategy. Reviews quality measurement and recommends improvements to contribute to continuous quality optimization."@en ;
+    skos:prefLabel "ITK-Qualitätsmanagement"@de,
+        "ICT Quality Management"@en .
+
+harm-ecf:E.7 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:E.7.Niveau3,
+        harm-ecf:E.7.Niveau4,
+        harm-ecf:E.7.Niveau5 ;
+    harm:sourceIdentifier "E.7" ;
+    skos:definition "Evaluates the impact of new ICT solutions. Defines the requirements and quantifies the business benefit. Manages the implementation of changes taking into account structural and cultural issues. Maintains business and process continuity throughout the change process, monitors the impact, creates remedies where necessary and refines the overall concept."@en ;
+    skos:prefLabel "Management von Geschäftsprozessveränderungen"@de,
+        "Business Change Management"@en .
+
+harm-ecf:E.8 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:E.8.Niveau2,
+        harm-ecf:E.8.Niveau3,
+        harm-ecf:E.8.Niveau4 ;
+    harm:sourceIdentifier "E.8" ;
+    skos:definition "Implements information security strategies. Monitors and counters intrusion, fraud and security breaches or vulnerabilities. Ensures that security risks regarding company data and information are analyzed and managed. Reviews information security incidents, makes recommendations for security policies and strategy to achieve continuous improvement of security measures."@en ;
+    skos:prefLabel "ITK-Sicherheitsmanagement"@de,
+        "Information Security Management"@en .
+
+harm-ecf:E.9 a harm:CompetenceConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:hasLevel harm-ecf:E.9.Niveau4,
+        harm-ecf:E.9.Niveau5 ;
+    harm:sourceIdentifier "E.9" ;
+    skos:definition "Determines the use of information systems in the company as a whole in line with business requirements and controls it accordingly. Considers all internal and external aspects, such as compliance with legal requirements and industry standards, to achieve a balanced ratio between risk management and resource use on the one hand and business profit on the other."@en ;
+    skos:prefLabel "ITK-Gouvernance"@de,
+        "IS Governance"@en .
+
+harm-ecf:A.1.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.1 Niveau 4" ;
+    skos:definition "Beweist Führungsstärke bei der Konstruktion und Implementierung langfristiger, innovativer ITK-Lösungen."@en ;
+    skos:prefLabel "A.1 – Ausrichtung ITK-Geschäftsstrategie, Proficiency 4"@de,
+        "A.1 – IS and Business Strategy Alignment, Proficiency 4"@en .
+
+harm-ecf:A.1.Niveau5 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.1 Niveau 5" ;
+    skos:definition "Nutzt weitreichende Führungsstärke, um Konsens und Verbindlichkeit des Managements des Unternehmens für die ITK-Strategie zu erreichen."@en ;
+    skos:prefLabel "A.1 – Ausrichtung ITK-Geschäftsstrategie, Proficiency 5"@de,
+        "A.1 – IS and Business Strategy Alignment, Proficiency 5"@en .
+
+harm-ecf:A.2.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.2 Niveau 3" ;
+    skos:definition "Beeinflusst den Inhalt der Leistungsvereinbarung (Service Level Agreement, SLA)."@en ;
+    skos:prefLabel "A.2 – Dienstleistungsmanagement, Proficiency 3"@de,
+        "A.2 – Service Level Management, Proficiency 3"@en .
+
+harm-ecf:A.2.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.2 Niveau 4" ;
+    skos:definition "Sorgt für die Anpassung der Leistungsvereinbarungen (SLAs) an die übergeordneten Ziele. Stellt das Erreichen der geplanten Ziele sicher."@en ;
+    skos:prefLabel "A.2 – Dienstleistungsmanagement, Proficiency 4"@de,
+        "A.2 – Service Level Management, Proficiency 4"@en .
+
+harm-ecf:A.3.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.3 Niveau 3" ;
+    skos:definition "Nutzt Fachwissen, um eine Analyse des Marktumfeldes zu erstellen."@en ;
+    skos:prefLabel "A.3 – Entwicklung von Geschäftsplänen, Proficiency 3"@de,
+        "A.3 – Business Plan Development, Proficiency 3"@en .
+
+harm-ecf:A.3.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.3 Niveau 4" ;
+    skos:definition "Leitet die Erstellung einer Informationssystemstrategie einschließlich Chancen und Risiken, die die Geschäftsanforderungen erfüllt (z. B. verteilt, basierend auf mobilen Endgeräten)."@en ;
+    skos:prefLabel "A.3 – Entwicklung von Geschäftsplänen, Proficiency 4"@de,
+        "A.3 – Business Plan Development, Proficiency 4"@en .
+
+harm-ecf:A.3.Niveau5 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.3 Niveau 5" ;
+    skos:definition "Führt die Organisation und urteilt strategisch, um das Potenzial von Informationstechnologien zur Geschäftsentwicklung zu nutzen."@en ;
+    skos:prefLabel "A.3 – Entwicklung von Geschäftsplänen, Proficiency 5"@de,
+        "A.3 – Business Plan Development, Proficiency 5"@en .
+
+harm-ecf:A.4.Niveau2 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.4 Niveau 2" ;
+    skos:definition "Handelt systematisch, um Standards und einfache Produktelemente zu dokumentieren."@en ;
+    skos:prefLabel "A.4 – Produkt- / Serviceplanung, Proficiency 2"@de,
+        "A.4 – Product / Service Planning, Proficiency 2"@en .
+
+harm-ecf:A.4.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.4 Niveau 3" ;
+    skos:definition "Nutzt Fachwissen der Spezifikationsentwicklung, um komplexe Dokumente zu erstellen."@en ;
+    skos:prefLabel "A.4 – Produkt- / Serviceplanung, Proficiency 3"@de,
+        "A.4 – Product / Service Planning, Proficiency 3"@en .
+
+harm-ecf:A.4.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.4 Niveau 4" ;
+    skos:definition "Handelt mit weitreichender Verantwortung im Hinblick auf die gesamte Projekt- bzw. Produktspezifikation."@en ;
+    skos:prefLabel "A.4 – Produkt- / Serviceplanung, Proficiency 4"@de,
+        "A.4 – Product / Service Planning, Proficiency 4"@en .
+
+harm-ecf:A.5.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.5 Niveau 3" ;
+    skos:definition "Nutzt Fachwissen zur Festlegung relevanter ITK-Technologien und -spezifikationen, die in der Konstruktion verschiedener ITK-Projekte, Anwendungen oder Infrastrukturverbesserungen angewendet werden sollen."@en ;
+    skos:prefLabel "A.5 – Architekturspezifikation, Proficiency 3"@de,
+        "A.5 – Architecture Design, Proficiency 3"@en .
+
+harm-ecf:A.5.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.5 Niveau 4" ;
+    skos:definition "Handelt mit weitreichender Verantwortung in der Definition von Umsetzungsstrategien für ITK-Technologien im Einklang mit Geschäftsanforderungen, mit Blick auf die derzeit eingesetzte Technologieplattform, veraltete Ausstattung und neueste technologische Innovationen."@en ;
+    skos:prefLabel "A.5 – Architekturspezifikation, Proficiency 4"@de,
+        "A.5 – Architecture Design, Proficiency 4"@en .
+
+harm-ecf:A.5.Niveau5 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.5 Niveau 5" ;
+    skos:definition "Setzt auf Führungsebene die Unternehmensstrategie in die ITK-Strategie um. Denkt strategisch, um neue Muster in ausgedehnten Datenbeständen zu entdecken und auszuwerten und neue ITK-Systeme einzuführen, um die Geschäfte zu unterstützen."@en ;
+    skos:prefLabel "A.5 – Architekturspezifikation, Proficiency 5"@de,
+        "A.5 – Architecture Design, Proficiency 5"@en .
+
+harm-ecf:A.6.Niveau1 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.6 Niveau 1" ;
+    skos:definition "Trägt zum Entwurf und allgemeinen funktionalen Spezifikationen und Schnittstellen mit Unterstützung der Kollegen bei."@en ;
+    skos:prefLabel "A.6 – Anwendungsspezifikation, Proficiency 1"@de,
+        "A.6 – Application Design, Proficiency 1"@en .
+
+harm-ecf:A.6.Niveau2 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.6 Niveau 2" ;
+    skos:definition "Organisiert die Gesamtplanung des Entwurfs der Anwendung."@en ;
+    skos:prefLabel "A.6 – Anwendungsspezifikation, Proficiency 2"@de,
+        "A.6 – Application Design, Proficiency 2"@en .
+
+harm-ecf:A.6.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.6 Niveau 3" ;
+    skos:definition "Verantwortet die eigene Handlung und die der Kollegen und stellt dabei sicher, dass die Anwendung korrekt in ein komplexes Umfeld integriert wird und den Nutzer-/Kundenbedürfnissen entspricht."@en ;
+    skos:prefLabel "A.6 – Anwendungsspezifikation, Proficiency 3"@de,
+        "A.6 – Application Design, Proficiency 3"@en .
+
+harm-ecf:A.7.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.7 Niveau 4" ;
+    skos:definition "Nutzt breitgefächertes Fachwissen über neue und aufkommende Technologien, gekoppelt mit einem tiefgehenden Geschäftsverständnis, um zukunftsfähige Lösungen vorzudenken und zu artikulieren. Leistet fachlichen Rat und Orientierung für Führungsteams, um strategische Entscheidungsfindung zu unterstützen."@en ;
+    skos:prefLabel "A.7 – Trendschau Technologie und Innovation, Proficiency 4"@de,
+        "A.7 – Technology Trend Watching, Proficiency 4"@en .
+
+harm-ecf:A.7.Niveau5 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.7 Niveau 5" ;
+    skos:definition "Trifft strategische Entscheidungen und macht zukünftige ITK-Lösungen für kundenorientierte Prozesse, neue Produkte und Services vorstellbar. Leitet die Organisation an, diese Lösungen zu entwickeln und zu verwerten."@en ;
+    skos:prefLabel "A.7 – Trendschau Technologie und Innovation, Proficiency 5"@de,
+        "A.7 – Technology Trend Watching, Proficiency 5"@en .
+
+harm-ecf:A.8.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.8 Niveau 3" ;
+    skos:definition "Fördert Aufmerksamkeit, Qualifizierung und Verpflichtung auf den Einsatz nachhaltiger Entwicklung und wendet die notwendigen Werkzeuge an, um diesen Ansatz zu pilotieren."@en ;
+    skos:prefLabel "A.8 – Nachhaltige Entwicklung, Proficiency 3"@de,
+        "A.8 – Sustainable Development, Proficiency 3"@en .
+
+harm-ecf:A.8.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.8 Niveau 4" ;
+    skos:definition "Legt Ziele und Strategie nachhaltiger ITK-Entwicklung in Übereinstimmung mit der Nachhaltigkeitsstrategie der Organisation fest."@en ;
+    skos:prefLabel "A.8 – Nachhaltige Entwicklung, Proficiency 4"@de,
+        "A.8 – Sustainable Development, Proficiency 4"@en .
+
+harm-ecf:A.9.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.9 Niveau 4" ;
+    skos:definition "Nutzt unabhängiges Denken und Gefühl für Technik, um ganz verschiedene Konzepte zu einzigartigen Lösungen zu integrieren."@en ;
+    skos:prefLabel "A.9 – Erfinden, Proficiency 4"@de,
+        "A.9 – Innovating, Proficiency 4"@en .
+
+harm-ecf:A.9.Niveau5 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "A.9 Niveau 5" ;
+    skos:definition "Hinterfragt den Status quo und leistet strategische Führung, um revolutionäre Konzepte in die Praxis umzusetzen."@en ;
+    skos:prefLabel "A.9 – Erfinden, Proficiency 5"@de,
+        "A.9 – Innovating, Proficiency 5"@en .
+
+harm-ecf:B.1.Niveau1 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "B.1 Niveau 1" ;
+    skos:definition "Handelt unter Anleitung, Anwendungen zu entwickeln, testen und dokumentieren."@en ;
+    skos:prefLabel "B.1 – Anwendungsentwicklung, Proficiency 1"@de,
+        "B.1 – Application Development, Proficiency 1"@en .
+
+harm-ecf:B.1.Niveau2 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "B.1 Niveau 2" ;
+    skos:definition "Entwickelt und validiert systematisch Anwendungen."@en ;
+    skos:prefLabel "B.1 – Anwendungsentwicklung, Proficiency 2"@de,
+        "B.1 – Application Development, Proficiency 2"@en .
+
+harm-ecf:B.1.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "B.1 Niveau 3" ;
+    skos:definition "Handelt kreativ in der Entwicklung von Anwendungen und wählt angemessene technische Lösungen. Ist verantwortlich für die eigenen und die Entwicklungsleistungen anderer Teammitglieder. Optimiert die Entwicklung, Wartung und Performanz der Anwendung durch die Nutzung von Design Pattern und die Wiederverwendung erprobter Lösungen."@en ;
+    skos:prefLabel "B.1 – Anwendungsentwicklung, Proficiency 3"@de,
+        "B.1 – Application Development, Proficiency 3"@en .
+
+harm-ecf:B.2.Niveau2 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "B.2 Niveau 2" ;
+    skos:definition "Handelt systematisch, um Kompatibilität der Soft- und Hardware Spezifikationen zu ermitteln. Dokumentiert alle Aktivitäten während der Installation und protokolliert Abweichungen und Abhilfemaßnahmen."@en ;
+    skos:prefLabel "B.2 – Komponentenintegration, Proficiency 2"@de,
+        "B.2 – Component Integration, Proficiency 2"@en .
+
+harm-ecf:B.2.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "B.2 Niveau 3" ;
+    skos:definition "Ist für die eigenen Handlungen und die der Kollegen während des Integrationsprozesses verantwortlich. Kommt den entsprechenden Standards und Umstellungskontrollverfahren nach, um die Funktionalität und Verlässlichkeit des Systems zu erhalten."@en ;
+    skos:prefLabel "B.2 – Komponentenintegration, Proficiency 3"@de,
+        "B.2 – Component Integration, Proficiency 3"@en .
+
+harm-ecf:B.2.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "B.2 Niveau 4" ;
+    skos:definition "Nutzt weitreichende spezialisierte Kenntnisse, um Vorgehensmodelle für den gesamten Integrationszyklus zu erstellen, einschließlich der Etablierung interner Praxisanforderungen. Leitet die Aufstellung und Zuweisung von Ressourcen für Integrationsprogramme."@en ;
+    skos:prefLabel "B.2 – Komponentenintegration, Proficiency 4"@de,
+        "B.2 – Component Integration, Proficiency 4"@en .
+
+harm-ecf:B.3.Niveau1 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "B.3 Niveau 1" ;
+    skos:definition "Führt einfache Tests in strikter Übereinstimmung mit detaillierten Anweisungen aus."@en ;
+    skos:prefLabel "B.3 – Testen, Proficiency 1"@de,
+        "B.3 – Testing, Proficiency 1"@en .
+
+harm-ecf:B.3.Niveau2 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "B.3 Niveau 2" ;
+    skos:definition "Organisiert Testprogramme und schreibt Skripte, um eventuelle Schwachstellen einer Dauerprüfung zu unterziehen. Protokolliert und berichtet Testbefunde über eine Ergebnisanalyse."@en ;
+    skos:prefLabel "B.3 – Testen, Proficiency 2"@de,
+        "B.3 – Testing, Proficiency 2"@en .
+
+harm-ecf:B.3.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "B.3 Niveau 3" ;
+    skos:definition "Nutzt Fachwissen, um komplexe Testprogramme zu beaufsichtigen. Stellt sicher, dass Prüfverfahren und Ergebnisse dokumentiert werden, als Input für nachfolgende Prozesseigner wie Designer, Nutzer oder Administratoren. Ist verantwortlich für Einhaltung der Prüfverfahren einschließlich Dokumentation der Prüfungskette."@en ;
+    skos:prefLabel "B.3 – Testen, Proficiency 3"@de,
+        "B.3 – Testing, Proficiency 3"@en .
+
+harm-ecf:B.3.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "B.3 Niveau 4" ;
+    skos:definition "Nutzt weitreichendes und tiefgehendes Fachwissen, um vollständige Testprozesse für alle Phasen zu entwickeln und interne Standards für ihre Anwendung zu etablieren. Führt das Testteam durch fachliche Beratung."@en ;
+    skos:prefLabel "B.3 – Testen, Proficiency 4"@de,
+        "B.3 – Testing, Proficiency 4"@en .
+
+harm-ecf:B.4.Niveau1 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "B.4 Niveau 1" ;
+    skos:definition "Führt unter Anleitung und in Übereinstimmung mit detaillierten Anweisungen die Entfernung bzw. Installation einzelner Komponenten durch."@en ;
+    skos:prefLabel "B.4 – Lösungsimplementierung, Proficiency 1"@de,
+        "B.4 – Solution Deployment, Proficiency 1"@en .
+
+harm-ecf:B.4.Niveau2 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "B.4 Niveau 2" ;
+    skos:definition "Handelt systematisch, um in einem komplexen Umfeld vorhandene Systemelemente zu analysieren oder neu zu entwickeln. Identifiziert nicht funktionierende Komponenten und stellt die Ursache von Funktionsfehlern innerhalb der Gesamtlösung fest. Unterstützt weniger erfahrene Kollegen."@en ;
+    skos:prefLabel "B.4 – Lösungsimplementierung, Proficiency 2"@de,
+        "B.4 – Solution Deployment, Proficiency 2"@en .
+
+harm-ecf:B.4.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "B.4 Niveau 3" ;
+    skos:definition "Verantwortet die eigene und die Handlungen Anderer im Rahmen der Lösungsbereitstellung einschließlich umfassender Kommunikation mit dem Kunden. Nutzt Fachwissen, um bei der Lösungsentwicklung zu beraten und ihre Richtung zu beeinflussen."@en ;
+    skos:prefLabel "B.4 – Lösungsimplementierung, Proficiency 3"@de,
+        "B.4 – Solution Deployment, Proficiency 3"@en .
+
+harm-ecf:B.5.Niveau1 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "B.5 Niveau 1" ;
+    skos:definition "Nutzt Standards und wendet sie an, um Dokumentstrukturen festzulegen."@en ;
+    skos:prefLabel "B.5 – Erstellen von Dokumentationen, Proficiency 1"@de,
+        "B.5 – Documentation Production, Proficiency 1"@en .
+
+harm-ecf:B.5.Niveau2 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "B.5 Niveau 2" ;
+    skos:definition "Bestimmt Anforderungen an Dokumentationen unter Berücksichtigung ihres Zwecks und der Umgebung, in der sie eingesetzt werden."@en ;
+    skos:prefLabel "B.5 – Erstellen von Dokumentationen, Proficiency 2"@de,
+        "B.5 – Documentation Production, Proficiency 2"@en .
+
+harm-ecf:B.5.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "B.5 Niveau 3" ;
+    skos:definition "Stimmt das Level der Detaillierung auf ihre Zielstellung und der Zielgruppe der Dokumentation ab."@en ;
+    skos:prefLabel "B.5 – Erstellen von Dokumentationen, Proficiency 3"@de,
+        "B.5 – Documentation Production, Proficiency 3"@en .
+
+harm-ecf:B.6.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "B.6 Niveau 3" ;
+    skos:definition "Stellt die Interoperabilität der Systemkomponenten sicher. Nutzt weitreichendes Fachwissen, um vollständige Systeme zu entwickeln, die den Anforderungen gerecht werden und die Kundenerwartungen erfüllen."@en ;
+    skos:prefLabel "B.6 – Systementwicklung, Proficiency 3"@de,
+        "B.6 – Systems Engineering, Proficiency 3"@en .
+
+harm-ecf:B.6.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "B.6 Niveau 4" ;
+    skos:definition "Bewältigt Komplexität durch die Entwicklung von Standardabläufen und -architekturen, die eine einheitliche Produktentwicklung unterstützen. Begründet ein Bündel von Systemanforderungen so, dass sie als Leitlinien für die Entwicklung dienen können. Legt fest, welche Systemanforderungen durch welche Komponenten erfüllt werden sollen."@en ;
+    skos:prefLabel "B.6 – Systementwicklung, Proficiency 4"@de,
+        "B.6 – Systems Engineering, Proficiency 4"@en .
+
+harm-ecf:C.1.Niveau1 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "C.1 Niveau 1" ;
+    skos:definition "Kommuniziert routiniert mit Nutzern, setzt dabei ITK-Produktwissen und -fertigkeiten ein, um auf Nutzeranfragen und -probleme zu reagieren. Löst Vorfälle unter Befolgung vorgeschriebener Verfahren."@en ;
+    skos:prefLabel "C.1 – Anwenderbetreuung, Proficiency 1"@de,
+        "C.1 – User Support, Proficiency 1"@en .
+
+harm-ecf:C.1.Niveau2 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "C.1 Niveau 2" ;
+    skos:definition "Analysiert Nutzerprobleme systematisch, um Lösungsmöglichkeiten und mögliche Nebeneffekte zu identifizieren. Nutzt vorhandene Erfahrungen zur Identifikation von Nutzerproblemen und sucht in Datenbanken nach möglichen Lösungen. Reicht komplexe oder ungelöste Vorfälle an erfahrenere Mitarbeiter weiter. Protokolliert und begleitet den Prozess der Anwenderbetreuung von Beginn bis zum Abschluss."@en ;
+    skos:prefLabel "C.1 – Anwenderbetreuung, Proficiency 2"@de,
+        "C.1 – User Support, Proficiency 2"@en .
+
+harm-ecf:C.1.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "C.1 Niveau 3" ;
+    skos:definition "Organisiert den Support-Prozess und ist verantwortlich dafür, dass die vereinbarten Servicelevel erreicht werden. Plant den Einsatz von Ressourcen so, dass der Support gemäß den definierten Serviceleveln verfügbar ist. Handelt kreativ und versucht, den Service kontinuierlich zu verbessern. Steuert die Kosten dem Support-Budget entsprechend."@en ;
+    skos:prefLabel "C.1 – Anwenderbetreuung, Proficiency 3"@de,
+        "C.1 – User Support, Proficiency 3"@en .
+
+harm-ecf:C.2.Niveau2 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "C.2 Niveau 2" ;
+    skos:definition "Handelt systematisch in der Reaktion auf tägliche Betriebsanforderungen, vermeidet Servicestörungen und entspricht dabei dem Leistungsvertrag und den ITK-Sicherheitsrichtlinien."@en ;
+    skos:prefLabel "C.2 – Veränderungsunterstützung, Proficiency 2"@de,
+        "C.2 – Change Support, Proficiency 2"@en .
+
+harm-ecf:C.2.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "C.2 Niveau 3" ;
+    skos:definition "Stellt die Systemintegrität durch die Kontrolle des Einsatzes von operativen Updates, Software- oder Hardwareergänzungen und durch Instandhaltungsaktivitäten sicher. Bewegt sich im Rahmen des vorhandenen Budgets."@en ;
+    skos:prefLabel "C.2 – Veränderungsunterstützung, Proficiency 3"@de,
+        "C.2 – Change Support, Proficiency 3"@en .
+
+harm-ecf:C.3.Niveau1 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "C.3 Niveau 1" ;
+    skos:definition "Handelt unter Anleitung beim Verfolgen und Protokollieren von Leistungswerten entsprechend dem Leistungsvertrag."@en ;
+    skos:prefLabel "C.3 – Service-Administration, Proficiency 1"@de,
+        "C.3 – Service Delivery, Proficiency 1"@en .
+
+harm-ecf:C.3.Niveau2 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "C.3 Niveau 2" ;
+    skos:definition "Analysiert systematisch Leistungsdaten und kommuniziert die Ergebnisse zu erfahrenen Kollegen. Zeigt potentielle Nichterfüllungen des Leistungsvertrages angemessen an und gibt Handlungsempfehlungen, um die Serviceverfügbarkeit zu verbessern. Verfolgt den Abgleich zwischen Verfügbarkeit und vereinbarten Serviceniveaus."@en ;
+    skos:prefLabel "C.3 – Service-Administration, Proficiency 2"@de,
+        "C.3 – Service Delivery, Proficiency 2"@en .
+
+harm-ecf:C.3.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "C.3 Niveau 3" ;
+    skos:definition "Bestimmt den Ablauf der operativen Aufgaben. Sorgt dafür, dass Kosten und Budget sich im Rahmen interner und externer Vorgaben bewegen. Identifiziert die optimale Zahl von Mitarbeitern, um den Betrieb der ITK-Infrastruktur personell angemessen auszustatten."@en ;
+    skos:prefLabel "C.3 – Service-Administration, Proficiency 3"@de,
+        "C.3 – Service Delivery, Proficiency 3"@en .
+
+harm-ecf:C.4.Niveau2 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "C.4 Niveau 2" ;
+    skos:definition "Identifiziert und klassifiziert Vorfälle und Service-Unterbrechungen. Zeichnet Vorfälle auf, indem er sie entsprechend ihrer Kennzeichen und ihrer Lösungen einordnet."@en ;
+    skos:prefLabel "C.4 – Problemmanagement, Proficiency 2"@de,
+        "C.4 – Problem Management, Proficiency 2"@en .
+
+harm-ecf:C.4.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "C.4 Niveau 3" ;
+    skos:definition "Nutzt Fachwissen und tiefgehendes Verständnis der ITK-Infrastruktur und Problemmanagement-Prozesse, um Fehler mit geringstmöglichem Ausfall zu identifizieren und zu lösen. Trifft in emotional geladenen Situationen vernünftige Entscheidungen bezüglich des angemessenen und erforderlichen Vorgehens, um Auswirkungen auf das Geschäft zu minimieren. Identifiziert fehlerhafte Komponenten schnell und wählt passende Alternativen wie Reparieren, Austauschen oder Rekonfigurieren."@en ;
+    skos:prefLabel "C.4 – Problemmanagement, Proficiency 3"@de,
+        "C.4 – Problem Management, Proficiency 3"@en .
+
+harm-ecf:C.4.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "C.4 Niveau 4" ;
+    skos:definition "Leitet und ist verantwortlich für den gesamten Problemmanagementprozess. Plant gut geschultes Personal ein und stellt sicher, dass Personal, Tools und Diagnosegeräte für Notfälle bereitstehen. Verfügt über tiefgehendes Fachwissen, um systemkritische Fehler vorauszusehen und Vorkehrungen zur Behebung mit minimaler Ausfallzeit zu treffen. Schreibt Eskalationsprozesse vor, um sicherzustellen, dass die jedem Vorfall angemessenen Ressourcen eingesetzt werden."@en ;
+    skos:prefLabel "C.4 – Problemmanagement, Proficiency 4"@de,
+        "C.4 – Problem Management, Proficiency 4"@en .
+
+harm-ecf:D.1.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.1 Niveau 4" ;
+    skos:definition "Wendet tiefgehendes Fachwissen an und setzt externe Standards und Best Practice wirksam ein."@en ;
+    skos:prefLabel "D.1 – Entwicklung von Informationssicherheitsstrategien, Proficiency 4"@de,
+        "D.1 – Information Security Strategy Development, Proficiency 4"@en .
+
+harm-ecf:D.1.Niveau5 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.1 Niveau 5" ;
+    skos:definition "Ist gesamtverantwortlich für die Strategie der Einbettung der Informationssicherheit in die Organisationskultur."@en ;
+    skos:prefLabel "D.1 – Entwicklung von Informationssicherheitsstrategien, Proficiency 5"@de,
+        "D.1 – Information Security Strategy Development, Proficiency 5"@en .
+
+harm-ecf:D.10.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.10 Niveau 3" ;
+    skos:definition "Integriert die angemessene Informationsstruktur in die Unternehmensumgebung."@en ;
+    skos:prefLabel "D.10 – Informations- u. Wissensmanagement, Proficiency 3"@de,
+        "D.10 – Information and Knowledge Management, Proficiency 3"@en .
+
+harm-ecf:D.10.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.10 Niveau 4" ;
+    skos:definition "Analysiert Geschäftsprozesse im Hinblick auf die dazugehörigen Anforderungen an Informationen und schlägt die angemessenste Strukturierung der Informationen vor."@en ;
+    skos:prefLabel "D.10 – Informations- u. Wissensmanagement, Proficiency 4"@de,
+        "D.10 – Information and Knowledge Management, Proficiency 4"@en .
+
+harm-ecf:D.10.Niveau5 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.10 Niveau 5" ;
+    skos:definition "Bringt Informationen und Wissen so zusammen, dass sie für das Geschäft wertschöpfend wirken. Wendet innovative Lösungen an, die auf abrufbaren Informationen beruhen."@en ;
+    skos:prefLabel "D.10 – Informations- u. Wissensmanagement, Proficiency 5"@de,
+        "D.10 – Information and Knowledge Management, Proficiency 5"@en .
+
+harm-ecf:D.11.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.11 Niveau 3" ;
+    skos:definition "Baut vertrauensvolle Beziehungen zu Kunden auf und hilft ihnen, ihre Bedarfe zu klären."@en ;
+    skos:prefLabel "D.11 – Bedarfserkennung, Proficiency 3"@de,
+        "D.11 – Needs Identification, Proficiency 3"@en .
+
+harm-ecf:D.11.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.11 Niveau 4" ;
+    skos:definition "Nutzt tiefgehendes Fachwissen über die Tätigkeiten der Kunden, um mögliche Lösungen für die geschäftlichen Bedarfe anzubieten. Unterstützt den Kunden durch fachkundige Beratung bezüglich möglicher Lösungen und Lieferanten."@en ;
+    skos:prefLabel "D.11 – Bedarfserkennung, Proficiency 4"@de,
+        "D.11 – Needs Identification, Proficiency 4"@en .
+
+harm-ecf:D.11.Niveau5 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.11 Niveau 5" ;
+    skos:definition "Berät und unterstützt Kunden auf strategischer Ebene bei Entscheidungen. Hilft Kunden bei der Planung neuer ITK-Lösungen, fördert Partnerschaften und entwickelt aussichtsreiche Vorhaben."@en ;
+    skos:prefLabel "D.11 – Bedarfserkennung, Proficiency 5"@de,
+        "D.11 – Needs Identification, Proficiency 5"@en .
+
+harm-ecf:D.12.Niveau2 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.12 Niveau 2" ;
+    skos:definition "Versteht Taktiken des digitalen Marketings und wendet sie an, um eine effektive Gesamtplanung für das digitale Marketing zu entwickeln und nutzt dabei verschiedene Marketingkanäle wie Suchmaschinen, Anwendungen, Pop-Up-Anzeigen, Mailings, social media und mobile media Kanäle."@en ;
+    skos:prefLabel "D.12 – Digitales Marketing, Proficiency 2"@de,
+        "D.12 – Digital Marketing, Proficiency 2"@en .
+
+harm-ecf:D.12.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.12 Niveau 3" ;
+    skos:definition "Wendet Fachwissen an, um Analysewerkzeuge zu nutzen und die Wirkung von Webseiten technisch und in Bezug auf die Downloadgeschwindigkeit zu beurteilen. Prüft die Nutzerbeteiligung von Anwendungen mit Hilfe weitreichender Analyseergebnisse. Kennt die rechtlichen Auswirkungen der angewendeten Ansätze."@en ;
+    skos:prefLabel "D.12 – Digitales Marketing, Proficiency 3"@de,
+        "D.12 – Digital Marketing, Proficiency 3"@en .
+
+harm-ecf:D.12.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.12 Niveau 4" ;
+    skos:definition "Stellt klare nachvollziehbare Ziele für das digitale Marketing auf. Wählt angemessene Methoden aus und setzt Budgetziele für die gewählten Kanäle. Beobachtet, analysiert und optimiert laufend die Aktivitäten des digitalen Marketings."@en ;
+    skos:prefLabel "D.12 – Digitales Marketing, Proficiency 4"@de,
+        "D.12 – Digital Marketing, Proficiency 4"@en .
+
+harm-ecf:D.2.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.2 Niveau 4" ;
+    skos:definition "Wendet weitreichendes Fachwissen an, um die Anwendung von externen Standards und Best Practices wirksam einzusetzen und zu autorisieren."@en ;
+    skos:prefLabel "D.2 – Entwicklung von ITK-Qualitätsstrategien, Proficiency 4"@de,
+        "D.2 – ICT Quality Strategy Development, Proficiency 4"@en .
+
+harm-ecf:D.2.Niveau5 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.2 Niveau 5" ;
+    skos:definition "Ist gesamtverantwortlich für die Strategie der Einbettung der ITK-Qualität (z. B. Metriken und kontinuierliche Verbesserung) in die Organisationskultur."@en ;
+    skos:prefLabel "D.2 – Entwicklung von ITK-Qualitätsstrategien, Proficiency 5"@de,
+        "D.2 – ICT Quality Strategy Development, Proficiency 5"@en .
+
+harm-ecf:D.3.Niveau2 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.3 Niveau 2" ;
+    skos:definition "Organisiert die Ermittlung des Qualifizierungsbedarfs; ordnet Unternehmensanforderungen zu, ermittelt und wählt Bildungsmaßnahmen aus und bereitet diese operativ vor."@en ;
+    skos:prefLabel "D.3 – Bestimmung von Aus- und Weiterbildungsmaßnahmen, Proficiency 2"@de,
+        "D.3 – Education and Training Provision, Proficiency 2"@en .
+
+harm-ecf:D.3.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.3 Niveau 3" ;
+    skos:definition "Handelt kreativ in der Analyse von Qualifikationslücken, arbeitet spezifische Anforderungen aus und ermittelt potentielle Quellen für Bildungsmaßnahmen. Verfügt über Fachwissen des Aus- und Weiterbildungsmarktes und richtet Feedback-Mechanismen ein, um den Mehrwert alternativer Maßnahmen und Programme zu erfassen."@en ;
+    skos:prefLabel "D.3 – Bestimmung von Aus- und Weiterbildungsmaßnahmen, Proficiency 3"@de,
+        "D.3 – Education and Training Provision, Proficiency 3"@en .
+
+harm-ecf:D.4.Niveau2 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.4 Niveau 2" ;
+    skos:definition "Versteht die Prinzipien des Beschaffungsprozesses und wendet sie an; erteilt Aufträge basierend auf bestehenden Zulieferverträgen. Stellt die korrekte Ausführung von Aufträgen sicher, einschließlich Lieferungsbestätigungen und Zuordnung anschließender Zahlungen."@en ;
+    skos:prefLabel "D.4 – Beschaffung, Proficiency 2"@de,
+        "D.4 – Purchasing, Proficiency 2"@en .
+
+harm-ecf:D.4.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.4 Niveau 3" ;
+    skos:definition "Nutzt Fachwissen zur Umsetzung von Beschaffungsprozessen und sichert dabei positive geschäftliche Beziehungen mit den Zulieferern. Wählt Leistungserbringer, Produkte und Dienstleistungen aus mittels Evaluation von Kosten, Pünktlichkeit und Qualität. Entscheidet über Auftragsvergabe in Übereinstimmung mit der Organisationspolitik."@en ;
+    skos:prefLabel "D.4 – Beschaffung, Proficiency 3"@de,
+        "D.4 – Purchasing, Proficiency 3"@en .
+
+harm-ecf:D.4.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.4 Niveau 4" ;
+    skos:definition "Leitet den Einsatz der Beschaffungsstrategie des Unternehmens und gibt Empfehlungen für Prozessoptimierungen. Nutzt Erfahrung und Expertise aus der Beschaffungspraxis für endgültige Einkaufsentscheidungen."@en ;
+    skos:prefLabel "D.4 – Beschaffung, Proficiency 4"@de,
+        "D.4 – Purchasing, Proficiency 4"@en .
+
+harm-ecf:D.5.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.5 Niveau 3" ;
+    skos:definition "Organisiert die Zusammenarbeit zwischen wesentlichen internen Abteilungen, beispielsweise Technik, Verkauf und Rechtsfragen. Erleichtert den Vergleich von Kundenanforderungen mit verfügbaren Standardangeboten."@en ;
+    skos:prefLabel "D.5 – Angebotserstellung, Proficiency 3"@de,
+        "D.5 – Sales Proposal Development, Proficiency 3"@en .
+
+harm-ecf:D.5.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.5 Niveau 4" ;
+    skos:definition "Handelt kreativ, um Angebote zu entwickeln, die komplexe Lösungen beinhalten. Passt die Lösung in einem komplexen technischen und juristischen Umfeld den Kundenwünschen an und stellt die Machbarkeit sowie die rechtliche und technische Stichhaltigkeit des Kundenangebots sicher."@en ;
+    skos:prefLabel "D.5 – Angebotserstellung, Proficiency 4"@de,
+        "D.5 – Sales Proposal Development, Proficiency 4"@en .
+
+harm-ecf:D.6.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.6 Niveau 3" ;
+    skos:definition "Handelt kreativ, um den Aufbau eines Wiederverkäufernetzwerks zu beeinflussen. Steuert die Ermittlung und Bewertung potentieller Wiederverkäufer und baut Unterstützungsverfahren auf. Steuert Wiederverkaufsnetzwerke, um die Geschäftsleistung zu maximieren."@en ;
+    skos:prefLabel "D.6 – Steuerung von Vertriebskanälen, Proficiency 3"@de,
+        "D.6 – Channel Management, Proficiency 3"@en .
+
+harm-ecf:D.6.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.6 Niveau 4" ;
+    skos:definition "Wendet weitreichende Fertigkeiten in Marketing und Vertrieb an, um die Wiederverkaufsstrategie des Unternehmens zu erstellen. Legt die Prozesse fest, über die die Wiederverkäufernetzwerke gesteuert werden, um die Geschäftsleistung zu maximieren."@en ;
+    skos:prefLabel "D.6 – Steuerung von Vertriebskanälen, Proficiency 4"@de,
+        "D.6 – Channel Management, Proficiency 4"@en .
+
+harm-ecf:D.7.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.7 Niveau 3" ;
+    skos:definition "Trägt zum Verkaufsprozess durch effektive Präsentation von Produkten oder Serviceangeboten gegenüber Kunden bei."@en ;
+    skos:prefLabel "D.7 – Vertriebsmanagement, Proficiency 3"@de,
+        "D.7 – Sales Management, Proficiency 3"@en .
+
+harm-ecf:D.7.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.7 Niveau 4" ;
+    skos:definition "Bewertet und schätzt adäquate Vertriebsstrategien ein, um Unternehmensergebnisse zu erreichen. Nimmt Entscheidungen und Festlegungen bzgl. jährlicher Verkaufsziele vor und passt Anreize den Marktbedingungen entsprechend an."@en ;
+    skos:prefLabel "D.7 – Vertriebsmanagement, Proficiency 4"@de,
+        "D.7 – Sales Management, Proficiency 4"@en .
+
+harm-ecf:D.7.Niveau5 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.7 Niveau 5" ;
+    skos:definition "Übernimmt die Gesamtverantwortung für die Vertriebsleistung des Unternehmens. Autorisiert die Zuordnung von Ressourcen, setzt Schwerpunkte in der Produkt- und Dienstleistungspromotion, berät den Vorstand hinsichtlich der Vertriebsleistung."@en ;
+    skos:prefLabel "D.7 – Vertriebsmanagement, Proficiency 5"@de,
+        "D.7 – Sales Management, Proficiency 5"@en .
+
+harm-ecf:D.8.Niveau2 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.8 Niveau 2" ;
+    skos:definition "Handelt systematisch zur Überwachung von Vertragseinhaltung und leitet Mängel umgehend weiter."@en ;
+    skos:prefLabel "D.8 – Vertragsmanagement, Proficiency 2"@de,
+        "D.8 – Contract Management, Proficiency 2"@en .
+
+harm-ecf:D.8.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.8 Niveau 3" ;
+    skos:definition "Evaluiert die Einhaltung der Lieferantenverträge durch die Beobachtung der Leistungsindikatoren. Sichert die Effizienz der gesamten Lieferkette. Übt Einfluss auf Vertragserneuerung aus."@en ;
+    skos:prefLabel "D.8 – Vertragsmanagement, Proficiency 3"@de,
+        "D.8 – Contract Management, Proficiency 3"@en .
+
+harm-ecf:D.8.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.8 Niveau 4" ;
+    skos:definition "Stellt operativ die Einhaltung der Lieferverträge sicher und ist die letzte Instanz der Problemlösung."@en ;
+    skos:prefLabel "D.8 – Vertragsmanagement, Proficiency 4"@de,
+        "D.8 – Contract Management, Proficiency 4"@en .
+
+harm-ecf:D.9.Niveau2 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.9 Niveau 2" ;
+    skos:definition "Instruiert / trainiert Einzelne und Gruppen, hält Schulungen ab."@en ;
+    skos:prefLabel "D.9 – Personalentwicklung, Proficiency 2"@de,
+        "D.9 – Personnel Development, Proficiency 2"@en .
+
+harm-ecf:D.9.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.9 Niveau 3" ;
+    skos:definition "Beobachtet und befasst sich mit Entwicklungsbedarfen von Einzelnen und Teams."@en ;
+    skos:prefLabel "D.9 – Personalentwicklung, Proficiency 3"@de,
+        "D.9 – Personnel Development, Proficiency 3"@en .
+
+harm-ecf:D.9.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "D.9 Niveau 4" ;
+    skos:definition "Wird vorausschauend tätig durch die Schaffung von lernförderlichen Rahmenbedingungen in der Organisation, um die Entwicklung Einzelner, von Teams und der gesamten Belegschaft zu unterstützen."@en ;
+    skos:prefLabel "D.9 – Personalentwicklung, Proficiency 4"@de,
+        "D.9 – Personnel Development, Proficiency 4"@en .
+
+harm-ecf:E.1.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.1 Niveau 3" ;
+    skos:definition "Wendet Fertigkeiten an, um kurzfristige Prognosen zu erstellen. Nutzt hierzu Marktinformationen und bewertet die Produktions- und Vertriebsfähigkeit des Unternehmens."@en ;
+    skos:prefLabel "E.1 – Prognoseerstellung, Proficiency 3"@de,
+        "E.1 – Forecast Development, Proficiency 3"@en .
+
+harm-ecf:E.1.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.1 Niveau 4" ;
+    skos:definition "Handelt mit weitreichender Verantwortung zur Erstellung langfristiger Prognosen. Versteht den Weltmarkt, kann dabei relevante Informationen aus einem breiteren geschäftlichen, politischen und sozialen Kontext identifizieren und evaluieren."@en ;
+    skos:prefLabel "E.1 – Prognoseerstellung, Proficiency 4"@de,
+        "E.1 – Forecast Development, Proficiency 4"@en .
+
+harm-ecf:E.2.Niveau2 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.2 Niveau 2" ;
+    skos:definition "Versteht die Prinzipien des Projektmanagements und wendet sie an. Setzt Methoden, Instrumente und Prozesse ein, um einfache Projekte zu steuern. Vermeidet Kosten und Abfall."@en ;
+    skos:prefLabel "E.2 – Projekt- und Portfoliomanagement, Proficiency 2"@de,
+        "E.2 – Project and Portfolio Management, Proficiency 2"@en .
+
+harm-ecf:E.2.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.2 Niveau 3" ;
+    skos:definition "Verantwortet die eigenen Aktivitäten und die Anderer, arbeitet innerhalb der Projektgrenzen, trifft Entscheidungen und weist an, optimiert Aufwände und Ressourceneinsatz. Steuert und beaufsichtigt Beziehungen innerhalb des Teams. Plant und etabliert Teamziele und Resultate und dokumentiert die Ergebnisse."@en ;
+    skos:prefLabel "E.2 – Projekt- und Portfoliomanagement, Proficiency 3"@de,
+        "E.2 – Project and Portfolio Management, Proficiency 3"@en .
+
+harm-ecf:E.2.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.2 Niveau 4" ;
+    skos:definition "Organisiert komplexe Projekte und Programme, einschließlich aller Interaktionen mit anderen. Übt Einfluss auf die Projektstrategie durch Vorschläge mit neuen oder alternativen Lösungen aus und gleicht zwischen Effizienz- und Effektivitätsanforderungen aus; übernimmt die Gesamtverantwortung für Projektergebnisse, einschließlich Finanz- und Ressourcenmanagement; ist befugt, Standards zu revidieren und auszuwählen."@en ;
+    skos:prefLabel "E.2 – Projekt- und Portfoliomanagement, Proficiency 4"@de,
+        "E.2 – Project and Portfolio Management, Proficiency 4"@en .
+
+harm-ecf:E.2.Niveau5 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.2 Niveau 5" ;
+    skos:definition "Führt auf strategischer Ebene eng zusammenhängende Arbeitsprogramme, stellt hierbei sicher, dass die Informationstechnologie Veränderungen ermöglicht und in Übereinstimmung mit der Gesamtgeschäftsstrategie Gewinn bringt. Beherrscht Geschäft und Technologie tiefgehend und kann so innovative Ideen konzipieren und Regeln realisieren."@en ;
+    skos:prefLabel "E.2 – Projekt- und Portfoliomanagement, Proficiency 5"@de,
+        "E.2 – Project and Portfolio Management, Proficiency 5"@en .
+
+harm-ecf:E.3.Niveau2 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.3 Niveau 2" ;
+    skos:definition "Versteht und wendet Prinzipien des Risikomanagements an und untersucht ITK-Lösungen zur Minderung der identifizierten Risiken."@en ;
+    skos:prefLabel "E.3 – Risikomanagement, Proficiency 2"@de,
+        "E.3 – Risk Management, Proficiency 2"@en .
+
+harm-ecf:E.3.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.3 Niveau 3" ;
+    skos:definition "Entscheidet über notwendige und angemessene Vorgänge, um Sicherheit anzugleichen und Gefährdungen zu vermeiden. Evaluiert, steuert und sichert die Validierung von Ausnahmen; prüft ITK-Prozesse und Umfelder."@en ;
+    skos:prefLabel "E.3 – Risikomanagement, Proficiency 3"@de,
+        "E.3 – Risk Management, Proficiency 3"@en .
+
+harm-ecf:E.3.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.3 Niveau 4" ;
+    skos:definition "Leitet die Definition und Anwendbarmachung einer Risikomanagementstrategie, unter Berücksichtigung aller möglichen Hemmnisse, einschließlich technischer, wirtschaftlicher und politischer Fragen. Delegiert Aufgaben."@en ;
+    skos:prefLabel "E.3 – Risikomanagement, Proficiency 4"@de,
+        "E.3 – Risk Management, Proficiency 4"@en .
+
+harm-ecf:E.4.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.4 Niveau 3" ;
+    skos:definition "Steuert einen begrenzten Kundenstamm und verantwortet dabei die eigenen Handlungen und die von Anderen."@en ;
+    skos:prefLabel "E.4 – Management von Geschäftsbeziehungen, Proficiency 3"@de,
+        "E.4 – Relationship Management, Proficiency 3"@en .
+
+harm-ecf:E.4.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.4 Niveau 4" ;
+    skos:definition "Leitet das Management wichtiger oder vieler Beziehungen zu Beteiligten. Autorisiert Investitionen in neue und bestehende Beziehungen. Leitet die Entwicklung brauchbarer Leitlinien zur Pflege positiver Geschäftsbeziehungen."@en ;
+    skos:prefLabel "E.4 – Management von Geschäftsbeziehungen, Proficiency 4"@de,
+        "E.4 – Relationship Management, Proficiency 4"@en .
+
+harm-ecf:E.5.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.5 Niveau 3" ;
+    skos:definition "Nutzt Fachwissen, um bestehende ITK-Prozesse und Lösungen zu recherchieren und mögliche Veränderungen zu definieren. Gibt Empfehlungen auf Basis begründeter Argumente."@en ;
+    skos:prefLabel "E.5 – Prozessoptimierung, Proficiency 3"@de,
+        "E.5 – Process Improvement, Proficiency 3"@en .
+
+harm-ecf:E.5.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.5 Niveau 4" ;
+    skos:definition "Leitet und autorisiert die Implementierung von Innovationen und Verbesserungen, die die Wettbewerbsfähigkeit bzw. die Effizienz erhöhen. Legt den Vorgesetzten die Geschäftsvorteile von möglichen Veränderungen dar."@en ;
+    skos:prefLabel "E.5 – Prozessoptimierung, Proficiency 4"@de,
+        "E.5 – Process Improvement, Proficiency 4"@en .
+
+harm-ecf:E.6.Niveau2 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.6 Niveau 2" ;
+    skos:definition "Kommuniziert und beobachtet die Umsetzung der Qualitätsstrategie des Unternehmens."@en ;
+    skos:prefLabel "E.6 – ITK-Qualitätsmanagement, Proficiency 2"@de,
+        "E.6 – ICT Quality Management, Proficiency 2"@en .
+
+harm-ecf:E.6.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.6 Niveau 3" ;
+    skos:definition "Wertet Indikatoren und Prozesse zu Qualitätsmanagement entsprechend der ITK-Qualitätsstrategie aus und schlägt Abhilfemaßnahmen vor."@en ;
+    skos:prefLabel "E.6 – ITK-Qualitätsmanagement, Proficiency 3"@de,
+        "E.6 – ICT Quality Management, Proficiency 3"@en .
+
+harm-ecf:E.6.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.6 Niveau 4" ;
+    skos:definition "Bewertet und schätzt ein, inwieweit Qualitätsanforderungen eingehalten werden und leitet die Umsetzung der Qualitätsstrategie. Nimmt funktionsübergreifend führenden Einfluss, um Qualitätsstandards zu setzen und auszuweiten."@en ;
+    skos:prefLabel "E.6 – ITK-Qualitätsmanagement, Proficiency 4"@de,
+        "E.6 – ICT Quality Management, Proficiency 4"@en .
+
+harm-ecf:E.7.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.7 Niveau 3" ;
+    skos:definition "Evaluiert Veränderungsbedarfe und nutzt fachliche Fertigkeiten, um mögliche geeignete Methoden und Standards zu identifizieren."@en ;
+    skos:prefLabel "E.7 – Management von Geschäftsprozessveränderungen, Proficiency 3"@de,
+        "E.7 – Business Change Management, Proficiency 3"@en .
+
+harm-ecf:E.7.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.7 Niveau 4" ;
+    skos:definition "Leitet die Planung, Steuerung und Durchführung bedeutender ITK-bedingter Geschäftsveränderungen."@en ;
+    skos:prefLabel "E.7 – Management von Geschäftsprozessveränderungen, Proficiency 4"@de,
+        "E.7 – Business Change Management, Proficiency 4"@en .
+
+harm-ecf:E.7.Niveau5 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.7 Niveau 5" ;
+    skos:definition "Nutzt den eigenen, tiefgehenden Einfluss, um Veränderungen in der Organisation zu verankern."@en ;
+    skos:prefLabel "E.7 – Management von Geschäftsprozessveränderungen, Proficiency 5"@de,
+        "E.7 – Business Change Management, Proficiency 5"@en .
+
+harm-ecf:E.8.Niveau2 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.8 Niveau 2" ;
+    skos:definition "Sucht das Umfeld systematisch ab, um Schwachstellen und Bedrohungen zu identifizieren und zu definieren. Hält Nichteinhaltung von Sicherheitsbestimmungen fest und gibt sie weiter."@en ;
+    skos:prefLabel "E.8 – ITK-Sicherheitsmanagement, Proficiency 2"@de,
+        "E.8 – Information Security Management, Proficiency 2"@en .
+
+harm-ecf:E.8.Niveau3 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.8 Niveau 3" ;
+    skos:definition "Evaluiert Maßnahmen und Indikatoren zum Sicherheitsmanagement und entscheidet, ob sie konform mit der Informationssicherheitspolitik sind. Untersucht und initiiert Maßnahmen zur Abhilfe im Fall von Sicherheitsverletzungen."@en ;
+    skos:prefLabel "E.8 – ITK-Sicherheitsmanagement, Proficiency 3"@de,
+        "E.8 – Information Security Management, Proficiency 3"@en .
+
+harm-ecf:E.8.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.8 Niveau 4" ;
+    skos:definition "Ist leitend verantwortlich für die Integrität, Sicherheit und Verfügbarkeit der in Informationssystemen gespeicherten Daten."@en ;
+    skos:prefLabel "E.8 – ITK-Sicherheitsmanagement, Proficiency 4"@de,
+        "E.8 – Information Security Management, Proficiency 4"@en .
+
+harm-ecf:E.9.Niveau4 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.9 Niveau 4" ;
+    skos:definition "Ist verantwortlich für die Umsetzung der ITK-Governance-Strategie in die gesamte ITK-Infrastruktur und setzt dies durch Kommunikation sowie Verbreitung und Kontrolle einschlägiger Prozesse durch."@en ;
+    skos:prefLabel "E.9 – ITK-Gouvernance, Proficiency 4"@de,
+        "E.9 – IS Governance, Proficiency 4"@en .
+
+harm-ecf:E.9.Niveau5 a harm:LevelConcept,
+        skos:Concept ;
+    harm:derivedFrom harm:kqr_ecf ;
+    harm:sourceIdentifier "E.9 Niveau 5" ;
+    skos:definition "Legt die ITK-Governance-Strategie fest und sorgt dafür, dass sie in die Corporate-Governance-Strategie der Gesamtorganisation einfließt. Passt die ITK-Governance-Strategie so an, dass alle neuen wichtigen Einflüsse beachtet werden, die aus gesetzlichen, wirtschaftlichen, politischen, geschäftlichen, technischen oder ökologischen Anforderungen hervorgehen."@en ;
+    skos:prefLabel "E.9 – ITK-Gouvernance, Proficiency 5"@de,
+        "E.9 – IS Governance, Proficiency 5"@en .
+
+harm:kqr_ecf a harm:KQR ;
+    rdfs:label "European e-Competence Framework 3.0"@en .
+

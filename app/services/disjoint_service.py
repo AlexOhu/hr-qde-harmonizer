@@ -6,8 +6,8 @@ skos:exactMatch / skos:broadMatch / skos:narrowMatch vorkommt (der
 konjunkten Menge K). RELATED/UNRESOLVED-Klassifikationsergebnisse sind
 Kandidaten für diese Service-Schicht.
 
-Persistenz: data/projects/{project_id}/disjoint_decisions.json (ADR-02),
-In-Memory-Cache nach project_id kodiert (ADR-04).
+Persistenz: data/projects/{project_id}/disjoint_decisions.json (ADR-13),
+In-Memory-Cache nach project_id kodiert (ADR-13).
 """
 
 from __future__ import annotations
@@ -61,7 +61,7 @@ def _all_concepts_by_layer(project_id: str | None = None) -> list[Concept]:
     Mit project_id: nur Konzepte der KQR, die dieses Projekt tatsaechlich
     referenziert (project.kqr_ids). Ohne project_id (Rueckwaertskompatibilitaet
     fuer find_concept(), das konzeptbezogen und bewusst projektunabhaengig
-    bleibt, KQR-Rohdaten sind projektuebergreifend global, ADR-01): global
+    bleibt, KQR-Rohdaten sind projektuebergreifend global, ADR-13): global
     ueber alle registrierten KQR, wie zuvor."""
     kqrs = sorted(kqr_service.list_kqr(), key=lambda kqr: kqr.is_hub)
     if project_id is not None:
@@ -161,6 +161,74 @@ def suggest_strategy(concept: Concept, project_id: str = "default") -> DisjointS
     if concept.uri in mapping_service.get_related_concept_uris(project_id=project_id):
         return DisjointStrategy.ATTACH_TO_SKELETON
     return DisjointStrategy.OWN_CLASS
+
+
+def list_anchor_candidates(concept_id: str | None, project_id: str = "default") -> list[dict]:
+    """
+    Auswahlliste fuer die Ankerklasse einer attach_to_skeleton-Entscheidung.
+
+    Zwei Gruppen, in dieser Reihenfolge:
+    - "related": Hub-Konzepte, die mit concept_id ueber ein offenes
+      RELATED-Mapping verbunden sind (genau die Naehe, auf die sich
+      suggest_strategy() stuetzt), alphabetisch.
+    - "hub": alle Konzepte des Projekt-Hubs als Baum ueber skos:broader
+      (Tiefensuche, Kinder alphabetisch). Ein Konzept mit mehreren
+      Oberbegriffen erscheint unter jedem davon.
+
+    Jeder Eintrag: {uri, label, kqr_id, group, depth, parent}. Reine
+    Lesefunktion; die Ankerklasse bleibt freier Text, die Liste ist eine
+    Eingabehilfe und kein geschlossenes Vokabular.
+    """
+    try:
+        hub_id = project_service.get_project(project_id).hub_kqr_id
+    except KeyError:
+        hub_id = None
+    if hub_id is None:
+        hub_id = next((k.id for k in kqr_service.list_kqr() if k.is_hub), None)
+    if hub_id is None:
+        return []
+    try:
+        hub_concepts = kqr_service.get_concepts(hub_id)
+    except ValueError:
+        return []
+    by_uri = {c.uri: c for c in hub_concepts}
+
+    candidates: list[dict] = []
+    if concept_id:
+        related: set[str] = set()
+        for mapping in mapping_service.list_mappings(project_id=project_id):
+            if mapping.predicate_id != "skos:relatedMatch":
+                continue
+            if mapping.subject_id == concept_id and mapping.object_id in by_uri:
+                related.add(mapping.object_id)
+            elif mapping.object_id == concept_id and mapping.subject_id in by_uri:
+                related.add(mapping.subject_id)
+        for uri in sorted(related, key=lambda u: by_uri[u].pref_label.lower()):
+            candidates.append({"uri": uri, "label": by_uri[uri].pref_label, "kqr_id": hub_id,
+                               "group": "related", "depth": 0, "parent": None})
+
+    children: dict[str, list[str]] = {}
+    roots: list[str] = []
+    for c in hub_concepts:
+        parents = [b for b in c.broader if b in by_uri and b != c.uri]
+        if not parents:
+            roots.append(c.uri)
+        for p in parents:
+            children.setdefault(p, []).append(c.uri)
+
+    def label_key(uri: str) -> str:
+        return by_uri[uri].pref_label.lower()
+
+    def walk(uri: str, depth: int, parent: str | None, path: frozenset[str]) -> None:
+        candidates.append({"uri": uri, "label": by_uri[uri].pref_label, "kqr_id": hub_id,
+                           "group": "hub", "depth": depth, "parent": parent})
+        for child in sorted(children.get(uri, []), key=label_key):
+            if child not in path:  # Zyklen in skos:broader abfangen
+                walk(child, depth + 1, uri, path | {child})
+
+    for root in sorted(roots, key=label_key):
+        walk(root, 0, None, frozenset({root}))
+    return candidates
 
 
 def find_concept(concept_id: str, project_id: str | None = None) -> Concept:

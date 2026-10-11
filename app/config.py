@@ -38,9 +38,9 @@ class Settings:
 
     # Mistral AI — aktiv wenn "mistral" in LLM_PROVIDERS
     # Paket-Voraussetzung: pip install mistralai>=1.0
-    # Empfehlung für EU-Kontext: mistral-small-latest (EU-Rechenzentren, DSGVO)
+    # Evaluation mit mistral-small-2603 (EU-Rechenzentren, DSGVO-konform)
     mistral_api_key: str = os.getenv("MISTRAL_API_KEY", "")
-    mistral_model: str = os.getenv("MISTRAL_MODEL", "mistral-small-latest")
+    mistral_model: str = os.getenv("MISTRAL_MODEL", "mistral-small-2603")
 
     # Gilt für alle Provider (temperature=0 für maximale Reproduzierbarkeit,
     # vgl. VH1.6 — Nicht-Determinismus ist akzeptierte Randbedingung).
@@ -53,9 +53,9 @@ class Settings:
     neo4j_password: str = os.getenv("NEO4J_PASSWORD", "changeme123")
 
     # Embedding / Vorfilter (Schritt 2) — Modellwahl begründet in Kapitel 4,
-    # Abschnitt "Modellwahl und Berechnung der Embeddings" (VH1.4, ADR-6).
+    # Abschnitt "Modellwahl und Berechnung der Embeddings" (VH1.6, ADR-6).
     embedding_model: str = os.getenv(
-        "EMBEDDING_MODEL", "intfloat/multilingual-e5-large-instruct"
+        "EMBEDDING_MODEL", "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
     )
     ann_top_k: int = int(os.getenv("ANN_TOP_K", "20"))
 
@@ -69,9 +69,11 @@ class Settings:
         if origin.strip()
     ]
 
-    # Export-Schwelle (vgl. VH1.7)
-    # empirisch bestimmt, E3 (Kapitel 5, Tab. tab:exp3_confidence): theta_op = 0.67
-    mapping_confidence_threshold: float = float(os.getenv("MAPPING_CONFIDENCE_THRESHOLD", "0.67"))
+    # Export-Schwelle (vgl. VH1.9)
+    # E3-Neukalibrierung nach Isolation der Prompt-Revision (Kapitel 5,
+    # Tab. tab:exp3_neukalibrierung): theta* = 0.33 (F1-Optimum, P=0.864, R=0.962).
+    # Der frühere Wert 0.67 war auf dem initialen Klassifikations-Prompt kalibriert.
+    mapping_confidence_threshold: float = float(os.getenv("MAPPING_CONFIDENCE_THRESHOLD", "0.33"))
 
 
 settings = Settings()

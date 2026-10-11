@@ -152,8 +152,8 @@ class MappingJustification(str, Enum):
 
 
 # Alte match_type-Werte -> mapping_justification. Wird von
-# scripts/16_migrate_match_type_to_justification.py und beim Laden
-# persistierter Mapping-Objekte verwendet.
+# beim Laden persistierter Mapping-Objekte aus frueheren Datenstaenden
+# verwendet.
 LEGACY_MATCH_TYPE_JUSTIFICATION: dict[str, MappingJustification] = {
     "lex": MappingJustification.STRUCTURAL_MATCHING,
     "struct": MappingJustification.STRUCTURAL_MATCHING,
@@ -251,8 +251,7 @@ class Mapping(BaseModel):
     def _accept_legacy_shapes(cls, data: object) -> object:
         """Persistierte Mappings aus frueheren Datenstaenden ladbar halten,
         damit Snapshots und Forks ohne Migrationslauf nicht mit
-        ValidationError blockieren (die Migration selbst liegt in
-        scripts/20_migrate_relationtype_to_predicate.py):
+        ValidationError blockieren:
 
         - match_type statt mapping_justification (Stand vor v0.2).
         - source_relation (entfernt): ein offenes Paar mit
@@ -287,14 +286,14 @@ FrameworkType = Literal["competence_framework", "level_framework"]
 class LevelMapping(BaseModel):
     """Eine normative Niveauzuordnung, materialisiert aus einer
     veroeffentlichten Crosswalk-Tabelle (Deutscher EQR-Zuordnungsbericht:
-    DQR-Niveau <-> EQF-Niveau; CEN EN 16234-1: e-CF-Proficiency-Stufe <->
+    DQR-Niveau <-> EQF-Niveau; e-CF 3.0 (CWA 16234-1:2014): e-CF-Proficiency-Stufe <->
     EQF-Niveau).
 
-    Die Felder folgen SSSOM (Lieferspezifikation Abschnitt 5). Fuer die
+    Die Felder folgen SSSOM. Fuer die
     DQR<->EQF-Faelle wird eine ``LevelMapping`` als ``harm:LevelMapping``-
-    Record serialisiert (ADR-25: Subjekt ``hrqde:DQR{n}``, Objekt die
-    qf-eu-level-Autoritaets-URI). Der e-CF-Crosswalk erscheint nur narrativ
-    in ``oberhuber-integration-strategy-v{V}.md`` (ADR-24).
+    Record serialisiert (ADR-23: Subjekt ``hrqde:DQR{n}``, Objekt die
+    qf-eu-level-Autoritaets-URI). Auch e-CF-Dimension-3-zu-DQR wird als
+    reguläres ``LevelMapping`` mit ``skos:closeMatch`` materialisiert.
     """
 
     subject_id: str  # Skelett-Niveauknoten oder e-CF-Kompetenz-URI
@@ -414,7 +413,7 @@ class DisjointConceptDecision(BaseModel):
     # KQR-Kombination, gegen die das Konzept zum Entscheidungszeitpunkt
     # geprüft wurde (sortierte project.kqr_ids). Default statt Pflichtfeld,
     # damit bereits persistierte Datensätze ohne diesen Wert weiter ladbar
-    # bleiben, bis scripts/migrate_disjoint_context.py sie nachträgt. Der
+    # bleiben. Der
     # Wert wird beim Schreiben sortiert (disjoint_service.decide), damit
     # Teilmengen-Vergleiche unabhängig von der Reihenfolge in
     # project.kqr_ids stabil sind.
@@ -464,7 +463,7 @@ class Project(BaseModel):
     kqr_ids: list[str]  # KQR-IDs aus dem globalen Registry
     # Scope je KQR fuer diesen Run (Vorfilter, prefilter.filter_by_scope):
     # kqr_id -> "all" | "container_only" | "leaf_only" | "level_only".
-    # Fehlt ein Eintrag, gilt "all". LevelConcept-Knoten (harm:conceptRole)
+    # Fehlt ein Eintrag, gilt "all". LevelConcept-Knoten (RDF-Typ)
     # gehen unabhaengig vom Scope immer in die Skelett-Schicht.
     kqr_scopes: dict[str, str] = Field(default_factory=dict)
     hub_kqr_id: str | None = None  # welcher KQR ist der Hub in diesem Projekt

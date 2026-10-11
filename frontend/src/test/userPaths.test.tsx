@@ -109,6 +109,18 @@ describe("Projekt öffnen", () => {
 });
 
 describe("Framework hochladen", () => {
+  it("bietet die kommentierte SKOS-Vorlage vor dem Upload an", async () => {
+    backend = installFakeBackend(baseRoutes());
+
+    renderWithProviders(<AppRoutes />, { route: "/frameworks" });
+    await userEvent.setup().click(await screen.findByRole("button", { name: /Framework hinzufügen/ }));
+
+    expect(
+      await screen.findByRole("button", { name: "SKOS-Vorlage herunterladen" }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/fachliche Überführung eines KQR bleibt eine kuratierte Aufgabe/i)).toBeInTheDocument();
+  });
+
   it("sendet Name, Format, Hub-Flag und Datei als Multipart-Formular", async () => {
     const user = userEvent.setup();
     backend = installFakeBackend([
@@ -445,6 +457,60 @@ describe("Integrationsentscheidung speichern", () => {
       await screen.findByText('Für „An Skelett anhängen“ ist eine Zielklasse erforderlich.'),
     ).toBeInTheDocument();
     expect(backend!.calls.some((call) => call.method === "POST")).toBe(false);
+  });
+
+  it("bietet die Zielklasse als filterbare, eingerückte Auswahl an", async () => {
+    const user = userEvent.setup();
+    const skill = (id: string) => `http://data.europa.eu/esco/skill/${id}`;
+    backend = installFakeBackend([
+      ...baseRoutes([route("GET", "/disjoint/concepts", () => [concept])]),
+      route("GET", "/disjoint/anchor-candidates", () => [
+        { uri: skill("r1"), label: "process quality models", kqr_id: "hub", group: "related", depth: 0, parent: null },
+        { uri: skill("p1"), label: "use data processing techniques", kqr_id: "hub", group: "hub", depth: 0, parent: null },
+        { uri: skill("c1"), label: "analyse big data", kqr_id: "hub", group: "hub", depth: 1, parent: skill("p1") },
+        { uri: skill("x1"), label: "operate radio equipment", kqr_id: "hub", group: "hub", depth: 0, parent: null },
+      ]),
+      routeStartsWith("GET", "/disjoint/concepts/", () => ({
+        concept_id: concept.uri,
+        suggested_strategy: "attach_to_skeleton",
+      })),
+      routeStartsWith("POST", "/disjoint/concepts/", () => ({
+        decision_id: "dec_2",
+        concept_id: concept.uri,
+        concept_label: concept.pref_label,
+        kqr_id: "ecf",
+        strategy: "attach_to_skeleton",
+        anchor_class: skill("c1"),
+        context_loss_note: null,
+        justification: "Teilaspekt.",
+        author: "AO",
+        created_at: "2026-10-11T10:00:00",
+      })),
+    ]);
+
+    renderWithProviders(<AppRoutes />, { route: "/projects/proj_1/integration" });
+
+    await user.selectOptions(await screen.findByLabelText(/^Strategie/), "attach_to_skeleton");
+    const combo = await screen.findByRole("combobox", { name: /Zielklasse/ });
+    await user.type(combo, "big data");
+
+    // Treffer plus Oberbegriff als Kontext, nicht passende Knoten ausgeblendet
+    const option = await screen.findByRole("option", { name: "analyse big data" });
+    expect(screen.getByRole("option", { name: "use data processing techniques" })).toBeInTheDocument();
+    expect(screen.queryByRole("option", { name: "operate radio equipment" })).toBeNull();
+    expect(option).toHaveStyle({ paddingLeft: "24px" });
+
+    await user.click(option);
+    await user.type(screen.getByLabelText(/^Begründung/), "Teilaspekt.");
+    await user.type(screen.getByLabelText(/^Autor/), "AO");
+    await user.click(screen.getByRole("button", { name: "Entscheidung speichern" }));
+
+    await waitFor(() => {
+      const decide = backend!.calls.find(
+        (call) => call.method === "POST" && call.url.pathname.includes("/decide"),
+      );
+      expect(decide!.body).toMatchObject({ strategy: "attach_to_skeleton", anchor_class: skill("c1") });
+    });
   });
 
   it("weist eine bereits andernorts getroffene Entscheidung als solche aus", async () => {

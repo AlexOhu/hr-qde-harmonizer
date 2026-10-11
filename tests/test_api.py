@@ -1,4 +1,5 @@
 from fastapi.testclient import TestClient
+from rdflib import Graph
 
 from app.api.main import app
 
@@ -25,7 +26,7 @@ def test_upload_kqr_registers_and_lists(isolated_services, hub_ttl, mock_sentenc
     )
     assert response.status_code == 200
     body = response.json()
-    assert body["status"] == "bereit"
+    assert body["status"] == "formalisiert"
     assert body["concept_count"] == 6
     assert body["is_hub"] is True
 
@@ -34,19 +35,41 @@ def test_upload_kqr_registers_and_lists(isolated_services, hub_ttl, mock_sentenc
     assert listed[0]["id"] == body["id"]
 
 
-def test_upload_kqr_rejects_invalid_turtle(isolated_services):
+def test_upload_kqr_rejects_invalid_turtle_without_registering_it(isolated_services):
     response = client.post(
         "/kqr/",
         data={"name": "Broken KQR", "source_format": "turtle", "is_hub": "false"},
         files={"file": ("broken.ttl", b"this is not turtle", "text/turtle")},
     )
-    assert response.status_code == 200
-    body = response.json()
-    assert body["status"] == "roh"
+    assert response.status_code == 422
+    detail = response.json()["detail"]
+    assert detail["errors"]
+    assert client.get("/kqr/").json() == []
 
-    status_response = client.get(f"/kqr/{body['id']}/status")
-    assert status_response.status_code == 200
-    assert status_response.json()["validation_errors"]
+
+def test_download_skos_template_returns_turtle():
+    response = client.get("/kqr/template")
+
+    assert response.status_code == 200
+    assert response.headers["content-type"].startswith("text/turtle")
+    assert b"skos:ConceptScheme" in response.content
+
+
+def test_upload_rdf_xml_is_normalised_and_formalised(
+    isolated_services, hub_ttl, mock_sentence_transformer
+):
+    graph = Graph()
+    graph.parse(data=hub_ttl, format="turtle")
+    rdf_xml = graph.serialize(format="xml")
+
+    response = client.post(
+        "/kqr/",
+        data={"name": "RDF KQR", "source_format": "rdf", "is_hub": "false"},
+        files={"file": ("hub.rdf", rdf_xml.encode("utf-8"), "application/rdf+xml")},
+    )
+
+    assert response.status_code == 200
+    assert response.json()["status"] == "formalisiert"
 
 
 def test_get_status_for_unknown_kqr_returns_404(isolated_services):

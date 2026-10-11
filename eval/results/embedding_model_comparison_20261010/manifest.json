@@ -1,0 +1,173 @@
+{
+  "created_local": "2026-10-10T18:30:49.5945904+02:00",
+  "created_utc": "2026-10-10T16:30:49.5945904Z",
+  "completed_local": "2026-10-10T18:55:20.9598672+02:00",
+  "completed_utc": "2026-10-10T16:55:20.9598672Z",
+  "status": "complete",
+  "amendments": [
+    {
+      "date": "2026-10-11",
+      "change": "Goldmenge G_manual_seed (Zare et al. 2025, Table 6) aus Ergebnissen, Bericht, Plan und Runner entfernt. Uebrige Werte unveraendert.",
+      "input_sha256": "Bezieht sich auf den urspruenglichen Lauf; Stand vor der Entfernung unter Git-Tag backup/pre-glit-entfernung-20261011.",
+      "output_sha256": "Nach der Entfernung neu berechnet."
+    }
+  ],
+  "scope": [
+    "E1 full-target-pool retrieval",
+    "E1b G_levels retrieval"
+  ],
+  "terminology": {
+    "E5-Modell": "intfloat/multilingual-e5-large-instruct",
+    "Experiment E5": "Kompetenzfragen-Evaluation; not executed or evaluated here"
+  },
+  "git": {
+    "code_repo": {
+      "root": "E:\\Fernuni\\Master\\Masterarbeit\\hrqde-harmonizer",
+      "head": "c156d9e02c6d5616217795fbb1ee5a9bf5207fc4",
+      "dirty": true,
+      "porcelain_entry_count": 9
+    },
+    "thesis_repo": {
+      "root": "C:\\Users\\Alex\\OneDrive2\\OneDrive\\Dokumente\\Fernuni\\Masterarbeit\\Vorlage",
+      "head": "b60f5769bf90d58c2a7215936ab1d3af3c65cc73",
+      "dirty": true,
+      "porcelain_entry_count": 86,
+      "output_directory": "data/e1_e1b_run_20261010/modelvergleich_e5_mpnet_20261010",
+      "output_directory_ignored_by": ".gitignore:27:/data/e1_e1b_run_20261010/"
+    }
+  },
+  "runtime": {
+    "python": "3.10.6 (tags/v3.10.6:9c7b4bd, Aug 1 2022, 21:53:49) [MSC v.1932 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "device": "cpu",
+    "cuda_available": false,
+    "packages": {
+      "sentence-transformers": "5.6.1",
+      "transformers": "5.14.1",
+      "torch": "2.13.0+cpu",
+      "numpy": "2.2.6",
+      "faiss-cpu": "1.14.3",
+      "rdflib": "7.6.0"
+    }
+  },
+  "models": {
+    "mpnet": {
+      "model_id": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+      "snapshot_revision": "4328cf26390c98c5e3c738b4460a05b95f4911f5",
+      "snapshot_path": "C:\\Users\\Alex\\.cache\\huggingface\\hub\\models--sentence-transformers--paraphrase-multilingual-mpnet-base-v2\\snapshots\\4328cf26390c98c5e3c738b4460a05b95f4911f5",
+      "local_files_only": true,
+      "executed": true,
+      "preprocessing": {
+        "concept_text": "pref_label + '. ' + definition; missing definition becomes empty string; outer whitespace stripped",
+        "query_template": "{concept_text}",
+        "target_template": "{concept_text}",
+        "normalization": "SentenceTransformer.encode(normalize_embeddings=True)"
+      },
+      "timing_seconds": {
+        "model_load": 2.2517561000131536,
+        "query_encoding": 5.472106699991855,
+        "target_encoding_total": 31.163263799986453,
+        "ranking": 0.03150540000933688,
+        "total": 39.73974839999573
+      },
+      "peak_process_rss_bytes": 1305337856
+    },
+    "e5": {
+      "model_id": "intfloat/multilingual-e5-large-instruct",
+      "snapshot_revision": "274baa43b0e13e37fafa6428dbc7938e62e5c439",
+      "revision_source": "https://huggingface.co/intfloat/multilingual-e5-large-instruct/tree/274baa43b0e13e37fafa6428dbc7938e62e5c439",
+      "snapshot_path": "C:\\Users\\Alex\\.cache\\huggingface\\hub\\models--intfloat--multilingual-e5-large-instruct\\snapshots\\274baa43b0e13e37fafa6428dbc7938e62e5c439",
+      "snapshot_size_on_disk_bytes": 1142122956,
+      "download_excluded": ["onnx/*"],
+      "local_files_only": true,
+      "executed": true,
+      "timing_seconds": {
+        "model_load": 1.9296799000003375,
+        "query_encoding": 193.31849849999708,
+        "target_encoding_total": 680.098133099993,
+        "ranking": 0.027459500008262694,
+        "total": 876.1538765000005
+      },
+      "peak_process_rss_bytes": 1529413632,
+      "preprocessing_fixed_before_results": {
+        "concept_text": "pref_label + '. ' + definition; missing definition becomes empty string; outer whitespace stripped",
+        "instruction": "Given a competency or proficiency statement from one qualification framework, retrieve the semantically equivalent or most closely corresponding concept in the target qualification framework.",
+        "query_template": "Instruct: {instruction}\\nQuery: {concept_text}",
+        "target_template": "{concept_text}",
+        "query_and_target_encoded_separately": true,
+        "normalization": "SentenceTransformer.encode(normalize_embeddings=True)"
+      }
+    }
+  },
+  "evaluation": {
+    "ranking": "exact inner product over L2-normalized vectors",
+    "tie_rule": "1 + count(score > gold_score); ties share the best rank",
+    "E1_k_values": [5, 10, 15, 20, 30, 50, 100],
+    "E1b_k_values": [1, 3, 5, 8],
+    "E1b_effective_pool_size": 6,
+    "G_manual_independence_warning": "Curated from earlier top-20 candidates; not an independent recall test.",
+    "E1b_upper_bound_warning": "Recall@8 is constructive because the evaluable object pool has only six distinct targets."
+  },
+  "commands": {
+    "cache_inventory": ".venv\\Scripts\\python.exe -c \"from huggingface_hub import scan_cache_dir; ...\"",
+    "e5_download": ".venv\\Scripts\\hf.exe download intfloat/multilingual-e5-large-instruct --revision 274baa43b0e13e37fafa6428dbc7938e62e5c439 --exclude onnx/*",
+    "mpnet": ".venv\\Scripts\\python.exe comparison_runner.py --model mpnet --snapshot C:\\Users\\Alex\\.cache\\huggingface\\hub\\models--sentence-transformers--paraphrase-multilingual-mpnet-base-v2\\snapshots\\4328cf26390c98c5e3c738b4460a05b95f4911f5 --output mpnet_detailed.json --batch-size 16",
+    "e5": ".venv\\Scripts\\python.exe comparison_runner.py --model e5 --snapshot C:\\Users\\Alex\\.cache\\huggingface\\hub\\models--intfloat--multilingual-e5-large-instruct\\snapshots\\274baa43b0e13e37fafa6428dbc7938e62e5c439 --output e5_detailed.json --batch-size 16"
+  },
+  "input_sha256": {
+    "vergleichsplan.md": "f5daa3d99706daa6b0cdba091f5732d755a885c3ef97ab6c6747eb8b99871c9b",
+    "comparison_runner.py": "a3be80f289765c3889ba2724492f64847ae88b39d138b0e118fe89e95fef12d7",
+    "eval/B_recall_fullpool.py": "592c2ac5ed0d9ddc2e22f5590c62cb29d995d00eed0c5be18f50e42eb21f689a",
+    "eval/E1_recall_k.py": "2213c46b3253b82b9504577e144120a2100f893f7b953024e49b6d9b71cf6f6d",
+    "eval/gold/G_manual.json": "96b33f694d8143f496575887ff7d9a53d2b86b27c42e09ec2d29145707a1a722",
+    "eval/G_struct.json": "b0480cd51c9bf171619fbbbfbbf897f478c6b252cbc4b2e9fc66452c1fec067c",
+    "eval/G_levels.json": "552938ead70bb9fddaadcf8f4a6ea1ee678de7a148cdc529307e4822f6da1a2d",
+    "app/config.py": "fd82bd6a98458c76fe49d7e69565bf7e95c0a9e9f153be65c84fd6b86277aa00",
+    "app/services/kqr_service.py": "8265170e58473aaa265252885a704083e4e87f3f741c526f062f831f84f6b4a6",
+    "app/pipeline/step2_embedding_prefilter/embed.py": "fdc51adeea758088e25346cead29b41b5bb589beed2c6c48a342b1c5fa08bef5",
+    "data/kqr_registry.json": "d1b38de57c9931a159ad4999d2d237fe963af4d1bc22c7dcf975e2776a8738ae",
+    "data/formalized/esco_skeleton_oberhuber.ttl": "6b5be40e222c05b2333080303dc50191b379e9652affba4b03fc307c7de7fd08",
+    "data/formalized/esco_v1_2_ict_ausschnitt.ttl": "545fea2ed35aeadf82106e00462452ede385388b98b84a5efa15541a73b6db6f",
+    "data/formalized/eqf_2d.ttl": "8e1ac1d0b1e47f5ae9e8fc1adeca3757e20fa9d5752f290403829bab53291f34",
+    "data/formalized/ecf_level.ttl": "af16dd4cfde244edc2af8a3ed62f707a9f8a022c3c9dc3dfba331d40c77a91f5",
+    "data/formalized/dqr_1d.ttl": "a51e9e8e6be19f96c74ade5fdd41eb52120c10e106f478ad36f9ef5aafb85752"
+  },
+  "model_file_sha256": {
+    "mpnet": {
+      "config_sentence_transformers.json": "b8c64b5cece00d8424b4896ea75b512b6008576088497609dfeb6bd63e6d36b8",
+      "config.json": "8b94b5c10efd3c3ca667e5ccd501314eb670cefbf7a465f0a3fc0928a1a0ab87",
+      "model.safetensors": "b5722100700c48b74c9c199c5f39ff9493c94d1497f719e791d4bc3861d7714a",
+      "modules.json": "8f4b264b80206c830bebbdcae377e137925650a433b689343a63bdc9b3145460",
+      "README.md": "06184100d14bfb314649996e8e68d1aae5ec2efd6ff8865a7eec7e3741736154",
+      "sentence_bert_config.json": "70f4448f31320443fe3557cacea5abf2dcc4915dda8c80646bec9f3bb0aa5a1f",
+      "sentencepiece.bpe.model": "cfc8146abe2a0488e9e2a0c56de7952f7c11ab059eca145a0a727afce0db2865",
+      "special_tokens_map.json": "378eb3bf733eb16e65792d7e3fda5b8a4631387ca04d2015199c4d4f22ae554d",
+      "tokenizer_config.json": "a312d5bef89ec4c9355638520a31582e761f205d79df3002a3bd390d7077455f",
+      "tokenizer.json": "2c3387be76557bd40970cec13153b3bbf80407865484b209e655e5e4729076b8"
+    },
+    "e5": {
+      ".gitattributes": "7363a8ebd782ede400e72bb3e88c19248478eb6f280a7376d398fc2f22707b9a",
+      "config_sentence_transformers.json": "7e16d286cc304f7d34ffb4e21fa1a11f227cf2b6d49cb615aa44d87723d17e28",
+      "config.json": "d185df634c872f06fc6dcb3bad4375d3c447234baea8a6e548103f653b595a35",
+      "model.safetensors": "dd6b6e4f52db0a7aff83a13d10e6c5342ef9f6ab799bad3221f4b35ef390fa85",
+      "modules.json": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf",
+      "README.md": "41676700d80691ac2f4397ee2b546ef58f9e3236af2f3d0770ab0fa61940ce51",
+      "sentence_xlm-roberta_config.json": "ec8e29d6dcb61b611b7d3fdd2982c4524e6ad985959fa7194eacfb655a8d0d51",
+      "sentencepiece.bpe.model": "cfc8146abe2a0488e9e2a0c56de7952f7c11ab059eca145a0a727afce0db2865",
+      "special_tokens_map.json": "8c785abebea9ae3257b61681b4e6fd8365ceafde980c21970d001e834cf10835",
+      "tokenizer_config.json": "49f06d15a18f81855c338f8ab6241ca2e502a65b62968be69b74f094489f8175",
+      "tokenizer.json": "f59925fcb90c92b894cb93e51bb9b4a6105c5c249fe54ce1c704420ac39b81af"
+    }
+  },
+  "baseline_output_sha256_verified": {
+    "e1_fullpool.json": "d03cfad67137379b137379c8dc3a4043e650774ba585728672da794e9fed3be5",
+    "e1b_levels.json": "3763dd1b32fd80db521d8150aae1a132abaadabb73171061cafff0a080bc6e92",
+    "README.md": "c8ab8d0f3df1964d011a842ce0600061988631bced6099cadfd934094e75d6ed"
+  },
+  "output_sha256": {
+    "mpnet_detailed.json": "8a24c080f8c7bd12d19030225e2be3bbef8a0ee74928956d3a13be0dfa884c2c",
+    "e5_detailed.json": "f75732deb95e57b0f14a667e042e5a5ebd76aeab8cf7decc3a2f495ab10e5f29",
+    "vergleich.json": "3cbaf18ebf7327368cf1e77805435ba2ede1e9f37909444e5d11ddb6b446d0e2",
+    "bericht.md": "8cb790658ced363e5fb9e5b4e965abd1ab007cc530bf687f37e629b6b31d0ec6"
+  }
+}

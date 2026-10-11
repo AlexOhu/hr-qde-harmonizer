@@ -1,8 +1,8 @@
 """
 Projektverwaltung: kapselt KQR-Auswahl und alle daraus resultierenden
-Artefakte (Mappings, Entscheidungen, Clustering) pro Projekt (ADR-01/ADR-02).
+Artefakte (Mappings, Entscheidungen, Clustering) pro Projekt (ADR-13).
 
-Snapshot (ADR-06): ein eingefrorenes, schreibgeschütztes Projekt --
+Snapshot (ADR-13): ein eingefrorenes, schreibgeschütztes Projekt --
 erscheint als eigener Eintrag in der Projektliste und dokumentiert einen
 Zwischenstand, ohne das Ursprungsprojekt zu verändern.
 """

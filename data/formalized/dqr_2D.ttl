@@ -1,0 +1,516 @@
+# ============================================================================
+# DQR -- Variante 2D (8 Niveaus + 32 Dimensionsfacetten)
+# Niveauindikatoren DE: amtliche DQR-Matrix (data/formalized/dqr_3.ttl).
+# Dimensionsdeskriptoren DE: data/formalized/dqr_levelProposal.ttl
+# (verifiziert gegen https://www.dqr.de, Niveau-Detailseiten 1-8).
+# Erzeugt von scripts/22_build_eqf_dqr_granularity_variants.py -- nicht von Hand editieren.
+# URI-Basis harm-dqr: = http://hr-qde.org/harmonised/source/dqr/ ;
+# je Konzept owl:sameAs auf die data.bmbf.de-Original-URI (Bruecke).
+# Traegt den DQR<->EQF-Crosswalk (Praedikate = eval/G_struct.json):
+#   harm-dqr:L{n}            skos:exactMatch  eqf:Level{n}
+#   harm-dqr:L{n}_Knowledge  skos:exactMatch  eqf:L{n}_Knowledge
+#   harm-dqr:L{n}_Skills     skos:exactMatch  eqf:L{n}_Skills
+#   harm-dqr:L{n}_SocialCompetence / _Autonomy  skos:narrowMatch  eqf:L{n}_ResponsibilityAutonomy
+# ============================================================================
+
+@prefix eqf: <http://data.europa.eu/snb/eqf/> .
+@prefix harm-dqr: <http://hr-qde.org/harmonised/source/dqr/> .
+@prefix harm: <http://hr-qde.org/harmonised/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+harm-dqr:DQRScheme a skos:ConceptScheme ;
+    skos:prefLabel "Deutscher Qualifikationsrahmen für lebenslanges Lernen"@de , "German Qualifications Framework for Lifelong Learning"@en ;
+    skos:hasTopConcept harm-dqr:L1 , harm-dqr:L2 , harm-dqr:L3 , harm-dqr:L4 , harm-dqr:L5 , harm-dqr:L6 , harm-dqr:L7 , harm-dqr:L8 .
+
+# --- DQR Niveau 1 ----------------------------------------
+harm-dqr:L1 a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L1> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:prefLabel "DQR-Niveau 1"@de , "DQR Level 1"@en ;
+    skos:definition "Kompetenzen zur Erfüllung einfacher Anforderungen in einem überschaubaren und stabil strukturierten Lern- oder Arbeitsbereich. Die Erfüllung der Aufgaben erfolgt unter Anleitung."@de ;
+    skos:narrower harm-dqr:L1_Knowledge ;
+    skos:narrower harm-dqr:L1_Skills ;
+    skos:narrower harm-dqr:L1_SocialCompetence ;
+    skos:narrower harm-dqr:L1_Autonomy ;
+    harm-dqr:levelNumber "1"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L1" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:Level1 .
+harm-dqr:L1_Knowledge a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L1_Knowledge> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L1 ;
+    skos:prefLabel "Wissen – Niveau 1"@de , "Knowledge – Level 1"@en ;
+    skos:definition "Über elementares allgemeines Wissen verfügen; einen ersten Einblick in einen Lern- oder Arbeitsbereich haben."@de ;
+    harm-dqr:descriptorType "knowledge" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L1_Knowledge" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:L1_Knowledge .
+harm-dqr:L1_Skills a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L1_Skills> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L1 ;
+    skos:prefLabel "Fertigkeiten – Niveau 1"@de , "Skills – Level 1"@en ;
+    skos:definition "Über kognitive und praktische Fertigkeiten verfügen, um einfache Aufgaben nach vorgegebenen Regeln auszuführen und deren Ergebnisse zu beurteilen; elementare Zusammenhänge herstellen."@de ;
+    harm-dqr:descriptorType "skills" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L1_Skills" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:L1_Skills .
+harm-dqr:L1_SocialCompetence a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L1_SocialCompetence> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L1 ;
+    skos:prefLabel "Sozialkompetenz – Niveau 1"@de , "Social Competence – Level 1"@en ;
+    skos:definition "Mit anderen zusammen lernen oder arbeiten, sich mündlich und schriftlich informieren und austauschen."@de ;
+    harm-dqr:descriptorType "social_competence" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L1_SocialCompetence" ;
+    a harm:LevelConcept ;
+    skos:narrowMatch eqf:L1_ResponsibilityAutonomy .
+harm-dqr:L1_Autonomy a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L1_Autonomy> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L1 ;
+    skos:prefLabel "Selbstständigkeit – Niveau 1"@de , "Autonomy – Level 1"@en ;
+    skos:definition "Unter Anleitung lernen oder arbeiten; das eigene und das Handeln anderer einschätzen und Lernberatung annehmen."@de ;
+    harm-dqr:descriptorType "autonomy" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L1_Autonomy" ;
+    a harm:LevelConcept ;
+    skos:narrowMatch eqf:L1_ResponsibilityAutonomy .
+
+# --- DQR Niveau 2 ----------------------------------------
+harm-dqr:L2 a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L2> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:prefLabel "DQR-Niveau 2"@de , "DQR Level 2"@en ;
+    skos:definition "Kompetenzen zur fachgerechten Erfüllung grundlegender Anforderungen in einem überschaubaren und stabil strukturierten Lern- oder Arbeitsbereich. Die Erfüllung der Aufgaben erfolgt weitgehend selbstständig unter Anleitung."@de ;
+    skos:broader harm-dqr:L1 ;
+    skos:narrower harm-dqr:L2_Knowledge ;
+    skos:narrower harm-dqr:L2_Skills ;
+    skos:narrower harm-dqr:L2_SocialCompetence ;
+    skos:narrower harm-dqr:L2_Autonomy ;
+    harm-dqr:levelNumber "2"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L2" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:Level2 .
+harm-dqr:L2_Knowledge a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L2_Knowledge> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L2 ;
+    skos:prefLabel "Wissen – Niveau 2"@de , "Knowledge – Level 2"@en ;
+    skos:definition "Über grundlegendes allgemeines Wissen und grundlegendes Fachwissen in einem Lern- oder Arbeitsbereich verfügen."@de ;
+    harm-dqr:descriptorType "knowledge" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L2_Knowledge" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:L2_Knowledge .
+harm-dqr:L2_Skills a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L2_Skills> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L2 ;
+    skos:prefLabel "Fertigkeiten – Niveau 2"@de , "Skills – Level 2"@en ;
+    skos:definition "Über grundlegende kognitive und praktische Fertigkeiten zur Ausführung von Aufgaben in einem Lern- oder Arbeitsbereich verfügen und deren Ergebnisse nach vorgegebenen Maßstäben beurteilen sowie Zusammenhänge herstellen."@de ;
+    harm-dqr:descriptorType "skills" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L2_Skills" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:L2_Skills .
+harm-dqr:L2_SocialCompetence a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L2_SocialCompetence> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L2 ;
+    skos:prefLabel "Sozialkompetenz – Niveau 2"@de , "Social Competence – Level 2"@en ;
+    skos:definition "In einer Gruppe mitwirken, allgemeine Anregungen und Kritik aufnehmen und äußern sowie in mündlicher und schriftlicher Kommunikation situationsgerecht agieren und reagieren."@de ;
+    harm-dqr:descriptorType "social_competence" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L2_SocialCompetence" ;
+    a harm:LevelConcept ;
+    skos:narrowMatch eqf:L2_ResponsibilityAutonomy .
+harm-dqr:L2_Autonomy a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L2_Autonomy> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L2 ;
+    skos:prefLabel "Selbstständigkeit – Niveau 2"@de , "Autonomy – Level 2"@en ;
+    skos:definition "In bekannten und stabilen Kontexten weitgehend unter Anleitung verantwortungsbewusst lernen oder arbeiten, das eigene und das Handeln anderer einschätzen sowie vorgegebene Lernhilfen nutzen und Lernberatung nachfragen."@de ;
+    harm-dqr:descriptorType "autonomy" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L2_Autonomy" ;
+    a harm:LevelConcept ;
+    skos:narrowMatch eqf:L2_ResponsibilityAutonomy .
+
+# --- DQR Niveau 3 ----------------------------------------
+harm-dqr:L3 a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L3> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:prefLabel "DQR-Niveau 3"@de , "DQR Level 3"@en ;
+    skos:definition "Kompetenzen zur selbstständigen Erfüllung fachlicher Anforderungen in einem noch überschaubaren und zum Teil offen strukturierten Lernbereich oder beruflichen Tätigkeitsfeld."@de ;
+    skos:broader harm-dqr:L2 ;
+    skos:narrower harm-dqr:L3_Knowledge ;
+    skos:narrower harm-dqr:L3_Skills ;
+    skos:narrower harm-dqr:L3_SocialCompetence ;
+    skos:narrower harm-dqr:L3_Autonomy ;
+    harm-dqr:levelNumber "3"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L3" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:Level3 .
+harm-dqr:L3_Knowledge a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L3_Knowledge> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L3 ;
+    skos:prefLabel "Wissen – Niveau 3"@de , "Knowledge – Level 3"@en ;
+    skos:definition "Über erweitertes allgemeines Wissen oder über erweitertes Fachwissen in einem Lernbereich oder beruflichen Tätigkeitsfeld verfügen."@de ;
+    harm-dqr:descriptorType "knowledge" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L3_Knowledge" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:L3_Knowledge .
+harm-dqr:L3_Skills a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L3_Skills> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L3 ;
+    skos:prefLabel "Fertigkeiten – Niveau 3"@de , "Skills – Level 3"@en ;
+    skos:definition "Über ein Spektrum von kognitiven und praktischen Fertigkeiten zur Planung und Bearbeitung von fachlichen Aufgaben in einem Lernbereich oder beruflichen Tätigkeitsfeld verfügen. Ergebnisse nach weitgehend vorgegebenen Maßstäben beurteilen und einfache Transferleistungen erbringen."@de ;
+    harm-dqr:descriptorType "skills" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L3_Skills" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:L3_Skills .
+harm-dqr:L3_SocialCompetence a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L3_SocialCompetence> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L3 ;
+    skos:prefLabel "Sozialkompetenz – Niveau 3"@de , "Social Competence – Level 3"@en ;
+    skos:definition "In einer Gruppe mitwirken und punktuell Unterstützung anbieten, die Lern- oder Arbeitsumgebung mitgestalten, Abläufe gestalten und Ergebnisse adressatenbezogen darstellen."@de ;
+    harm-dqr:descriptorType "social_competence" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L3_SocialCompetence" ;
+    a harm:LevelConcept ;
+    skos:narrowMatch eqf:L3_ResponsibilityAutonomy .
+harm-dqr:L3_Autonomy a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L3_Autonomy> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L3 ;
+    skos:prefLabel "Selbstständigkeit – Niveau 3"@de , "Autonomy – Level 3"@en ;
+    skos:definition "Auch in weniger bekannten Kontexten eigenständig und verantwortungsbewusst lernen oder arbeiten, das eigene und das Handeln anderer einschätzen sowie Lernberatung nachfragen und verschiedene Lernhilfen auswählen."@de ;
+    harm-dqr:descriptorType "autonomy" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L3_Autonomy" ;
+    a harm:LevelConcept ;
+    skos:narrowMatch eqf:L3_ResponsibilityAutonomy .
+
+# --- DQR Niveau 4 ----------------------------------------
+harm-dqr:L4 a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L4> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:prefLabel "DQR-Niveau 4"@de , "DQR Level 4"@en ;
+    skos:definition "Kompetenzen zur selbstständigen Planung und Bearbeitung fachlicher Aufgabenstellungen in einem umfassenden, sich verändernden Lernbereich oder beruflichen Tätigkeitsfeld."@de ;
+    skos:broader harm-dqr:L3 ;
+    skos:narrower harm-dqr:L4_Knowledge ;
+    skos:narrower harm-dqr:L4_Skills ;
+    skos:narrower harm-dqr:L4_SocialCompetence ;
+    skos:narrower harm-dqr:L4_Autonomy ;
+    harm-dqr:levelNumber "4"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L4" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:Level4 .
+harm-dqr:L4_Knowledge a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L4_Knowledge> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L4 ;
+    skos:prefLabel "Wissen – Niveau 4"@de , "Knowledge – Level 4"@en ;
+    skos:definition "Über vertieftes allgemeines Wissen oder über fachtheoretisches Wissen in einem Lernbereich oder beruflichen Tätigkeitsfeld verfügen."@de ;
+    harm-dqr:descriptorType "knowledge" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L4_Knowledge" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:L4_Knowledge .
+harm-dqr:L4_Skills a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L4_Skills> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L4 ;
+    skos:prefLabel "Fertigkeiten – Niveau 4"@de , "Skills – Level 4"@en ;
+    skos:definition "Über ein breites Spektrum kognitiver und praktischer Fertigkeiten verfügen, die selbständige Aufgabenbearbeitung und Problemlösung sowie die Beurteilung von Arbeitsergebnissen und -prozessen unter Einbeziehung von Handlungsalternativen und Wechselwirkungen mit benachbarten Bereichen ermöglichen. Transferleistungen erbringen."@de ;
+    harm-dqr:descriptorType "skills" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L4_Skills" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:L4_Skills .
+harm-dqr:L4_SocialCompetence a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L4_SocialCompetence> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L4 ;
+    skos:prefLabel "Sozialkompetenz – Niveau 4"@de , "Social Competence – Level 4"@en ;
+    skos:definition "Die Arbeit in einer Gruppe und deren Lern- oder Arbeitsumgebung mitgestalten und kontinuierlich Unterstützung anbieten, Abläufe und Ergebnisse begründen sowie über Sachverhalte umfassend kommunizieren."@de ;
+    harm-dqr:descriptorType "social_competence" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L4_SocialCompetence" ;
+    a harm:LevelConcept ;
+    skos:narrowMatch eqf:L4_ResponsibilityAutonomy .
+harm-dqr:L4_Autonomy a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L4_Autonomy> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L4 ;
+    skos:prefLabel "Selbstständigkeit – Niveau 4"@de , "Autonomy – Level 4"@en ;
+    skos:definition "Sich Lern- und Arbeitsziele setzen, sie reflektieren, realisieren und verantworten."@de ;
+    harm-dqr:descriptorType "autonomy" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L4_Autonomy" ;
+    a harm:LevelConcept ;
+    skos:narrowMatch eqf:L4_ResponsibilityAutonomy .
+
+# --- DQR Niveau 5 ----------------------------------------
+harm-dqr:L5 a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L5> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:prefLabel "DQR-Niveau 5"@de , "DQR Level 5"@en ;
+    skos:definition "Kompetenzen zur selbstständigen Planung und Bearbeitung umfassender fachlicher Aufgabenstellungen in einem komplexen, spezialisierten, sich verändernden Lernbereich oder beruflichen Tätigkeitsfeld."@de ;
+    skos:broader harm-dqr:L4 ;
+    skos:narrower harm-dqr:L5_Knowledge ;
+    skos:narrower harm-dqr:L5_Skills ;
+    skos:narrower harm-dqr:L5_SocialCompetence ;
+    skos:narrower harm-dqr:L5_Autonomy ;
+    harm-dqr:levelNumber "5"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L5" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:Level5 .
+harm-dqr:L5_Knowledge a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L5_Knowledge> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L5 ;
+    skos:prefLabel "Wissen – Niveau 5"@de , "Knowledge – Level 5"@en ;
+    skos:definition "Über integriertes Fachwissen in einem Lernbereich oder über integriertes berufliches Wissen in einem Tätigkeitsfeld verfügen. Das schließt auch vertieftes fachtheoretisches Wissen ein. Umfang und Grenzen des Lernbereichs oder beruflichen Tätigkeitsfelds kennen."@de ;
+    harm-dqr:descriptorType "knowledge" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L5_Knowledge" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:L5_Knowledge .
+harm-dqr:L5_Skills a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L5_Skills> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L5 ;
+    skos:prefLabel "Fertigkeiten – Niveau 5"@de , "Skills – Level 5"@en ;
+    skos:definition "Über ein sehr breites Spektrum spezialisierter kognitiver und praktischer Fertigkeiten verfügen. Arbeitsprozesse übergreifend planen und sie unter umfassender Einbeziehung von Handlungsalternativen und Wechselwirkungen mit benachbarten Bereichen beurteilen. Umfassende Transferleistungen erbringen."@de ;
+    harm-dqr:descriptorType "skills" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L5_Skills" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:L5_Skills .
+harm-dqr:L5_SocialCompetence a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L5_SocialCompetence> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L5 ;
+    skos:prefLabel "Sozialkompetenz – Niveau 5"@de , "Social Competence – Level 5"@en ;
+    skos:definition "Arbeitsprozesse kooperativ, auch in heterogenen Gruppen, planen und gestalten, andere anleiten und mit fundierter Lernberatung unterstützen. Auch fachübergreifend komplexe Sachverhalte strukturiert, zielgerichtet und adressatenbezogen darstellen. Interessen und Bedarf von Adressaten vorausschauend berücksichtigen."@de ;
+    harm-dqr:descriptorType "social_competence" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L5_SocialCompetence" ;
+    a harm:LevelConcept ;
+    skos:narrowMatch eqf:L5_ResponsibilityAutonomy .
+harm-dqr:L5_Autonomy a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L5_Autonomy> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L5 ;
+    skos:prefLabel "Selbstständigkeit – Niveau 5"@de , "Autonomy – Level 5"@en ;
+    skos:definition "Eigene und fremd gesetzte Lern- und Arbeitsziele reflektieren, bewerten, selbstgesteuert verfolgen und verantworten sowie Konsequenzen für die Arbeitsprozesse im Team ziehen."@de ;
+    harm-dqr:descriptorType "autonomy" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L5_Autonomy" ;
+    a harm:LevelConcept ;
+    skos:narrowMatch eqf:L5_ResponsibilityAutonomy .
+
+# --- DQR Niveau 6 ----------------------------------------
+harm-dqr:L6 a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L6> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:prefLabel "DQR-Niveau 6"@de , "DQR Level 6"@en ;
+    skos:definition "Kompetenzen zur Planung, Bearbeitung und Auswertung von umfassenden fachlichen Aufgaben- und Problemstellungen sowie zur eigenverantwortlichen Steuerung von Prozessen in Teilbereichen eines wissenschaftlichen Faches oder in einem beruflichen Tätigkeitsfeld."@de ;
+    skos:broader harm-dqr:L5 ;
+    skos:narrower harm-dqr:L6_Knowledge ;
+    skos:narrower harm-dqr:L6_Skills ;
+    skos:narrower harm-dqr:L6_SocialCompetence ;
+    skos:narrower harm-dqr:L6_Autonomy ;
+    harm-dqr:levelNumber "6"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L6" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:Level6 .
+harm-dqr:L6_Knowledge a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L6_Knowledge> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L6 ;
+    skos:prefLabel "Wissen – Niveau 6"@de , "Knowledge – Level 6"@en ;
+    skos:definition "Über breites und integriertes Wissen einschließlich der wissenschaftlichen Grundlagen, der praktischen Anwendung eines wissenschaftlichen Faches sowie eines kritischen Verständnisses der wichtigsten Theorien und Methoden entsprechend der Bachelor-Ebene des Qualifikationsrahmens für Deutsche Hochschulabschlüsse oder über breites und integriertes berufliches Wissen einschließlich der aktuellen fachlichen Entwicklungen verfügen. Kenntnisse zur Weiterentwicklung eines wissenschaftlichen Faches oder eines beruflichen Tätigkeitsfeldes besitzen. Über einschlägiges Wissen an Schnittstellen zu anderen Bereichen verfügen."@de ;
+    harm-dqr:descriptorType "knowledge" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L6_Knowledge" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:L6_Knowledge .
+harm-dqr:L6_Skills a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L6_Skills> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L6 ;
+    skos:prefLabel "Fertigkeiten – Niveau 6"@de , "Skills – Level 6"@en ;
+    skos:definition "Über ein sehr breites Spektrum an Methoden zur Bearbeitung komplexer Probleme in einem wissenschaftlichen Fach entsprechend der Bachelor-Ebene des Qualifikationsrahmens für Deutsche Hochschulabschlüsse, weiteren Lernbereichen oder einem beruflichen Tätigkeitsfeld verfügen. Neue Lösungen erarbeiten und unter Berücksichtigung unterschiedlicher Maßstäbe beurteilen, auch bei sich häufig ändernden Anforderungen."@de ;
+    harm-dqr:descriptorType "skills" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L6_Skills" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:L6_Skills .
+harm-dqr:L6_SocialCompetence a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L6_SocialCompetence> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L6 ;
+    skos:prefLabel "Sozialkompetenz – Niveau 6"@de , "Social Competence – Level 6"@en ;
+    skos:definition "In Expertenteams verantwortlich arbeiten oder Gruppen oder Organisationen verantwortlich leiten. Die fachliche Entwicklung anderer anleiten und vorausschauend mit Problemen im Team umgehen. Komplexe fachbezogene Probleme und Lösungen gegenüber Fachleuten argumentativ vertreten und mit ihnen weiterentwickeln."@de ;
+    skos:scopeNote "Organisationen umfassen Unternehmen, Verwaltungseinheiten oder gemeinnützige Organisationen."@de ;
+    harm-dqr:descriptorType "social_competence" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L6_SocialCompetence" ;
+    a harm:LevelConcept ;
+    skos:narrowMatch eqf:L6_ResponsibilityAutonomy .
+harm-dqr:L6_Autonomy a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L6_Autonomy> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L6 ;
+    skos:prefLabel "Selbstständigkeit – Niveau 6"@de , "Autonomy – Level 6"@en ;
+    skos:definition "Ziele für Lern- und Arbeitsprozesse definieren, reflektieren und bewerten und Lern- und Arbeitsprozesse eigenständig und nachhaltig gestalten."@de ;
+    harm-dqr:descriptorType "autonomy" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L6_Autonomy" ;
+    a harm:LevelConcept ;
+    skos:narrowMatch eqf:L6_ResponsibilityAutonomy .
+
+# --- DQR Niveau 7 ----------------------------------------
+harm-dqr:L7 a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L7> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:prefLabel "DQR-Niveau 7"@de , "DQR Level 7"@en ;
+    skos:definition "Kompetenzen zur Bearbeitung neuer komplexer Aufgaben- und Problemstellungen sowie zur eigenverantwortlichen Steuerung von Prozessen in einem wissenschaftlichen Fach oder in einem strategieorientierten beruflichen Tätigkeitsfeld."@de ;
+    skos:broader harm-dqr:L6 ;
+    skos:narrower harm-dqr:L7_Knowledge ;
+    skos:narrower harm-dqr:L7_Skills ;
+    skos:narrower harm-dqr:L7_SocialCompetence ;
+    skos:narrower harm-dqr:L7_Autonomy ;
+    harm-dqr:levelNumber "7"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L7" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:Level7 .
+harm-dqr:L7_Knowledge a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L7_Knowledge> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L7 ;
+    skos:prefLabel "Wissen – Niveau 7"@de , "Knowledge – Level 7"@en ;
+    skos:definition "Über umfassendes, detailliertes und spezialisiertes Wissen auf dem neuesten Erkenntnisstand in einem wissenschaftlichen Fach entsprechend der Master-Ebene des Qualifikationsrahmens für Deutsche Hochschulabschlüsse oder über umfassendes berufliches Wissen in einem strategieorientierten beruflichen Tätigkeitsfeld verfügen. Über erweitertes Wissen in angrenzenden Bereichen verfügen."@de ;
+    harm-dqr:descriptorType "knowledge" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L7_Knowledge" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:L7_Knowledge .
+harm-dqr:L7_Skills a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L7_Skills> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L7 ;
+    skos:prefLabel "Fertigkeiten – Niveau 7"@de , "Skills – Level 7"@en ;
+    skos:definition "Über spezialisierte fachliche oder konzeptionelle Fertigkeiten zur Lösung auch strategischer Probleme in einem wissenschaftlichen Fach entsprechend der Master-Ebene des Qualifikationsrahmens für Deutsche Hochschulabschlüsse oder in einem beruflichen Tätigkeitsfeld verfügen. Auch bei unvollständiger Information Alternativen abwägen. Neue Ideen oder Verfahren entwickeln, anwenden und unter Berücksichtigung unterschiedlicher Beurteilungsmaßstäbe bewerten."@de ;
+    harm-dqr:descriptorType "skills" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L7_Skills" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:L7_Skills .
+harm-dqr:L7_SocialCompetence a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L7_SocialCompetence> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L7 ;
+    skos:prefLabel "Sozialkompetenz – Niveau 7"@de , "Social Competence – Level 7"@en ;
+    skos:definition "Gruppen oder Organisationen im Rahmen komplexer Aufgabenstellungen verantwortlich leiten und ihre Arbeitsergebnisse vertreten. Die fachliche Entwicklung anderer gezielt fördern. Bereichsspezifische und bereichsübergreifende Diskussionen führen."@de ;
+    skos:scopeNote "Organisationen umfassen Unternehmen, Verwaltungseinheiten oder gemeinnützige Organisationen."@de ;
+    harm-dqr:descriptorType "social_competence" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L7_SocialCompetence" ;
+    a harm:LevelConcept ;
+    skos:narrowMatch eqf:L7_ResponsibilityAutonomy .
+harm-dqr:L7_Autonomy a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L7_Autonomy> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L7 ;
+    skos:prefLabel "Selbstständigkeit – Niveau 7"@de , "Autonomy – Level 7"@en ;
+    skos:definition "Für neue anwendungs- oder forschungsorientierte Aufgaben Ziele unter Reflexion der möglichen gesellschaftlichen, wirtschaftlichen und kulturellen Auswirkungen definieren, geeignete Mittel einsetzen und hierfür Wissen eigenständig erschließen."@de ;
+    harm-dqr:descriptorType "autonomy" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L7_Autonomy" ;
+    a harm:LevelConcept ;
+    skos:narrowMatch eqf:L7_ResponsibilityAutonomy .
+
+# --- DQR Niveau 8 ----------------------------------------
+harm-dqr:L8 a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L8> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:prefLabel "DQR-Niveau 8"@de , "DQR Level 8"@en ;
+    skos:definition "Kompetenzen zur Gewinnung von Forschungserkenntnissen in einem wissenschaftlichen Fach oder zur Entwicklung innovativer Lösungen und Verfahren in einem beruflichen Tätigkeitsfeld."@de ;
+    skos:broader harm-dqr:L7 ;
+    skos:narrower harm-dqr:L8_Knowledge ;
+    skos:narrower harm-dqr:L8_Skills ;
+    skos:narrower harm-dqr:L8_SocialCompetence ;
+    skos:narrower harm-dqr:L8_Autonomy ;
+    harm-dqr:levelNumber "8"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L8" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:Level8 .
+harm-dqr:L8_Knowledge a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L8_Knowledge> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L8 ;
+    skos:prefLabel "Wissen – Niveau 8"@de , "Knowledge – Level 8"@en ;
+    skos:definition "Über umfassendes, spezialisiertes und systematisches Wissen in einer Forschungsdisziplin verfügen und zur Erweiterung des Wissens der Fachdisziplin beitragen, entsprechend der Doktoratsebene des Qualifikationsrahmens für Deutsche Hochschulabschlüsse, oder über umfassendes berufliches Wissen in einem strategie- und innovationsorientierten beruflichen Tätigkeitsfeld verfügen. Über entsprechendes Wissen an den Schnittstellen zu angrenzenden Bereichen verfügen."@de ;
+    harm-dqr:descriptorType "knowledge" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L8_Knowledge" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:L8_Knowledge .
+harm-dqr:L8_Skills a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L8_Skills> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L8 ;
+    skos:prefLabel "Fertigkeiten – Niveau 8"@de , "Skills – Level 8"@en ;
+    skos:definition "Über umfassend entwickelte Fertigkeiten zur Identifizierung und Lösung neuartiger Problemstellungen in Forschung, Entwicklung oder Innovation in einem spezialisierten wissenschaftlichen Fach entsprechend der Doktoratsebene oder in einem beruflichen Tätigkeitsfeld verfügen. Innovative Prozesse auch tätigkeitsfeldübergreifend konzipieren, durchführen, steuern, reflektieren und beurteilen. Neue Ideen und Verfahren beurteilen."@de ;
+    harm-dqr:descriptorType "skills" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L8_Skills" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:L8_Skills .
+harm-dqr:L8_SocialCompetence a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L8_SocialCompetence> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L8 ;
+    skos:prefLabel "Sozialkompetenz – Niveau 8"@de , "Social Competence – Level 8"@en ;
+    skos:definition "Organisationen oder Gruppen mit komplexen beziehungsweise interdisziplinären Aufgabenstellungen verantwortlich leiten und dabei ihre Potenziale aktivieren. Die fachliche Entwicklung anderer nachhaltig und gezielt fördern. Fachübergreifend Diskussionen führen und in fachspezifischen Diskussionen innovative Beiträge einbringen, auch in internationalen Kontexten."@de ;
+    skos:scopeNote "Organisationen umfassen Unternehmen, Verwaltungseinheiten oder gemeinnützige Organisationen."@de ;
+    harm-dqr:descriptorType "social_competence" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L8_SocialCompetence" ;
+    a harm:LevelConcept ;
+    skos:narrowMatch eqf:L8_ResponsibilityAutonomy .
+harm-dqr:L8_Autonomy a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L8_Autonomy> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:broader harm-dqr:L8 ;
+    skos:prefLabel "Selbstständigkeit – Niveau 8"@de , "Autonomy – Level 8"@en ;
+    skos:definition "Für neue komplexe anwendungs- oder forschungsorientierte Aufgaben Ziele unter Reflexion der möglichen gesellschaftlichen, wirtschaftlichen und kulturellen Auswirkungen definieren, geeignete Mittel wählen und neue Ideen und Prozesse entwickeln."@de ;
+    harm-dqr:descriptorType "autonomy" ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L8_Autonomy" ;
+    a harm:LevelConcept ;
+    skos:narrowMatch eqf:L8_ResponsibilityAutonomy .

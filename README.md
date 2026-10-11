@@ -1,68 +1,46 @@
-# HR-QDE Harmonizer — Prototyp
+# HR-QDE Harmonizer
 
-Prototypische Implementierung der in Kapitel 3 (Theoriebildung/Konzeption)
-entworfenen Harmonisierungspipeline für Kompetenz-, Qualifikations- und
-Berufsrahmenwerke (KQR). Dient der Umsetzung von FZ1.3, FZ2.3 und FZ3.3
-(Systementwicklungs-Ziele) nach Nunamaker.
+Prototyp zur Masterarbeit „Harmonisierung von Kompetenz- und
+Qualifikationsrahmenwerken im HR-QDE-Ökosystem“ (FernUniversität in Hagen,
+Säule D). Die Pipeline vergleicht Kompetenz- und Qualifikationsrahmenwerke
+(KQR) mit ESCO als Hub und erzeugt die Lieferartefakte für das
+HR-QDE-Gesamtsystem: eine harmonisierte Ontologie, SSSOM-Mappings und eine
+Integrationsstrategie für Konzepte ohne Entsprechung.
 
-**Implementierungsstand:** Der **Pipeline-Kern** (Schritte 1–3: Formalisierung,
-Embedding & Vorfilter, LLM-Klassifikation) sowie SSSOM-Export, API-Routes und
-die React-SPA unter `frontend/` sind lauffähig implementiert und getestet.
-Für Detailstand und offene Punkte siehe `CLAUDE.md` §10.
+**Stand:** Übergabestand (Oktober 2026). Die aktuelle Lieferung v0.4 liegt
+unter `data/deliverables/v0.4-20261004/`. Architekturentscheidungen
+(ADR-1 bis ADR-27) und die Parameter der Lieferung stehen in
+[`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), Domänenbegriffe und offene
+Punkte in [`CLAUDE.md`](CLAUDE.md), die Experimente in
+[`eval/README.md`](eval/README.md).
 
-## Architekturüberblick
-
-Die Pipeline setzt die dreistufige Harmonisierung aus Kapitel 3 um:
+## Pipeline
 
 ```
-Schritt 1: Formalisierung        Schritt 2: Embedding & Vorfilter        Schritt 3: Pair-Matching & Klassifikation
-------------------------        ---------------------------------       -------------------------------------------
-PDF/RDF/Turtle-KQR                Sentence-Embeddings je Konzept          LLM klassifiziert Kandidatenpaare
-     |                                    |                                     |
-     v                                    v                                     v
-skos:ConceptScheme (Turtle)  -->  Struktur-Shortcut (regelbasiert)   -->  3x Majority-Vote (EQUIVALENT /
-                                   + FAISS-ANN-Suche -> Kandidatenpaare   A_SUBSUMES_B / B_SUBSUMES_A /
-                                   Struktur-Treffer (confidence=1.0)      RELATED; kein Mehrheits-
-                                   umgehen Schritt 3 (Shortcut-Pfad)      entscheid -> predicate_id=None)
-                                                                                  |
-                                                                                  v
-                                                                         SSSOM-Export (TSV) + Neo4j (n10s,
-                                                                         optional/best-effort) + React-SPA
+Schritt 1  Formalisierung        KQR-Quelle (RDF, Turtle, PDF) -> SKOS/Turtle
+Schritt 2  Embedding/Vorfilter   Sentence-Embeddings, Struktur-Shortcut,
+                                 FAISS-ANN-Suche -> Kandidatenpaare
+Schritt 3  Klassifikation        LLM, drei Durchläufe, Mehrheitsentscheid
+Schritt 4  Export                SSSOM (TTL/TSV), OWL-Ontologie,
+                                 Integrationsstrategie, optional Neo4j (n10s)
 ```
 
-Die HDBSCAN-Kernstruktur-Ableitung (FZ2.2, Cluster → `rdfs:subClassOf`-DAG)
-ist konzeptionell der nächste Schritt nach der Klassifikation, aber in
-diesem Ausbau noch nicht implementiert (`clustering.py` bleibt Stub).
+Die Kernstruktur-Ableitung per HDBSCAN (`clustering.py`) ist implementiert,
+liefert für den Skill-Raum aber keine navigierbare Hierarchie
+(Negativbefund, siehe Kapitel 5 und 6 der Arbeit sowie `CLAUDE.md`, Abschnitt 7).
 
 ## Tech-Stack
 
-| Bereich | Wahl | Status |
-|---|---|---|
-| Backend | Python 3.11+, FastAPI | implementiert |
-| Persistenz (KQR-Registry, Mappings, Jobs) | In-Prozess-/Datei-Store (`app/services/`) | implementiert; bewusste Abweichung von Neo4j-als-alleiniger-Datenhaltung (siehe unten) |
-| Graph-Store | Neo4j 5.x + Neosemantics (n10s) | implementiert als **optionale** Materialisierung, kein Hard-Requirement für die API |
-| ANN-Suche (Schritt 2) | FAISS | implementiert; bewusste Abweichung von der aktuellen Konzeptionstext-Fassung, die einen nativen Neo4j-Vektorindex vorsieht (siehe unten) |
-| Embeddings | sentence-transformers (`paraphrase-multilingual-mpnet-base-v2`, Default) | implementiert; Modellwahl weiterhin vorläufig (VH1.4) |
-| Clustering (FZ2.2) | hdbscan | **nicht implementiert** — `pipeline/step2_embedding_prefilter/clustering.py` bleibt Stub |
-| LLM-Klassifikation | Anthropic SDK (Default: `claude-haiku-4-5-20251001`) | implementiert; Modellwahl weiterhin vorläufig (VH1.6) |
-| RDF/SKOS-Handling | rdflib | implementiert (Parsing, Validierung) |
-| PDF-Formalisierung | pypdf + Anthropic SDK | implementiert (Textextraktion + LLM-Entwurf, manuell zu validieren) |
-| UI (Review-Oberfläche) | React/TypeScript-SPA (`frontend/`, Vite) | implementiert |
-
-### Bewusste Abweichungen von der aktuellen Konzeptionstext-Fassung
-
-- **FAISS statt nativem Neo4j-Vektorindex:** `fz12_formalisierung.tex` beschreibt
-  einen nativen Neo4j-Vektorindex für die ANN-Suche ("ein separater
-  FAISS-Index entfällt"). Diese Implementierung nutzt bewusst weiterhin
-  FAISS, damit Schritt 2 ohne laufende Neo4j-Instanz unit-testbar bleibt
-  (Architekturprinzip "Pipeline-Schritte sind unabhängig testbar").
-- **Neo4j ist optionale Materialisierung, nicht die primäre Datenhaltung:**
-  KQR-Registry, Mappings und Klassifikations-Jobs leben in einem
-  In-Prozess-/Datei-Store (`app/services/kqr_service.py`,
-  `mapping_service.py`, `classification_service.py`). Der Neo4j-Client
-  (`app/graph/neo4j_client.py`) ist vollständig implementiert und wird
-  best-effort beim KQR-Upload aufgerufen — ein nicht erreichbares Neo4j
-  blockiert die API nicht.
+| Bereich | Wahl |
+|---|---|
+| Backend | Python 3.11+, FastAPI |
+| Persistenz | Datei-Store unter `data/` (ADR-5), Neo4j 5 + n10s optional |
+| Embeddings | sentence-transformers, `paraphrase-multilingual-mpnet-base-v2` |
+| ANN-Suche | FAISS |
+| Klassifikation | Anthropic, OpenAI, Gemini oder Mistral über `LLM_PROVIDERS` (v0.4: `mistral-small-2603`, T = 0) |
+| Clustering | hdbscan |
+| RDF/SHACL | rdflib, pyshacl |
+| UI | React/TypeScript-SPA unter `frontend/` (Vite) |
 
 ## Setup
 
@@ -74,12 +52,13 @@ source .venv/bin/activate   # Windows: .venv\Scripts\activate
 # 2. Abhängigkeiten
 pip install -r requirements.txt
 
-# 3. Neo4j + Neosemantics starten (optional, siehe "Bewusste Abweichungen" oben)
+# 3. Neo4j + Neosemantics starten (optional)
 docker compose up -d
 
 # 4. Umgebungsvariablen setzen
 cp .env.example .env
-# .env editieren: ANTHROPIC_API_KEY (zwingend für Schritt 3), NEO4J_PASSWORD (optional)
+# .env editieren: LLM_PROVIDERS und den API-Schlüssel des gewählten
+# Providers (zwingend für Schritt 3), NEO4J_PASSWORD (optional)
 
 # 5. API starten
 uvicorn app.api.main:app --reload
@@ -89,83 +68,90 @@ cd frontend
 npm install
 npm run dev
 
-# 7. Tests laufen ohne Netzwerk/Neo4j (LLM & Embedding-Modell sind gemockt)
+# 7. Tests laufen ohne Netzwerk und ohne Neo4j (LLM und Embedding-Modell gemockt)
 pytest                       # Backend
 cd frontend && npm run test  # Frontend
 ```
 
-Die React-Oberfläche unter `frontend/` ist die primäre UI. Setup, Routen und
-dokumentierte API-Einschränkungen stehen in [`frontend/README.md`](frontend/README.md).
-Sie greift als eigener Browser-Origin auf die API zu; die zugelassenen Origins
-stehen in `CORS_ALLOW_ORIGINS` (`.env`, Standard `http://localhost:5173`).
+Die React-Oberfläche ist die primäre UI. Setup, Routen und dokumentierte
+API-Einschränkungen stehen in [`frontend/README.md`](frontend/README.md).
+Sie greift als eigener Browser-Origin auf die API zu, die zugelassenen
+Origins stehen in `CORS_ALLOW_ORIGINS` (`.env`, Standard
+`http://localhost:5173`).
 
-Ohne gesetzten `ANTHROPIC_API_KEY` lassen sich KQR einpflegen und die UI
-durchklicken, aber Schritt 3 (Klassifikation) schlägt beim tatsächlichen
-Start fehl — der Fehler wird über `GET /classification/preconditions`
-(Statuszeile in Funktionsgruppe 2) vorab sichtbar gemacht, nicht erst beim
-Absturz des Jobs.
+Ohne API-Schlüssel lassen sich KQR einpflegen und die UI durchklicken.
+Schritt 3 schlägt dann beim Start fehl, was `GET /classification/preconditions`
+vorab als Statuszeile anzeigt.
+
+Stand Oktober 2026 umfasst die Backend-Suite 235 Tests (223 bestanden,
+12 übersprungen). Fehlen optionale Experimentdaten wie die
+Granularitätsvarianten unter `data/formalized/`, überspringen die
+betroffenen Tests, statt fehlzuschlagen.
+
+## Daten
+
+| Ort | Inhalt | Versioniert |
+|---|---|---|
+| `data/formalized/` | formalisierte KQR der Lieferung (siehe unten) | ja |
+| `data/deliverables/` | Snapshot der Lieferung v0.4 | ja |
+| `data/raw/` | Originalquellen (u. a. e-CF-PDF, ESCO-Dump) | nein, Lizenz bzw. Größe |
+| `data/projects/`, `data/kqr_registry.json` | Laufzeitzustand | nein |
+
+Versioniert sind die vier KQR der Lieferung v0.4:
+`esco_skeleton_oberhuber.ttl` (Hub, 1302 Skills des Informatik-Korridors),
+`ecf.ttl` (e-CF 3.0, Dimension 2), `ecf_level.ttl` (e-CF 3.0, Dimension 3)
+und `dqr_1D.ttl` (DQR-Niveaus). Hinzu kommen die Experimentdaten aus
+Kapitel 5: die Granularitätsvarianten `dqr_2D.ttl`, `eqf_1D.ttl` und
+`eqf_2D.ttl` sowie der frühere ESCO-Ausschnitt
+`esco_v1_2_ict_ausschnitt.ttl` (956 Konzepte). Wie sie aus den Rohquellen entstanden sind,
+dokumentieren die nummerierten Skripte `scripts/00` bis `scripts/22`. Die
+e-CF-Formalisierung lief LLM-gestützt mit manueller Kuration und ist daher
+nicht deterministisch reproduzierbar.
+
+### Hinweis zum European e-Competence Framework (e-CF)
+
+Die Dateien `data/formalized/ecf.ttl` und `data/formalized/ecf_level.ttl`
+sowie die daraus erzeugten Lieferartefakte unter `data/deliverables/`
+beruhen auf dem kostenlos veröffentlichten Dokument „European
+e-Competence Framework (e-CF) Version 3.0 (CWA 16234-1:2014)“. Sie
+enthalten eine abgeleitete, maschinenlesbare Darstellung (SKOS/Turtle) der
+e-CF-Kompetenzen (Dimension 2) und ihrer Kompetenzniveaus (Dimension 3),
+die im Rahmen dieser Masterarbeit erstellt wurde. Da die Formalisierung
+LLM-gestützt erfolgte, kann sie vom Originaldokument abweichen. Maßgeblich
+ist allein der veröffentlichte Text.
+
+Auch die normative Zuordnung der e-CF-Kompetenzniveaus zu DQR- bzw.
+EQF-Niveaus (`harm:LevelMapping`, Goldmenge `eval/G_levels.json`) stammt
+aus e-CF 3.0 (CWA 16234-1:2014).
+
+Dieses Repository und die enthaltenen Artefakte stehen in keinerlei
+offizieller Verbindung zum Europäischen Komitee für Normung (CEN). Sie
+wurden von CEN weder geprüft noch autorisiert. Die Rechte am e-CF
+verbleiben bei den jeweiligen Rechteinhabern.
+
+## Lieferung reproduzieren
+
+1. API starten und die vier KQR über die UI oder `POST /kqr/` registrieren:
+   `esco_skeleton_oberhuber` (Hub), `ecf`, `ecf_level`, `dqr_1d`.
+2. `python scripts/run_saeule_d_delivery.py --plan-only` zur Kontrolle,
+   danach mit `--version <V>` für den vollen Lauf.
+3. Ergebnis unter `data/projects/<id>/delivery/`, inklusive
+   SHACL-Validierung gegen die Bezugsdokumente im Repo-Root. Eine Kopie samt
+   `run_config.json` landet unter `data/deliverables/v<V>-<JJJJMMTT>/`.
 
 ## Ordnerstruktur
 
 ```
-hrqde-harmonizer/
-├── app/
-│   ├── models/              # Pydantic-Schemas (Concept, KQR, Mapping, SSSOMRecord)
-│   ├── pipeline/
-│   │   ├── step1_formalization/       # KQR -> SKOS/Turtle (rdflib-Parsing, PDF via Anthropic)
-│   │   ├── step2_embedding_prefilter/ # Embeddings (sentence-transformers), Struktur-Shortcut,
-│   │   │                              # FAISS-ANN-Suche; clustering.py (FZ2.2) noch Stub
-│   │   ├── step3_classification/      # LLM-Klassifikation, Majority-Vote
-│   │   └── step4_export/              # SSSOM-Writer (implementiert); ontology_export.py (FZ2.2) noch Stub
-│   ├── graph/                # Neo4j-Client (n10s-Import/-Konfiguration), optionale Materialisierung
-│   ├── api/                  # FastAPI-Routen (dünne Schicht über services/)
-│   └── services/             # Orchestrierung: kqr_service, classification_service, mapping_service
-├── frontend/                 # React/TypeScript-SPA (primäre Review-UI), siehe frontend/README.md
-├── data/
-│   ├── raw/                  # Original-KQR-Quellen (hochgeladene Dateien)
-│   ├── formalized/           # SKOS-Turtle je KQR nach Schritt 1
-│   ├── sssom/                # Exportierte Mapping-Tabellen (TSV)
-│   └── kqr_registry.json     # KQR-Registry-Metadaten (Status, concept_count, is_hub)
-├── prompts/                  # Klassifikations-Prompt-Template (Vier-Block-Schema)
-└── tests/
-    ├── fixtures/              # Kleine, selbst erstellte SKOS-Turtle-Fixtures (Hub- + Satelliten-KQR)
-    └── conftest.py            # Gemeinsame Test-Fixtures (Mock-LLM, Mock-Embedding-Modell, Service-Isolation)
+app/            Backend: models, pipeline (step1 bis step4), graph, api, services
+frontend/       React-SPA, siehe frontend/README.md
+data/           siehe Abschnitt Daten
+scripts/        Datenaufbau, Kapitel-5-Läufe, Lieferung
+eval/           Experimente E1 bis E5, Baselines, Goldmengen, PROTOKOLL.md
+prompts/        Klassifikations-Prompt-Template
+tests/          Backend-Tests mit Fixtures
+docs/           ARCHITECTURE.md (ADRs, Parameter)
 ```
 
-## Zuordnung zu den Forschungszielen
-
-| Forschungsziel | Modul | Status |
-|---|---|---|
-| FZ1.3 (Prototyp: 2 KQR verarbeiten, Teilmengen ausgeben) | `pipeline/step1_formalization`, `pipeline/step2_embedding_prefilter`, `pipeline/step3_classification` | implementiert |
-| FZ2.3 (Kernstrukturen aus K erzeugen) | `pipeline/step2_embedding_prefilter/clustering.py` | **nicht implementiert** |
-| FZ3.3 (Harmonisierungs-UI, Mixed Initiative) | `ui/` | implementiert (Seiten 1–4, Seite 5 teilweise) |
-| FA1–FA5 (funktionale Anforderungen) | `app/api/routes/*`, `ui/pages/*` | FA1–FA4 implementiert; FA5 (Export) nur SSSOM-TSV, OWL-Export ausstehend |
-
-## Implementierungsstand im Detail
-
-**Implementiert und getestet** (siehe `tests/`, 31 Tests):
-
-- Formalisierung: rdflib-Parsing/Validierung gegen die SKOS-Pflichtfelder,
-  PDF-Formalisierung via pypdf + Anthropic (Entwurf, manuell zu validieren).
-- Embedding (sentence-transformers) + regelbasierter Struktur-Vorfilter
-  (bekannte KQR-Cross-Referenzen → direktes Mapping mit `confidence=1.0`,
-  umgeht Schritt 3) + FAISS-ANN-Suche für die übrigen Kandidatenpaare.
-- LLM-Klassifikation (Anthropic SDK, Dreifach-Klassifikation +
-  Mehrheitsentscheid, strikte Antwortformat-Validierung).
-- SSSOM-Export (TSV) inkl. Struktur-/Confidence-Filterregel.
-- Neo4j-Client (n10s-Init, Turtle-Import, Status-Query) als optionale
-  Materialisierung.
-- API-Routes und React-SPA für alle 5 Funktionsgruppen.
-
-**Bewusst nicht implementiert** (nächste Ausbaustufen):
-
-- FZ2.2: HDBSCAN-Clustering der Konzepte im Embedding-Raum zu einer
-  `rdfs:subClassOf`-Kernstruktur (DAG), inkl. zweistufiger Cluster-Benennung.
-- FZ3.2: Experten-Entscheidungs-UI für disjunkte Konzepte ($C_{gap}$/$C_{conf}$,
-  Optionen A/B/C). `GET /export/summary` zählt offene Fälle bereits
-  (`no_consensus_pairs`, `related_pairs`; Gatekeeping-Anzeige).
-- OWL-/Turtle-/JSON-LD-Ontologie-Export und Prüfbericht
-  (`app/pipeline/step4_export/ontology_export.py`) — an die FZ2.2-Kernstruktur
-  gekoppelt; die entsprechenden API-Routes liefern `501`.
-- Optionaler Branchen-Filter (Ontology Views).
-- `formalize_from_xml` (kein integriertes KQR benötigt aktuell den XML-Pfad).
+Bezugsdokumente von Adrian Vogler im Repo-Root:
+`hrqde-harmonisation-schema.ttl`, `hrqde-shape-harmonisation.ttl`,
+`hrqde-shapes-all.ttl` und `esco-skeleton-for-oberhuber.ttl`.

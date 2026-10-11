@@ -1,0 +1,829 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+@prefix hrqde: <https://hrqde.example.org/ontology#> .
+
+@prefix ecf: <http://hr-qde.org/harmonised/ecf/> .
+
+@prefix esco: <http://hr-qde.org/harmonised/hub_kqr/> .
+@prefix harm: <http://hr-qde.org/harmonised/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+harm:CompetenceConcept a owl:NamedIndividual ;
+    skos:prefLabel "Competence concept — enters pipeline"@en .
+
+harm:LevelConcept a owl:NamedIndividual ;
+    skos:prefLabel "Level concept — skeleton import only"@en .
+
+
+
+ecf: a skos:ConceptScheme ;
+
+    skos:prefLabel "European e-Competence Framework"@en, "European e-Competence Framework"@de ;
+
+    skos:definition "A common European framework for IT competences in all sectors."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" .
+
+
+
+ecf:plan a skos:Concept ;
+
+    skos:prefLabel "PLAN"@en, "PLANEN"@de ;
+
+    skos:definition "Competence area focusing on planning IT business strategies and services."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "A" ;
+
+    skos:broader ecf: .
+
+
+
+ecf:build a skos:Concept ;
+
+    skos:prefLabel "BUILD"@en, "ERSTELLEN"@de ;
+
+    skos:definition "Competence area focusing on building IT applications and systems."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "B" ;
+
+    skos:broader ecf: .
+
+
+
+ecf:run a skos:Concept ;
+
+    skos:prefLabel "RUN"@en, "BETREIBEN"@de ;
+
+    skos:definition "Competence area focusing on operating IT services and systems."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "C" ;
+
+    skos:broader ecf: .
+
+
+
+ecf:enable a skos:Concept ;
+
+    skos:prefLabel "ENABLE"@en, "ERMÖGLICHEN"@de ;
+
+    skos:definition "Competence area focusing on enabling IT services and knowledge management."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "D" ;
+
+    skos:broader ecf: .
+
+
+
+ecf:manage a skos:Concept ;
+
+    skos:prefLabel "MANAGE"@en, "STEUERN"@de ;
+
+    skos:definition "Competence area focusing on managing IT projects, processes and governance."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "E" ;
+
+    skos:broader ecf: .
+
+
+
+ecf:A.1 a skos:Concept ;
+
+    skos:prefLabel "IS and Business Strategy Alignment"@en, "Ausrichtung ITK-Geschäftsstrategie"@de ;
+
+    skos:definition "Anticipates long-term business requirements, contributes to the further development of the efficiency and effectiveness of processes in the organization. Determines the technological direction of the ICT infrastructure and its security in line with the company policy. Makes strategic decisions for ICT strategies in the company, including procurement strategies."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "A.1" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-4", "e-5" ;
+
+    skos:broader ecf:plan .
+
+
+
+ecf:A.2 a skos:Concept ;
+
+    skos:prefLabel "Service Level Management"@en, "Dienstleistungsmanagement"@de ;
+
+    skos:definition "Defines service level agreements and underlying performance contracts, validates them and ensures their applicability. Negotiates, taking into account the requirements and capacities of customers and companies, the performance level in the service area."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "A.2" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-3", "e-4" ;
+
+    skos:broader ecf:plan .
+
+
+
+ecf:A.3 a skos:Concept ;
+
+    skos:prefLabel "Business Plan Development"@en, "Entwicklung von Geschäftsplänen"@de ;
+
+    skos:definition "Deals with the development and the structure of a business or product plan. This includes the identification of alternative approaches such as revenue forecasts. Considers possible and applicable procurement models. Presents cost-benefit analyses and well-considered arguments to support the chosen strategy. Ensures that business and technology strategy are considered. Communicates and markets the business planning to relevant actors. Considers political, financial and organizational interests."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "A.3" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-3", "e-4", "e-5" ;
+
+    skos:broader ecf:plan .
+
+
+
+ecf:A.4 a skos:Concept ;
+
+    skos:prefLabel "Product / Service Planning"@en, "Produkt- / Serviceplanung"@de ;
+
+    skos:definition "Analyzes and defines the current and the desired status. Critically estimates cost effectiveness, risks and opportunities, strengths and weaknesses. Designs structure plans, sets up time and milestone plans, ensures the optimization of activities and resources. Manages change requests. Defines the delivery status and ensures an overview of the resulting requirements for the documentation. Ensures the correct handling of products, including legal requirements in line with current regulations."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "A.4" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-2", "e-3", "e-4" ;
+
+    skos:broader ecf:plan .
+
+
+
+ecf:A.5 a skos:Concept ;
+
+    skos:prefLabel "Architecture Design"@en, "Architekturspezifikation"@de ;
+
+    skos:definition "Specifies, refines and updates a system model necessary for the implementation of solutions so that the system architecture can be developed and implemented. Makes the system model available. Identifies necessary changes and required components: hardware, software, applications, processes, information technology platform. Ensures that interoperability, scalability, usability and security are considered in all technical decisions. Ensures alignment between business and technical development."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "A.5" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-3", "e-4", "e-5" ;
+
+    skos:broader ecf:plan .
+
+
+
+ecf:A.6 a skos:Concept ;
+
+    skos:prefLabel "Application Design"@en, "Anwendungsspezifikation"@de ;
+
+    skos:definition "Analyzes, specifies and updates an implementation model for the application in line with the system technical rules and the user and customer requirements. Makes the model accessible. Accurately estimates the costs of development, installation and maintenance of the application. Selects appropriate technical options for the development of the solution. Develops with the help of modeling languages illustrative data and system structures based on the analysis results. Ensures that interoperability, usability and security are always considered. Identifies a pilot application and environment to validate the model with representative users based on appropriate development methods (e.g. an iterative approach)."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "A.6" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-1", "e-2", "e-3" ;
+
+    skos:broader ecf:plan .
+
+
+
+ecf:A.7 a skos:Concept ;
+
+    skos:prefLabel "Technology Trend Watching"@en, "Trendschau Technologie und Innovation"@de ;
+
+    skos:definition "Examines current technical developments in ICT to build an understanding of new technologies. Designs innovative proposals to integrate new technologies into existing products, applications or services or to develop completely new solutions."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "A.7" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-4", "e-5" ;
+
+    skos:broader ecf:plan .
+
+
+
+ecf:A.8 a skos:Concept ;
+
+    skos:prefLabel "Sustainable Development"@en, "Nachhaltige Entwicklung"@de ;
+
+    skos:definition "Estimates the importance of ICT solutions, in particular their energy consumption, with regard to ecological responsibility. Advises economically and ICT responsible persons on sustainable alternatives that are in line with the company strategy. Applies an ICT procurement and sales strategy that meets ecological responsibility."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "A.8" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-3", "e-4" ;
+
+    skos:broader ecf:plan .
+
+
+
+ecf:A.9 a skos:Concept ;
+
+    skos:prefLabel "Innovating"@en, "Erfinden"@de ;
+
+    skos:definition "Develops creative solutions within the framework of developing new concepts, ideas, products or services. Leaves well-trodden paths and develops unconventional ideas to make technological progress usable for business or social needs or to stimulate further research."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "A.9" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-4", "e-5" ;
+
+    skos:broader ecf:plan .
+
+
+
+ecf:B.1 a skos:Concept ;
+
+    skos:prefLabel "Application Development"@en, "Anwendungsentwicklung"@de ;
+
+    skos:definition "Uses the application specification to develop a suitable application under consideration of customer needs. Adapts existing solutions, e.g. by porting an application to another operating system. Codes, searches and eliminates errors, tests and documents and communicates the status of the product development process. Selects appropriate technical solutions for development such as reuse, improvement or reconfiguration of existing components. Optimizes the ratio of efficiency, cost and quality. Validates the results with representative users, integrates them into the overall solution and puts them into operation."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "B.1" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-1", "e-2", "e-3" ;
+
+    skos:broader ecf:build .
+
+
+
+ecf:B.2 a skos:Concept ;
+
+    skos:prefLabel "Component Integration"@en, "Komponentenintegration"@de ;
+
+    skos:definition "Integrates hardware, software or other components into an existing or proposed system. Meets the introduced processes and procedures (e.g. configuration or package management). Considers the compatibility of new with existing modules to guarantee integrity, interoperability and ICT security. Tests and ensures the capacity and performance of the overall system and documents the successful integration."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "B.2" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-2", "e-3", "e-4" ;
+
+    skos:broader ecf:build .
+
+
+
+ecf:B.3 a skos:Concept ;
+
+    skos:prefLabel "Testing"@en, "Testen"@de ;
+
+    skos:definition "Develops systematic test procedures for ICT systems or customer user requirements and carries them out so that design specifications are met. Ensures that new or revised components or systems function as expected. Secures the fulfillment of internal, external, national and international standards including health and safety regulations for usability, performance, reliability or compatibility. Prepares documents and reports to prove compliance with requirements."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "B.3" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-1", "e-2", "e-3", "e-4" ;
+
+    skos:broader ecf:build .
+
+
+
+ecf:B.4 a skos:Concept ;
+
+    skos:prefLabel "Solution Deployment"@en, "Lösungsimplementierung"@de ;
+
+    skos:definition "Carries out planned and necessary interventions to implement solutions, including installation, upgrading, or decommissioning. Follows predefined procedural standards. Configures hardware, software or networks to ensure interoperability of system components and eliminates resulting errors or incompatibilities. Involves additional professional resources if necessary, for example external network providers. Hands over to the user ready-to-use, validated solutions. Completes the documentation and records all relevant information, including equipment recipients, configuration and performance data."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "B.4" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-1", "e-2", "e-3" ;
+
+    skos:broader ecf:build .
+
+
+
+ecf:B.5 a skos:Concept ;
+
+    skos:prefLabel "Documentation Production"@en, "Erstellen von Dokumentationen"@de ;
+
+    skos:definition "Creates documentation that describes products, services, components or applications so that they meet all relevant documentation requirements. Selects appropriate presentation methods and media for the presentation of the material. Creates templates for the document management system. Ensures that functions and features are described in an appropriate manner. Ensures that existing documents are current and valid."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "B.5" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-1", "e-2", "e-3" ;
+
+    skos:broader ecf:build .
+
+
+
+ecf:B.6 a skos:Concept ;
+
+    skos:prefLabel "Systems Engineering"@en, "Systementwicklung"@de ;
+
+    skos:definition "Develops software and/or hardware components according to the requirements of the solution, including technical specifications, cost, quality, time, energy efficiency, ICT security and data protection. Follows a systematic methodology to analyze and create the required components and interfaces. Models the system structures and simulates the corresponding system behavior. Carries out module and system tests and ensures that the functional and performance criteria are met."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "B.6" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-3", "e-4" ;
+
+    skos:broader ecf:build .
+
+
+
+ecf:C.1 a skos:Concept ;
+
+    skos:prefLabel "User Support"@en, "Anwenderbetreuung"@de ;
+
+    skos:definition "Responds to user requests and problems; records relevant information. Resolves incidents or forwards them and optimizes system performance in accordance with agreed service levels (SLAs). Understands how solutions or results and the resulting customer satisfaction are to be monitored."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "C.1" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-1", "e-2", "e-3" ;
+
+    skos:broader ecf:run .
+
+
+
+ecf:C.2 a skos:Concept ;
+
+    skos:prefLabel "Change Support"@en, "Veränderungsunterstützung"@de ;
+
+    skos:definition "Advises on the further development of an ICT solution and implements the changes in the system. Controls and plans software and hardware changes and thus avoids that several upgrades lead to unpredictable results. Minimizes service disruptions that may result from the changes and complies with the performance contract. Ensures the consideration and observance of ICT security guidelines."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "C.2" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-2", "e-3" ;
+
+    skos:broader ecf:run .
+
+
+
+ecf:C.3 a skos:Concept ;
+
+    skos:prefLabel "Service Delivery"@en, "Service-Administration"@de ;
+
+    skos:definition "Ensures the administration of services in accordance with the applicable service level agreements (SLAs). Takes proactive measures to guarantee a consistent and secure application and ICT infrastructure and to avoid possible service interruptions. Considers capacity planning such as ICT security. Updates the operational document library and logs all operational events. Maintains observation and control tools (i.e. scripts, procedures, etc.). Administers the ICT services, measures proactively."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "C.3" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-1", "e-2", "e-3" ;
+
+    skos:broader ecf:run .
+
+
+
+ecf:C.4 a skos:Concept ;
+
+    skos:prefLabel "Problem Management"@en, "Problemmanagement"@de ;
+
+    skos:definition "Identifies and eliminates the cause of an incident within the information system. Attempts to prevent the causes of incidents preventively. Uses a knowledge management system in which recurring incidents are recorded."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "C.4" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-2", "e-3", "e-4" ;
+
+    skos:broader ecf:run .
+
+
+
+ecf:D.1 a skos:Concept ;
+
+    skos:prefLabel "Information Security Strategy Development"@en, "Entwicklung von Informationssicherheitsstrategien"@de ;
+
+    skos:definition "Defines a formal organizational strategy including organizational scope and culture and makes it applicable with the aim of guaranteeing information security and data integrity against internal and external threats, e.g. through digital forensic or intrusion investigations in companies. Provides the basis for information security management, identifies roles and assigns responsibilities. Uses defined standards to make target agreements on information integrity and availability as well as data protection."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "D.1" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-4", "e-5" ;
+
+    skos:broader ecf:enable .
+
+
+
+ecf:D.2 a skos:Concept ;
+
+    skos:prefLabel "ICT Quality Strategy Development"@en, "Entwicklung von ITK-Qualitätsstrategien"@de ;
+
+    skos:definition "Defines, improves and refines formal strategies to meet customer expectations and improve business results. Identifies critical processes that affect service delivery and product performance to define them in ICT quality management systems. Uses defined standards to formulate objectives for service management and product and process quality and identifies responsibilities in ICT quality management."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "D.2" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-4", "e-5" ;
+
+    skos:broader ecf:enable .
+
+
+
+ecf:D.3 a skos:Concept ;
+
+    skos:prefLabel "Education and Training Provision"@en, "Bestimmung von Aus- und Weiterbildungsmaßnahmen"@de ;
+
+    skos:definition "Defines and implements the ICT qualification strategy according to the educational needs and skill gaps in the company. Structures, organizes and plans training measures and evaluates their quality through feedback processes. Implements processes for continuous improvement (CIP). Adapts training plans and measures to changing needs."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "D.3" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-2", "e-3" ;
+
+    skos:broader ecf:enable .
+
+
+
+ecf:D.4 a skos:Concept ;
+
+    skos:prefLabel "Purchasing"@en, "Beschaffung"@de ;
+
+    skos:definition "Applies a uniform procurement procedure and follows the subprocesses requirement specification, supplier identification, offer analysis, contract negotiation, selection of the service provider, contract award. Ensures that the procurement process is conducive to the objective and creates added business value for the company, in line with formal and legal requirements."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "D.4" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-2", "e-3", "e-4" ;
+
+    skos:broader ecf:enable .
+
+
+
+ecf:D.5 a skos:Concept ;
+
+    skos:prefLabel "Sales Proposal Development"@en, "Angebotserstellung"@de ;
+
+    skos:definition "Develops technical offers that correspond to the customer's solution requirements and provides the sales staff with a competitive offer. Emphasizes in this context the energy efficiency and environmental impact of the solution. Coordinates with colleagues the alignment of the service or product solution with the company's delivery capacity."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "D.5" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-3", "e-4" ;
+
+    skos:broader ecf:enable .
+
+
+
+ecf:D.6 a skos:Concept ;
+
+    skos:prefLabel "Channel Management"@en, "Steuerung von Vertriebskanälen"@de ;
+
+    skos:definition "Develops strategies for managing third-party sales channels. Ensures optimal commercial performance of the reseller by providing a coherent business and marketing strategy. Defines objectives for volume, geographical reach and the industry sector to commit resellers and structures incentive programs to achieve additional sales results."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "D.6" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-3", "e-4" ;
+
+    skos:broader ecf:enable .
+
+
+
+ecf:D.7 a skos:Concept ;
+
+    skos:prefLabel "Sales Management"@en, "Vertriebsmanagement"@de ;
+
+    skos:definition "Promotes the achievement of sales targets by building a sales strategy. Demonstrates to potential or existing customers the added value of the company's products and services. Establishes a sales support process that provides effective responses to sales requests and is in line with company strategy and policy. Understands customer needs and establishes a systematic approach to the entire sales process, including forecasting, prospective assessments, negotiation tactics and closing."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "D.7" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-3", "e-4", "e-5" ;
+
+    skos:broader ecf:enable .
+
+
+
+ecf:D.8 a skos:Concept ;
+
+    skos:prefLabel "Contract Management"@en, "Vertragsmanagement"@de ;
+
+    skos:definition "Negotiates and provides contracts in line with organizational processes. Ensures that contract conclusion and deliveries are made on time and meet quality standards and conformity requirements. Deals with cases of non-compliance, extends essential aspects, operates refund plans and changes contracts if necessary. Maintains budget integrity. Evaluates and ensures compliance with legal, health and safety standards on the part of suppliers. Actively maintains regular communication with suppliers."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "D.8" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-2", "e-3", "e-4" ;
+
+    skos:broader ecf:enable .
+
+
+
+ecf:D.9 a skos:Concept ;
+
+    skos:prefLabel "Personnel Development"@en, "Personalentwicklung"@de ;
+
+    skos:definition "Establishes individual and team competences, identifies skill gaps and needs. Examines options for qualification and development and selects appropriate methods that meet individual, project-related and business needs. Advises individuals and teams on their learning needs and supports them as a coach and/or mentor."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "D.9" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-2", "e-3", "e-4" ;
+
+    skos:broader ecf:enable .
+
+
+
+ecf:D.10 a skos:Concept ;
+
+    skos:prefLabel "Information and Knowledge Management"@en, "Informations- u. Wissensmanagement"@de ;
+
+    skos:definition "Identifies and organizes structured and unstructured information and considers the guidelines for information distribution. Develops communication structures that enable the exploitation and optimization of information for business benefit. Understands to use appropriate tools to generate, select, support, renew and disseminate business knowledge so that benefit can be derived from the information stock."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "D.10" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-3", "e-4", "e-5" ;
+
+    skos:broader ecf:enable .
+
+
+
+ecf:D.11 a skos:Concept ;
+
+    skos:prefLabel "Needs Identification"@en, "Bedarfserkennung"@de ;
+
+    skos:definition "Actively listens to internal and external customers, formulates and clarifies their needs. Organizes the involvement of all stakeholders to ensure that the solution is in line with business requirements. Proposes different solutions (e.g. make-or-buy), also based on analysis of the context, to achieve a user-desired development. Advises the customer on the selection of appropriate solutions. Ensures that the wishes of the customer are actually implemented during the implementation and configuration of the chosen solution."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "D.11" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-3", "e-4", "e-5" ;
+
+    skos:broader ecf:enable .
+
+
+
+ecf:D.12 a skos:Concept ;
+
+    skos:prefLabel "Digital Marketing"@en, "Digitales Marketing"@de ;
+
+    skos:definition "Understands the fundamental principles of digital marketing, distinguishes between traditional and approaches for the social media age. Evaluates the importance of the available channels. Reviews the effectiveness of the various approaches and applies rigorous measurement methods. Plans coherent strategies using the most effective means. Considers the protection of data and privacy in the implementation of marketing strategies."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "D.12" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-2", "e-3", "e-4" ;
+
+    skos:broader ecf:enable .
+
+
+
+ecf:E.1 a skos:Concept ;
+
+    skos:prefLabel "Forecast Development"@en, "Prognoseerstellung"@de ;
+
+    skos:definition "Interprets market demand and evaluates the market acceptance of products and services. Evaluates the potential of the company to meet future production and quality requirements. Uses appropriate mechanisms to support production, marketing, sales and distribution with accurate decisions."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "E.1" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-3", "e-4" ;
+
+    skos:broader ecf:manage .
+
+
+
+ecf:E.2 a skos:Concept ;
+
+    skos:prefLabel "Project and Portfolio Management"@en, "Projekt- und Portfoliomanagement"@de ;
+
+    skos:definition "Implements plans for change programs. Plans and controls individual ICT projects or project portfolios, ensuring coordination and control of interactions. Coordinates projects to develop or implement new internal or external processes and to meet specific business needs. Defines activities, responsibilities, critical milestones, resources, qualification needs, interfaces and budget, optimizes the ratio between cost and schedule, avoids waste and strives for high quality. Develops contingency plans to respond to potential implementation problems. Completes the project on time and within budget and in accordance with the original requirements. Creates and maintains documents that facilitate the monitoring of project progress."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "E.2" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-2", "e-3", "e-4", "e-5" ;
+
+    skos:broader ecf:manage .
+
+
+
+ecf:E.3 a skos:Concept ;
+
+    skos:prefLabel "Risk Management"@en, "Risikomanagement"@de ;
+
+    skos:definition "Implements risk management in all information systems and applies the company-defined risk management strategies and procedures. Evaluates business risks of the company, including those from the use of Internet or cloud resources as well as mobile devices. Documents potential risks and damage limitation plans."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "E.3" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-2", "e-3", "e-4" ;
+
+    skos:broader ecf:manage .
+
+
+
+ecf:E.4 a skos:Concept ;
+
+    skos:prefLabel "Relationship Management"@en, "Management von Geschäftsbeziehungen"@de ;
+
+    skos:definition "Establishes and maintains positive business relationships between all stakeholders (internal and external) using and in line with organizational processes. Maintains regular communication with customers/partners/suppliers and responds to their needs with empathy, manages communication beyond the supply chain. Ensures that needs, concerns or complaints of all stakeholders are understood and resolved in line with organizational policy."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "E.4" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-3", "e-4" ;
+
+    skos:broader ecf:manage .
+
+
+
+ecf:E.5 a skos:Concept ;
+
+    skos:prefLabel "Process Improvement"@en, "Prozessoptimierung"@de ;
+
+    skos:definition "Measures the effectiveness of existing ICT processes. Researches and evaluates ICT process designs from different sources. Follows a systematic methodology for evaluation, design and implementation of process or technology changes with the aim of measurable business gain. Evaluates potential adverse effects of process changes."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "E.5" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-3", "e-4" ;
+
+    skos:broader ecf:manage .
+
+
+
+ecf:E.6 a skos:Concept ;
+
+    skos:prefLabel "ICT Quality Management"@en, "ITK-Qualitätsmanagement"@de ;
+
+    skos:definition "Implements ICT quality strategies to maintain and improve the delivery of services and products. Plans and defines indicators for quality management with regard to the ICT strategy. Reviews quality measurement and recommends improvements to contribute to continuous quality optimization."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "E.6" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-2", "e-3", "e-4" ;
+
+    skos:broader ecf:manage .
+
+
+
+ecf:E.7 a skos:Concept ;
+
+    skos:prefLabel "Business Change Management"@en, "Management von Geschäftsprozessveränderungen"@de ;
+
+    skos:definition "Evaluates the impact of new ICT solutions. Defines the requirements and quantifies the business benefit. Manages the implementation of changes taking into account structural and cultural issues. Maintains business and process continuity throughout the change process, monitors the impact, creates remedies where necessary and refines the overall concept."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "E.7" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-3", "e-4", "e-5" ;
+
+    skos:broader ecf:manage .
+
+
+
+ecf:E.8 a skos:Concept ;
+
+    skos:prefLabel "Information Security Management"@en, "ITK-Sicherheitsmanagement"@de ;
+
+    skos:definition "Implements information security strategies. Monitors and counters intrusion, fraud and security breaches or vulnerabilities. Ensures that security risks regarding company data and information are analyzed and managed. Reviews information security incidents, makes recommendations for security policies and strategy to achieve continuous improvement of security measures."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "E.8" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-2", "e-3", "e-4" ;
+
+    skos:broader ecf:manage .
+
+
+
+ecf:E.9 a skos:Concept ;
+
+    skos:prefLabel "IS Governance"@en, "ITK-Gouvernance"@de ;
+
+    skos:definition "Determines the use of information systems in the company as a whole in line with business requirements and controls it accordingly. Considers all internal and external aspects, such as compliance with legal requirements and industry standards, to achieve a balanced ratio between risk management and resource use on the one hand and business profit on the other."@en ;
+
+    dcterms:source "e-CF 3.0" ;
+
+    hrqde:derivedFrom "ecf" ;
+
+    hrqde:sourceIdentifier "E.9" ;
+    a harm:CompetenceConcept ;
+    hrqde:proficiencyLevel "e-4", "e-5" ;
+
+    skos:broader ecf:manage .

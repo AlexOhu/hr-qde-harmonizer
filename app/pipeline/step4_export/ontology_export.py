@@ -19,7 +19,7 @@ from app.models.schemas import (
     ReviewStatus,
 )
 
-# ADR-19: Die Harmonisierungsschicht (HarmonisedConcept, HarmonisedCluster,
+# ADR-17: Die Harmonisierungsschicht (HarmonisedConcept, HarmonisedCluster,
 # derivedFrom, harmonises, integrationStrategy) laeuft unter dem Kuerzel harm:.
 # Der Namensraum selbst ist unveraendert; nur das Praefix hat gewechselt.
 HARM = Namespace("http://hr-qde.org/harmonised/")

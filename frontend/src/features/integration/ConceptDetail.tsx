@@ -17,7 +17,12 @@ import { Field, Input, Select, Textarea } from "@/components/ui/field";
 import { DetailField, DetailPanel } from "@/components/common/MasterDetail";
 import { ErrorPanel } from "@/components/common/states";
 import { useToast } from "@/components/ui/toast";
-import { useDecideConcept, useStrategySuggestion } from "@/hooks/useIntegration";
+import {
+  useAnchorCandidates,
+  useDecideConcept,
+  useStrategySuggestion,
+} from "@/hooks/useIntegration";
+import { AnchorClassCombobox } from "./AnchorClassCombobox";
 import {
   STRATEGY_PRESENTATION,
   STRATEGY_REQUIRES_ANCHOR,
@@ -74,6 +79,11 @@ export function ConceptDetail({
   }, [suggested, concept.uri]);
 
   const showForm = !isReadOnly && (!decision || isEditing);
+  const anchorQuery = useAnchorCandidates(
+    projectId,
+    concept.uri,
+    showForm && strategy === STRATEGY_REQUIRES_ANCHOR,
+  );
   const decidedElsewhere =
     decision && currentPairFrameworkIds && !currentPairFrameworkIds.includes(decision.kqr_id);
 
@@ -255,15 +265,16 @@ export function ConceptDetail({
               <Field
                 label="Zielklasse im Skelett"
                 required
-                hint="Knoten des HR-QDE-Skeletts, z. B. hrqde:DQR5."
+                hint="Suche nach Label oder URI. Oben die RELATED-Kandidaten dieses Konzepts, darunter der Hub als Baum. Andere Knoten (z. B. hrqde:DQR5) als Freitext eingeben."
               >
                 {(props) => (
-                  <Input
-                    {...props}
+                  <AnchorClassCombobox
+                    id={props.id}
+                    describedBy={props["aria-describedby"]}
                     value={anchorClass}
-                    onChange={(event) => setAnchorClass(event.target.value)}
-                    placeholder="hrqde:DQR5"
-                    className="font-mono"
+                    onChange={setAnchorClass}
+                    candidates={anchorQuery.data ?? []}
+                    isLoading={anchorQuery.isPending}
                   />
                 )}
               </Field>

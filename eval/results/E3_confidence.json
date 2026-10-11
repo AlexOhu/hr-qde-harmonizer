@@ -2,8 +2,8 @@
   "_meta": {
     "experiment": "E3 Confidence-Schwellen (VH1.7)",
     "date": "2026-08-31",
-    "nachzug": "Wiederholung im Zuge der Saeule-D-Abgabe. E3 ist korpusunabhaengig: klassifiziert werden feste Goldpaare (eval/gold/G_manual.json, 74 Paare), der Wechsel des ESCO-Hubs (956 -> 1302, ADR-27) beruehrt E3 nicht. Die Abweichung zum Lauf desselben Tages ist reine LLM-/API-Drift (mistral-small-latest).",
-    "vorher": "eval/results/E3_confidence.json.bak_956_20260831",
+    "nachzug": "Wiederholung im Zuge der Saeule-D-Abgabe. E3 ist korpusunabhaengig: klassifiziert werden feste Goldpaare (eval/gold/G_manual.json, 74 Paare), der Wechsel des ESCO-Hubs (956 -> 1302, ADR-23) beruehrt E3 nicht. Die Abweichung zum Lauf desselben Tages ist reine LLM-/API-Drift (mistral-small-latest).",
+    "vorher": "eval/results/archive/E3_confidence.json.bak_956_20260831",
     "provider_model": "mistral/mistral-small-latest",
     "n_fs_used": 3,
     "runs_per_pair": 3,

@@ -30,6 +30,7 @@ from app.config import settings
 from app.models.schemas import KQR, Concept, FormalizationDraft
 
 HRQDE = Namespace("https://hrqde.example.org/ontology#")
+HARM = Namespace("http://hr-qde.org/harmonised/")
 
 # Pflichtfelder fuer LLM-generierte Formalisierungen (Tabelle "skos_felder").
 _REQUIRED_LITERAL_FIELDS: list[tuple[object, str | None, str]] = [
@@ -95,7 +96,9 @@ def formalize_from_xml(kqr: KQR, xml_path: Path, schema_mapping: dict) -> str:
     raise NotImplementedError
 
 
-def validate_formalization(turtle_content: str, kqr: KQR, strict: bool = True) -> list[str]:
+def validate_formalization(
+    turtle_content: str, kqr: KQR, strict: bool = True, rdf_format: str = "turtle"
+) -> list[str]:
     """
     Prueft einen Turtle-Entwurf auf Vollstaendigkeit der Pflichtfelder.
 
@@ -105,8 +108,9 @@ def validate_formalization(turtle_content: str, kqr: KQR, strict: bool = True) -
         generiert. Zusaetzlich werden zweisprachige Labels (@en und @de) verlangt.
 
     strict=False (Direktimport, source_format in {'turtle', 'rdf'}):
-        Prueft nur SKOS-Mindestanforderungen: parsierbares Turtle, mindestens ein
-        skos:Concept, mindestens ein skos:prefLabel je Konzept.
+        Prueft die Import-Mindestanforderungen: parsierbares RDF, mindestens ein
+        skos:Concept, mindestens ein skos:prefLabel je Konzept sowie eine
+        widerspruchsfreie SKOS-Hierarchie und Rollenannotation.
         HRQDE-Namespace-Properties und Zweisprachigkeit werden nicht gefordert,
         da manuell erstellte oder bereits SKOS-konforme KQR (EQF, DQR) diese
         nicht enthalten. Die Unterscheidung folgt dem Direktimport-Pfad aus
@@ -118,9 +122,10 @@ def validate_formalization(turtle_content: str, kqr: KQR, strict: bool = True) -
 
     graph = Graph()
     try:
-        graph.parse(data=turtle_content, format="turtle")
+        graph.parse(data=turtle_content, format=rdf_format)
     except Exception as exc:
-        return ["Turtle konnte nicht geparst werden: " + str(exc)]
+        format_label = "Turtle" if rdf_format == "turtle" else "RDF/XML"
+        return [format_label + " konnte nicht geparst werden: " + str(exc)]
 
     concept_uris = list(graph.subjects(RDF.type, SKOS.Concept))
     if not concept_uris:
@@ -144,6 +149,60 @@ def validate_formalization(turtle_content: str, kqr: KQR, strict: bool = True) -
             for predicate, field_name in _REQUIRED_URI_FIELDS:
                 if not list(graph.objects(concept_uri, predicate)):
                     errors.append(str(concept_uri) + ": fehlendes Pflichtfeld " + field_name)
+
+        roles = {
+            role
+            for role in (HARM.CompetenceConcept, HARM.LevelConcept)
+            if (concept_uri, RDF.type, role) in graph
+        }
+        if len(roles) > 1:
+            errors.append(
+                str(concept_uri)
+                + ": darf nicht zugleich harm:CompetenceConcept und harm:LevelConcept sein"
+            )
+
+        for predicate in (SKOS.broader, SKOS.narrower):
+            for related_uri in graph.objects(concept_uri, predicate):
+                if related_uri == concept_uri:
+                    errors.append(str(concept_uri) + ": skos-Hierarchie darf nicht auf sich selbst verweisen")
+                elif (related_uri, RDF.type, SKOS.Concept) not in graph:
+                    errors.append(
+                        str(concept_uri)
+                        + ": "
+                        + str(predicate)
+                        + " verweist auf kein skos:Concept: "
+                        + str(related_uri)
+                    )
+
+    # Eine SKOS-Hierarchie kann sowohl von unten (broader) als auch von oben
+    # (narrower) notiert sein. Beide Schreibweisen werden zu Kind -> Eltern
+    # normalisiert, damit Zyklen unabhängig von der Serialisierung auffallen.
+    concept_set = set(concept_uris)
+    parents: dict[object, set[object]] = {concept_uri: set() for concept_uri in concept_uris}
+    for concept_uri in concept_uris:
+        for parent_uri in graph.objects(concept_uri, SKOS.broader):
+            if parent_uri in concept_set:
+                parents[concept_uri].add(parent_uri)
+        for child_uri in graph.objects(concept_uri, SKOS.narrower):
+            if child_uri in concept_set:
+                parents[child_uri].add(concept_uri)
+
+    visited: set[object] = set()
+    active: set[object] = set()
+
+    def visit(concept_uri: object) -> bool:
+        if concept_uri in active:
+            return True
+        if concept_uri in visited:
+            return False
+        active.add(concept_uri)
+        has_cycle = any(visit(parent_uri) for parent_uri in parents[concept_uri])
+        active.remove(concept_uri)
+        visited.add(concept_uri)
+        return has_cycle
+
+    if any(visit(concept_uri) for concept_uri in concept_uris):
+        errors.append("Die SKOS-Hierarchie enthält einen Zyklus.")
 
     return errors
 

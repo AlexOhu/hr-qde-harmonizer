@@ -1,5 +1,11 @@
 # Evaluationsprotokoll (Kapitel 5)
 
+> **Hinweis zum Abgabestand:** Verweise in diesem Protokoll auf `data/archive/`, die Lieferstände
+> `data/deliverables/v0.2-*` und `v0.3-*`, `eval/results/archive/`, `scripts/archive/`, `docs/archive/`,
+> `eval/RERUN_2026-08-31.md`, `eval/E1_spec.md` und die Planungsdokumente `eval/E*_plan.md` betreffen
+> Stände der Entwicklungsphase. Sie sind im Abgabestand nicht mehr enthalten und nur über die
+> Git-Historie vor den Bereinigungs-Commits vom 9. Oktober 2026 erreichbar.
+
 Datum: 2026-07-29
 Ausführendes System: Claude Code (Sonnet 5), im Rahmen von `eval/EVAL_TASK.md`.
 
@@ -98,7 +104,7 @@ Datei: `eval/gold/G_manual.json` (74 Paare Ausgangs-CSV in
 
 ## E1 – Recall@k
 
-**Architektur-Korrektur (Nutzerhinweis)**: ELM ist per ADR-14
+**Architektur-Korrektur (Nutzerhinweis)**: ELM ist per Kapitel 3
 (Kapitel 4) ausschließlich Serialisierungsziel des Ausgabe-Artefakts,
 kein Vergleichs-KQR — es hält selbst keine mit ESCO vergleichbaren
 Instanzen. Die ursprüngliche E1-Idee (Recall@k zwischen ELM- und
@@ -467,7 +473,7 @@ eine explizite Subsumtionsrichtungs- und EQUIVALENT-Definition ergaenzt.
 ## Setup-Korrekturen vor Ausfuehrung
 
 1. **`eval/E2_few_shot.py::_few_shot_text_for_n_fs`** referenzierte `MatchType`
-   / `Mapping.match_type` -- beide nach ADR-19 entfernt (`ImportError`). Der
+   / `Mapping.match_type` -- beide nach ADR-15 entfernt (`ImportError`). Der
    urspruengliche Anker-Pool (persistierte Struktur-Shortcut-Mappings) ist nicht
    mehr vorhanden; `find_structural_shortcuts()` liefert auf den aktuellen
    Formalisierungen 0 Treffer (Praedikate `esco:isPartOf` /
@@ -547,7 +553,7 @@ eine explizite Subsumtionsrichtungs- und EQUIVALENT-Definition ergaenzt.
 - `min_cluster_size`-Default (=3) in `clustering.py` /
   `ontology_service.run_clustering` bleibt.
 - `eval/results/E4_hdbscan.json` neu geschrieben (Backup:
-  `E4_hdbscan.json.bak_20260831`), `_meta` ergaenzt.
+  `eval/results/archive/E4_hdbscan.json.bak_20260831`), `_meta` ergaenzt.
 - Datum: 2026-08-31
 
 ## E5 -- Kompetenzfragen CQ1-CQ4
@@ -557,7 +563,7 @@ eine explizite Subsumtionsrichtungs- und EQUIVALENT-Definition ergaenzt.
   `oberhuber-harmonised-ontology-v0.3.ttl`). Frischer Export via
   `app/pipeline/step4_export/ontology_export.py::export_ontology`
   (`eval/e5_export_v07.py`), **kein LLM-Aufruf**.
-- **Prefix-Pruefung (ADR-19):** Der Namensraum `http://hr-qde.org/harmonised/`
+- **Prefix-Pruefung (ADR-15):** Der Namensraum `http://hr-qde.org/harmonised/`
   ist unveraendert; nur das Praefix wechselte von `hrqde:` zu `harm:`. Die
   E5-SPARQL-Queries adressieren diesen Namensraum als vollstaendige URI bzw.
   ueber den Query-eigenen `hrqde:`-Prefix (`hrqde:HarmonisedConcept` ->
@@ -727,7 +733,7 @@ Vergleich der `source_relation`-Verteilung e-CF<->ESCO:
 
 Kontext: Umstellung des ESCO-Hubs von `esco_v1_2_ict_ausschnitt` (956) auf
 die gelieferte Referenzmenge `esco_skeleton_oberhuber` (1302,
-`esco-skeleton-for-oberhuber.ttl`, Lieferspezifikation Saeule D §1, ADR-27).
+`esco-skeleton-for-oberhuber.ttl`, ADR-23).
 E2 und E4 sind vom Wechsel nicht betroffen (Few-Shot-Anzahl bzw.
 HDBSCAN-Parameter haengen nicht am ESCO-Hub) und wurden nicht wiederholt.
 
@@ -737,7 +743,7 @@ HDBSCAN-Parameter haengen nicht am ESCO-Hub) und wurden nicht wiederholt.
   dqr_2 eqf_2017`. Neuer Parameter `--kqr` beschraenkt den Embedding-Raum;
   der abgeloeste 956er-Ausschnitt wird nicht mitgemischt. `dqr_2` und
   `eqf_2017` bleiben nur zur Messung von G_struct im Raum (1583 Konzepte).
-- 956er-Stand gesichert als `eval/results/E1_recall_k.json.bak_956_20260831`.
+- 956er-Stand gesichert als `eval/results/archive/E1_recall_k.json.bak_956_20260831`.
 
 | Goldmenge | evaluierbar | R@5 | R@10 | R@15 | R@20 | R@30 |
 |---|---|---|---|---|---|---|
@@ -761,7 +767,7 @@ E3 ist **korpusunabhaengig**: klassifiziert werden feste Goldpaare
 nicht. Wiederholung dennoch, um Regressionen im aktuellen Code
 auszuschliessen. `n_FS=3`, `mistral/mistral-small-latest`, `temperature=0`,
 74 x 3 = 222 reale LLM-Aufrufe. 956er-Stand als
-`eval/results/E3_confidence.json.bak_956_20260831`.
+`eval/results/archive/E3_confidence.json.bak_956_20260831`.
 
 | theta | Precision | Recall | F1 | Uebernommene Mappings |
 |---|---|---|---|---|
@@ -791,7 +797,7 @@ auszuschliessen. `n_FS=3`, `mistral/mistral-small-latest`, `temperature=0`,
   Artefakt selbst nicht annotiert). Die CQ-Queries wurden an die
   reifizierten `harm:HubMapping`-Records angepasst (`sssom:subject_id` /
   `object_id` / `predicate_id`), Prefix `harm:` statt `hrqde:`.
-- v0.3-Stand gesichert als `eval/results/E5_cq_evaluation.json.bak_v03_20260831`.
+- v0.3-Stand gesichert als `eval/results/archive/E5_cq_evaluation.json.bak_v03_20260831`.
 
 | CQ | Treffer | Erfüllt | vorher (v0.3) |
 |---|---|---|---|
@@ -826,7 +832,7 @@ auszuschliessen. `n_FS=3`, `mistral/mistral-small-latest`, `temperature=0`,
 Synchronisiert: `exp1_recall_k.tex`, `exp3_confidence.tex`,
 `cq_evaluation.tex`, `summary.tex` (E3-Recall 0,49->0,58),
 `AppendixSPARQL.tex`, `chapters/chapter_4/architektur.tex`
-(ADR-24 bis ADR-28), `frontbackmatter/Acronyms.tex` (SHACL).
+(ADR-20 bis ADR-24), `frontbackmatter/Acronyms.tex` (SHACL).
 E2 und E4 sind vom ESCO-Wechsel nicht betroffen und unveraendert.
 
 ---
@@ -904,7 +910,7 @@ Praedikat dort unbedingt gesetzt wird.
 - CQ1, CQ3, CQ4 unveraendert (der Fix beruehrt weder EQUIVALENT noch die
   Disjunkt-Menge noch das fehlende Clustering).
 - v0.2-Stand vor dem Fix gesichert als
-  `eval/results/E5_cq_evaluation.json.bak_v02_broadmatch_20260902T075355Z`.
+  `eval/results/archive/E5_cq_evaluation.json.bak_v02_broadmatch_20260902T075355Z`.
 
 ## Synchronisiert (Vorlage)
 
@@ -921,3 +927,423 @@ v0.2-Lieferung: 199 Subsumtionsmappings mit 156 e-CF>=ESCO / 43
 umgekehrt, 568 RELATED, 33 UNRESOLVED, 165 Aggregationskanten, 8
 harm:LevelMapping DQR<->EQF, 135 narrative e-CF-Dim.-3-Crosswalk-Zeilen).
 Zone-2/3/4-Zahlen entsprechend nachgezogen.
+
+# Nachtrag 2026-09-05: DQR/EQF-Granularitaetsvarianten, dqr_3 verworfen, G_struct neu aufgebaut
+
+## Anlass
+
+EQF wurde bislang als `eqf_2017.ttl` (32 Konzepte) formalisiert, DQR
+parallel als `dqr_2013.ttl` (32, Dimensionsebene), `dqr_2.ttl`
+("Reformalisierung v2", 196) und `dqr_3.ttl` (8, Produktionssatellit,
+ADR-21). Dazu kamen die PoC-Formalisierungen `dqr_levelProposal.ttl`
+und `ecf_levelProposal.ttl`/`ecf_levelproposal_crosswalk.ttl` aus der
+`harm:hasLevel`-Arbeit (s. Nachtrag-Kontext in
+`docs/archive/handoff-kapitel-3-4-5-harm-haslevel.md`). Das ergab pro Rahmen
+mehrere, uneinheitlich benannte KQR-Staende ohne erkennbare
+Vorrangregel; `E1_recall_k.py`s eigener Docstring behauptete zeitweise
+"EQF ist aktuell nicht formalisiert", obwohl `eqf_2017` zu diesem
+Zeitpunkt laengst registriert war (Stand-Drift zwischen Code-Kommentar
+und tatsaechlicher Registry).
+
+Nutzerentscheidung: DQR und EQF werden einheitlich ueber
+`scripts/22_build_eqf_dqr_granularity_variants.py` neu formalisiert, in
+genau zwei Granularitaeten je Rahmen:
+
+- `dqr_1D.ttl` / `eqf_1D.ttl` -- je 8 Grundknoten (ein Niveau = ein
+  Konzept), Crosswalk direkt als `skos:exactMatch` in der Quelle.
+- `dqr_2D.ttl` / `eqf_2D.ttl` -- 8 Grundknoten plus Dimensionsfacetten
+  (DQR: 4 Dimensionen x 8 = 32 Facetten, macht 40; EQF: 3 Dimensionen x
+  8 = 24 Facetten, macht 32). Dimensionsdeskriptoren gegen
+  https://www.dqr.de bzw. OJ C 189 (EQF) neu verifiziert.
+
+Die 3-vs-4-Kategorien-Asymmetrie zwischen EQF und DQR bleibt in beiden
+Granularitaeten erhalten (32 vs. 40 bei `_2D`) -- ein reales Merkmal der
+beiden Normen, kein Formalisierungsartefakt, damit bleibt der in E1
+dokumentierte Asymmetrie-Befund inhaltlich gueltig.
+
+`dqr_3` wird verworfen: der Liefer-Anker (ADR-21) wird
+neu definiert und soll kuenftig auf den `_1D`/`_2D`-Varianten aufbauen.
+
+## Aenderung an den Daten
+
+- **Archiviert** (umbenannt auf `.bak_20260905T192804Z`, nicht
+  geloescht): `data/formalized/dqr_3.ttl`, `dqr_2013.ttl`, `dqr_2.ttl`,
+  `eqf_2017.ttl`, `eqf_2017_harm.ttl`, `dqr_levelProposal.ttl`,
+  `ecf_levelProposal.ttl`, `ecf_levelproposal_crosswalk.ttl`.
+- **Registry** (`data/kqr_registry.json`): 17 -> 9 Eintraege. Verworfene
+  IDs entfernt, `eqf_1d` (8), `eqf_2d` (32), `dqr_1d` (8), `dqr_2d` (40)
+  sind jetzt die einzige DQR/EQF-Quelle. Unangetastet:
+  `esco_v1_2_ict_ausschnitt`, `ecf`, `esco_skeleton_oberhuber`,
+  `dqr_l6_walkthrough_slice`, `esco_ikt_walkthrough_slice` (Cognitive-
+  Walkthrough-Ausnahme).
+- **`data/structural_shortcut_predicates.json`**: Eintrag
+  `harm:eqfCrosswalkTarget` entfernt (war ausschliesslich fuer
+  `ecf_levelproposal_crosswalk` gebaut, jetzt herrenlos). Vorher als
+  `.bak_20260905T192804Z` gesichert.
+- **Projektordner** `data/projects/levelproposal_20260905T085612Z`,
+  `levelproposal_run3_granularitaetstest_e_cf_vs_dqr_3_20260905T120311Z`,
+  `levelproposal_run4_crosswalk_shortcut_e_cf_vs_dqr_3_20260905T130918Z`
+  nach `data/archive/projects_archive_20260905T192804Z/` verschoben (nicht
+  geloescht, aber nicht mehr aus `data/projects/` heraus ausfuehrbar).
+- **Lieferstand v0.2 archiviert** (`.bak_v02_20260905T192804Z`,
+  Repo-Root): `hrqde-harmonisation-schema.ttl`,
+  `hrqde-shape-harmonisation.ttl`, `hrqde-shapes-all.ttl`,
+  `oberhuber-harmonised-ontology-v0.2.ttl`,
+  `oberhuber-mappings-v0.2.ttl`, `oberhuber-integration-strategy-v0.2.md`
+  -- vor der angekuendigten Neudefinition der Liefervorgaben.
+  Nachtrag Repo-Cleanup 2026-10-08: Die `.bak_v02`-Dateien liegen jetzt
+  ohne Suffix im Snapshot `data/deliverables/v0.2-20260904/`.
+  `hrqde-shapes-all.ttl` war mit dem aktuellen Stand identisch und
+  wurde nicht gesondert archiviert.
+
+## G_struct neu aufgebaut
+
+`eval/G_struct.json` wurde nicht per Hand editiert, sondern per rdflib
+aus `dqr_2D.ttl`/`eqf_2D.ttl` extrahiert (Subjekt/Objekt/Praedikat je
+Dimensionsfacette, 4 Paare x 8 Niveaus = 32). URI-Namensraum
+unveraendert (`http://data.bmbf.de/dqr/`, `http://data.europa.eu/snb/eqf/`),
+daher sind alle 32 `subject_id`/`object_id`-Werte identisch zur
+vorherigen, gegen `dqr_2013.ttl`/`eqf_2017.ttl` aufgebauten Fassung.
+Einzige inhaltliche Aenderung: ein bereinigtes doppeltes Leerzeichen in
+einem Label ("Selbststaendigkeit  -- Niveau 1" -> "Selbststaendigkeit --
+Niveau 1"). Alter Stand nicht separat gesichert, da per `git show
+HEAD:eval/G_struct.json` jederzeit rekonstruierbar.
+
+## Re-Run E1 (`python eval/E1_recall_k.py --kqr esco_skeleton_oberhuber ecf dqr_2d eqf_2d`)
+
+| $k$ | Recall@k ($G_{struct}$, n=32) | vorher (dqr_2013/eqf_2017) |
+|---|---|---|
+| 5  | 0,875 | 0,844 |
+| 10 | 0,906 | 0,906 |
+| 15 | 0,938 | 0,938 |
+| 20 | 1,000 | 1,000 |
+| 30 | 1,000 | 1,000 |
+
+Nur $k=5$ weicht ab (28 statt 27 Treffer von 32), vermutlich durch die
+gegen dqr.de/OJ-C-189 leicht ueberarbeiteten Dimensionsdeskriptor-Texte
+in `dqr_2D.ttl`/`eqf_2D.ttl`. $k^{*}=10$, Empfehlung $k=20$ unveraendert.
+$G_{manual}$ (e-CF A.8 <-> ESCO) unveraendert, haengt nicht an DQR/EQF.
+
+## E2/E3/E4: geprüft, kein Re-Run noetig
+
+- **E2/E3**: `_few_shot_text_for_n_fs()` (`eval/E2_few_shot.py`) zieht
+  die Few-Shot-Anker aus den ersten `n_fs` Eintraegen von
+  `G_struct.json["pairs"]`. Fuer $n_{FS} \in \{0,1,3,5\}$ sind das
+  hoechstens die ersten 5 Paare (Niveau 1 komplett + Niveau-2-Wissen);
+  deren `subject_label`/`object_label` sind zwischen altem und neuem
+  G_struct bis auf das oben genannte Leerzeichen identisch. Kein
+  LLM-Re-Run noetig, keine API-Kosten verursacht.
+- **E4**: `E4_DEFAULT_KQR_IDS = ("esco_v1_2_ict_ausschnitt", "ecf")` in
+  `eval/E4_hdbscan.py` ist hartkodiert und unabhaengig von DQR/EQF.
+  Unberuehrt.
+
+## Synchronisiert (Vorlage)
+
+`chapters/chapter_5/exp1_recall_k.tex` (Tabelle auf neue Werte
+aktualisiert, auf eine gemeinsame Tabelle fuer $G_{struct}$/$G_{manual}$
+verdichtet), `exp2_few_shot.tex`, `exp3_confidence.tex` -- alle drei im
+selben Zug erheblich gekuerzt (372 -> 205 Zeilen gemeinsam), da sie
+reine Parameterkalibrierung mit im Fliesstext unnoetig ausgebreiteter
+Verfahrensbegruendung waren; die tragenden inhaltlichen Nebenbefunde
+(DQR/EQF-Dimensionsasymmetrie in E1, F1_EQUIV=0 in E2, Recall-Einbruch
+mit Konfund in E3) sind erhalten geblieben, Verfahrensdetail verweist
+jetzt auf die entsprechenden Abschnitte hier im Protokoll. Volle
+Fassungen vor der Kuerzung gesichert als
+`chapters/chapter_5/exp{1,2,3}_*.tex.bak_orig_20260905T210000Z`.
+`exp4_hdbscan.tex` unveraendert (einziges Experiment mit offener
+Forschungsfrage statt reiner Parameterbestaetigung, traegt CQ4/FF2
+direkt). `chapters/chapter_4/architektur.tex` ADR-18 in-place korrigiert
+und mit ADR-20--28 konsolidiert (20 -> 16 Tabellenzeilen); Details dazu
+in `chapters/PLAN_harm_haslevel_kap345.md`.
+
+# Nachtrag 2026-09-06 -- DQR-Namespace-Migration (harm-dqr:)
+
+Die DQR-Konzept-URIs in `data/formalized/dqr_1D.ttl` und
+`data/formalized/dqr_2D.ttl` sind von `http://data.bmbf.de/dqr/` auf die
+harmonisierte Source-Basis `http://hr-qde.org/harmonised/source/dqr/`
+(`harm-dqr:`) umgestellt. Jeder Konzeptknoten traegt jetzt genau ein
+`owl:sameAs` auf die gleichnamige `data.bmbf.de`-URI (Bruecke fuer externe
+Referenzen). Der Generator `scripts/22_build_eqf_dqr_granularity_variants.py`
+erzeugt diese Form; `eqf_1D.ttl`/`eqf_2D.ttl` kalibrieren ihre
+`skos:exactMatch`-Kante entsprechend auf `harm-dqr:L{n}`. Motivation:
+`eval/G_levels.json` verwendete die harmonisierte Basis bereits, der Rest
+der Niveau-Kette zog nach; `harm-dqr:` ist SPARQL/Cypher-traversierbar im
+HR-QDE-Graphen, `data.bmbf.de` bleibt als `owl:sameAs`-Ziel erhalten.
+
+Mitgezogen: `eval/G_struct.json` (32 DQR-Subjekt-URIs), `scripts/23_build_g_levels.py`
+(liest die Anker-URI jetzt direkt statt sie aus Praefix + `sourceIdentifier`
+zu rekonstruieren), `tests/test_granularity_variants.py` (Namespace-Konstante
+plus neuer `owl:sameAs`-Test). `eval/G_levels.json` durch `scripts/23` neu
+erzeugt -- inhaltlich unveraendert (113 Paare, alle `object_id` unter
+`harm-dqr:`). Nicht angefasst: die Legacy-Voll-DQR-Dateien (`dqr.ttl`,
+`dqr_2013.ttl`, `dqr_l6_walkthrough_slice.ttl`), der eingefrorene
+Cognitive-Walkthrough-Lauf und die historischen E5/G_manual-Artefakte --
+sie tragen `data.bmbf.de` als echte Autoritaets-URI eines anderen
+Datenbestands.
+
+## K_levels-Re-Run (migrierter DQR-Bestand)
+
+`python scripts/24_run_k_levels.py` (Satellit `dqr_2d`, Hub `eqf_1d`):
+Projekt-ID `k_levels_20260906T065531Z`, Run-Laufzeit 0,44 s,
+40 Mappings (8x `semapv:StructuralMatching`/`skos:exactMatch`/conf 1,0 +
+32x `semapv:LogicalReasoning`/`skos:narrowMatch`/conf 1,0), Review-Queue
+leer, kein `skos:relatedMatch`, kein EQF-Konzept als `subject_id`. Alle
+`subject_id` unter `harm-dqr:`, `object_id` unter
+`http://data.europa.eu/snb/eqf/` (unveraendert). Identisch zum Lauf vor
+der Migration, nur mit den neuen Subjekt-URIs.
+
+## E1 Recall@k -- G_levels (`ecf_level` <-> `dqr_1d`)
+
+`python eval/E1_recall_k.py --gold eval/G_levels.json --kqr ecf_level dqr_1d --k-values 1 3 5 8`
+(Ergebnis: `eval/results/E1_recall_k_levels.json`). `ecf_level` aus
+`data/formalized/ecf_levelProposal.ttl.bak_20260905T192804Z` reaktiviert
+als `data/formalized/ecf_level.ttl` (146 Konzepte, dessen
+`harm:eqfCrosswalkTarget`-Praefix ebenfalls auf `harm-dqr:` gezogen) und
+in `kqr_registry.json` registriert.
+
+| $k$ | Recall@k ($G_{levels}$, n=113) |
+|---|---|
+| 1 | 0,221 (25/113) |
+| 3 | 0,575 (65/113) |
+| 5 | 0,894 (101/113) |
+| 8 | 1,000 (113/113) |
+
+$k=8$ ist der vollstaendige Retrieval-Raum (nur 6 DQR-Niveau-Anker
+L3--L8 als Objektkandidaten, $k_{eff}=6$), Recall@8 daher konstruktiv
+1,0. Aussagekraeftig sind Recall@1/3/5: die e-CF-Proficiency-Beschreibung
+landet in 89,4 % der Faelle unter den Top 5 des korrekten DQR-Ankers.
+E1-Laufzeit rund 21 s (inkl. Embedding-Vorlauf).
+
+# Nachtrag 2026-09-06 -- Kanonisches Level-/Rollenmodell v0.3
+
+Die Shapes und das Schema aus dem Toolkit-Change-Request gelten ab diesem
+Stand als kanonisch. Rollen werden nicht mehr ueber `harm:conceptRole`
+annotiert, sondern ueber `rdf:type harm:CompetenceConcept` bzw.
+`rdf:type harm:LevelConcept`. Die Relation `harm:hasLevel` hat den festen
+Vertrag Kompetenzkonzept -> Niveaukonzept. Der e-CF-Dimension-3-Crosswalk
+wird als regulaerer `harm:LevelMapping` mit `skos:closeMatch`, manueller
+Kuration und Konfidenz 1.0 materialisiert; er ist nicht Teil der ESCO-
+Coverage. Damit ist die gesamte Niveaukette maschinenlesbar:
+e-CF-Dimension 2 -> `harm:hasLevel` -> Dimension-3-LevelConcept ->
+`harm:LevelMapping` -> DQR-Level.
+
+Die erneute Lieferung (`oberhuber-*-v0.3.*`) besteht SHACL-seitig ohne
+Violations. Die E5-Auswertung wurde gegen die reifizierten Lieferartefakte
+erneut ausgefuehrt:
+
+| CQ | Treffer | Erfuellt |
+|---|---:|---|
+| CQ1: exactMatch-HubMappings | 0 | nein |
+| CQ2: e-CF -> ESCO narrowMatch | 156 | ja |
+| CQ3: disjunkte Konzepte mit Strategie | 5 | ja |
+| CQ4: hasLevel -> LevelMapping -> DQR | 113 | ja |
+
+Die Lieferung enthaelt 364 `harm:HubMapping`, 113 e-CF->DQR-
+`harm:LevelMapping` und 8 DQR<->EQF-`harm:LevelMapping`. Die offene
+Coverage-Limitation bleibt bestehen (601 offene Reviews, Coverage 364/965 =
+37,7 %); die Modellumstellung aendert diese empirische Einschraenkung nicht.
+
+# Nachtrag 2026-09-06 -- Unabhaengigkeit der K_levels-Goldmenge
+
+Die technische Pruefung der K_levels-Evaluation bestaetigt die
+Quellenunabhaengigkeit. E1 erzeugt Embeddings ausschliesslich aus
+`skos:prefLabel` und `skos:definition` jedes Konzepts. Die 146 e-CF-
+Dimension-3-Knoten wurden aus den freitextlichen Proficiency-Beschreibungen
+der e-CF-Quelldatei formalisiert. In diesen beiden Feldern findet sich keine
+explizite DQR- oder EQF-Zuordnung. Die DQR-Ankerknoten enthalten ihre
+eigenen DQR-Niveau-Bezeichnungen und -Beschreibungen, aber keinen Verweis
+auf e-CF. Die normative Zuordnung liegt getrennt in e-CF 3.0
+(CWA 16234-1:2014) und in `G_levels.json`; sie wird nicht in den Embedding-Text
+eingespeist.
+
+E1 baut den FAISS-Index fuer jedes Goldpaar aus den eindeutigen Objekt-URIs
+der evaluierbaren Goldmenge. `G_levels` verwendet sechs distinkte DQR-Anker
+L3--L8, weshalb Recall@8 eine konstruktive Obergrenze ist. Die Messung
+bewertet damit die semantische Retrieval-Faehigkeit zwischen unabhaengigen
+Freitexten, waehrend `G_levels` die normative Referenz fuer die korrekte
+Zielstufe bereitstellt.
+
+
+# Nachtrag 2026-10-04 -- Baselines, E2-Korrektur, Recall@k im vollen Pool
+
+Branch `eval/baselines`, Sicherung vorher: Tags `backup/head-20261004`
+und `backup/worktree-20261004`. Keine LLM-Aufrufe in diesem Nachtrag.
+
+**E2 Macro-F1 (Korrektur).** `compute_macro_f1` mittelte ueber die
+beobachteten Labels. Sobald UNRESOLVED vorhergesagt wurde, ging es als
+fuenfte Klasse mit F1 = 0 in den Nenner ein. Neu berechnet aus den
+gespeicherten Klassen-F1 (Mittel ueber vier Goldklassen):
+n_FS 0/1/3/5 = 0,398/0,404/0,354/0,394 (vorher 0,318/0,323/0,354/0,316).
+n_FS = 3 ist damit der schwaechste Wert, die Spanne bleibt im Rauschen.
+`E2_few_shot.json` ist unveraendert. Achtung: `E3_confidence.py` liest
+n_FS* ohne `--n-fs` aus dieser Datei; nach einem E2-Neulauf wuerde es
+n_FS = 1 waehlen.
+
+**Baselines (`B_baselines.py`).** K-Mitgliedschaft (Vergleich E3,
+Pipeline F1 = 0,911 bei theta* = 0,33): alles uebernehmen F1 = 0,835;
+Kosinus-Schwelle F1 = 0,891 (auf G_manual optimiert) bzw. 0,852
+(Leave-One-Out); AUC K vs. RELATED = 0,862. Vier Klassen (Vergleich E2):
+Zufall stratifiziert 0,25; Mehrheitsklasse 0,115; Kosinus-Drei-Band-
+Heuristik 0,424 (optimiert) bzw. 0,343 (Leave-One-Out). Die Heuristik
+erreicht F1_EQUIVALENT 0,47 (LOOCV 0,375), die Pipeline 0.
+Exakter Label-Abgleich: 2 Treffer, beide korrekt EQUIVALENT.
+
+**Recall@k im vollen Pool (`B_recall_fullpool.py`).** E1 indexiert nur
+die Goldobjekte. Gegen den vollstaendigen Ziel-KQR: G_manual_seed
+(Zare, Pool 1302) Recall@10 = 0,375, @20 = 0,875, @30 = 1,0
+(E1-Stil: @10 = 1,0). G_struct (Pool 32) @20 = 0,938.
+
+**Befunde zu G_manual.** Alle 74 Objekte stammen aus dem abgeloesten
+Ausschnitt `esco_v1_2_ict_ausschnitt` (956), nur 27 liegen im Skelett
+(1302). 7 der 74 Paare haben ein DQR-Subjekt (6 davon mit veralteten
+URIs `http://data.bmbf.de/dqr/...`, nicht mehr in der Registry). Im
+956er-Pool ist der maximale Rang aller Goldobjekte exakt 20: G_manual
+enthaelt nur Paare, die die ANN-Suche mit k = 20 bereits gefunden hat,
+und eignet sich daher nicht zur Messung des Recalls.
+
+
+# Nachtrag 2026-10-04 (2) -- LLM-Neulauf rerun_2026-10
+
+Runner `R_rerun.py`, Auswertung `R_analyze.py`, Ergebnisse in
+`results/rerun_2026-10/`. Modell `mistral-small-2603` (Alias
+`mistral-small-latest` ueber die Modellliste der API aufgeloest; welche
+Version im August/September hinter dem Alias stand, ist nicht mehr
+feststellbar). 68 von 74 G_manual-Paaren; die 6 Paare mit veralteten
+DQR-URIs sind ausgelassen. Konfidenzintervalle: Bootstrap, 2000 Ziehungen.
+
+**Temperatur.** Die `.env` setzt `CLASSIFICATION_TEMPERATURE=0.3`,
+`ClassificationRun` protokolliert fest 0,0. Selbstkonsistenz (Anteil 3/3):
+T = 0 ergibt 0,93/0,99/0,97, T = 0,3 ergibt 0,60. Der E3-Nachtrag vom
+2026-09-06 nennt 45--46 von 74 einstimmigen Paaren (0,61). Die frueheren
+Laeufe sind damit mit hoher Wahrscheinlichkeit bei T = 0,3 entstanden.
+
+**Produktionskonfiguration (n_FS = 3, T = 0), drei Durchgaenge.**
+Macro-F1 0,382/0,397/0,397 (KI95 Durchgang 1: 0,289--0,463),
+98,5 % der Paare mit identischer Endrelation in allen Durchgaengen.
+K-Mitgliedschaft bei Mehrheit: P = 0,897, R = 0,981, F1 = 0,937
+(KI95 0,887--0,980); bei Einstimmigkeit F1 = 0,925. F1_EQUIVALENT = 0:
+10 der 11 EQUIVALENT-Paare werden als A_SUBSUMES_B klassifiziert,
+16 der 20 B_SUBSUMES_A-Paare ebenfalls; 18 Richtungsvertauschungen.
+Das Modell bevorzugt A_SUBSUMES_B (47 von 68 Vorhersagen).
+
+**Few-Shot-Ablation (T = 0, je ein Durchgang).** Macro-F1 n_FS 0/1/3/5 =
+0,499/0,487/0,382--0,397/0,421. Die G_struct-Anker (DQR<->EQF) helfen
+nicht; n_FS = 3 ist der schwaechste Wert.
+
+**Kombination Kosinus + LLM.** EQUIVALENT, wenn Kosinus >= t, sonst
+LLM-Relation; t per Leave-One-Out (Median 0,794). Macro-F1 0,487
+(LOOCV) gegenueber 0,382 (LLM allein), gepaarte Bootstrap-Differenz
++0,099 (KI95 0,004--0,179).
+
+**LLM vs. Kosinus fuer K (McNemar, exakt).** 6 Paare nur vom LLM
+richtig, 1 nur vom Kosinus; p = 0,125.
+
+**E3-Schwellen.** `E3_confidence.py` vergleicht theta = 0,67 mit der
+Konfidenz 2/3 = 0,6667. theta = 0,67 verlangt damit faktisch
+Einstimmigkeit, theta = 0,33 entspricht dem einfachen Mehrheitsentscheid.
+
+
+# Nachtrag 2026-10-04 (3) -- Richtungsgenauigkeit
+
+`R_analyze.py` weist jetzt je Lauf die Richtungsgenauigkeit aus
+(`per_run.<datei>.direction`). Unter den Gold-Subsumtionspaaren (42), die
+als Subsumtion erkannt wurden, stimmt die Richtung bei: n_FS = 3 (alle drei
+Durchgaenge) 23 von 41 (56,1 %, exakter Binomialtest gegen 0,5: p = 0,53);
+n_FS = 0: 25 von 37 (67,6 %, p = 0,047); n_FS = 1: 22 von 39 (56,4 %,
+p = 0,52); n_FS = 5: 23 von 39 (59,0 %, p = 0,34); T = 0,3: 20 von 40
+(50,0 %, p = 1,0). Ausser bei n_FS = 0 ist die Richtung statistisch nicht
+vom Zufall zu unterscheiden; n_FS = 0 bleibt bei sieben Konfigurationen
+und einem p von 0,047 ein Einzelbefund ohne Korrektur fuer Mehrfachtests.
+Die Aussage "das LLM erkennt die Richtung der Subsumtion" ist durch die
+Daten nicht gedeckt. Gedeckt ist: Das LLM erkennt, dass eine
+hierarchische Beziehung besteht (41 von 42 Paaren als Subsumtion erkannt).
+
+
+# Nachtrag 2026-10-04 (4) -- Mehrfachtest-Korrektur der Richtungsgenauigkeit
+
+`R_analyze.py` weist unter `direction_multiple_testing` die Korrektur fuer
+die Richtungsgenauigkeit aus. Familie: fuenf Konfigurationen (n_FS = 0, 1,
+3, 5 und T = 0,3; die drei Durchgaenge von n_FS = 3 sind identisch und
+zaehlen einmal), m = 5. Rohe p-Werte (exakter Binomialtest gegen 0,5):
+n_FS = 0: 0,047 (25 von 37); n_FS = 1: 0,522; n_FS = 3: 0,533;
+n_FS = 5: 0,337; T = 0,3: 1,0. Der kleinste Wert (n_FS = 0) wird nach
+Bonferroni und nach Holm zu 0,235. Die Permutationsprüfung nach Westfall
+und Young (20000 Ziehungen, Gold-Richtung je Paar gemeinsam fuer alle
+Konfigurationen umgedreht, Statistik = kleinster p-Wert, Seed 20261004)
+ergibt p_FWER = 0,113. Ein Unterschied zum Zufall ist damit fuer keine
+Konfiguration gesichert. Mit 41 erkannten Subsumtionspaaren braeuchte es
+unter Bonferroni (alpha = 0,01) mindestens 30 richtige (73 %).
+Die Familie umfasst nur die Richtungsgenauigkeit; weitere gepruefte
+Kennzahlen (Macro-F1, K-Mitgliedschaft) sind nicht eingerechnet.
+
+
+# Nachtrag 2026-10-04 (5) -- Lieferung v0.4 und Primaerkonfiguration n_FS = 0
+
+**Befund Few-Shot.** Im Produktionspfad liefert find_structural_shortcuts fuer
+e-CF gegen das ESCO-Skelett 0 Treffer. Der Prompt enthaelt
+"(keine Crosswalk-Beispiele verfuegbar)", die Produktion laeuft mit n_FS = 0.
+Die Varianten mit G_struct-Ankern (n_FS = 1, 3, 5) sind Ablationen, die so
+nie in Produktion liefen. Primaerkonfiguration der Auswertung ist daher
+n_FS = 0 (Konfiguration prod0, drei Durchgaenge).
+
+**Neuerzeugung.** Neues Projekt saeule_d_lieferung_v0_4_t_0_mistral_small_2603_*
+(kein Wiederverwenden frueherer Klassifikationen), T = 0, Modell
+mistral-small-2603, 800 Paare mit 3 Laeufen, etwa 35 Minuten, SHACL-konform
+(Ontologie und Mappings). Konfiguration: redeliver_v0.4_run_config.json
+(19 uncommittete getrackte Dateien zum Laufzeitpunkt, Few-Shot leer).
+v0.3 blieb unveraendert. Alter Lauf (Projekt ..._20260831T171750Z):
+mistral-small-latest, im Protokoll T = 0,0 (Feld fest im Code), 73 % der Paare
+einstimmig.
+
+| Kennzahl | v0.3 (alt) | v0.4 (neu) |
+|---|---|---|
+| Relationen (800 Paare) RELATED / A>B / B>A / EQUIV / kein Konsens | 568 / 156 / 43 / 0 / 33 | 556 / 192 / 48 / 1 / 3 |
+| Konfidenz 1,0 / 0,67 / 0,33 | 583 (72,9 %) / 184 / 33 | 712 (89,0 %) / 85 / 3 |
+| HubMapping gesamt | 364 | 440 |
+| davon narrowMatch / broadMatch / exactMatch | 321 / 43 / 0 | 391 / 48 / 1 |
+| LevelMapping | 113 + 8 | 113 + 8 |
+| HarmonisedConcept (own_class) | 5 (A.2, D.5, D.6, D.8, D.9) | 3 (A.2, D.6, D.9) |
+| Coverage / offene Reviews | 364 von 965 (37,7 %) / 601 | 440 von 999 (44,0 %) / 559 |
+| E5 CQ1a / CQ1b / CQ3 / CQ4 | 0 / 156 / 5 / 113 | 1 / 192 / 3 / 113 |
+
+E5 fuer v0.3 aus dem Backup reproduziert die Werte der Arbeit (0 / 156 / 5 / 113).
+Der eine EQUIVALENT-Fall ist "Solution Deployment" gegen "solution deployment"
+(identische Bezeichnung, Konfidenz 1,0). Drei Paare ohne Mehrheitsentscheid.
+
+**Primaerauswertung n_FS = 0, T = 0, 68 Paare, drei Durchgaenge** (prod0_*).
+Macro-F1 0,457 / 0,481 / 0,468 (Durchgang 1: KI95 0,343 bis 0,565).
+K-Mitgliedschaft bei Mehrheit: P 0,980, R 0,906, F1 0,941 (49 uebernommen,
+KI95 F1 0,887 bis 0,981); Einstimmigkeit F1 0,875. Klassen-F1 Durchgang 1:
+EQUIVALENT 0,167 (1 Vorhersage, korrekt), A>B 0,540, B>A 0,296, RELATED 0,824.
+Vorhersagen: 41 A>B, 19 RELATED, 7 B>A, 1 EQUIVALENT. Selbstkonsistenz 0,90 /
+0,91 / 0,94; 92,6 % der Paare mit identischer Endrelation ueber die Durchgaenge.
+Kosinus + LLM fuer EQUIVALENT (Leave-One-Out): Macro-F1 0,518 statt 0,457,
+Differenz KI95 -0,007 bis 0,141, nicht gesichert. McNemar LLM gegen Kosinus fuer
+K: 11 zu 5, p = 0,21.
+
+**Richtung.** Der Einzelbefund n_FS = 0 aus dem Ablationslauf (25 von 37,
+p = 0,047) bestaetigt sich in drei Wiederholungen derselben Konfiguration
+nicht: 21/37 (p = 0,51), 22/39 (p = 0,52), 22/38 (p = 0,42). Die Richtung liegt
+auch ohne Few-Shot auf Zufallsniveau.
+
+**Streuung.** Derselbe Prompt, dieselbe Temperatur: Macro-F1 bei n_FS = 0
+0,457 bis 0,499 ueber vier Laeufe. Unterschiede unter etwa 0,05 sind
+Laufrauschen. n_FS = 3 (0,382 bis 0,397) liegt darunter, der Abstand ist
+groesser als die Streuung, aber klein.
+
+## G_manual_seed entfernt (11.10.2026)
+
+Die Menge `G_manual_seed` (14 Paare aus Zare et al. 2025, Table 6) ist aus
+Repository und Masterarbeit entfernt. Die Paare sind laut Quelle die als am
+aehnlichsten identifizierten ESCO-Skills eines MPNet-Verfahrens fuer zwei
+Dimension-4-Beispiele (K3, S4) der e-Competence A.8 und wurden dort nicht
+fachlich validiert. Als Goldmenge sind sie daher nicht geeignet.
+
+Entfernt: `eval/G_manual_seed.json`, die Auswertung in `E1_recall_k.py` und
+`B_recall_fullpool.py`, die Eintraege in `B_recall_fullpool.json`,
+`E1_recall_k.json` (Schluessel `g_manual`, der diese Menge enthielt),
+`final_submission_numbers.json` und im Modellvergleich
+`embedding_model_comparison_20261010/` (Nachtrag im Manifest). Die uebrigen
+Werte bleiben unveraendert. Eintraege weiter oben in diesem Protokoll
+dokumentieren den frueheren Stand. Sicherung: Git-Tag
+`backup/pre-glit-entfernung-20261011`.

@@ -1,6 +1,6 @@
 # eval/ – Evaluationsumgebung für Kapitel 5
 
-Dieses Verzeichnis enthält alle Skripte und Pläne für die
+Dieses Verzeichnis enthält alle Skripte für die
 Evaluationsphase (Nunamaker: Experimentation).
 
 ---
@@ -50,15 +50,10 @@ eval/
 │   ├── E4_hdbscan.json
 │   └── E5_cq_evaluation.json
 ├── E1_recall_k.py
-├── E1_recall_k_plan.md
 ├── E2_few_shot.py
-├── E2_few_shot_plan.md
 ├── E3_confidence.py
-├── E3_confidence_plan.md
 ├── E4_hdbscan.py
-├── E4_hdbscan_plan.md
 ├── E5_cq_evaluation.py
-├── E5_cq_evaluation_plan.md
 ├── build_gold_manual.py
 └── README.md                  # Diese Datei
 ```
@@ -77,3 +72,23 @@ vorbereitet. Nach Ausführung der Skripte:
 | E3 | `chapters/chapter_5/exp3_confidence.tex` | `tab:exp3_confidence` |
 | E4 | `chapters/chapter_5/exp4_hdbscan.tex` | `tab:exp4_hdbscan` |
 | E5 | `chapters/chapter_5/cq_evaluation.tex` | `tab:exp5_cq_uebersicht` |
+
+## G_levels.json
+Goldmenge für K_levels: e-CF Dimension-3-Proficiency-Beschreibungen ↔
+DQR-Niveau-Anker.
+Quelle: e-CF 3.0 (CWA 16234-1:2014) (normative Crosswalk-Tabelle).
+Mapping_justification: semapv:ManualMappingCuration
+Paare: 113 (106 e-CF-Levelknoten × 1 DQR-Anker, außer e-1 × 2 DQR-Anker)
+Erstellt: 2026-09-06
+
+## Weitere Skripte und Protokolle (Stand Übergabe, Oktober 2026)
+
+Über die Reihenfolge E1 bis E5 hinaus enthält `eval/`:
+
+| Datei | Zweck |
+|---|---|
+| `B_baselines.py`, `B_recall_fullpool.py` | Baselines für Kapitel 5 (lexikalisch bzw. Recall über den vollen Kandidatenpool) |
+| `S_sample.py`, `S_analyze.py`, `annotation/` | Stichprobe und Auswertung der blinden Zweitannotation |
+| `R_rerun.py`, `R_analyze.py`, `R_tables.py` | Rerun Oktober 2026 (Primärkonfiguration n_FS = 0), Ergebnisse unter `results/rerun_2026-10/` |
+| `scripts/e3_isolation_run.py` | Isolationslauf zur E3-Neukalibrierung |
+| `PROTOKOLL.md` | Ausführungsprotokoll mit Abweichungen und Zahlenständen |

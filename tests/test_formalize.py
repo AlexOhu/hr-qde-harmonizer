@@ -35,6 +35,35 @@ def test_validate_formalization_rejects_unparseable_turtle():
     assert "geparst" in errors[0]
 
 
+def test_validate_formalization_rejects_self_referential_hierarchy_and_two_roles():
+    turtle = """
+    @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+    @prefix harm: <http://hr-qde.org/harmonised/> .
+    @prefix ex: <http://example.org/> .
+    ex:c1 a skos:Concept, harm:CompetenceConcept, harm:LevelConcept ;
+        skos:prefLabel "Broken"@en ;
+        skos:broader ex:c1 .
+    """
+
+    errors = validate_formalization(turtle, _make_kqr("broken"), strict=False)
+
+    assert any("zugleich" in error for error in errors)
+    assert any("auf sich selbst" in error for error in errors)
+
+
+def test_validate_formalization_rejects_hierarchy_cycle():
+    turtle = """
+    @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+    @prefix ex: <http://example.org/> .
+    ex:c1 a skos:Concept ; skos:prefLabel "One"@en ; skos:broader ex:c2 .
+    ex:c2 a skos:Concept ; skos:prefLabel "Two"@en ; skos:broader ex:c1 .
+    """
+
+    errors = validate_formalization(turtle, _make_kqr("broken"), strict=False)
+
+    assert "Die SKOS-Hierarchie enthält einen Zyklus." in errors
+
+
 def test_parse_concepts_extracts_expected_fields(hub_ttl):
     concepts = parse_concepts(hub_ttl, "hub_kqr")
     assert len(concepts) == 6

@@ -2,7 +2,7 @@
  * Zeilenlogik der Framework-Vergleiche.
  *
  * `resolvePairAction` traegt die Entscheidung, welche einzelne Folgeaktion
- * pro Zustand angeboten wird (siehe UI_REFACTORING_PLAN.md); das Rendering
+ * pro Zustand angeboten wird; das Rendering
  * prueft, dass davon tatsaechlich nur ein Button ankommt und dass
  * UNRESOLVED-Faelle nicht als entscheidbare Reviews erscheinen.
  */

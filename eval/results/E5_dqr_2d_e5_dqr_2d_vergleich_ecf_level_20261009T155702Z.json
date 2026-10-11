@@ -1,0 +1,39 @@
+{
+  "purpose": "E5 dqr_2d granularity comparison; fresh external classification run",
+  "project_id": "e5_dqr_2d_vergleich_ecf_level_20261009T155702Z",
+  "manifest": "data\\projects\\e5_dqr_2d_vergleich_ecf_level_20261009T155702Z\\run_manifest.json",
+  "job_id": "619e9c2a-2ef5-4eee-b567-babaa2f6a133",
+  "result_definition": "Conjunct LLM mappings only: final relation EQUIVALENT, A_SUBSUMES_B, or B_SUBSUMES_A; RELATED and no-consensus remain outside the accepted mapping set.",
+  "denominators": {
+    "eligible_ecf_level_concepts": 106,
+    "candidate_pairs": 2120,
+    "accepted_mapped_subjects": 104
+  },
+  "metrics": {
+    "accepted_mappings": 1049,
+    "subjects_with_at_least_one_accepted_mapping": 104,
+    "coverage_of_eligible_subjects": 0.9811320754716981,
+    "subjects_with_exactly_one_accepted_mapping": 2,
+    "exactly_one_among_mapped_subjects": 0.019230769230769232,
+    "mean_accepted_mappings_per_mapped_subject": 10.086538461538462
+  },
+  "classification_result_distribution": {
+    "A_SUBSUMES_B": 305,
+    "B_SUBSUMES_A": 744,
+    "NO_CONSENSUS": 56,
+    "RELATED": 1015
+  },
+  "mapping_distribution": {
+    "all_persisted_mappings": 2120,
+    "by_review_status": {
+      "conjunct": 1049,
+      "open": 1071
+    },
+    "by_predicate": {
+      "skos:narrowMatch": 305,
+      "skos:broadMatch": 744,
+      "NONE": 56,
+      "skos:relatedMatch": 1015
+    }
+  }
+}

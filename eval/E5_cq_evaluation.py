@@ -9,12 +9,12 @@ Zwei Modi:
   --legacy  (Default): eine kombinierte Turtle-Datei mit direkten
             SKOS-Kanten (alter ``ontology_export.py``-Aufbau).
 
-  --delivery DIR: die drei Lieferartefakte nach ``MASTERAND_OBERHUBER.md``
-            v0.2 (``oberhuber-harmonised-ontology-v*.ttl`` +
+  --delivery DIR: die drei Lieferartefakte ab
+            v0.3 (``oberhuber-harmonised-ontology-v*.ttl`` +
             ``oberhuber-mappings-v*.ttl``). Mappings liegen dort reifiziert
             als ``harm:HubMapping``/``harm:LevelMapping`` mit
             ``sssom:subject_id``/``sssom:object_id``/``sssom:predicate_id``;
-            ESCO-Knoten tragen keine Labels (Lieferspezifikation §4), fuer
+            ESCO-Knoten tragen keine Labels, fuer
             lesbare Beispiele wird optional das ESCO-Skelett geladen.
 
 Verwendung:
@@ -141,7 +141,7 @@ WHERE {
      sssom:subject_id   ?ecfConcept ;
      sssom:object_id    ?escoConcept ;
      sssom:predicate_id skos:narrowMatch .
-  FILTER(STRSTARTS(STR(?ecfConcept), "http://hr-qde.org/harmonised/ecf/"))
+  FILTER(STRSTARTS(STR(?ecfConcept), "http://hr-qde.org/harmonised/source/ecf/"))
   ?ecfConcept  skos:prefLabel ?ecfLabel .
   FILTER(LANG(?ecfLabel) = "en")
   OPTIONAL { ?escoConcept skos:prefLabel ?escoLabel . FILTER(LANG(?escoLabel) = "en") }
@@ -152,29 +152,32 @@ ORDER BY ?ecfLabel
     "CQ3": {
         "label": "Disjunkte Konzepte mit Integrationsstrategie (harm:HarmonisedConcept)",
         "sparql": """
-PREFIX skos:  <http://www.w3.org/2004/02/skos/core#>
-PREFIX harm:  <http://hr-qde.org/harmonised/>
-SELECT ?concept ?label ?strategy
+PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
+PREFIX harm:    <http://hr-qde.org/harmonised/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+SELECT ?concept ?label ?strategy ?creator ?created
 WHERE {
   ?concept a harm:HarmonisedConcept ;
            harm:integrationStrategy ?strategy .
   OPTIONAL { ?concept skos:prefLabel ?label . FILTER(LANG(?label) = "en") }
+  OPTIONAL { ?concept dcterms:creator ?creator }
+  OPTIONAL { ?concept dcterms:created ?created }
 }
 ORDER BY ?concept
 """,
     },
     "CQ4": {
-        "label": "Transitive Hierarchie (rdfs:subClassOf+ / harm:harmonises)",
+        "label": "Navigierbare Niveaukette (harm:hasLevel -> harm:LevelMapping)",
         "sparql": """
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX harm: <http://hr-qde.org/harmonised/>
-SELECT ?child ?ancestor
+PREFIX harm:  <http://hr-qde.org/harmonised/>
+PREFIX sssom: <https://w3id.org/sssom/>
+SELECT ?competence ?level ?dqr
 WHERE {
-  { ?child rdfs:subClassOf+ ?ancestor }
-  UNION
-  { ?cluster a harm:HarmonisedCluster ; harm:harmonises ?child . BIND(?cluster AS ?ancestor) }
+  ?competence harm:hasLevel ?level .
+  ?mapping a harm:LevelMapping ;
+           sssom:subject_id ?level ;
+           sssom:object_id ?dqr .
 }
-LIMIT 20
 """,
     },
 }
@@ -248,7 +251,7 @@ def main() -> None:
     parser.add_argument("--ontology", type=Path, default=ONTOLOGY_PATH,
                         help="Legacy-Modus: kombinierte Turtle-Datei")
     parser.add_argument("--delivery", type=Path, default=None,
-                        help="Verzeichnis mit den drei Lieferartefakten (v0.2)")
+                        help="Verzeichnis mit den drei Lieferartefakten (z. B. data/deliverables/v0.4-20261004)")
     parser.add_argument("--legacy", action="store_true",
                         help="Legacy-Modus erzwingen (Default, wenn --delivery fehlt)")
     parser.add_argument("--output", type=Path, default=OUTPUT_DIR / "E5_cq_evaluation.json")

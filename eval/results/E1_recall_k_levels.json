@@ -1,0 +1,32 @@
+{
+  "G_levels": [
+    {
+      "k": 1,
+      "recall": 0.2212,
+      "hits": 25,
+      "new_hits": 25,
+      "total_evaluable": 113
+    },
+    {
+      "k": 3,
+      "recall": 0.5752,
+      "hits": 65,
+      "new_hits": 40,
+      "total_evaluable": 113
+    },
+    {
+      "k": 5,
+      "recall": 0.8938,
+      "hits": 101,
+      "new_hits": 36,
+      "total_evaluable": 113
+    },
+    {
+      "k": 8,
+      "recall": 1.0,
+      "hits": 113,
+      "new_hits": 12,
+      "total_evaluable": 113
+    }
+  ]
+}

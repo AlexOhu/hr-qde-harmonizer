@@ -12,14 +12,14 @@ weder adressierbar noch entscheidbar.
 
 Persistenz-Design (analog kqr_service._save_registry): beide Listen werden
 als JSON unter data/projects/{project_id}/mappings.json bzw.
-classification_results.json gehalten (ADR-02/ADR-03), bei jedem add_* für
+classification_results.json gehalten (ADR-13), bei jedem add_* für
 das jeweilige Projekt vollständig neu geschrieben. Grund: ein
 klassifizierender Threading-Backgroundjob läuft im selben uvicorn-
 Worker-Prozess wie die API (vgl. classification_service) und würde bei
 einem --reload-Neustart sonst bereits bezahlte LLM-Klassifikationen
 stillschweigend verlieren.
 
-In-Memory-Caches sind nach project_id kodiert (ADR-04), damit mehrere
+In-Memory-Caches sind nach project_id kodiert (ADR-13), damit mehrere
 Projekte im selben Prozess sich nicht vermischen.
 """
 

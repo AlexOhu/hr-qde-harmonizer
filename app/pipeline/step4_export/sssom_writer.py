@@ -33,7 +33,7 @@ _SSSOM_HEADER = "\n".join([
     "# curie_map:",
     "#   semapv: \"https://w3id.org/semapv/vocab/\"",
     "#   skos: \"http://www.w3.org/2004/02/skos/core#\"",
-    # ADR-19: harm: ist das Kürzel der Harmonisierungsschicht, hrqde: bleibt
+    # ADR-17: harm: ist das Kürzel der Harmonisierungsschicht, hrqde: bleibt
     # dem HR-QDE-Skelett vorbehalten.
     "#   harm: \"http://hr-qde.org/harmonised/\"",
     "#   hrqde: \"http://hr-qde.org/ontology/\"",

@@ -1,0 +1,89 @@
+{
+  "mode": "delivery",
+  "results": [
+    {
+      "cq": "CQ1",
+      "label": "Semantisch äquivalente Konzeptpaare (harm:HubMapping, skos:exactMatch)",
+      "n_results": 1,
+      "fulfilled": true,
+      "examples": [
+        {
+          "subject": "http://hr-qde.org/harmonised/source/ecf/B.4",
+          "object": "http://data.europa.eu/esco/skill/1d86f05e-e9cc-40ce-99d8-2b21cc71b16b"
+        }
+      ]
+    },
+    {
+      "cq": "CQ2",
+      "label": "Subsumierte ESCO-Skills unter e-CF-Konzepten (harm:HubMapping, skos:narrowMatch)",
+      "n_results": 192,
+      "fulfilled": true,
+      "examples": [
+        {
+          "ecfLabel": "Application Design",
+          "escoLabel": "develop software prototype"
+        },
+        {
+          "ecfLabel": "Application Design",
+          "escoLabel": "define software architecture"
+        },
+        {
+          "ecfLabel": "Application Design",
+          "escoLabel": "oversee development of software"
+        }
+      ]
+    },
+    {
+      "cq": "CQ3",
+      "label": "Disjunkte Konzepte mit Integrationsstrategie (harm:HarmonisedConcept)",
+      "n_results": 3,
+      "fulfilled": true,
+      "examples": [
+        {
+          "concept": "http://hr-qde.org/harmonised/source/ecf/A.2",
+          "label": "Service Level Management",
+          "strategy": "attach_to_skeleton",
+          "creator": "a.oberhuber",
+          "created": "2026-10-11T20:11:06.470064+00:00"
+        },
+        {
+          "concept": "http://hr-qde.org/harmonised/source/ecf/D.6",
+          "label": "Channel Management",
+          "strategy": "attach_to_skeleton",
+          "creator": "a.oberhuber",
+          "created": "2026-10-11T20:13:21.427553+00:00"
+        },
+        {
+          "concept": "http://hr-qde.org/harmonised/source/ecf/D.9",
+          "label": "Personnel Development",
+          "strategy": "own_class",
+          "creator": "a.oberhuber",
+          "created": "2026-10-11T20:15:22.251878+00:00"
+        }
+      ]
+    },
+    {
+      "cq": "CQ4",
+      "label": "Navigierbare Niveaukette (harm:hasLevel -> harm:LevelMapping)",
+      "n_results": 113,
+      "fulfilled": true,
+      "examples": [
+        {
+          "competence": "http://hr-qde.org/harmonised/source/ecf/A.1",
+          "level": "http://hr-qde.org/harmonised/source/ecf/A.1.Niveau4",
+          "dqr": "http://hr-qde.org/harmonised/source/dqr/L7"
+        },
+        {
+          "competence": "http://hr-qde.org/harmonised/source/ecf/A.1",
+          "level": "http://hr-qde.org/harmonised/source/ecf/A.1.Niveau5",
+          "dqr": "http://hr-qde.org/harmonised/source/dqr/L8"
+        },
+        {
+          "competence": "http://hr-qde.org/harmonised/source/ecf/A.2",
+          "level": "http://hr-qde.org/harmonised/source/ecf/A.2.Niveau3",
+          "dqr": "http://hr-qde.org/harmonised/source/dqr/L6"
+        }
+      ]
+    }
+  ]
+}
