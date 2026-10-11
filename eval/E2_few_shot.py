@@ -37,8 +37,17 @@ def compute_macro_f1(
     predictions: list[str],
     gold_labels: list[str],
 ) -> dict[str, float]:
-    """Gibt klassenweise Precision/Recall/F1 sowie Macro-F1 zurück."""
-    classes = list(dict.fromkeys(gold_labels + predictions))
+    """Gibt klassenweise Precision/Recall/F1 sowie Macro-F1 zurück.
+
+    Macro-F1 mittelt über die vier Goldklassen (ALLOWED_RELATIONS).
+    Vorhersagen außerhalb dieser Klassen (UNRESOLVED) zählen als Fehler
+    (FN der Goldklasse), bilden aber keine eigene Klasse im Mittelwert.
+    Korrektur 2026-10-04: Zuvor ging UNRESOLVED als fünfte Klasse mit
+    F1 = 0 in den Nenner ein, sobald es vorhergesagt wurde. Dadurch waren
+    Läufe mit und ohne UNRESOLVED-Vorhersagen nicht vergleichbar
+    (vgl. eval/B_baselines.py, Abschnitt E2_fix).
+    """
+    classes = list(ALLOWED_RELATIONS)
     per_class: dict[str, dict] = {}
     for cls in classes:
         tp = sum(p == g == cls for p, g in zip(predictions, gold_labels))
@@ -79,7 +88,7 @@ def _few_shot_text_for_n_fs(n_fs: int) -> str:
     Anker-Quelle (Entscheidung 2026-08-31, vgl. eval/PROTOKOLL.md): die
     normative Crosswalk-Goldmenge eval/G_struct.json (DQR<->EQF-Dimensionspaare
     aus dem German EQF Referencing Report). Der urspruengliche Pool (persistierte
-    Struktur-Shortcut-Mappings mit match_type=="struct") existiert nach ADR-19
+    Struktur-Shortcut-Mappings mit match_type=="struct") existiert nach ADR-17
     nicht mehr; find_structural_shortcuts liefert auf den aktuellen
     Formalisierungen 0 Treffer. G_struct deckt den Prompt-Wortlaut
     "aus der Crosswalk-Goldmenge (Schritt 2)" ab und ist deterministisch.

@@ -64,6 +64,34 @@ export function suggestStrategy(
   });
 }
 
+/** Eintrag der Auswahlliste fuer die Ankerklasse (`attach_to_skeleton`). */
+export interface AnchorCandidate {
+  uri: string;
+  label: string;
+  kqr_id: string;
+  /** `related`: RELATED-Kandidat des Konzepts; `hub`: Knoten des Hub-Baums. */
+  group: "related" | "hub";
+  /** Einruecktiefe im skos:broader-Baum (0 = Wurzel). */
+  depth: number;
+  parent: string | null;
+}
+
+/**
+ * Eingabehilfe fuer die Ankerklasse: zuerst die RELATED-Kandidaten des
+ * Konzepts, danach der Hub des Projekts als Baum in Tiefensuche.
+ */
+export function listAnchorCandidates(
+  projectId: string,
+  conceptId: string | undefined,
+  signal?: AbortSignal,
+): Promise<AnchorCandidate[]> {
+  return request<AnchorCandidate[]>("/disjoint/anchor-candidates", {
+    params: { project_id: projectId, concept_id: conceptId },
+    timeoutMs: 60_000,
+    signal,
+  });
+}
+
 export interface DecideInput {
   strategy: IntegrationStrategy;
   justification: string;

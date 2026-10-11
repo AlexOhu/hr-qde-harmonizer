@@ -377,3 +377,29 @@ def test_suggest_reusable_decision_returns_latest_of_multiple_matches(hub_concep
     assert reusable is not None
     assert reusable.decision_id == later.decision_id
     assert reusable.strategy == DisjointStrategy.OUT_OF_SCOPE
+
+
+def test_anchor_candidates_list_related_first_then_hub_tree(hub_concepts):
+    _mark_as_related(hub_concepts, "database_design", "communication")
+
+    candidates = disjoint_service.list_anchor_candidates(hub_concepts["database_design"].uri)
+
+    related = [c for c in candidates if c["group"] == "related"]
+    hub = [c for c in candidates if c["group"] == "hub"]
+    assert [c["uri"] for c in related] == [hub_concepts["communication"].uri]
+    # related kommt vor dem Baum
+    assert candidates[: len(related)] == related
+    # jeder Hub-Knoten erscheint mindestens einmal im Baum
+    assert {c["uri"] for c in hub} == {c.uri for c in hub_concepts.values()}
+    # Einrueckung konsistent: Kinder folgen ihrem Elternknoten mit depth + 1
+    for i, entry in enumerate(hub):
+        if entry["parent"] is None:
+            assert entry["depth"] == 0
+        else:
+            parent_rows = [p for p in hub[:i] if p["uri"] == entry["parent"]]
+            assert parent_rows and parent_rows[-1]["depth"] == entry["depth"] - 1
+
+
+def test_anchor_candidates_without_concept_return_only_hub_tree(hub_concepts):
+    candidates = disjoint_service.list_anchor_candidates(None)
+    assert candidates and all(c["group"] == "hub" for c in candidates)

@@ -37,6 +37,8 @@ export const queryKeys = {
       ["project", projectId, "disjoint-summary", pair ?? null] as const,
     strategySuggestion: (projectId: string, conceptId: string) =>
       ["project", projectId, "strategy-suggestion", conceptId] as const,
+    anchorCandidates: (projectId: string, conceptId: string) =>
+      ["project", projectId, "anchor-candidates", conceptId] as const,
     exportSummary: (projectId: string) => ["project", projectId, "export-summary"] as const,
     clusters: (projectId: string) => ["project", projectId, "clusters"] as const,
     sssomPreview: (projectId: string, limit: number) =>

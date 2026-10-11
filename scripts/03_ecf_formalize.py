@@ -134,7 +134,7 @@ def main() -> None:
         )
     else:
         print("\nValidierung erfolgreich: alle Pflichtfelder aus Tabelle 3.7 vorhanden.")
-        print("Bereit fuer den Import ueber scripts/04_register_kqrs.py, die UI oder POST /kqr/.")
+        print("Bereit fuer den Import ueber die UI oder POST /kqr/.")
 
 
 if __name__ == "__main__":

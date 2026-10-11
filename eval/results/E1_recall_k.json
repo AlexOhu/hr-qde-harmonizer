@@ -1,28 +1,39 @@
 {
-  "_meta": {
-    "experiment": "E1 Recall@k (VH1.5)",
-    "date": "2026-08-31",
-    "nachzug": "Wiederholung nach Umstieg auf esco_skeleton_oberhuber (1302, Lieferspezifikation Saeule D, ADR-27). Embedding-Raum: esco_skeleton_oberhuber, ecf, dqr_3, dqr_2, eqf_2017 (1583 Konzepte); der abgeloeste 956er-Ausschnitt esco_v1_2_ict_ausschnitt ist ausgeschlossen. Aufruf: python eval/E1_recall_k.py --kqr esco_skeleton_oberhuber ecf dqr_3 dqr_2 eqf_2017",
-    "vorher_956": "eval/results/E1_recall_k.json.bak_956_20260831",
-    "k_decision": "k=20 unveraendert bestaetigt: Recall@20=1,00 auf beiden Goldmengen; k*=10 minimal fuer Recall>=0,90. CLAUDE.md Abschnitt 6 unveraendert.",
-    "g_struct": "identisch zum 956er-Lauf (DQR<->EQF, vom ESCO-Wechsel nicht beruehrt): k=5 0,844 | k=10 0,906 | k=15 0,938 | k=20 1,00.",
-    "g_manual": "8 statt 9 evaluierbare Paare (die Skelettdatei ist eine andere ESCO-Auswahl als der 956er-Ausschnitt: 2 Zare-URIs kommen hinzu, 3 fallen weg). Recall@10 weiterhin 1,00; Recall@5 0,875 statt 0,667.",
-    "g_struct_n": 32,
-    "g_manual_n_evaluable": 8,
-    "caveat": "G_struct bettet DQR (dqr_2) und EQF (eqf_2017) Niveaukonzepte nur zur Messung ein; der Produktivpfad bettet Typ-2/LevelConcepts nicht ein."
-  },
   "g_struct": [
-    { "k": 5, "recall": 0.8438, "hits": 27, "new_hits": 27, "total_evaluable": 32 },
-    { "k": 10, "recall": 0.9062, "hits": 29, "new_hits": 2, "total_evaluable": 32 },
-    { "k": 15, "recall": 0.9375, "hits": 30, "new_hits": 1, "total_evaluable": 32 },
-    { "k": 20, "recall": 1.0, "hits": 32, "new_hits": 2, "total_evaluable": 32 },
-    { "k": 30, "recall": 1.0, "hits": 32, "new_hits": 0, "total_evaluable": 32 }
-  ],
-  "g_manual": [
-    { "k": 5, "recall": 0.875, "hits": 7, "new_hits": 7, "total_evaluable": 8 },
-    { "k": 10, "recall": 1.0, "hits": 8, "new_hits": 1, "total_evaluable": 8 },
-    { "k": 15, "recall": 1.0, "hits": 8, "new_hits": 0, "total_evaluable": 8 },
-    { "k": 20, "recall": 1.0, "hits": 8, "new_hits": 0, "total_evaluable": 8 },
-    { "k": 30, "recall": 1.0, "hits": 8, "new_hits": 0, "total_evaluable": 8 }
+    {
+      "k": 5,
+      "recall": 0.875,
+      "hits": 28,
+      "new_hits": 28,
+      "total_evaluable": 32
+    },
+    {
+      "k": 10,
+      "recall": 0.9062,
+      "hits": 29,
+      "new_hits": 1,
+      "total_evaluable": 32
+    },
+    {
+      "k": 15,
+      "recall": 0.9375,
+      "hits": 30,
+      "new_hits": 1,
+      "total_evaluable": 32
+    },
+    {
+      "k": 20,
+      "recall": 1.0,
+      "hits": 32,
+      "new_hits": 2,
+      "total_evaluable": 32
+    },
+    {
+      "k": 30,
+      "recall": 1.0,
+      "hits": 32,
+      "new_hits": 0,
+      "total_evaluable": 32
+    }
   ]
 }

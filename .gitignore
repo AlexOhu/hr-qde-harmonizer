@@ -14,6 +14,16 @@ data/formalized/*
 data/sssom/*
 !data/raw/.gitkeep
 !data/formalized/.gitkeep
+# Formalisierte KQR der Lieferung v0.4 (siehe README, Abschnitt Daten)
+!data/formalized/esco_skeleton_oberhuber.ttl
+!data/formalized/ecf.ttl
+!data/formalized/ecf_level.ttl
+!data/formalized/dqr_1D.ttl
+# Experimentdaten Kapitel 5 (Granularitätsvarianten, 956er ESCO-Ausschnitt)
+!data/formalized/dqr_2D.ttl
+!data/formalized/eqf_1D.ttl
+!data/formalized/eqf_2D.ttl
+!data/formalized/esco_v1_2_ict_ausschnitt.ttl
 !data/sssom/.gitkeep
 
 # Neo4j
@@ -38,13 +48,22 @@ texput.*
 
 # Backup-Dateien
 *.bak
+*.bak_*
+*.bak.*
+
+# Temp- und Folien-Build-Artefakte
+tmp/
+.codex-finalizer-*/
+.ppt_*/
 
 # Frontend
 frontend/node_modules/
 frontend/dist/
+*.tsbuildinfo
 
 # Laufzeitdaten
 data/projects/
+data/projects_archive_*/
 data/classification_jobs.json
 data/kqr_registry.json
 data/walkthrough_slice/

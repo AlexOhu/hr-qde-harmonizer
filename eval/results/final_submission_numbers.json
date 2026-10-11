@@ -1,0 +1,96 @@
+{
+  "purpose": "Belegtes Zahleninventar für den finalen Abgabestand. Werte aus verschiedenen Datenräumen und Läufen werden nicht zusammengeführt.",
+  "audited_on": "2026-10-09",
+  "entries": [
+    {
+      "metric": "E1 Recall@20, G_struct",
+      "value": 0.9375,
+      "unit": "30/32 Paare",
+      "dataset": "G_struct, voller eqf_2d-Pool (32 Konzepte)",
+      "run_or_version": "eval/results/B_recall_fullpool.json",
+      "calculation_or_evidence": "30 Treffer von 32 auswertbaren Paaren; bei k=30: 32/32 = 1.0.",
+      "status": "belegt"
+    },
+    {
+      "metric": "E1 Recall@20 / @30 / @50, G_manual",
+      "value": [0.8846153846, 0.8846153846, 0.9615384615],
+      "unit": ["23/26", "23/26", "25/26 Paare"],
+      "dataset": "G_manual, voller esco_skeleton_oberhuber-Pool (1302 Konzepte)",
+      "run_or_version": "eval/results/B_recall_fullpool.json",
+      "calculation_or_evidence": "k=20 und k=30: 23/26; k=50: 25/26. Maximalrang 196. Die Goldmenge wurde aus Top-20-Kandidaten des abgelösten 956er-Ausschnitts kuratiert und ist keine unabhängige Recall-Stichprobe.",
+      "status": "belegt; keine globale Coverage-Empfehlung aus dieser Goldmenge ableitbar"
+    },
+    {
+      "metric": "E1b Recall@5 / @8, G_levels",
+      "value": [0.8938, 1.0],
+      "unit": ["101/113", "113/113 Paare"],
+      "dataset": "G_levels, ecf_level gegen die sechs in der Goldmenge vorkommenden dqr_1d-Zielanker",
+      "run_or_version": "eval/results/E1_recall_k_levels.json",
+      "calculation_or_evidence": "Das Skript begrenzt k auf die sechs unterschiedlichen Goldobjekte; Recall@8 ist daher eine konstruktive Obergrenze und keine Messung in einem vollständigen Produktionspool.",
+      "status": "belegt, aber nicht mit E1-Vollpoolwerten vergleichbar"
+    },
+    {
+      "metric": "E4 Produktionsraum: Hopkins H und Noise-Rate bei m=3",
+      "value": [0.6718, 0.1232],
+      "unit": ["H", "166/1347 = 12.32 %"],
+      "dataset": "esco_skeleton_oberhuber (1302) + ecf (45)",
+      "run_or_version": "eval/results/E4_hdbscan_prod1302.json; Mitgliedschaften: E4_membership_prod1302_20261009.json",
+      "calculation_or_evidence": "m=3: 3 Cluster, 166 Noise-Punkte. Der Mitgliedschaftsexport dokumentiert 1151, 26 und 4 Punkte in den Clustern sowie die SHA-256-Hashes der Turtle-Eingaben.",
+      "status": "belegt; Qualitätsgrenze eta < 0.20 erfüllt, aber keine navigierbare Hierarchie wegen dominantem Sammelcluster"
+    },
+    {
+      "metric": "E4 historischer Kompetenzraum: Hopkins H und Noise-Rate bei m=3",
+      "value": [0.6514, 0.7153],
+      "unit": ["H", "716/1001 = 71.53 %"],
+      "dataset": "esco_v1_2_ict_ausschnitt (956) + ecf (45)",
+      "run_or_version": "eval/results/E4_hdbscan.json, 2026-08-31",
+      "calculation_or_evidence": "Anderer ESCO-Hub und kleinerer Raum als der Produktionslauf; daher kein Widerspruch zu 12.32 %.",
+      "status": "belegt, historisch; nicht als Produktionswert verwenden"
+    },
+    {
+      "metric": "E3 v0.4: K-Mitgliedschaft bei Mehrheit / Einstimmigkeit",
+      "value": [{"precision": 0.98, "recall": 0.9245283019, "f1": 0.9514563107, "accepted": 50}, {"precision": 0.9782608696, "recall": 0.8490566038, "f1": 0.9090909091, "accepted": 46}],
+      "unit": "68 G_manual-Paare",
+      "dataset": "G_manual ohne sechs veraltete DQR-URIs",
+      "run_or_version": "rerun_2026-10, prod0_nfs0_t0.0_pass3; R_tables.json",
+      "calculation_or_evidence": "Der gewählte mittlere Durchgang ist Pass 3. Selbstkonsistenz der drei Produktionsdurchgänge: 61/68, 62/68, 64/68 = 89.7 %, 91.2 %, 94.1 %.",
+      "status": "belegt"
+    },
+    {
+      "metric": "E3 Selbstkonsistenz 93--99 %",
+      "value": [0.9264705882, 0.9852941176, 0.9705882353],
+      "unit": "63/68, 67/68, 66/68 Paare",
+      "dataset": "G_manual ohne sechs veraltete DQR-URIs",
+      "run_or_version": "rerun_2026-10, prod_nfs3_t0.0_pass1..3",
+      "calculation_or_evidence": "Andere Konfiguration (n_FS=3) als die v0.4-Produktionskonfiguration (n_FS=0).",
+      "status": "belegt, aber nicht als Wert der Produktionskonfiguration verwenden"
+    },
+    {
+      "metric": "E5 CQ1 / CQ2 / CQ3 / CQ4",
+      "value": [1, 192, 3, 113],
+      "unit": "Treffer",
+      "dataset": "data/deliverables/v0.4-20261004",
+      "run_or_version": "eval/E5_cq_evaluation.py --delivery data/deliverables/v0.4-20261004; lokal erneut ausgeführt am 2026-10-09",
+      "calculation_or_evidence": "SPARQL-Auswertung über Ontologie-, Mappings- und ESCO-Skelettdatei: 11282 Tripel im kombinierten Graphen.",
+      "status": "belegt"
+    },
+    {
+      "metric": "E5 Granularitätsvergleich dqr_1d / dqr_2d",
+      "value": {"dqr_1d": "113 LevelMapping-Records für 106 e-CF-Niveauknoten; 99/106 mit genau einem Ziel, Mittel 113/106 = 1.07", "dqr_2d": "93/106, 10/93, Mittel 4.62"},
+      "unit": "Knoten bzw. Kanten",
+      "dataset": "dqr_1d: v0.4-Lieferartefakt; dqr_2d: im Thesistext als älterer vorläufiger Lauf bezeichnet",
+      "run_or_version": "dqr_1d: data/deliverables/v0.4-20261004; dqr_2d: kein zuordenbarer Ergebnisdatensatz mit Rechenweg im Repository",
+      "calculation_or_evidence": "Die dqr_1d-Zahlen sind aus der v0.4-Lieferung belegbar. Für dqr_2d fehlen Lauf-ID, Rohresultat und Zählerdefinition; 10/93 wäre 10.8 %, nicht 10/106.",
+      "status": "dqr_1d belegt; dqr_2d ungelöst und nicht direkt vergleichbar"
+    },
+    {
+      "metric": "Backend-Testumfang",
+      "value": 235,
+      "unit": "gesammelte Tests in 22 Modulen",
+      "dataset": "tests/",
+      "run_or_version": "python -m pytest tests --collect-only -q, 2026-10-09",
+      "calculation_or_evidence": "235 Tests gesammelt. README.md und CLAUDE.md dokumentieren für die vollständige Suite 223 bestanden und 12 übersprungen; der Ausführungsnachweis dieses Audits ist die Sammlung, nicht ein neuer Voll-Lauf.",
+      "status": "Sammlung belegt; 231 ist rechnerisch und faktisch überholt"
+    }
+  ]
+}

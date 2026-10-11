@@ -18,7 +18,7 @@ nur noch die verbliebenen Paare, statt bereits bezahlte LLM-Läufe zu
 wiederholen. Zusätzlich ist ein laufender Job über pause_job()/resume_job()
 gezielt unterbrechbar (threading.Event, vor jedem Paar geprüft).
 
-Jobs sind je Projekt partitioniert (ADR-02/ADR-04): _jobs bildet
+Jobs sind je Projekt partitioniert (ADR-13): _jobs bildet
 project_id -> job_id -> Job-Dict ab, persistiert unter
 data/projects/{project_id}/classification_jobs.json.
 """
@@ -37,12 +37,15 @@ from app.graph.neo4j_client import get_driver
 from app.models.schemas import KQR, Mapping, MappingJustification, PairResetEvent
 from app.pipeline.step3_classification.llm_provider import get_providers_from_config, is_any_provider_configured
 from app.pipeline.step2_embedding_prefilter.prefilter import (
+    child_level_concept_uris,
+    derive_child_level_mappings,
     derive_container_mappings,
     detect_container_concepts,
     exclude_occupation_embeddings,
     filter_by_scope,
     find_candidate_pairs,
     find_structural_shortcuts,
+    partition_by_role,
 )
 from app.pipeline.step3_classification.classify import classify_pair
 from app.pipeline.step4_export.sssom_writer import classification_results_to_mappings
@@ -266,27 +269,130 @@ def _run_job(
             for concept in [*concepts_a, *concepts_b]
         }
 
+        # Satellit/Hub frueh bestimmen: die Richtungsangabe wird schon beim
+        # Struktur-Shortcut fuer den Niveau-Crosswalk gebraucht (nur
+        # Satellit -> Hub, s. u.).
+        satellite_id = _satellite_kqr_id(kqr_a, kqr_b, kqr_a_id, kqr_b_id)
+        hub_id = kqr_b_id if satellite_id == kqr_a_id else kqr_a_id
+
+        # Befund 2026-09-05: find_structural_shortcuts() kennt -- anders als
+        # die LLM-Klassifikation (already_classified weiter unten) -- keinen
+        # Wiederaufnahme-Schutz. Ohne Filterung würde ein erneuter Aufruf von
+        # start_classification_job() fuer dasselbe Paar (Server-Neustart,
+        # erneuter Klick) dieselben strukturellen Shortcuts ein zweites Mal
+        # anlegen (Duplikate in mappings.json). Bereits vorhandene
+        # Shortcut-Mappings fuer dieses Paar werden daher uebersprungen,
+        # analog zum already_classified-Schutz fuer LLM-Paare.
         merged_graph = kqr_service.get_graph(kqr_a_id) + kqr_service.get_graph(kqr_b_id)
-        shortcut_mappings = find_structural_shortcuts(merged_graph, concept_lookup)
-        mapping_service.add_mappings(shortcut_mappings, project_id=project_id)
-        shortcut_pairs = {(m.subject_id, m.object_id) for m in shortcut_mappings} | {
-            (m.object_id, m.subject_id) for m in shortcut_mappings
+        existing_shortcut_pairs = {
+            (m.subject_id, m.object_id)
+            for m in mapping_service.list_mappings_for_pair(kqr_a_id, kqr_b_id, project_id=project_id)
+            if m.mapping_justification == MappingJustification.STRUCTURAL_MATCHING
         }
+        shortcut_mappings = [
+            m
+            for m in find_structural_shortcuts(merged_graph, concept_lookup)
+            if (m.subject_id, m.object_id) not in existing_shortcut_pairs
+        ]
+
+        # Niveau-Crosswalk gegen einen reinen Referenzrahmen (z. B. EQF):
+        # skos:exactMatch-Kanten zwischen zwei Niveau-Ankern werden als
+        # StructuralMatching-Shortcut behandelt, OHNE
+        # data/structural_shortcut_predicates.json zu veraendern (Sign-off
+        # 2026-09-06 "EQF als Shortcut-Ziel-KQR im K_levels-Lauf"). Nur
+        # Richtung Satellit -> Hub (der Referenzrahmen erzeugt keine eigenen
+        # Mappings); Deskriptor-Niveauknoten (child_level_concept_uris) sind
+        # ausgenommen -- deren Mapping leitet derive_child_level_mappings()
+        # aus dem Eltern-Anker ab.
+        #
+        # Nur die Satellitenseite: integriert werden die Deskriptoren des
+        # einzupflegenden KQR, nicht die Facetten des Referenzrahmens (EQF
+        # traegt seine Dimensionsfacetten ebenfalls als Blatt-LevelConcepts
+        # unter einem verzweigenden Anker -- die bleiben hier aussen vor).
+        _satellite_concept_uris = {
+            c.uri for c in (concepts_a if satellite_id == kqr_a_id else concepts_b)
+        }
+        child_level_uris = child_level_concept_uris(merged_graph) & _satellite_concept_uris
+        _existing_pairs = existing_shortcut_pairs | {
+            (m.subject_id, m.object_id) for m in shortcut_mappings
+        }
+        level_crosswalk_mappings = [
+            m
+            for m in find_structural_shortcuts(
+                merged_graph,
+                concept_lookup,
+                predicates={
+                    "http://www.w3.org/2004/02/skos/core#exactMatch": "skos:exactMatch"
+                },
+                exclude_subjects=child_level_uris,
+            )
+            if m.subject_kqr_id == satellite_id
+            and (m.subject_id, m.object_id) not in _existing_pairs
+        ]
+        shortcut_mappings = shortcut_mappings + level_crosswalk_mappings
+
+        mapping_service.add_mappings(shortcut_mappings, project_id=project_id)
+        shortcut_pairs = existing_shortcut_pairs | {
+            (m.subject_id, m.object_id) for m in shortcut_mappings
+        }
+        shortcut_pairs = shortcut_pairs | {(b, a) for a, b in shortcut_pairs}
+
+        # Deskriptor-Niveauknoten (harm:LevelConcept mit harm:LevelConcept-
+        # Elternteil, selbst Blatt -- z. B. die 32 DQR-Dimensionsfacetten)
+        # laufen nicht durch ANN/LLM. Ihr Mapping wird direkt aus dem
+        # Struktur-Shortcut des Eltern-Ankers abgeleitet: skos:narrowMatch,
+        # semapv:LogicalReasoning, review_status CONJUNCT (durch Inferenz
+        # determiniert, nie im Review-Queue). Grundlage sind alle
+        # Struktur-Shortcuts des Paares (frisch + bereits persistiert), damit
+        # die Ableitung auch bei fortgesetzten Laeufen greift; bereits
+        # abgeleitete Kinder werden ueber already_derived_subjects
+        # uebersprungen (idempotent). child_level_uris ist oben (Niveau-
+        # Crosswalk) bereits bestimmt.
+        if child_level_uris:
+            pair_mappings_so_far = mapping_service.list_mappings_for_pair(
+                kqr_a_id, kqr_b_id, project_id=project_id
+            )
+            pair_shortcut_mappings = [
+                m
+                for m in pair_mappings_so_far
+                if m.mapping_justification == MappingJustification.STRUCTURAL_MATCHING
+            ]
+            already_derived_children = {
+                m.subject_id
+                for m in pair_mappings_so_far
+                if m.mapping_justification == MappingJustification.LOGICAL_REASONING
+            }
+            child_level_concepts = [
+                c for c in (*concepts_a, *concepts_b) if c.uri in child_level_uris
+            ]
+            child_level_mappings = derive_child_level_mappings(
+                child_level_concepts,
+                pair_shortcut_mappings,
+                already_derived_subjects=already_derived_children,
+            )
+            if child_level_mappings:
+                mapping_service.add_mappings(child_level_mappings, project_id=project_id)
+            job["child_level_mappings_derived"] = job.get(
+                "child_level_mappings_derived", 0
+            ) + len(child_level_mappings)
 
         source_embeddings, target_embeddings = _select_hub_and_satellite(
             kqr_a, kqr_b, embeddings_a, embeddings_b
         )
         filtered_target_embeddings = exclude_occupation_embeddings(target_embeddings)
-        # ADR-16: Hub-Embeddings auf Skills einschränken, Occupations ausschließen.
+        # ADR-14: Hub-Embeddings auf Skills einschränken, Occupations ausschließen.
 
         # Projekt-Scope-Konfiguration (Kapitel 4): der Vorfilter teilt die
-        # Quellkonzepte VOR dem Embedding in Pipeline- und Skelett-Konzepte.
-        # Konzepte mit harm:conceptRole harm:LevelConcept (EQF-/DQR-
-        # Niveauknoten) gehen immer in die Skelett-Schicht und nie durch
-        # ANN/LLM -- unabhaengig vom Scope. Der Ontologie-Export baut die
-        # Skelettknoten aus diesen Konzepten (harmonised_ontology).
-        satellite_id = _satellite_kqr_id(kqr_a, kqr_b, kqr_a_id, kqr_b_id)
+        # Quellkonzepte VOR dem Embedding in Pipeline- und Skelett-Konzepte,
+        # gemaess dem projekt-konfigurierten Scope (Default "all" = alle
+        # Konzepte, unabhaengig von der Rolle). Rollentrennung
+        # (rdf:type harm:CompetenceConcept/harm:LevelConcept) ist
+        # NICHT Teil dieses Scope-Filters -- ein KQR-Paar ohne expliziten
+        # strukturellen Shortcut wird vollstaendig rollengleich ausgewertet
+        # (partition_by_role weiter unten), s. Befund 2026-09-05.
+        # satellite_id / hub_id sind oben bereits bestimmt.
         satellite_graph = kqr_service.get_graph(satellite_id)
+        hub_graph = kqr_service.get_graph(hub_id)
         scope = _kqr_scope(project_id, satellite_id)
         pipeline_uris, skeleton_uris = filter_by_scope(
             list(source_embeddings.keys()), satellite_graph, scope
@@ -318,10 +424,20 @@ def _run_job(
         # Hub-Konzepten wie seine Kinder konkurriert.
         container_uris, container_children = detect_container_concepts(merged_graph)
         source_container_uris = {u for u in container_uris if u in source_embeddings}
+        # Container mit eigenem Struktur-Shortcut (direkter Crosswalk-Treffer,
+        # z. B. die DQR-Niveau-Anker gegen EQF) sind bereits aufgeloest: wie
+        # jeder Container aus dem ANN-Pool nehmen, aber NICHT aus den
+        # Kindmappings aggregieren (derive_container_mappings) -- sonst wuerde
+        # die skos:broader-Kette der Anker jeden Anker faelschlich aus dem
+        # Shortcut des naechsthoeheren Ankers ableiten.
+        resolved_shortcut_subjects = {m.subject_id for m in shortcut_mappings} | {
+            s for s, _o in existing_shortcut_pairs
+        }
         source_container_children = {
             container: children
             for container, children in container_children.items()
             if container in source_container_uris
+            and container not in resolved_shortcut_subjects
         }
         source_embeddings = {
             uri: vec
@@ -330,9 +446,38 @@ def _run_job(
         }
         job["container_concepts"] = len(source_container_uris)
 
-        candidate_pairs = find_candidate_pairs(
-            source_embeddings, filtered_target_embeddings, settings.ann_top_k
-        )
+        # Deskriptor-Niveauknoten aus dem ANN-Pool nehmen (child_level_uris,
+        # s. Eltern-Ableitung oben). Ihr Mapping ist bereits aus dem
+        # Eltern-Anker abgeleitet; sie duerfen nicht zusaetzlich als
+        # Quellkonzepte gegen den Hub klassifiziert werden.
+        source_child_level_uris = {
+            uri for uri in child_level_uris if uri in source_embeddings
+        }
+        source_embeddings = {
+            uri: vec
+            for uri, vec in source_embeddings.items()
+            if uri not in source_child_level_uris
+        }
+        job["child_level_concepts"] = len(source_child_level_uris)
+
+        # Rollengleiches Pairing (Befund 2026-09-05): harm:CompetenceConcept
+        # wird nur gegen harm:CompetenceConcept verglichen, harm:LevelConcept
+        # nur gegen harm:LevelConcept -- unabhaengig davon, ob fuer dieses
+        # KQR-Paar ein struktureller Shortcut existiert. Fehlt einer Rolle auf
+        # einer Seite (z. B. ESCO: nur CompetenceConcept), entsteht fuer sie
+        # schlicht kein Kandidatenpaar, weil find_candidate_pairs() mit einem
+        # leeren Dict aufgerufen wird bzw. der Rollen-Bucket fehlt.
+        source_by_role = partition_by_role(source_embeddings, satellite_graph)
+        target_by_role = partition_by_role(filtered_target_embeddings, hub_graph)
+
+        candidate_pairs = []
+        for role, role_source_embeddings in source_by_role.items():
+            role_target_embeddings = target_by_role.get(role)
+            if not role_target_embeddings:
+                continue
+            candidate_pairs.extend(
+                find_candidate_pairs(role_source_embeddings, role_target_embeddings, settings.ann_top_k)
+            )
         candidate_pairs = [
             pair
             for pair in candidate_pairs

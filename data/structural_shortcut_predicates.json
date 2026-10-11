@@ -1,0 +1,4 @@
+﻿{
+  "_comment": "Bekannte strukturelle Cross-Referenz-Praedikate zwischen KQR (vgl. app/pipeline/step2_embedding_prefilter/prefilter.py::find_structural_shortcuts). Jeder Eintrag bildet eine im KQR-Rohmaterial bereits vorhandene Praedikat-URI auf das SSSOM-Praedikat ab, das ein Treffer erhaelt (mapping_confidence=1.0, semapv:StructuralMatching, kein ANN/LLM-Durchlauf fuer das betroffene Paar). Neue Shortcuts werden hier als Dateneintrag ergaenzt -- kein Python-Edit, kein Neustart der Pipeline-Logik noetig (nur die laufende API muss die Datei neu einlesen, s. Docstring in prefilter.py). ELM enthaelt keine eigenen Kompetenzinstanzen und wird nicht als Vergleichs-KQR der Pipeline gefuehrt (vgl. chapter_3/infm.tex).",
+  "http://data.europa.eu/esco/model#isPartOf": "skos:broadMatch"
+}

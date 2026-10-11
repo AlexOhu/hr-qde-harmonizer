@@ -88,6 +88,15 @@ async function extractDetail(response: Response): Promise<string | null> {
           )
           .join("; ");
       }
+      if (
+        detail &&
+        typeof detail === "object" &&
+        "errors" in detail &&
+        Array.isArray((detail as { errors: unknown }).errors)
+      ) {
+        const errors = (detail as { errors: unknown[] }).errors;
+        return errors.map(String).join("; ");
+      }
       return JSON.stringify(detail);
     }
     return null;

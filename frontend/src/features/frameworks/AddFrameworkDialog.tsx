@@ -8,6 +8,7 @@
 import { useRef, useState } from "react";
 
 import type { Framework } from "@/api/types";
+import { download, saveFile } from "@/api/client";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogClose, DialogContent } from "@/components/ui/dialog";
 import { Checkbox, Field, Input, Select } from "@/components/ui/field";
@@ -45,6 +46,14 @@ export function AddFrameworkDialog({
   const [isHub, setIsHub] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [validationError, setValidationError] = useState<string | null>(null);
+
+  async function downloadTemplate() {
+    try {
+      saveFile(await download("/kqr/template", "hrqde-kqr-skos-vorlage.ttl"));
+    } catch (error) {
+      setValidationError(error instanceof Error ? error.message : "Vorlage konnte nicht geladen werden.");
+    }
+  }
 
   function describeOutcome(framework: Framework): { title: string; description: string } {
     switch (framework.status) {
@@ -109,6 +118,15 @@ export function AddFrameworkDialog({
         }
       >
         <div className="space-y-4">
+          <div className="rounded-md border border-border-subtle bg-surface-muted p-3 text-xs text-fg-muted">
+            <p>
+              Die fachliche Überführung eines KQR bleibt eine kuratierte Aufgabe. Diese Anwendung
+              prüft das bereitgestellte SKOS-Artefakt, sie erzeugt keine fachlichen Konzepte.
+            </p>
+            <Button className="mt-2" size="sm" variant="secondary" onClick={() => void downloadTemplate()}>
+              SKOS-Vorlage herunterladen
+            </Button>
+          </div>
           <Field label="Name" required error={validationError}>
             {(props) => (
               <Input

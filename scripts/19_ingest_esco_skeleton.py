@@ -1,10 +1,11 @@
 """
 Nimmt die gelieferte ESCO-Referenzmenge ``esco-skeleton-for-oberhuber.ttl``
-(1302 Skill-Konzepte, Lieferspezifikation Abschnitt 1) als Hub-KQR in die
+(1302 Skill-Konzepte) als Hub-KQR in die
 Pipeline auf.
 
   - kopiert nach ``data/formalized/esco_skeleton_oberhuber.ttl``
-  - ergaenzt je ``skos:Concept`` ein ``harm:conceptRole harm:CompetenceConcept``
+  - ergaenzt je ``skos:Concept`` den kanonischen RDF-Typ
+    ``harm:CompetenceConcept``
     (Parität zum bisherigen Hub; ``filter_by_scope`` behandelt Knoten ohne
     Rolle ohnehin als Pipeline-Konzept, die Rolle macht die Absicht explizit)
   - traegt den KQR in ``data/kqr_registry.json`` ein (``is_hub: true``)
@@ -30,11 +31,11 @@ REGISTRY = ROOT / "data" / "kqr_registry.json"
 KQR_ID = "esco_skeleton_oberhuber"
 NAMESPACE_URI = "http://data.europa.eu/esco/skill/"
 HARM_PREFIX = "@prefix harm: <http://hr-qde.org/harmonised/> .\n"
-ROLE_LINE = "  harm:conceptRole harm:CompetenceConcept ;\n"
+ROLE_LINE = "  a harm:CompetenceConcept ;\n"
 
 
 def _formalize(text: str) -> tuple[str, int]:
-    if "harm:conceptRole" in text:
+    if "a harm:CompetenceConcept" in text:
         return text, 0
     lines = text.splitlines(keepends=True)
     out: list[str] = []
@@ -81,7 +82,7 @@ def main() -> None:
     formalized, inserted = _formalize(SRC.read_text(encoding="utf-8"))
     DST.parent.mkdir(parents=True, exist_ok=True)
     DST.write_text(formalized, encoding="utf-8")
-    print(f"{DST.name}: geschrieben, harm:conceptRole an {inserted} Konzepten ergaenzt.")
+    print(f"{DST.name}: geschrieben, harm:CompetenceConcept an {inserted} Konzepten ergaenzt.")
     _register()
 
 

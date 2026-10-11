@@ -1,17 +1,17 @@
-"""
+﻿"""
 E1 - Recall@k: ANN-Suchparameter (VH1.5)
 
-Implementiert nach eval/E1_spec.md. ELM wird NICHT mehr als Vergleichs-KQR
-verwendet (ADR-14, Kapitel 4): ELM ist ausschliesslich Serialisierungsziel
-des Ausgabe-Artefakts und haelt selbst keine mit ESCO vergleichbaren
-Instanzen. Stattdessen zwei Goldmengen aus eval/:
+ELM wird nicht als Vergleichs-KQR
+verwendet (vgl. Kapitel 3): ELM enthaelt keine eigenen Kompetenzinstanzen.
+Goldmengen aus eval/:
 
   G_struct.json       - 8 normative DQR<->EQF-Niveaupaare (confidence=1.0,
                         struktureller Shortcut, kein LLM-Aufruf). EQF ist
                         aktuell nicht formalisiert -> erwartungsgemaess
                         0 evaluierbare Paare.
-  G_manual_seed.json  - 14 e-CF A.8 <-> ESCO-Skill-Paare aus Zare et al.
-                        (2025), Table 6 (DOI 10.3390/app15179634).
+  G_levels.json       - 113 e-CF-Dimension-3 <-> DQR-Anker-Paare aus
+                        e-CF 3.0 (CWA 16234-1:2014). Diese Goldmenge wird
+                        separat ueber --gold ausgewertet.
 
 Verwendung:
     python eval/E1_recall_k.py [--k-values 5 10 15 20 30]
@@ -32,7 +32,6 @@ sys.path.insert(0, str(ROOT))
 K_VALUES = [5, 10, 15, 20, 30]
 
 _STRUCT_PATH = ROOT / "eval" / "G_struct.json"
-_MANUAL_PATH = ROOT / "eval" / "G_manual_seed.json"
 
 
 def _load_gold_pairs(path: Path) -> tuple[list[tuple[str, str]], list[dict]]:
@@ -52,7 +51,7 @@ def _load_all_embeddings(kqr_ids: list[str] | None = None) -> dict[str, np.ndarr
     ``kqr_ids`` beschraenkt den Embedding-Raum auf die genannten KQR. Fuer den
     Liefer-Nachzug wird ``esco_skeleton_oberhuber ecf dqr_3`` gesetzt, damit
     nicht der abgeloeste 956er-Ausschnitt (``esco_v1_2_ict_ausschnitt``)
-    mitgemischt wird (ADR-27)."""
+    mitgemischt wird (ADR-25)."""
     from app.services import kqr_service
 
     wanted = set(kqr_ids) if kqr_ids else None
@@ -77,9 +76,11 @@ def recall_at_k(
     G_evaluierbar = Teilmenge von gold_pairs, bei der beide URIs ein
     Embedding besitzen. Fuer jedes evaluierbare Paar wird geprueft, ob
     object_uri unter den Top-k-Nachbarn von subject_uri liegt, gesucht
-    im Embedding-Raum aller Objekt-URIs von G_evaluierbar (ANN-Suchraum
-    des jeweiligen Ziel-KQR, analog zur produktiven Kandidatengenerierung
-    in app/pipeline/step2_embedding_prefilter/prefilter.py).
+    im Embedding-Raum aller eindeutigen Objekt-URIs der evaluierbaren
+    Goldpaare. Bei G_levels sind dies die sechs DQR-Anker L3--L8, nicht die
+    acht Knoten der Quelldatei. Recall@8 ist deshalb eine konstruktive
+    Obergrenze. Die produktive Kandidatengenerierung verwendet dagegen den
+    vollstaendigen Ziel-KQR-Raum.
     """
     import faiss
 
@@ -152,11 +153,14 @@ def _print_table(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="E1: Recall@k (G_struct + G_manual)")
+    parser = argparse.ArgumentParser(description="E1: Recall@k (G_struct)")
     parser.add_argument("--k-values", nargs="+", type=int, default=K_VALUES)
     parser.add_argument("--kqr", nargs="+", default=None,
                         help="Embedding-Raum auf diese KQR beschraenken "
                              "(Liefer-Nachzug: esco_skeleton_oberhuber ecf dqr_3)")
+    parser.add_argument("--gold", type=Path, default=None,
+                        help="Einzelne Goldmenge (z. B. eval/G_levels.json) statt "
+                             "G_struct auswerten.")
     parser.add_argument("--output", type=Path, default=ROOT / "eval" / "results" / "E1_recall_k.json")
     args = parser.parse_args()
 
@@ -166,8 +170,18 @@ def main() -> None:
     scope = ", ".join(args.kqr) if args.kqr else "alle registrierten KQR"
     print(f"Embedding-Raum: {len(embeddings)} Konzepte ({scope}).")
 
+    if args.gold is not None:
+        gold_pairs, _ = _load_gold_pairs(args.gold)
+        results = _print_table(args.gold.stem, gold_pairs, embeddings, k_values)
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(
+            json.dumps({args.gold.stem: results}, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
+        print(f"\nErgebnis gespeichert: {args.output}")
+        return
+
     struct_pairs, _ = _load_gold_pairs(_STRUCT_PATH)
-    manual_pairs, _ = _load_gold_pairs(_MANUAL_PATH)
 
     struct_results = _print_table(
         "G_struct: DQR<->EQF Niveaupaare", struct_pairs, embeddings, k_values
@@ -175,19 +189,10 @@ def main() -> None:
     if not struct_results:
         print("Grund: EQF ist nicht formalisiert (data/formalized/ enthaelt kein eqf.ttl).")
 
-    print(
-        "\nScope G_manual: e-CF A.8 <-> ESCO (Green ICT/Nachhaltigkeit, "
-        "Zare et al. 2025, Table 6). Domaenenspezifische Stichprobe, "
-        "kein Querschnitt aller e-CF-Kompetenzen."
-    )
-    manual_results = _print_table(
-        "G_manual: e-CF A.8 <-> ESCO", manual_pairs, embeddings, k_values
-    )
-
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(
         json.dumps(
-            {"g_struct": struct_results, "g_manual": manual_results},
+            {"g_struct": struct_results},
             indent=2, ensure_ascii=False,
         ),
         encoding="utf-8",

@@ -1,5 +1,5 @@
 """
-Aufgabe 1 (korrigierte Architektur): harm:conceptRole je Konzept in die
+Aufgabe 1 (korrigierte Architektur): rdf:type-Rollen je Konzept in die
 TTL-Formalisierungen schreiben. Die Rolle ist damit aus den Eingangsdaten
 lesbar; kein Code muss implizit wissen, dass ein KQR ein Niveaurahmen ist.
 
@@ -11,7 +11,7 @@ dqr_3.ttl wird separat gepflegt (8 x harm:LevelConcept, bereits gesetzt).
 eqf_2017.ttl wird nicht annotiert (kein Run-KQR mehr).
 
 Textbasiert und zeilenweise, mit Normalisierung der Zeilenenden auf \\n.
-Idempotent: ist harm:conceptRole bereits vorhanden, passiert nichts.
+Idempotent: ist der entsprechende rdf:type bereits vorhanden, passiert nichts.
 """
 
 from __future__ import annotations
@@ -62,8 +62,8 @@ def _ensure_header(lines: list[str]) -> list[str]:
 def annotate_ecf() -> None:
     path = FORMALIZED / "ecf.ttl"
     lines = _normalise(path.read_text(encoding="utf-8")).split("\n")
-    if any("harm:conceptRole" in ln for ln in lines):
-        print("ecf.ttl: harm:conceptRole bereits vorhanden -- uebersprungen.")
+    if any("a harm:CompetenceConcept" in ln for ln in lines):
+        print("ecf.ttl: harm:CompetenceConcept bereits vorhanden -- uebersprungen.")
         return
     lines = _ensure_header(lines)
 
@@ -74,7 +74,7 @@ def annotate_ecf() -> None:
         out.append(line)
         if comp_re.search(line):
             indent = line[: len(line) - len(line.lstrip())]
-            out.append(f"{indent}harm:conceptRole harm:CompetenceConcept ;")
+            out.append(f"{indent}a harm:CompetenceConcept ;")
             n += 1
     path.write_text("\n".join(out) + ("\n" if not out[-1].endswith("\n") else ""),
                     encoding="utf-8", newline="\n")
@@ -84,8 +84,8 @@ def annotate_ecf() -> None:
 def annotate_esco() -> None:
     path = FORMALIZED / "esco_v1_2_ict_ausschnitt.ttl"
     lines = _normalise(path.read_text(encoding="utf-8")).split("\n")
-    if any("harm:conceptRole" in ln for ln in lines):
-        print("esco...ttl: harm:conceptRole bereits vorhanden -- uebersprungen.")
+    if any("a harm:CompetenceConcept" in ln for ln in lines):
+        print("esco...ttl: harm:CompetenceConcept bereits vorhanden -- uebersprungen.")
         return
     lines = _ensure_header(lines)
 
@@ -95,7 +95,7 @@ def annotate_esco() -> None:
     for line in lines:
         out.append(line)
         if concept_re.match(line):
-            out.append("    harm:conceptRole harm:CompetenceConcept ;")
+            out.append("    a harm:CompetenceConcept ;")
             n += 1
     path.write_text("\n".join(out) + "\n", encoding="utf-8", newline="\n")
     print(f"esco...ttl: {n} Konzepte als harm:CompetenceConcept annotiert.")
@@ -108,9 +108,8 @@ def verify() -> None:
     for name in ("ecf.ttl", "dqr_3.ttl", "esco_v1_2_ict_ausschnitt.ttl"):
         g = Graph()
         g.parse(data=_normalise((FORMALIZED / name).read_text(encoding="utf-8")), format="turtle")
-        roles = list(g.subject_objects(HARM.conceptRole))
-        comp = sum(1 for _, o in roles if o == HARM.CompetenceConcept)
-        lvl = sum(1 for _, o in roles if o == HARM.LevelConcept)
+        comp = len(list(g.subjects(RDF.type, HARM.CompetenceConcept)))
+        lvl = len(list(g.subjects(RDF.type, HARM.LevelConcept)))
         total = len(list(g.subjects(RDF.type, SKOS.Concept)))
         print(f"  {name:34s} concepts={total:4d}  CompetenceConcept={comp:4d}  LevelConcept={lvl}")
 

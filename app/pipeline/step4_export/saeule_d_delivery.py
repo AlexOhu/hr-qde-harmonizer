@@ -1,8 +1,7 @@
 """
 Schritt 4c: Erzeugung der drei Lieferartefakte fuer Saeule D.
 
-Die Lieferspezifikation (``MASTERAND_OBERHUBER.md`` v0.2, Abschnitt 2) verlangt
-drei getrennte Dateien:
+Die Lieferung besteht aus drei getrennten Dateien:
 
   1. ``oberhuber-harmonised-ontology-v{V}.ttl``
      Die formalisierten Nicht-ESCO-Konzepte mit Provenienz und die Konzepte
@@ -11,25 +10,23 @@ drei getrennte Dateien:
 
   2. ``oberhuber-mappings-v{V}.ttl``
      Ein ``sssom:MappingSet`` mit ``harm:HubMapping``-Records (e-CF <-> ESCO-
-     Skill) und acht ``harm:LevelMapping``-Records (DQR <-> EQF). Alle Slots
+     Skill), e-CF-Dimension-3-zu-DQR-``harm:LevelMapping``-Records und acht
+     DQR<->EQF-``harm:LevelMapping``-Records. Alle Slots
      folgen SSSOM: ``sssom:predicate_id`` als IRI, ``sssom:mapping_confidence``
      als ``xsd:decimal``.
 
   3. ``oberhuber-integration-strategy-v{V}.md``
-     Strategie je disjunktem Konzept, der CEN-EN-16234-1-Crosswalk (e-CF
-     Dimension 3 -> EQF) als narrative Tabelle und das Begleitprotokoll.
+     Strategie je disjunktem Konzept und das Begleitprotokoll.
 
 Validiert wird gegen die kanonischen Bezugsdokumente ``hrqde-shape-
 harmonisation.ttl`` und ``hrqde-harmonisation-schema.ttl`` (Adrian Vogler,
-v0.2.0). Ziel: 0 Violations.
+v0.3.1). Ziel: 0 Violations.
 
-ADR-24 e-CF-Dimension-3-Crosswalk erscheint nicht als ``harm:LevelMapping``
-       (die Shape verlangt Niveau<->Niveau), sondern narrativ in Artefakt 3.
-ADR-25 ``harm:EQF{n}``/``harm:DQR{n}`` werden nicht gepraegt; die
+ADR-23 ``harm:EQF{n}``/``harm:DQR{n}`` werden nicht gepraegt; die
        LevelMappings referenzieren ``hrqde:DQR{n}`` und die
        qf-eu-level-Autoritaets-URI direkt.
-ADR-26 Drei getrennte Lieferartefakte statt einer kombinierten Datei.
-ADR-28 ``harm:HubMapping``/``harm:OccupationMapping`` aus dem gelieferten
+ADR-24 Drei getrennte Lieferartefakte statt einer kombinierten Datei.
+ADR-26 ``harm:HubMapping``/``harm:OccupationMapping`` aus dem gelieferten
        Schema; ``sssom:mapping_confidence`` als ``xsd:decimal``,
        ``predicate_id`` als IRI.
 """
@@ -62,7 +59,7 @@ SEMAPV = Namespace("https://w3id.org/semapv/vocab/")
 SSSOM = Namespace("https://w3id.org/sssom/")
 QF_EU_LEVEL = "http://data.europa.eu/snb/qf-eu-level/"
 
-# Spec Abschnitt 7, URI-Muster: harm:{rahmen}/{kennung}-Konzepte werden im
+# URI-Muster: harm:{rahmen}/{kennung}-Konzepte werden im
 # Lieferartefakt unter harm:source/{rahmen}/{kennung} serialisiert. Nur die
 # Satelliten-Rahmen selbst (Quellkonzepte); KQR-Entitaeten, Mapping- und
 # Cluster-Individuen (kqr_ecf, mapping/..., levelmapping/..., mappingset/...)
@@ -88,11 +85,11 @@ def _delivery_uri(original: URIRef | str) -> URIRef:
 
 ONTOLOGY_URI = URIRef("http://hr-qde.org/harmonised/oberhuber-harmonised-ontology")
 
-# SSSOM-Praedikate, die im Konjunkt-Zweig zulaessig sind (Spec Abschnitt 5).
+# SSSOM-Praedikate, die im Konjunkt-Zweig zulaessig sind.
 _K_PREDICATES = {"skos:exactMatch", "skos:closeMatch", "skos:broadMatch", "skos:narrowMatch"}
 
-# CEN EN 16234-1: e-CF-Proficiency-Stufe -> EQF-Niveau(s). Nur fuer die
-# narrative Crosswalk-Tabelle in Artefakt 3 (ADR-24), nicht fuer Tripel.
+# e-CF 3.0 (CWA 16234-1:2014): e-CF-Proficiency-Stufe -> EQF-Niveau(s). Die Zuordnung wird
+# als regulaere harm:LevelMapping-Records fuer die e-CF-Levelknoten serialisiert.
 ECF_EQF_CROSSWALK: dict[str, list[int]] = {
     "e-1": [3],
     "e-2": [4],
@@ -101,7 +98,7 @@ ECF_EQF_CROSSWALK: dict[str, list[int]] = {
     "e-5": [8],
 }
 
-# ADR-25: DQR<->EQF, normativ aus dem Deutschen EQR-Zuordnungsbericht (2013).
+# ADR-23: DQR<->EQF, normativ aus dem Deutschen EQR-Zuordnungsbericht (2013).
 # Subjekt = Skelett-Niveauknoten, Objekt = EQF-Autoritaets-URI. Kein e-CF-Bezug.
 LEVEL_MAPPING_TOOL = "Deutscher EQR-Zuordnungsbericht 2013"
 
@@ -142,8 +139,10 @@ _SRC_ID = Namespace("https://hrqde.example.org/ontology#")  # Platzhalter-NS der
 
 
 def _source_identifier(graph: Graph, uri: URIRef) -> str | None:
-    """``hrqde:sourceIdentifier`` aus der e-CF-Formalisierung (Platzhalter-NS)."""
+    """Liest die interne oder kanonische sourceIdentifier-Property."""
     ident = next(graph.objects(uri, _SRC_ID.sourceIdentifier), None)
+    if ident is None:
+        ident = next(graph.objects(uri, HARM.sourceIdentifier), None)
     return str(ident) if ident is not None else None
 
 
@@ -158,12 +157,27 @@ def _ecf_sort_ident(ecf_graph: Graph, comp_id: str) -> str:
     return ident
 
 
-def _ecf_leaf_concepts(ecf_graph: Graph) -> list[URIRef]:
+def _ecf_level_concepts(ecf_graph: Graph) -> list[URIRef]:
+    return sorted(
+        (URIRef(str(c)) for c in ecf_graph.subjects(RDF.type, HARM.LevelConcept)),
+        key=str,
+    )
+
+
+def _ecf_competence_concepts(ecf_graph: Graph) -> list[URIRef]:
+    return sorted(
+        (URIRef(str(c)) for c in ecf_graph.subjects(RDF.type, HARM.CompetenceConcept)),
+        key=str,
+    )
+
+
+def _ecf_leaf_concepts(ecf_graph: Graph, excluded: list[URIRef] | None = None) -> list[URIRef]:
     containers, _ = detect_container_concepts(ecf_graph)
+    excluded_ids = {str(c) for c in (excluded or [])}
     leaves = [
         URIRef(str(c))
         for c in ecf_graph.subjects(RDF.type, SKOS.Concept)
-        if str(c) not in containers
+        if str(c) not in containers and str(c) not in excluded_ids
     ]
     return sorted(leaves, key=str)
 
@@ -173,37 +187,39 @@ def _ecf_area_concepts(ecf_graph: Graph) -> list[URIRef]:
     return sorted((URIRef(c) for c in containers), key=str)
 
 
+def _same_concept_uri(left: str, right: URIRef | str) -> bool:
+    """Vergleicht interne und Liefer-URIs derselben Quellkonzepte."""
+    return _delivery_uri(left) == _delivery_uri(right)
+
+
 # ---------------------------------------------------------------------------
-# CEN-Crosswalk -> LevelMapping-Kandidaten (nur fuer Artefakt 3)
+# e-CF-Dimension-3-Crosswalk -> LevelMapping-Records
 # ---------------------------------------------------------------------------
 
 def generate_level_mappings_from_ecf(ecf_graph: Graph) -> list[LevelMapping]:
-    """Erzeugt die e-CF-Dimension-3-Zuordnungen (``hrqde:proficiencyLevel`` +
-    ``ECF_EQF_CROSSWALK``) als ``LevelMapping``-Objekte fuer die narrative
-    Tabelle in ``oberhuber-integration-strategy-v{V}.md``.
+    """Erzeugt die normativen e-CF-Dimension-3-zu-DQR-LevelMappings.
 
-    Diese Objekte werden NICHT als ``harm:LevelMapping``-Tripel serialisiert
-    (ADR-24): die kanonische ``LevelMappingShape`` verlangt fuer Subjekt und
-    Objekt eine Skelett- bzw. EQF-Autoritaets-URI, eine e-CF-Kompetenz-URI
-    als Subjekt ist damit unvereinbar.
+    Die Levelknoten tragen bereits ``harm:eqfCrosswalkTarget`` auf den
+    DQR-Anker in ``dqr_1d``. Der Crosswalk ist deshalb kein HubMapping und
+    keine narrative Sonderform, sondern ein regulärer LevelMapping-Record.
     """
     rows: list[LevelMapping] = []
-    for comp, level_literal in ecf_graph.subject_objects(_SRC_ID.proficiencyLevel):
-        comp_uri = URIRef(str(comp))
-        proficiency = str(level_literal).strip()
-        source_label = _pref_label(ecf_graph, comp_uri, "en") or _any_label(ecf_graph, comp_uri)
-        for n in ECF_EQF_CROSSWALK.get(proficiency, []):
+    for level_uri in ecf_graph.subjects(RDF.type, HARM.LevelConcept):
+        for dqr_uri in ecf_graph.objects(level_uri, HARM.eqfCrosswalkTarget):
+            level_label = _pref_label(ecf_graph, URIRef(str(level_uri)), "en") or _any_label(
+                ecf_graph, URIRef(str(level_uri))
+            )
             rows.append(
                 LevelMapping(
-                    subject_id=str(comp_uri),
-                    subject_label=source_label,
-                    proficiency_level=proficiency,
-                    object_id=f"{QF_EU_LEVEL}{n}",
-                    object_label=f"EQF Level {n}",
-                    predicate_id="skos:relatedMatch",
+                    subject_id=str(level_uri),
+                    subject_label=level_label,
+                    proficiency_level=_proficiency_from_level_uri(str(level_uri)),
+                    object_id=str(dqr_uri),
+                    object_label=_any_label(ecf_graph, URIRef(str(dqr_uri))),
+                    predicate_id="skos:closeMatch",
                     mapping_confidence=Decimal("1.0"),
                     mapping_justification=MappingJustification.MANUAL_MAPPING_CURATION,
-                    mapping_tool="CEN EN 16234-1 Crosswalk Table",
+                    mapping_tool="e-CF 3.0 (CWA 16234-1:2014)",
                 )
             )
     rows.sort(key=lambda r: (
@@ -212,8 +228,16 @@ def generate_level_mappings_from_ecf(ecf_graph: Graph) -> list[LevelMapping]:
     return rows
 
 
+def _proficiency_from_level_uri(level_uri: str) -> str | None:
+    """Liest ``Niveau{n}`` aus einem e-CF-Dimension-3-URI."""
+    marker = ".Niveau"
+    if marker not in level_uri:
+        return None
+    return f"e-{level_uri.rsplit(marker, 1)[-1]}"
+
+
 def dqr_eqf_level_mappings() -> list[LevelMapping]:
-    """Die acht normativen DQR<->EQF-Niveauzuordnungen (ADR-25). Subjekt ist
+    """Die acht normativen DQR<->EQF-Niveauzuordnungen (ADR-23). Subjekt ist
     der Skelett-Knoten ``hrqde:DQR{n}``, Objekt die EQF-Autoritaets-URI."""
     return [
         LevelMapping(
@@ -237,7 +261,7 @@ def dqr_eqf_level_mappings() -> list[LevelMapping]:
 
 def _bind(graph: Graph) -> None:
     graph.bind("harm", HARM)
-    graph.bind("harm-ecf", HARM_ECF)  # Unterpfad, eigener Praefix (Spec Abschnitt 7)
+    graph.bind("harm-ecf", HARM_ECF)  # Unterpfad, eigener Praefix
     graph.bind("hrqde", HRQDE_SKELETON)  # Skelett-NS, nur referenziert
     graph.bind("skos", SKOS)
     graph.bind("owl", OWL)
@@ -259,7 +283,12 @@ def _ontology_header(graph: Graph, version: str, title: str) -> None:
 
 
 def _semapv_iri(justification: MappingJustification) -> URIRef:
-    return SEMAPV[justification.value.split(":", 1)[1]]
+    # SEMAPV enumerates no LLMBasedMatching term. The internal provider
+    # provenance is therefore exported as the closest standard term.
+    local = justification.value.split(":", 1)[1]
+    if local == "LLMBasedMatching":
+        local = "CompositeMatching"
+    return SEMAPV[local]
 
 
 def _decimal(value: object) -> Literal:
@@ -295,16 +324,22 @@ def write_ontology(
         graph.add((node, RDF.type, HARM.KQR))
         graph.add((node, RDFS.label, Literal(label, lang="en")))
 
-    ecf_leaves = _ecf_leaf_concepts(ecf_graph)
+    ecf_levels = _ecf_level_concepts(ecf_graph)
+    ecf_competences = _ecf_competence_concepts(ecf_graph)
+    ecf_leaves = _ecf_leaf_concepts(ecf_graph, excluded=ecf_levels)
     ecf_areas = _ecf_area_concepts(ecf_graph)
 
     # e-CF-Konzepte (Dimension 2) + Provenienz --------------------------
     # Intern (Matching gegen k_mappings/disjoint_decisions) bleibt bei den
     # Original-URIs; nur die geschriebenen Tripel tragen die Liefer-URI
-    # (harm:source/ecf/... statt harm:ecf/..., Spec Abschnitt 7).
-    for concept in (*ecf_areas, *ecf_leaves):
+    # (harm:source/ecf/... statt harm:ecf/...).
+    for concept in (*ecf_areas, *ecf_competences, *ecf_levels):
         node = _delivery_uri(concept)
         graph.add((node, RDF.type, SKOS.Concept))
+        if (concept, RDF.type, HARM.CompetenceConcept) in ecf_graph:
+            graph.add((node, RDF.type, HARM.CompetenceConcept))
+        if (concept, RDF.type, HARM.LevelConcept) in ecf_graph:
+            graph.add((node, RDF.type, HARM.LevelConcept))
         for lang in ("en", "de"):
             lbl = _pref_label(ecf_graph, concept, lang)
             if lbl:
@@ -319,22 +354,30 @@ def write_ontology(
         for parent in ecf_graph.objects(concept, SKOS.broader):
             if URIRef(str(parent)) in set(ecf_areas):
                 graph.add((node, SKOS.broader, _delivery_uri(parent)))
+        for level in ecf_graph.objects(concept, HARM.hasLevel):
+            graph.add((node, HARM.hasLevel, _delivery_uri(level)))
 
     # Anker-Bestimmung: welche e-CF-Blaetter haben ein CONJUNCT-K-Mapping?
     ecf_leaf_ids = {str(u) for u in ecf_leaves}
     k_conjunct = _conjunct_ecf_esco(k_mappings)
-    anchored_ecf = {m.subject_id for m in k_conjunct if m.subject_id in ecf_leaf_ids}
-    anchored_ecf |= {m.object_id for m in k_conjunct if m.object_id in ecf_leaf_ids}
+    anchored_ecf = {
+        str(u) for u in ecf_leaves
+        if any(_same_concept_uri(m.subject_id, u) or _same_concept_uri(m.object_id, u)
+               for m in k_conjunct)
+    }
 
     # harm:HarmonisedConcept fuer die disjunkten e-CF-Blaetter ----------
-    decision_by_id = {d.concept_id: d for d in disjoint_decisions}
+    # Entscheidungen tragen die interne URI (harm:ecf/...), die Blaetter aus
+    # ecf_level die Liefer-URI (harm:source/ecf/...). Abgleich daher ueber
+    # die normalisierte Liefer-URI, wie bei den K-Mappings (_same_concept_uri).
+    decision_by_id = {str(_delivery_uri(d.concept_id)): d for d in disjoint_decisions}
     harmonised_concepts: list[URIRef] = []
     strategy_counts: dict[str, int] = {}
     for leaf in ecf_leaves:
         if str(leaf) in anchored_ecf:
             continue
         harmonised_concepts.append(leaf)
-        decision = decision_by_id.get(str(leaf))
+        decision = decision_by_id.get(str(_delivery_uri(leaf)))
         strategy = decision.strategy.value if decision else DisjointStrategy.OWN_CLASS.value
         strategy_counts[strategy] = strategy_counts.get(strategy, 0) + 1
         node = _delivery_uri(leaf)
@@ -342,6 +385,14 @@ def write_ontology(
         graph.add((node, HARM.integrationStrategy, Literal(strategy)))
         comment = _harmonised_comment(decision)
         graph.add((node, RDFS.comment, Literal(comment, lang="de")))
+        if decision:
+            graph.add((node, DCTERMS.creator, Literal(decision.author)))
+            created_at = decision.created_at
+            if created_at.tzinfo is None:
+                created_at = created_at.replace(tzinfo=timezone.utc)
+            else:
+                created_at = created_at.astimezone(timezone.utc)
+            graph.add((node, DCTERMS.created, Literal(created_at, datatype=XSD.dateTime)))
 
     target.parent.mkdir(parents=True, exist_ok=True)
     graph.serialize(destination=str(target), format="turtle", encoding="utf-8")
@@ -353,22 +404,41 @@ def write_ontology(
         "version": version,
         "kqr_entities": len(_KQR_ENTITIES),
         "ecf_concepts": len(ecf_leaves),
+        "ecf_level_concepts": len(ecf_levels),
         "ecf_areas": len(ecf_areas),
         "harmonised_concepts": len(harmonised_concepts),
         "harmonised_by_strategy": strategy_counts,
+        # Normalisierte Liefer-URIs, Abgleich gegen disjoint_decisions.
+        "harmonised_concept_ids": sorted(str(_delivery_uri(u)) for u in harmonised_concepts),
+        "harmonised_decided": sum(
+            1 for u in harmonised_concepts if str(_delivery_uri(u)) in decision_by_id
+        ),
         "generated_at": datetime.now(timezone.utc).isoformat(),
     }
 
 
 def _harmonised_comment(decision: DisjointConceptDecision | None) -> str:
-    if decision and (decision.context_loss_note or "").strip():
-        return decision.context_loss_note.strip()
-    if decision and (decision.justification or "").strip():
-        return decision.justification.strip()
-    return (
-        "Kein e-CF-Blatt-Mapping in K nach LLM-Klassifikation und Review; "
-        "als eigenstaendige Klasse der Harmonisierungsschicht gefuehrt."
-    )
+    """Kommentar fuer harm:HarmonisedConcept.
+
+    Das Schema (v0.3.1) kennt keine eigene Property fuer die Ankerklasse
+    einer attach_to_skeleton-Entscheidung, und direkte SKOS-Kanten auf
+    ESCO sind in der Lieferung ausgeschlossen (nur reifizierte Mappings).
+    Die Ankerklasse wird deshalb im Kommentar mitgefuehrt, damit sie in
+    der Lieferung nicht verloren geht."""
+    if decision is None:
+        return (
+            "Kein e-CF-Blatt-Mapping in K nach LLM-Klassifikation und Review; "
+            "ohne gespeicherte Integrationsentscheidung als eigenstaendige Klasse "
+            "der Harmonisierungsschicht gefuehrt (Rueckfallstrategie des Exports)."
+        )
+    parts: list[str] = []
+    if (decision.justification or "").strip():
+        parts.append(decision.justification.strip())
+    if (decision.context_loss_note or "").strip():
+        parts.append(f"Kontextverlust: {decision.context_loss_note.strip()}")
+    if (decision.anchor_class or "").strip():
+        parts.append(f"Ankerklasse: {decision.anchor_class.strip()}")
+    return " ".join(parts) or "Integrationsentscheidung ohne Begruendung."
 
 
 # ---------------------------------------------------------------------------
@@ -378,6 +448,7 @@ def _harmonised_comment(decision: DisjointConceptDecision | None) -> str:
 def write_mappings(
     output_path: Path,
     k_mappings: list[Mapping],
+    ecf_graph: Graph | None = None,
     version: str = "0.2",
 ) -> dict:
     """Schreibt Artefakt 2 (``sssom:MappingSet`` + Hub-/Level-Mappings)."""
@@ -418,8 +489,22 @@ def write_mappings(
         key = m.predicate_id.value if m.predicate_id else "none"
         by_predicate[key] = by_predicate.get(key, 0) + 1
 
-    # 8x harm:LevelMapping DQR <-> EQF (ADR-25) -------------------------
+    # e-CF-Dimension-3 -> DQR (kanonische Niveaukette) ------------------
     level_records: list[URIRef] = []
+    ecf_level_records = generate_level_mappings_from_ecf(ecf_graph) if ecf_graph else []
+    for index, lm in enumerate(ecf_level_records, start=1):
+        rec = HARM[f"levelmapping/ECF_D3__DQR_{index:03d}"]
+        graph.add((rec, RDF.type, HARM.LevelMapping))
+        graph.add((rec, SSSOM.subject_id, _delivery_uri(lm.subject_id)))
+        graph.add((rec, SSSOM.object_id, _delivery_uri(lm.object_id)))
+        graph.add((rec, SSSOM.predicate_id, SKOS[lm.predicate_id.split(":", 1)[-1]]))
+        graph.add((rec, SSSOM.mapping_confidence, _decimal(lm.mapping_confidence)))
+        graph.add((rec, SSSOM.mapping_justification, _semapv_iri(lm.mapping_justification)))
+        graph.add((rec, SSSOM.mapping_tool, Literal(lm.mapping_tool, datatype=XSD.string)))
+        graph.add((mapping_set, SSSOM.mappings, rec))
+        level_records.append(rec)
+
+    # 8x harm:LevelMapping DQR <-> EQF (ADR-23) -------------------------
     for lm in dqr_eqf_level_mappings():
         n = lm.subject_id.rsplit("DQR", 1)[-1]
         rec = HARM[f"levelmapping/DQR{n}__EQF{n}"]
@@ -445,6 +530,7 @@ def write_mappings(
         "hub_mappings": len(hub_records),
         "occupation_mappings": len(occ_records),
         "level_mappings": len(level_records),
+        "ecf_level_mappings": len(ecf_level_records),
         "hub_mappings_above_threshold_067": above_threshold,
         "hub_mappings_by_predicate": by_predicate,
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -498,6 +584,7 @@ def write_integration_strategy(
     lines.append("|---|---|")
     lines.append(f"| e-CF 3.0 (Dimension 2) | {ontology_stats.get('ecf_concepts', 0)} "
                  f"(+ {ontology_stats.get('ecf_areas', 0)} Bereiche) |")
+    lines.append(f"| e-CF 3.0 (Dimension 3) | {ontology_stats.get('ecf_level_concepts', 0)} LevelConcepts |")
     lines.append("| DQR 2013 (Niveaus) | 8 (als Skelett-Referenz `hrqde:DQR1`–`DQR8`) |")
     lines.append("| EQF 2017 (Niveaus) | 8 (als Autoritaets-URI `qf-eu-level/1`–`8`) |")
     lines.append("")
@@ -506,7 +593,8 @@ def write_integration_strategy(
     lines.append("| Typ | Anzahl | Zaehlt zur Coverage |")
     lines.append("|---|---|---|")
     lines.append(f"| `harm:HubMapping` (e-CF ↔ ESCO-Skill) | {mapping_stats.get('hub_mappings', 0)} | ja |")
-    lines.append(f"| `harm:LevelMapping` (DQR ↔ EQF) | {mapping_stats.get('level_mappings', 0)} | nein |")
+    lines.append(f"| `harm:LevelMapping` (e-CF Dimension 3 ↔ DQR) | {mapping_stats.get('ecf_level_mappings', 0)} | nein |")
+    lines.append(f"| `harm:LevelMapping` (DQR ↔ EQF) | 8 | nein |")
     lines.append(f"| `harm:OccupationMapping` | {mapping_stats.get('occupation_mappings', 0)} | nein |")
     lines.append("")
     if coverage:
@@ -531,8 +619,7 @@ def write_integration_strategy(
     lines.append("")
     lines.append("Mappings liegen ausschliesslich reifiziert als `harm:HubMapping`/"
                  "`harm:LevelMapping` in `oberhuber-mappings-v{V}.ttl` vor. Es gibt "
-                 "keine zusaetzliche direkte SKOS-Kante, daher keine Doppelzaehlung "
-                 "(Spec Abschnitt 2).")
+                 "keine zusaetzliche direkte SKOS-Kante, daher keine Doppelzaehlung.")
     lines.append("")
 
     # 2. Integrationsstrategie je disjunktem Konzept ----------------------
@@ -544,41 +631,59 @@ def write_integration_strategy(
     for value in ("own_class", "attach_to_skeleton", "map_to_nearest", "out_of_scope"):
         lines.append(f"| `{value}` | {by_strategy.get(value, 0)} |")
     lines.append("")
-    if disjoint_decisions:
-        lines.append("| Konzept | Strategie | Begruendung / Kontextverlust |")
-        lines.append("|---|---|---|")
-        for d in sorted(disjoint_decisions, key=lambda x: x.concept_id):
-            note = (d.context_loss_note or d.justification or "").replace("|", "\\|").strip()
-            lines.append(f"| `{d.concept_id}` | `{d.strategy.value}` | {note or '—'} |")
+    # Nur Entscheidungen zu Konzepten, die in dieser Lieferung tatsaechlich
+    # als harm:HarmonisedConcept erscheinen (Entscheidungen zu Hub-Konzepten
+    # oder zu Konzepten mit K-Mapping wirken nicht auf die Lieferung).
+    harmonised_ids = ontology_stats.get("harmonised_concept_ids")
+    if harmonised_ids is None:
+        relevant = list(disjoint_decisions)
     else:
-        lines.append("Alle disjunkten Konzepte tragen den automatischen Vorschlag "
-                     "`own_class` (`disjoint_service.suggest_strategy`). Eine manuelle "
-                     "Einzelpruefung steht aus (siehe Limitationen).")
+        wanted = set(harmonised_ids)
+        relevant = [d for d in disjoint_decisions if str(_delivery_uri(d.concept_id)) in wanted]
+    n_harmonised = ontology_stats.get("harmonised_concepts", 0)
+    n_open = max(n_harmonised - len(relevant), 0)
+    if relevant:
+        lines.append("| Konzept | Strategie | Ankerklasse | Begruendung / Kontextverlust | Autor | Datum |")
+        lines.append("|---|---|---|---|---|---|")
+        for d in sorted(relevant, key=lambda x: x.concept_id):
+            note_parts = [p.strip() for p in (d.justification, d.context_loss_note) if (p or "").strip()]
+            note = " / ".join(note_parts).replace("|", "\\|")
+            anchor = f"`{d.anchor_class.strip()}`" if (d.anchor_class or "").strip() else "—"
+            lines.append(
+                f"| `{_delivery_uri(d.concept_id)}` | `{d.strategy.value}` | {anchor} | {note or '—'} "
+                f"| {d.author} | {d.created_at.date().isoformat()} |"
+            )
+        lines.append("")
+    if n_open:
+        lines.append(f"{n_open} von {n_harmonised} disjunkten Konzepten haben keine gespeicherte "
+                     "Integrationsentscheidung und tragen die Rueckfallstrategie `own_class` "
+                     "des Exports. Diese ist kein Ergebnis von "
+                     "`disjoint_service.suggest_strategy` (siehe Limitationen).")
+    elif n_harmonised:
+        lines.append(f"Fuer alle {n_harmonised} disjunkten Konzepte liegt eine gespeicherte "
+                     "Integrationsentscheidung mit Begruendung und Autor vor.")
     lines.append("")
 
-    # 3. CEN-EN-16234-1-Crosswalk (e-CF Dimension 3 -> EQF) --------------
-    lines.append("## 3. CEN-EN-16234-1-Crosswalk: e-CF Dimension 3 → EQF")
+    # 3. Niveaukette ------------------------------------------------------
+    lines.append("## 3. Niveaukette: e-CF Dimension 2 → Dimension 3 → DQR")
     lines.append("")
-    lines.append("Dieser Crosswalk erscheint bewusst NICHT als `harm:LevelMapping` "
-                 "im Lieferartefakt (ADR-24): die kanonische `LevelMappingShape` "
-                 "verlangt fuer Subjekt und Objekt eine Niveau-URI. Eine e-CF-"
-                 "Kompetenz ist kein Niveau. Der Zusammenhang wird daher hier "
-                 "narrativ dokumentiert.")
+    lines.append("e-CF-Dimension-2-Kompetenzen sind als `harm:CompetenceConcept` "
+                 "typisiert und über `harm:hasLevel` mit ihren "
+                 "`harm:LevelConcept`-Beschreibungen verbunden. Jede normative "
+                 "Zuordnung eines Dimension-3-Knotens auf einen DQR-Anker wird "
+                 "als `harm:LevelMapping` mit `skos:closeMatch` serialisiert. "
+                 "Diese Records zählen nicht zur ESCO-Coverage.")
     lines.append("")
-    lines.append("Stufenband-Semantik: dieselbe Kompetenz auf verschiedenen "
-                 "Verantwortungsebenen ergibt mehrere EQF-Ziele. Zusaetzlich "
-                 "verdoppelt e-3 jede Zuordnung (EQF 5 UND EQF 6), weil der "
-                 "CEN-Standard fuer diese Stufe einen Bereich angibt.")
-    lines.append("")
-    lines.append("| e-CF-Kompetenz | Proficiency | EQF |")
+    lines.append("| e-CF-LevelConcept | Proficiency | DQR-Anker |")
     lines.append("|---|---|---|")
     for lm in generate_level_mappings_from_ecf(ecf_graph):
         ident = _source_identifier(ecf_graph, URIRef(lm.subject_id)) or lm.subject_id
-        eqf_n = lm.object_id.rsplit("/", 1)[-1]
-        lines.append(f"| {ident} — {lm.subject_label} | {lm.proficiency_level} | EQF {eqf_n} |")
+        dqr_n = lm.object_id.rsplit("/", 1)[-1]
+        lines.append(f"| {ident} — {lm.subject_label} | {lm.proficiency_level or '—'} | DQR {dqr_n} |")
     lines.append("")
-    lines.append("Stand: normative Referenz `qf-eu-level`-Autoritaets-URIs unter "
-                 "`http://data.europa.eu/snb/qf-eu-level/`.")
+    lines.append("Provenienz: normative e-CF-3.0-Crosswalk (CWA 16234-1:2014); "
+                 "`mapping_justification = semapv:ManualMappingCuration`, "
+                 "`mapping_confidence = 1.0`.")
     lines.append("")
 
     target.parent.mkdir(parents=True, exist_ok=True)
@@ -588,7 +693,7 @@ def write_integration_strategy(
         "artifact": "integration_strategy",
         "path": str(target),
         "version": version,
-        "disjoint_documented": len(disjoint_decisions),
+        "disjoint_documented": len(relevant),
         "generated_at": datetime.now(timezone.utc).isoformat(),
     }
 
@@ -611,7 +716,7 @@ def write_delivery(
     ontology_stats = write_ontology(
         output_dir, ecf_graph, k_mappings, disjoint_decisions, version=version
     )
-    mapping_stats = write_mappings(output_dir, k_mappings, version=version)
+    mapping_stats = write_mappings(output_dir, k_mappings, ecf_graph=ecf_graph, version=version)
     strategy_stats = write_integration_strategy(
         output_dir, ecf_graph, disjoint_decisions, ontology_stats, mapping_stats,
         coverage=coverage, limitations=limitations, version=version,

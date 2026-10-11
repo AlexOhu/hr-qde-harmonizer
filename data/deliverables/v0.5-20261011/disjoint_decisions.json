@@ -1,0 +1,56 @@
+[
+  {
+    "decision_id": "da9bf3ec-2d9f-46ca-b30d-0112a5fc898c",
+    "concept_id": "http://hr-qde.org/harmonised/ecf/A.2",
+    "concept_label": "Service Level Management",
+    "kqr_id": "ecf",
+    "strategy": "attach_to_skeleton",
+    "anchor_class": "http://data.europa.eu/esco/skill/d12e9d68-84c5-444e-aa98-d36533bf03f6",
+    "context_loss_note": null,
+    "context_kqr_ids": [
+      "dqr_1d",
+      "ecf",
+      "ecf_level",
+      "esco_skeleton_oberhuber"
+    ],
+    "justification": "Service Level Management ist in ESCO eher einer Occupation als einem einzelnen Skill-Konzept zuzuordnen. Die Einordnung unter einen ITIL-Knoten ist die naheliegendste Variante.",
+    "author": "a.oberhuber",
+    "created_at": "2026-10-11T20:11:06.470064"
+  },
+  {
+    "decision_id": "92d5120b-9bff-426c-98e4-5324efe887ee",
+    "concept_id": "http://hr-qde.org/harmonised/ecf/D.6",
+    "concept_label": "Channel Management",
+    "kqr_id": "ecf",
+    "strategy": "attach_to_skeleton",
+    "anchor_class": "http://data.europa.eu/esco/skill/628664ec-a63b-4486-8d65-02aba81c82a0",
+    "context_loss_note": null,
+    "context_kqr_ids": [
+      "dqr_1d",
+      "ecf",
+      "ecf_level",
+      "esco_skeleton_oberhuber"
+    ],
+    "justification": "Nächstbesserer Knoten wäre \"manage sales channels\", siehe http://data.europa.eu/esco/skill/4ffec20b-5bbb-47a2-bed5-eb70c4cbb572. Da dieser im IKT-Slice nicht vorhanden ist, wird ICT sales methodologies gewählt.",
+    "author": "a.oberhuber",
+    "created_at": "2026-10-11T20:13:21.427553"
+  },
+  {
+    "decision_id": "e08f742e-3b99-4fc3-aae7-822422f81498",
+    "concept_id": "http://hr-qde.org/harmonised/ecf/D.9",
+    "concept_label": "Personnel Development",
+    "kqr_id": "ecf",
+    "strategy": "own_class",
+    "anchor_class": null,
+    "context_loss_note": null,
+    "context_kqr_ids": [
+      "dqr_1d",
+      "ecf",
+      "ecf_level",
+      "esco_skeleton_oberhuber"
+    ],
+    "justification": "Der ESCO IKT-Slice enthält wenig bis keine nicht-technischen Skills. In Ermangelung eines passenden Ankers wird eine eigenständige Klasse verwendet.",
+    "author": "a.oberhuber",
+    "created_at": "2026-10-11T20:15:22.251878"
+  }
+]

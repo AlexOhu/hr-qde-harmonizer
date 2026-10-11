@@ -1,0 +1,18 @@
+{
+  "derived_project_id": "saeule_d_lieferung_v0_5_klassifikation_v0_4_kuratierte_integrationsentscheidungen_20261011T192329Z",
+  "source_project_id": "saeule_d_lieferung_v0_4_t_0_mistral_small_2603_20261004T185355Z",
+  "version_label": "0.5",
+  "derived_utc": "2026-10-11T19:23:29.430303+00:00",
+  "purpose": "Lieferung ohne neue Klassifikation: Mappings und Klassifikationsergebnisse byte-identisch aus dem Quellprojekt, Integrationsentscheidungen neu.",
+  "copied_sha256": {
+    "mappings.json": "8770841dfe0587b24b67bc0bf44b8ea103a332710f3ee3cc48c16d5c72a61e5c",
+    "classification_results.json": "a3bfc4f9b6790edcc52d01db61caf260af22611468ada60e6378aa8c325279e7",
+    "classification_jobs.json": "149b3031e0464fd48c15f1427f2fcb65242387c5017277f65d4a05e8b6f7ce0d",
+    "delivery/run_config.json": "d491441c4c82e746d39d5f6e336dcc7c3335451ee578e18b1a739649c0f5ab45"
+  },
+  "not_copied": [
+    "disjoint_decisions.json",
+    "delivery/*.ttl",
+    "delivery/*.md"
+  ]
+}

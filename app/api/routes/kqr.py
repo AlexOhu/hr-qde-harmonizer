@@ -9,18 +9,32 @@ KQR den Status 'bereit' hat (Action Constraint).
 
 from __future__ import annotations
 
+from pathlib import Path
+
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
+from fastapi.responses import FileResponse
 
 from app.models.schemas import KQR
 from app.services import kqr_service
 
 router = APIRouter()
+_TEMPLATE_PATH = Path(__file__).resolve().parents[2] / "resources" / "kqr-skos-template.ttl"
 
 
 @router.get("/", response_model=list[KQR])
 def list_kqr() -> list[KQR]:
     """Listet alle eingepflegten KQR mit ihrem aktuellen Status."""
     return kqr_service.list_kqr()
+
+
+@router.get("/template")
+def download_skos_template() -> FileResponse:
+    """Liefert die kommentierte Vorlage für den kuratierten SKOS-Import."""
+    return FileResponse(
+        _TEMPLATE_PATH,
+        filename="hrqde-kqr-skos-vorlage.ttl",
+        media_type="text/turtle; charset=utf-8",
+    )
 
 
 @router.post("/", response_model=KQR)
@@ -31,18 +45,24 @@ async def upload_kqr(
     file: UploadFile = File(...),
 ) -> KQR:
     """
-    Nimmt einen neuen KQR entgegen (Status: roh) und stößt für bereits
-    SKOS-konforme Formate (rdf/turtle) direkt die Validierung und das
-    Parsen der Konzepte an (Direktimport, vgl. Tabelle "kqr_formate").
+    Nimmt einen kuratierten KQR entgegen. Valide SKOS-Dateien werden als
+    ``formalisiert`` registriert; Strukturfehler werden als 422 samt
+    konzeptbezogener Fehlerliste zurückgegeben und nicht registriert.
     """
     content = await file.read()
-    return kqr_service.register_kqr(
-        name=name,
-        source_format=source_format,
-        filename=file.filename or name,
-        content=content,
-        is_hub=is_hub,
-    )
+    try:
+        return kqr_service.register_kqr(
+            name=name,
+            source_format=source_format,
+            filename=file.filename or name,
+            content=content,
+            is_hub=is_hub,
+        )
+    except kqr_service.KQRValidationError as exc:
+        raise HTTPException(
+            status_code=422,
+            detail={"message": "Die Datei erfüllt das SKOS-Importschema nicht.", "errors": exc.errors},
+        ) from exc
 
 
 @router.delete("/{kqr_id}", status_code=204)

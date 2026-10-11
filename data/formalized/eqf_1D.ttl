@@ -1,0 +1,122 @@
+# ============================================================================
+# EQF -- Variante 1D (8 Niveaus)
+# Deskriptoren EN: OJ C 189, 15.6.2017, Annex II (Recommendation 2017/C 189/03).
+# Deskriptoren DE: Europass, amtliche EQR-Deskriptoren Anhang II
+# (https://europass.europa.eu/de/description-eight-eqf-levels).
+# Erzeugt von scripts/22_build_eqf_dqr_granularity_variants.py -- nicht von Hand editieren.
+# Reiner Referenzrahmen: keine ausgehenden Mappings ausser der 1:1-Niveaukalibrierung
+# skos:exactMatch harm-dqr:L{n} (German EQF Referencing Report 2012/2013).
+# ============================================================================
+
+@prefix eqf: <http://data.europa.eu/snb/eqf/> .
+@prefix harm-dqr: <http://hr-qde.org/harmonised/source/dqr/> .
+@prefix harm: <http://hr-qde.org/harmonised/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+eqf:EQFScheme a skos:ConceptScheme ;
+    skos:prefLabel "European Qualifications Framework"@en , "Europäischer Qualifikationsrahmen"@de ;
+    skos:definition "The EQF relates countries' qualifications systems to a common European reference framework. It has eight levels defined by learning outcomes across three dimensions: knowledge, skills, and responsibility and autonomy."@en ;
+    dct:source <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:C:2017:189:TOC> ;
+    skos:hasTopConcept eqf:Level1 , eqf:Level2 , eqf:Level3 , eqf:Level4 , eqf:Level5 , eqf:Level6 , eqf:Level7 , eqf:Level8 .
+
+# --- EQF Niveau 1 ----------------------------------------
+eqf:Level1 a skos:Concept ;
+    skos:inScheme eqf:EQFScheme ;
+    skos:prefLabel "EQF Level 1"@en , "EQR-Niveau 1"@de ;
+    skos:definition "Knowledge: basic general knowledge. Skills: basic skills required to carry out simple tasks. Responsibility and autonomy: work or study under direct supervision in a structured context."@en , "Kenntnisse: grundlegendes Allgemeinwissen. Fertigkeiten: grundlegende Fertigkeiten, die zur Erledigung einfacher Aufgaben erforderlich sind. Verantwortung und Selbstständigkeit: Arbeiten oder Lernen unter direkter Anleitung in einem strukturierten Kontext."@de ;
+    eqf:levelNumber "1"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_eqf ;
+    harm:sourceIdentifier "Level1" ;
+    a harm:LevelConcept ;
+    skos:exactMatch harm-dqr:L1 .
+
+# --- EQF Niveau 2 ----------------------------------------
+eqf:Level2 a skos:Concept ;
+    skos:inScheme eqf:EQFScheme ;
+    skos:prefLabel "EQF Level 2"@en , "EQR-Niveau 2"@de ;
+    skos:definition "Knowledge: basic factual knowledge of a field of work or study. Skills: basic cognitive and practical skills required to use relevant information in order to carry out tasks and to solve routine problems using simple rules and tools. Responsibility and autonomy: work or study under supervision with some autonomy."@en , "Kenntnisse: grundlegendes Faktenwissen in einem Arbeits- oder Lernbereich. Fertigkeiten: grundlegende kognitive und praktische Fertigkeiten, die zur Nutzung einschlägiger Informationen erforderlich sind, um Aufgaben zu erledigen und Routineprobleme unter Verwendung einfacher Regeln und Werkzeuge zu lösen. Verantwortung und Selbstständigkeit: Arbeiten oder Lernen unter Anleitung mit einem gewissen Maß an Selbstständigkeit."@de ;
+    skos:broader eqf:Level1 ;
+    eqf:levelNumber "2"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_eqf ;
+    harm:sourceIdentifier "Level2" ;
+    a harm:LevelConcept ;
+    skos:exactMatch harm-dqr:L2 .
+
+# --- EQF Niveau 3 ----------------------------------------
+eqf:Level3 a skos:Concept ;
+    skos:inScheme eqf:EQFScheme ;
+    skos:prefLabel "EQF Level 3"@en , "EQR-Niveau 3"@de ;
+    skos:definition "Knowledge: knowledge of facts, principles, processes and general concepts, in a field of work or study. Skills: a range of cognitive and practical skills required to accomplish tasks and solve problems by selecting and applying basic methods, tools, materials and information. Responsibility and autonomy: take responsibility for completion of tasks in work or study; adapt own behaviour to circumstances in solving problems."@en , "Kenntnisse: Kenntnisse von Fakten, Grundsätzen, Verfahren und allgemeinen Begriffen in einem Arbeits- oder Lernbereich. Fertigkeiten: eine Reihe kognitiver und praktischer Fertigkeiten zur Erledigung von Aufgaben und zur Lösung von Problemen, wobei grundlegende Methoden, Werkzeuge, Materialien und Informationen ausgewählt und angewandt werden. Verantwortung und Selbstständigkeit: Verantwortung für die Erledigung von Arbeits- oder Lernaufgaben übernehmen; bei der Lösung von Problemen das eigene Verhalten an die jeweiligen Umstände anpassen."@de ;
+    skos:broader eqf:Level2 ;
+    eqf:levelNumber "3"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_eqf ;
+    harm:sourceIdentifier "Level3" ;
+    a harm:LevelConcept ;
+    skos:exactMatch harm-dqr:L3 .
+
+# --- EQF Niveau 4 ----------------------------------------
+eqf:Level4 a skos:Concept ;
+    skos:inScheme eqf:EQFScheme ;
+    skos:prefLabel "EQF Level 4"@en , "EQR-Niveau 4"@de ;
+    skos:definition "Knowledge: factual and theoretical knowledge in broad contexts within a field of work or study. Skills: a range of cognitive and practical skills required to generate solutions to specific problems in a field of work or study. Responsibility and autonomy: exercise self-management within the guidelines of work or study contexts that are usually predictable, but are subject to change; supervise the routine work of others, taking some responsibility for the evaluation and improvement of work or study activities."@en , "Kenntnisse: breites Spektrum an Fakten- und Theoriewissen in einem Arbeits- oder Lernbereich. Fertigkeiten: eine Reihe kognitiver und praktischer Fertigkeiten, die erforderlich sind, um Lösungen für spezielle Probleme in einem Arbeits- oder Lernbereich zu finden. Verantwortung und Selbstständigkeit: selbstständiges Tätigwerden innerhalb der Handlungsparameter von Arbeits- oder Lernkontexten, die in der Regel bekannt sind, sich jedoch ändern können; Beaufsichtigung der Routinearbeit anderer Personen, wobei ein gewisses Maß an Verantwortung für die Bewertung und Verbesserung der Arbeits- oder Lernaktivitäten übernommen wird."@de ;
+    skos:broader eqf:Level3 ;
+    eqf:levelNumber "4"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_eqf ;
+    harm:sourceIdentifier "Level4" ;
+    a harm:LevelConcept ;
+    skos:exactMatch harm-dqr:L4 .
+
+# --- EQF Niveau 5 ----------------------------------------
+eqf:Level5 a skos:Concept ;
+    skos:inScheme eqf:EQFScheme ;
+    skos:prefLabel "EQF Level 5"@en , "EQR-Niveau 5"@de ;
+    skos:definition "Knowledge: comprehensive, specialised, factual and theoretical knowledge within a field of work or study and an awareness of the boundaries of that knowledge. Skills: a comprehensive range of cognitive and practical skills required to develop creative solutions to abstract problems. Responsibility and autonomy: exercise management and supervision in contexts of work or study activities where there is unpredictable change; review and develop performance of self and others."@en , "Kenntnisse: umfassendes, spezialisiertes Fakten- und Theoriewissen in einem Arbeits- oder Lernbereich sowie Bewusstsein für die Grenzen dieser Kenntnisse. Fertigkeiten: umfassende kognitive und praktische Fertigkeiten, die erforderlich sind, um kreative Lösungen für abstrakte Probleme zu erarbeiten. Verantwortung und Selbstständigkeit: Leiten und Beaufsichtigen in Arbeits- oder Lernkontexten, in denen unvorhersehbare Änderungen auftreten; Überprüfung und Entwicklung der eigenen Leistung und der Leistung anderer Personen."@de ;
+    skos:scopeNote "The descriptor for the short cycle (Bologna process) corresponds to EQF Level 5."@en ;
+    skos:broader eqf:Level4 ;
+    eqf:levelNumber "5"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_eqf ;
+    harm:sourceIdentifier "Level5" ;
+    a harm:LevelConcept ;
+    skos:exactMatch harm-dqr:L5 .
+
+# --- EQF Niveau 6 ----------------------------------------
+eqf:Level6 a skos:Concept ;
+    skos:inScheme eqf:EQFScheme ;
+    skos:prefLabel "EQF Level 6"@en , "EQR-Niveau 6"@de ;
+    skos:definition "Knowledge: advanced knowledge of a field of work or study, involving a critical understanding of theories and principles. Skills: advanced skills, demonstrating mastery and innovation, required to solve complex and unpredictable problems in a specialised field of work or study. Responsibility and autonomy: manage complex technical or professional activities or projects, taking responsibility for decision-making in unpredictable work or study contexts; take responsibility for managing professional development of individuals and groups."@en , "Kenntnisse: fortgeschrittene Kenntnisse in einem Arbeits- oder Lernbereich unter Einsatz eines kritischen Verständnisses von Theorien und Grundsätzen. Fertigkeiten: fortgeschrittene Fertigkeiten, die die Beherrschung des Faches sowie Innovationsfähigkeit erkennen lassen und zur Lösung komplexer und unvorhersehbarer Probleme in einem spezialisierten Arbeits- oder Lernbereich nötig sind. Verantwortung und Selbstständigkeit: Leitung komplexer fachlicher oder beruflicher Tätigkeiten oder Projekte und Übernahme von Entscheidungsverantwortung in unvorhersehbaren Arbeits- oder Lernkontexten; Übernahme von Verantwortung für die berufliche Entwicklung von Einzelpersonen und Gruppen."@de ;
+    skos:scopeNote "The descriptor for the first cycle (Bologna process) corresponds to EQF Level 6."@en ;
+    skos:broader eqf:Level5 ;
+    eqf:levelNumber "6"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_eqf ;
+    harm:sourceIdentifier "Level6" ;
+    a harm:LevelConcept ;
+    skos:exactMatch harm-dqr:L6 .
+
+# --- EQF Niveau 7 ----------------------------------------
+eqf:Level7 a skos:Concept ;
+    skos:inScheme eqf:EQFScheme ;
+    skos:prefLabel "EQF Level 7"@en , "EQR-Niveau 7"@de ;
+    skos:definition "Knowledge: highly specialised knowledge, some of which is at the forefront of knowledge in a field of work or study, as the basis for original thinking and/or research; critical awareness of knowledge issues in a field and at the interface between different fields. Skills: specialised problem-solving skills required in research and/or innovation in order to develop new knowledge and procedures and to integrate knowledge from different fields. Responsibility and autonomy: manage and transform work or study contexts that are complex, unpredictable and require new strategic approaches; take responsibility for contributing to professional knowledge and practice and/or for reviewing the strategic performance of teams."@en , "Kenntnisse: hoch spezialisierte Kenntnisse, die zum Teil an neueste Erkenntnisse in einem Arbeits- oder Lernbereich anknüpfen, als Grundlage für innovative Denkansätze und/oder Forschung; kritisches Bewusstsein für Wissensfragen in einem Bereich und an der Schnittstelle zwischen verschiedenen Bereichen. Fertigkeiten: spezialisierte Problemlösungsfertigkeiten im Bereich Forschung und/oder Innovation, um neue Kenntnisse zu gewinnen und neue Verfahren zu entwickeln sowie um Wissen aus verschiedenen Bereichen zu integrieren. Verantwortung und Selbstständigkeit: Leitung und Gestaltung komplexer, unvorhersehbarer Arbeits- oder Lernkontexte, die neue strategische Ansätze erfordern; Übernahme von Verantwortung für Beiträge zum Fachwissen und zur Berufspraxis und/oder für die Überprüfung der strategischen Leistung von Teams."@de ;
+    skos:scopeNote "The descriptor for the second cycle (Bologna process) corresponds to EQF Level 7."@en ;
+    skos:broader eqf:Level6 ;
+    eqf:levelNumber "7"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_eqf ;
+    harm:sourceIdentifier "Level7" ;
+    a harm:LevelConcept ;
+    skos:exactMatch harm-dqr:L7 .
+
+# --- EQF Niveau 8 ----------------------------------------
+eqf:Level8 a skos:Concept ;
+    skos:inScheme eqf:EQFScheme ;
+    skos:prefLabel "EQF Level 8"@en , "EQR-Niveau 8"@de ;
+    skos:definition "Knowledge: knowledge at the most advanced frontier of a field of work or study and at the interface between fields. Skills: the most advanced and specialised skills and techniques, including synthesis and evaluation, required to solve critical problems in research and/or innovation and to extend and redefine existing knowledge or professional practice. Responsibility and autonomy: demonstrate substantial authority, innovation, autonomy, scholarly and professional integrity and sustained commitment to the development of new ideas or processes at the forefront of work or study contexts including research."@en , "Kenntnisse: Spitzenkenntnisse in einem Arbeits- oder Lernbereich und an der Schnittstelle zwischen verschiedenen Bereichen. Fertigkeiten: im höchsten Maße fortgeschrittene und spezialisierte Fertigkeiten und Methoden, einschließlich Synthese und Evaluierung, zur Lösung zentraler Problemstellungen in den Bereichen Forschung und/oder Innovation und zur Erweiterung oder Neudefinition vorhandener Kenntnisse oder beruflicher Praxis. Verantwortung und Selbstständigkeit: fachliche Autorität, Innovationsfähigkeit, Selbstständigkeit, wissenschaftliche und berufliche Integrität und nachhaltiges Engagement bei der Entwicklung neuer Ideen oder Verfahren in führenden Arbeits- oder Lernkontexten, einschließlich der Forschung."@de ;
+    skos:scopeNote "The descriptor for the third cycle (Bologna process) corresponds to EQF Level 8."@en ;
+    skos:broader eqf:Level7 ;
+    eqf:levelNumber "8"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_eqf ;
+    harm:sourceIdentifier "Level8" ;
+    a harm:LevelConcept ;
+    skos:exactMatch harm-dqr:L8 .

@@ -1,6 +1,6 @@
 # =====================================================================
 # HR-QDE SHACL Shapes — Säule D (Harmonisation Layer)
-# Version 0.2.0  ·  2026-08-06
+# Version 0.3.1-draft  ·  2026-09-06
 #
 # Shape module for the harmonisation layer. Intended to be merged into
 # hrqde-shapes-all.ttl (then v0.3.0), because
@@ -28,12 +28,23 @@
 # three data pillars meet on the skill layer (targetsCompetence,
 # refersToCompetence, acquiredCompetenceOf). Occupations carry a single
 # edge in the entire graph and that one comes from a toolkit example.
+#
+# Changes against 0.3.0
+# ---------------------
+# hasLevel is now role-checked. Its source must be a
+# harm:CompetenceConcept and each target a harm:LevelConcept. The
+# resulting e-CF-dimension-3-to-DQR record is a LevelMapping, not a
+# HubMapping; the latter keeps its ESCO-skill-only object constraint.
+# dcterms:creator and dcterms:created are checked when present on a
+# HarmonisedConcept; they remain optional because automatic suggestions
+# are not manually curated in every delivery.
 # =====================================================================
 
 @prefix harm:        <http://hr-qde.org/harmonised/> .
 @prefix hrqde:       <http://hr-qde.org/ontology/> .
 @prefix hrqde-shape: <http://hr-qde.org/shapes/> .
 @prefix sssom:       <https://w3id.org/sssom/> .
+@prefix dcterms:     <http://purl.org/dc/terms/> .
 @prefix sh:          <http://www.w3.org/ns/shacl#> .
 @prefix rdf:         <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:        <http://www.w3.org/2000/01/rdf-schema#> .
@@ -95,6 +106,20 @@ hrqde-shape:HarmonisedConceptShape
     sh:minCount     1 ;
     sh:message      "HarmonisedConcept must carry a comment explaining why no correspondence in another framework was found."@en ,
                     "HarmonisedConcept muss einen Kommentar tragen, der begründet, warum keine Entsprechung in einem anderen Rahmen gefunden wurde."@de ;
+  ] ;
+  sh:property [
+    sh:path         dcterms:creator ;
+    sh:datatype     xsd:string ;
+    sh:maxCount     1 ;
+    sh:message      "HarmonisedConcept creator, when present, must be a single string."@en ,
+                    "HarmonisedConcept dcterms:creator muss, wenn vorhanden, genau ein String sein."@de ;
+  ] ;
+  sh:property [
+    sh:path         dcterms:created ;
+    sh:datatype     xsd:dateTime ;
+    sh:maxCount     1 ;
+    sh:message      "HarmonisedConcept created timestamp, when present, must be a single xsd:dateTime."@en ,
+                    "HarmonisedConcept dcterms:created muss, wenn vorhanden, genau ein xsd:dateTime sein."@de ;
   ] .
 
 
@@ -112,11 +137,12 @@ hrqde-shape:HarmonisedClusterShape
     sh:message      "A cluster must harmonise at least two concepts, otherwise it asserts nothing."@en ,
                     "Ein Cluster muss mindestens zwei Konzepte harmonisieren, sonst behauptet es nichts."@de ;
   ] ;
-  sh:property [
-    sh:path         skos:prefLabel ;
-    sh:minCount     1 ;
-    sh:uniqueLang   true ;
-  ] .
+  sh:or (
+    [ sh:property [ sh:path skos:prefLabel ; sh:minCount 1 ; sh:uniqueLang true ] ]
+    [ sh:property [ sh:path rdfs:label     ; sh:minCount 1 ; sh:uniqueLang true ] ]
+  ) ;
+  sh:message        "A cluster must carry a name, either as skos:prefLabel or as rdfs:label, at most one per language."@en ,
+                    "Ein Cluster muss einen Namen tragen, entweder als skos:prefLabel oder als rdfs:label, je Sprache hoechstens einen."@de .
 
 
 # Mappings, common constraints ========================================
@@ -168,9 +194,9 @@ hrqde-shape:MappingShape
     sh:minCount     1 ;
     sh:maxCount     1 ;
     sh:nodeKind     sh:IRI ;
-    sh:pattern      "^https://w3id\\.org/semapv/" ;
-    sh:message      "Mapping must state a justification from the SEMAPV vocabulary as an IRI, per section 2.2.2 of the thesis. The slot match_type is not used."@en ,
-                    "Mapping muss eine Justification aus dem SEMAPV-Vokabular als IRI angeben, gemäß Abschnitt 2.2.2 der Arbeit. Der Slot match_type wird nicht verwendet."@de ;
+    sh:pattern      "^https://w3id\\.org/semapv/vocab/(MappingReview|ManualMappingCuration|LogicalReasoning|LexicalMatching|CompositeMatching|UnspecifiedMatching|SemanticSimilarityThresholdMatching|LexicalSimilarityThresholdMatching|MappingChaining|MappingInversion|StructuralMatching|InstanceBasedMatching|BackgroundKnowledgeBasedMatching)$" ;
+    sh:message      "Mapping justification must be one of the terms SSSOM enumerates for mapping_justification, given as a SEMAPV IRI. Invented terms such as LLMBasedMatching are outside the enumeration; CompositeMatching or BackgroundKnowledgeBasedMatching are the closest fit for an LLM classification. The slot match_type is not used."@en ,
+                    "Die Justification muss einer der Terme sein, die SSSOM fuer mapping_justification vorgibt, angegeben als SEMAPV-IRI. Erfundene Terme wie LLMBasedMatching liegen ausserhalb der Liste; fuer eine LLM-Klassifikation kommen CompositeMatching oder BackgroundKnowledgeBasedMatching am ehesten in Frage. Der Slot match_type wird nicht verwendet."@de ;
   ] ;
   sh:property [
     sh:path         sssom:mapping_tool ;
@@ -209,16 +235,16 @@ hrqde-shape:LevelMappingShape
   sh:property [
     sh:path         sssom:subject_id ;
     sh:nodeKind     sh:IRI ;
-    sh:pattern      "^(http://hr-qde\\.org/ontology/DQR[1-8]|http://data\\.europa\\.eu/snb/qf-eu-level/[1-8])$" ;
-    sh:message      "LevelMapping subject must be a level of the HR-QDE skeleton (hrqde:DQR1 to DQR8) or an EQF authority URI under data.europa.eu/snb/qf-eu-level/. Parallel level vocabularies join with nothing."@en ,
-                    "LevelMapping-Subjekt muss ein Niveau des HR-QDE-Skeletts (hrqde:DQR1 bis DQR8) oder eine EQF-Autoritaets-URI sein. Parallele Niveau-Vokabulare verbinden sich mit nichts."@de ;
+    sh:pattern      "^(http://hr-qde\\.org/ontology/DQR[1-8]|http://data\\.europa\\.eu/snb/qf-eu-level/[1-8]|http://hr-qde\\.org/harmonised/)" ;
+    sh:message      "LevelMapping subject must be a top level anchor of the HR-QDE skeleton (hrqde:DQR1 to DQR8), an EQF authority URI, or a dimension concept of the harmonisation layer. Anchors are referenced, never minted anew."@en ,
+                    "LevelMapping-Subjekt muss ein Top-Level-Anker des HR-QDE-Skeletts (hrqde:DQR1 bis DQR8), eine EQF-Autoritaets-URI oder ein Dimensionskonzept der Harmonisierungsschicht sein. Anker werden referenziert, nicht neu gepraegt."@de ;
   ] ;
   sh:property [
     sh:path         sssom:object_id ;
     sh:nodeKind     sh:IRI ;
-    sh:pattern      "^(http://hr-qde\\.org/ontology/DQR[1-8]|http://data\\.europa\\.eu/snb/qf-eu-level/[1-8])$" ;
-    sh:message      "LevelMapping object must be a level of the HR-QDE skeleton or an EQF authority URI."@en ,
-                    "LevelMapping-Objekt muss ein Niveau des HR-QDE-Skeletts oder eine EQF-Autoritaets-URI sein."@de ;
+    sh:pattern      "^(http://hr-qde\\.org/ontology/DQR[1-8]|http://data\\.europa\\.eu/snb/qf-eu-level/[1-8]|http://hr-qde\\.org/harmonised/)" ;
+    sh:message      "LevelMapping object must be a top level anchor of the HR-QDE skeleton, an EQF authority URI, or a dimension concept of the harmonisation layer."@en ,
+                    "LevelMapping-Objekt muss ein Top-Level-Anker des HR-QDE-Skeletts, eine EQF-Autoritaets-URI oder ein Dimensionskonzept der Harmonisierungsschicht sein."@de ;
   ] .
 
 
@@ -240,6 +266,29 @@ hrqde-shape:OccupationMappingShape
     sh:minCount     1 ;
     sh:message      "OccupationMapping must state why a competence is related to an occupation rather than to a skill."@en ,
                     "OccupationMapping muss begründen, warum eine Kompetenz auf einen Beruf statt auf einen Skill bezogen wird."@de ;
+  ] .
+
+
+# Proficiency levels (harm:hasLevel) ==================================
+# Role types are required explicitly. validate.py and n10s do not use
+# RDFS inference, so the schema's rdfs:domain/rdfs:range alone cannot
+# establish the contract. This shape is evaluated against the ontology
+# artefact, where both endpoint concepts are present.
+
+hrqde-shape:HasLevelShape
+  a                 sh:NodeShape ;
+  sh:targetSubjectsOf harm:hasLevel ;
+  sh:class          harm:CompetenceConcept ;
+  sh:message        "The subject of harm:hasLevel must be explicitly typed harm:CompetenceConcept."@en ,
+                    "Das Subjekt von harm:hasLevel muss explizit als harm:CompetenceConcept typisiert sein."@de ;
+  sh:property [
+    sh:path         harm:hasLevel ;
+    sh:minCount     1 ;
+    sh:nodeKind     sh:IRI ;
+    sh:pattern      "^http://hr-qde\\.org/harmonised/" ;
+    sh:class         harm:LevelConcept ;
+    sh:message      "The object of harm:hasLevel must be explicitly typed harm:LevelConcept under the harmonisation namespace. Its normative DQR crosswalk is serialized as a LevelMapping, not as a HubMapping."@en ,
+                    "Das Objekt von harm:hasLevel muss im Harmonisierungs-Namensraum explizit als harm:LevelConcept typisiert sein. Sein normativer DQR-Crosswalk wird als LevelMapping, nicht als HubMapping serialisiert."@de ;
   ] .
 
 

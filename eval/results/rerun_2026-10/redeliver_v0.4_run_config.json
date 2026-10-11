@@ -1,0 +1,15 @@
+{
+  "started_utc": "2026-10-04T18:54:46.300890+00:00",
+  "project_name": "Saeule D Lieferung v0.4 (T=0, mistral-small-2603)",
+  "version": "0.4",
+  "git_head": "adadc1e184a3d9604f8530e174520d8d72700e52",
+  "git_dirty_tracked_files": 19,
+  "llm_providers": "mistral",
+  "mistral_model": "mistral-small-2603",
+  "classification_temperature": 0.0,
+  "classification_runs_per_pair": 3,
+  "ann_top_k": 20,
+  "embedding_model": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+  "prompt_template_sha256_16": "6b5ee8c077577f8f",
+  "few_shot": "aus Struktur-Shortcuts des Paares (e-CF <-> ESCO-Skelett: 0 Treffer, Prompt-Text '(keine Crosswalk-Beispiele verfuegbar)')"
+}

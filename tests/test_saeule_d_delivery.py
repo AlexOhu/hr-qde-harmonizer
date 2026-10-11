@@ -8,13 +8,16 @@ Bezugsdokumente ``hrqde-shape-harmonisation.ttl`` und
 
 from __future__ import annotations
 
+from datetime import datetime, timezone
 from decimal import Decimal
 from pathlib import Path
 
 import pytest
-from rdflib import RDF, Graph, Namespace, URIRef
+from rdflib import DCTERMS, RDF, Graph, Literal, Namespace, URIRef
 
 from app.models.schemas import (
+    DisjointConceptDecision,
+    DisjointStrategy,
     Mapping,
     MappingJustification,
     ReviewStatus,
@@ -43,20 +46,33 @@ _ECF_TTL = """
 @prefix hrqde: <https://hrqde.example.org/ontology#> .
 @prefix harm:  <http://hr-qde.org/harmonised/> .
 @prefix ecf:   <http://hr-qde.org/harmonised/ecf/> .
+@prefix harm-ecf: <http://hr-qde.org/harmonised/source/ecf/> .
+@prefix dqr:   <http://hr-qde.org/harmonised/source/dqr/> .
 harm:CompetenceConcept a owl:NamedIndividual .
 ecf: a skos:ConceptScheme .
 ecf:plan a skos:Concept ; skos:prefLabel "PLAN"@en, "PLANEN"@de ;
     hrqde:sourceIdentifier "A" ; skos:broader ecf: .
 ecf:A.1 a skos:Concept ; skos:prefLabel "IS Strategy"@en, "IS-Strategie"@de ;
     skos:definition "def a1"@en ; hrqde:sourceIdentifier "A.1" ;
-    hrqde:proficiencyLevel "e-3", "e-4" ;
-    harm:conceptRole harm:CompetenceConcept ; skos:broader ecf:plan .
+    a harm:CompetenceConcept ;
+    harm:hasLevel harm-ecf:A.1.Niveau3, harm-ecf:A.1.Niveau4 ;
+    skos:broader ecf:plan .
 ecf:A.2 a skos:Concept ; skos:prefLabel "Service Levels"@en ;
-    hrqde:sourceIdentifier "A.2" ; hrqde:proficiencyLevel "e-1" ;
-    harm:conceptRole harm:CompetenceConcept ; skos:broader ecf:plan .
+    hrqde:sourceIdentifier "A.2" ; a harm:CompetenceConcept ;
+    harm:hasLevel harm-ecf:A.2.Niveau1 ; skos:broader ecf:plan .
 ecf:A.3 a skos:Concept ; skos:prefLabel "Business Plan Development"@en ;
     hrqde:sourceIdentifier "A.3" ;
-    harm:conceptRole harm:CompetenceConcept ; skos:broader ecf:plan .
+    a harm:CompetenceConcept ; skos:broader ecf:plan .
+
+harm-ecf:A.1.Niveau3 a skos:Concept, harm:LevelConcept ;
+    hrqde:sourceIdentifier "A.1 Niveau 3" ; skos:prefLabel "A.1 proficiency 3"@en ;
+    harm:eqfCrosswalkTarget dqr:L5 .
+harm-ecf:A.1.Niveau4 a skos:Concept, harm:LevelConcept ;
+    hrqde:sourceIdentifier "A.1 Niveau 4" ; skos:prefLabel "A.1 proficiency 4"@en ;
+    harm:eqfCrosswalkTarget dqr:L7 .
+harm-ecf:A.2.Niveau1 a skos:Concept, harm:LevelConcept ;
+    hrqde:sourceIdentifier "A.2 Niveau 1" ; skos:prefLabel "A.2 proficiency 1"@en ;
+    harm:eqfCrosswalkTarget dqr:L3 .
 """
 
 _ESCO_SKILL_A = "http://data.europa.eu/esco/skill/000f1d3d-220f-4789-9c0a-cc742521fb02"
@@ -92,7 +108,7 @@ def _k_mappings() -> list[Mapping]:
     ]
 
 
-# --- _delivery_uri (Spec Abschnitt 7, URI-Muster) -----------------------
+# --- _delivery_uri (URI-Muster) -----------------------
 
 def test_delivery_uri_adds_source_segment_for_satellite_concepts():
     assert _delivery_uri("http://hr-qde.org/harmonised/ecf/A.1") == URIRef(
@@ -124,15 +140,14 @@ def test_delivery_uri_leaves_non_harm_uris_unchanged():
     )
 
 
-# --- generate_level_mappings_from_ecf (nur narrativ, ADR-24) -------------
+# --- generate_level_mappings_from_ecf (kanonische LevelMappings) ---------
 
 def test_ecf_crosswalk_e3_expands_to_two_targets():
     rows = generate_level_mappings_from_ecf(_g(_ECF_TTL))
-    # A.1: e-3 -> EQF5+EQF6, e-4 -> EQF7 ; A.2: e-1 -> EQF3  => 4
-    assert len(rows) == 4
-    a1_e3 = [r for r in rows if r.proficiency_level == "e-3"]
-    assert {r.object_id.rsplit("/", 1)[-1] for r in a1_e3} == {"5", "6"}
-    assert all(r.object_id.startswith("http://data.europa.eu/snb/qf-eu-level/") for r in rows)
+    assert len(rows) == 3
+    assert {r.object_id.rsplit("/", 1)[-1] for r in rows} == {"L3", "L5", "L7"}
+    assert all(r.predicate_id == "skos:closeMatch" for r in rows)
+    assert all(r.object_id.startswith("http://hr-qde.org/harmonised/source/dqr/") for r in rows)
 
 
 def test_dqr_eqf_level_mappings_are_skeleton_to_authority():
@@ -166,7 +181,7 @@ def test_ontology_concept_provenance(tmp_path):
     out = Graph()
     out.parse(stats["path"], format="turtle")
 
-    # Liefer-URI traegt das source/-Segment (Spec Abschnitt 7); die interne
+    # Liefer-URI traegt das source/-Segment; die interne
     # Pipeline-URI (ohne source/) taucht im Artefakt nicht mehr auf.
     a1 = URIRef("http://hr-qde.org/harmonised/source/ecf/A.1")
     assert (a1, HARM.derivedFrom, HARM.kqr_ecf) in out
@@ -200,6 +215,64 @@ def test_ontology_disjoint_concepts_carry_strategy_and_comment(tmp_path):
     assert stats["harmonised_concepts"] == 2
 
 
+def test_ontology_disjoint_decision_exports_creator_and_created(tmp_path):
+    created_at = datetime(2026, 10, 10, 12, 30, tzinfo=timezone.utc)
+    decision = DisjointConceptDecision(
+        concept_id="http://hr-qde.org/harmonised/ecf/A.2",
+        concept_label="Service Levels",
+        kqr_id="ecf",
+        strategy=DisjointStrategy.OWN_CLASS,
+        justification="No corresponding ESCO concept was identified.",
+        author="Alex",
+        created_at=created_at,
+    )
+
+    stats = write_ontology(
+        tmp_path, _g(_ECF_TTL), _k_mappings(), [decision], version="0.2"
+    )
+    out = Graph()
+    out.parse(stats["path"], format="turtle")
+
+    concept = URIRef("http://hr-qde.org/harmonised/source/ecf/A.2")
+    assert (concept, DCTERMS.creator, Literal("Alex")) in out
+    assert (concept, DCTERMS.created, Literal(created_at)) in out
+
+    pyshacl = pytest.importorskip("pyshacl")
+    conforms, _, report = pyshacl.validate(
+        out,
+        shacl_graph=str(REPO_ROOT / "hrqde-shape-harmonisation.ttl"),
+        ont_graph=str(REPO_ROOT / "hrqde-harmonisation-schema.ttl"),
+        inference="rdfs",
+        advanced=True,
+    )
+    assert conforms, report
+
+
+def test_disjoint_provenance_is_optional_but_shacl_checks_its_datatypes(tmp_path):
+    pyshacl = pytest.importorskip("pyshacl")
+    stats = write_ontology(tmp_path, _g(_ECF_TTL), _k_mappings(), [], version="0.2")
+    data = Graph().parse(stats["path"], format="turtle")
+    shape = REPO_ROOT / "hrqde-shape-harmonisation.ttl"
+    schema = REPO_ROOT / "hrqde-harmonisation-schema.ttl"
+
+    conforms_without_decisions, _, _ = pyshacl.validate(
+        data, shacl_graph=str(shape), ont_graph=str(schema),
+        data_graph_format="turtle", shacl_graph_format="turtle",
+        ont_graph_format="turtle", inference="rdfs", advanced=True,
+    )
+    assert conforms_without_decisions
+
+    concept = URIRef("http://hr-qde.org/harmonised/source/ecf/A.2")
+    data.add((concept, DCTERMS.creator, Literal("Alex")))
+    data.add((concept, DCTERMS.created, Literal("not-a-date", datatype=XSD.string)))
+    conforms_with_invalid_timestamp, _, _ = pyshacl.validate(
+        data, shacl_graph=str(shape), ont_graph=str(schema),
+        data_graph_format="turtle", shacl_graph_format="turtle",
+        ont_graph_format="turtle", inference="rdfs", advanced=True,
+    )
+    assert not conforms_with_invalid_timestamp
+
+
 # --- Artefakt 2: Mappings --------------------------------------------
 
 def test_mappings_hub_records_use_iri_predicate_and_decimal(tmp_path):
@@ -217,7 +290,7 @@ def test_mappings_hub_records_use_iri_predicate_and_decimal(tmp_path):
     assert conf.datatype == URIRef("http://www.w3.org/2001/XMLSchema#decimal")
     just = next(out.objects(rec, SSSOM.mapping_justification))
     assert str(just).startswith("https://w3id.org/semapv/")
-    # subject_id traegt die Liefer-URI (source/-Segment, Spec Abschnitt 7)
+    # subject_id traegt die Liefer-URI (source/-Segment)
     assert next(out.objects(rec, SSSOM.subject_id)) == URIRef(
         "http://hr-qde.org/harmonised/source/ecf/A.1"
     )
@@ -261,12 +334,76 @@ def test_integration_strategy_markdown_contains_protocol_and_crosswalk(tmp_path)
     md = Path(strat["path"]).read_text(encoding="utf-8")
     assert "Begleitprotokoll" in md
     assert "harm:HubMapping" in md and "harm:LevelMapping" in md
-    assert "CEN-EN-16234-1-Crosswalk" in md
-    assert "e-3" in md and "EQF 5" in md and "EQF 6" in md
+    assert "Niveaukette" in md
+    assert "DQR L5" in md and "DQR L7" in md
     assert "1191 offene Reviews" in md
+    # ohne Entscheidungen: Rueckfallstrategie offen ausgewiesen, nicht als
+    # Vorschlag von suggest_strategy ausgegeben
+    assert "2 von 2 disjunkten Konzepten haben keine gespeicherte" in md
+    assert "Rueckfallstrategie `own_class`" in md
 
 
-# --- Kanonische SHACL-Validierung (Spec Abschnitt 8) ----------------
+def _attach_decision(concept: str = "A.2", **kw) -> DisjointConceptDecision:
+    return DisjointConceptDecision(
+        concept_id=f"http://hr-qde.org/harmonised/ecf/{concept}",
+        concept_label="Service Levels",
+        kqr_id="ecf",
+        strategy=DisjointStrategy.ATTACH_TO_SKELETON,
+        anchor_class=kw.get("anchor_class", _ESCO_SKILL_B),
+        justification=kw.get("justification", "Naehe zu skill b, keine Aequivalenz."),
+        author="Alex",
+        created_at=datetime(2026, 10, 11, 12, 0, tzinfo=timezone.utc),
+    )
+
+
+def test_ontology_comment_carries_anchor_class(tmp_path):
+    stats = write_ontology(tmp_path, _g(_ECF_TTL), _k_mappings(), [_attach_decision()])
+    out = Graph().parse(stats["path"], format="turtle")
+    node = URIRef("http://hr-qde.org/harmonised/source/ecf/A.2")
+    comment = str(next(out.objects(node, URIRef("http://www.w3.org/2000/01/rdf-schema#comment"))))
+    assert comment.startswith("Naehe zu skill b")
+    assert f"Ankerklasse: {_ESCO_SKILL_B}" in comment
+    assert (node, HARM.integrationStrategy, Literal("attach_to_skeleton")) in out
+    assert stats["harmonised_decided"] == 1
+    # Ankerklasse nur als Text: keine direkte Kante auf ESCO in der Ontologie
+    assert (node, None, URIRef(_ESCO_SKILL_B)) not in out
+
+
+def test_decision_with_internal_uri_applies_to_delivery_namespace_leaf(tmp_path):
+    """Regression: ecf_level fuehrt die Blaetter unter harm:source/ecf/...,
+    Entscheidungen tragen die interne URI harm:ecf/... (wie in der UI
+    gespeichert). Beide muessen als dasselbe Konzept erkannt werden."""
+    ttl = _ECF_TTL.replace("ecf:A.2 a skos:Concept", "harm-ecf:A.2 a skos:Concept")
+    stats = write_ontology(tmp_path, _g(ttl), _k_mappings(), [_attach_decision()])
+    out = Graph().parse(stats["path"], format="turtle")
+    node = URIRef("http://hr-qde.org/harmonised/source/ecf/A.2")
+    assert (node, HARM.integrationStrategy, Literal("attach_to_skeleton")) in out
+    assert (node, DCTERMS.creator, Literal("Alex")) in out
+    assert stats["harmonised_decided"] == 1
+
+    maps = write_mappings(tmp_path, _k_mappings())
+    strat = write_integration_strategy(tmp_path, _g(ttl), [_attach_decision()], stats, maps)
+    assert strat["disjoint_documented"] == 1
+
+
+def test_integration_strategy_lists_only_decisions_of_harmonised_concepts(tmp_path):
+    hub_decision = DisjointConceptDecision(
+        concept_id=_ESCO_SKILL_A, concept_label="skill a", kqr_id="esco_skeleton_oberhuber",
+        strategy=DisjointStrategy.OWN_CLASS, justification="Hub", author="Alex",
+    )
+    decisions = [_attach_decision(), hub_decision]
+    onto = write_ontology(tmp_path, _g(_ECF_TTL), _k_mappings(), decisions)
+    maps = write_mappings(tmp_path, _k_mappings())
+    strat = write_integration_strategy(tmp_path, _g(_ECF_TTL), decisions, onto, maps)
+    md = Path(strat["path"]).read_text(encoding="utf-8")
+    assert strat["disjoint_documented"] == 1
+    assert "| Ankerklasse |" in md and f"`{_ESCO_SKILL_B}`" in md
+    assert _ESCO_SKILL_A not in md.split("## 2.")[1].split("## 3.")[0]
+    # A.3 bleibt ohne Entscheidung
+    assert "1 von 2 disjunkten Konzepten haben keine gespeicherte" in md
+
+
+# --- Kanonische SHACL-Validierung ----------------
 
 @pytest.mark.parametrize("artifact", ["ontology", "mappings"])
 def test_delivery_passes_canonical_shacl(tmp_path, artifact):

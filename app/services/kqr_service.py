@@ -47,6 +47,19 @@ _graph_cache: dict[str, Graph] = {}
 _embeddings_cache: dict[str, dict[str, np.ndarray]] = {}
 
 
+class KQRValidationError(ValueError):
+    """Strukturfehler eines kuratierten SKOS-Imports.
+
+    Die Route übersetzt diesen Fehler in eine 422-Antwort. Die Details bleiben
+    damit beim Upload sichtbar, statt als flüchtiger Zustand eines roh
+    registrierten Frameworks gespeichert zu werden.
+    """
+
+    def __init__(self, errors: list[str]) -> None:
+        self.errors = errors
+        super().__init__("; ".join(errors))
+
+
 def _slugify(name: str) -> str:
     slug = re.sub(r"[^a-z0-9]+", "_", name.lower()).strip("_")
     return slug or "kqr"
@@ -86,6 +99,24 @@ def _parse_graph(turtle_text: str) -> Graph:
     return graph
 
 
+def _normalise_direct_import(content: bytes, source_format: str) -> str:
+    """Parst Turtle bzw. RDF/XML und serialisiert es kanonisch als Turtle."""
+    format_by_source = {"turtle": "turtle", "rdf": "xml"}
+    rdf_format = format_by_source[source_format]
+    try:
+        source_text = content.decode("utf-8-sig")
+    except UnicodeDecodeError as exc:
+        raise KQRValidationError(["Die Datei muss UTF-8-kodiert sein: " + str(exc)]) from exc
+
+    graph = Graph()
+    try:
+        graph.parse(data=source_text, format=rdf_format)
+    except Exception as exc:
+        format_label = "Turtle" if source_format == "turtle" else "RDF/XML"
+        raise KQRValidationError([format_label + " konnte nicht geparst werden: " + str(exc)]) from exc
+    return str(graph.serialize(format="turtle"))
+
+
 def reload_registry() -> None:
     """Lädt die Registry neu von der Platte (primär für Tests nützlich)."""
     global _registry
@@ -116,9 +147,6 @@ def register_kqr(
     kqr_id = _unique_id(_slugify(name))
     ext = Path(filename).suffix or f".{source_format}"
 
-    RAW_DIR.mkdir(parents=True, exist_ok=True)
-    (RAW_DIR / f"{kqr_id}{ext}").write_bytes(content)
-
     kqr = KQR(
         id=kqr_id,
         name=name,
@@ -129,37 +157,33 @@ def register_kqr(
     )
 
     if source_format in _DIRECT_IMPORT_FORMATS:
-        turtle_text = content.decode("utf-8")
+        turtle_text = _normalise_direct_import(content, source_format)
         errors = validate_formalization(turtle_text, kqr, strict=False)
-        _validation_errors[kqr_id] = errors
+        if errors:
+            raise KQRValidationError(errors)
 
-        if not errors:
-            FORMALIZED_DIR.mkdir(parents=True, exist_ok=True)
-            (FORMALIZED_DIR / f"{kqr_id}.ttl").write_text(turtle_text, encoding="utf-8")
+        RAW_DIR.mkdir(parents=True, exist_ok=True)
+        (RAW_DIR / f"{kqr_id}{ext}").write_bytes(content)
+        FORMALIZED_DIR.mkdir(parents=True, exist_ok=True)
+        (FORMALIZED_DIR / f"{kqr_id}.ttl").write_text(turtle_text, encoding="utf-8")
 
-            concepts = parse_concepts(turtle_text, kqr_id)
-            _concepts_cache[kqr_id] = concepts
-            _graph_cache[kqr_id] = _parse_graph(turtle_text)
+        concepts = parse_concepts(turtle_text, kqr_id)
+        _concepts_cache[kqr_id] = concepts
+        _graph_cache[kqr_id] = _parse_graph(turtle_text)
 
-            kqr.status = KQRStatus.FORMALISIERT
-            kqr.concept_count = len(concepts)
-            _registry[kqr_id] = kqr
+        kqr.status = KQRStatus.FORMALISIERT
+        kqr.concept_count = len(concepts)
+        _registry[kqr_id] = kqr
 
-            try:
-                driver = get_driver(settings.neo4j_uri, settings.neo4j_user, settings.neo4j_password)
-                import_turtle(driver, turtle_text)
-                driver.close()
-            except Exception as exc:  # Neo4j ist optionale Materialisierung, kein Hard-Requirement.
-                logger.warning("Neo4j-Materialisierung für '%s' übersprungen: %s", kqr_id, exc)
-
-            # Embeddings werden einmalig pro KQR-Version direkt bei der
-            # Formalisierung berechnet (Abschnitt "Vektorindex"), damit der
-            # KQR unmittelbar Status 'bereit' erreichen kann, statt erst als
-            # Nebeneffekt eines späteren Klassifikationslaufs.
-            try:
-                get_embeddings(kqr_id)
-            except Exception as exc:
-                logger.warning("Embedding-Berechnung für '%s' fehlgeschlagen: %s", kqr_id, exc)
+        try:
+            driver = get_driver(settings.neo4j_uri, settings.neo4j_user, settings.neo4j_password)
+            import_turtle(driver, turtle_text)
+            driver.close()
+        except Exception as exc:  # Neo4j ist optionale Materialisierung, kein Hard-Requirement.
+            logger.warning("Neo4j-Materialisierung für '%s' übersprungen: %s", kqr_id, exc)
+    else:
+        RAW_DIR.mkdir(parents=True, exist_ok=True)
+        (RAW_DIR / f"{kqr_id}{ext}").write_bytes(content)
 
     _registry[kqr_id] = kqr
     _save_registry()
@@ -205,7 +229,7 @@ def delete_kqr(kqr_id: str) -> None:
 
     Anders als project_service.remove_kqr_from_project() betrifft dies nicht
     nur ein einzelnes Projekt, sondern alle -- deshalb ist die Loeschung
-    gesperrt, solange irgendein Projekt kqr_id noch referenziert (ADR-01:
+    gesperrt, solange irgendein Projekt kqr_id noch referenziert (ADR-13:
     KQR-Rohdaten sind projektuebergreifend global). Eine Kuratorin muss den
     KQR zuerst aus jedem betroffenen Projekt entfernen.
     """

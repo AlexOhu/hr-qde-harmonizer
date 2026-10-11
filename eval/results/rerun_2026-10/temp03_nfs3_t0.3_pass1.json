@@ -1,0 +1,1931 @@
+{
+  "_meta": {
+    "config": "temp03",
+    "n_fs": 3,
+    "temperature": 0.3,
+    "pass": 1,
+    "model_requested": "mistral-small-latest",
+    "model_resolved": "mistral-small-2603",
+    "runs_per_pair": 3,
+    "prompt_template_sha256_16": "6b5ee8c077577f8f",
+    "few_shot_pool": "eval/G_struct.json",
+    "gold": "eval/gold/G_manual.json",
+    "pairs_used": 68,
+    "pairs_skipped_not_in_registry": [
+      "http://data.bmbf.de/dqr/L8_Knowledge -> http://data.europa.eu/esco/occupation/812c217d-32b7-4f6a-9faf-993d3577ac7f",
+      "http://data.bmbf.de/dqr/L5_Knowledge -> http://data.europa.eu/esco/skill/0dc7aa1b-b5af-4f4b-81ce-ee22ed8b6926",
+      "http://data.bmbf.de/dqr/L5_SocialCompetence -> http://data.europa.eu/esco/skill/33e584f9-ff7a-4979-bfc0-5a3a374a145a",
+      "http://data.bmbf.de/dqr/L3_SocialCompetence -> http://data.europa.eu/esco/skill/33e584f9-ff7a-4979-bfc0-5a3a374a145a",
+      "http://data.bmbf.de/dqr/L4_SocialCompetence -> http://data.europa.eu/esco/skill/33e584f9-ff7a-4979-bfc0-5a3a374a145a",
+      "http://data.bmbf.de/dqr/L3_Knowledge -> http://data.europa.eu/esco/skill/41bf7ede-fc84-4a57-8c89-b548d11b0ba1"
+    ],
+    "started_utc": "2026-10-04T15:07:30.584323+00:00",
+    "wall_time_s": 109.2
+  },
+  "pairs": [
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/B.4",
+      "object_id": "http://data.europa.eu/esco/skill/1d86f05e-e9cc-40ce-99d8-2b21cc71b16b",
+      "subject_label": "Solution Deployment",
+      "object_label": "solution deployment",
+      "gold": "EQUIVALENT",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt den gesamten Prozess des Lösungsdeployment inkl. Installation, Konfiguration, Fehlerbehebung und Dokumentation, während Konzept B (leeres Label/Definition) nur den Begriffsnamen ohne inhaltliche Spezifizierung enthält, was es zum engeren Konzept macht.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt einen spezifischen Prozess mit detaillierten Handlungen (Installation, Konfiguration, Dokumentation), während Konzept B nur den Oberbegriff ohne Definition oder Spezifizierung darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "EQUIVALENT",
+          "reasoning": "Beide Konzepte beziehen sich auf denselben Prozess des Lösungsbereitstellens mit identischer Definition und Terminologie (\"Solution Deployment\" / \"solution deployment\").",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/E.3",
+      "object_id": "http://data.europa.eu/esco/skill/6eff134b-e34f-4d6e-a6e8-5e47cf2228d0",
+      "subject_label": "Risk Management",
+      "object_label": "risk management",
+      "gold": "EQUIVALENT",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A ist spezifischer, da es sich auf die Implementierung von Risikomanagement in Informationssystemen und unternehmensspezifischen Strategien konzentriert, während Konzept B das allgemeine Konzept des Risikomanagements beschreibt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (Risk Management im Unternehmenskontext) ist ein spezifischerer Anwendungsfall von Konzept B (allgemeines Risikomanagement), da es sich auf IT-Systeme, Cloud-Ressourcen und mobile Geräte beschränkt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (Unternehmensspezifisches Risikomanagement) ist spezifischer als Konzept B (allgemeines Risikomanagement), da es konkrete Anwendungsbereiche (Informationstechnologie, Cloud, mobile Geräte) und unternehmensinterne Strategien einbezieht, während Konzept B alle Risikoarten und -quellen allgemein beschreibt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/D.1",
+      "object_id": "http://data.europa.eu/esco/skill/3579208e-49b3-4ce4-98e7-20e41b1ce8d4",
+      "subject_label": "Information Security Strategy Development",
+      "object_label": "develop information security strategy",
+      "gold": "EQUIVALENT",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt die formale Ausgestaltung einer Informationssicherheitsstrategie (inkl. Rollen, Standards, Zielvereinbarungen), während Konzept B sich auf die reine Strategieentwicklung beschränkt – damit ist Konzept B ein Spezialfall von Konzept A.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt die formale Ausgestaltung und Umsetzung einer Informationssicherheitsstrategie (inkl. Rollen, Standards, Zielvereinbarungen), während Konzept B nur die Erstellung der Strategie selbst als Teilaspekt abdeckt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A umfasst die formale Ausgestaltung, Rollenverteilung und Standards (z.B. digitale Forensik) zusätzlich zur Strategieentwicklung, während Konzept B sich auf die reine Strategieerstellung beschränkt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/D.12",
+      "object_id": "http://data.europa.eu/esco/skill/43dfbe7f-9e10-4871-b171-e5076737b4cf",
+      "subject_label": "Digital Marketing",
+      "object_label": "digital marketing techniques",
+      "gold": "EQUIVALENT",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "\"digital marketing techniques\" ist ein spezifischer Teilbereich von \"Digital Marketing\", da Techniken konkrete Methoden innerhalb des umfassenderen Konzepts der Digital-Marketing-Strategie darstellen.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Digital Marketing\" (Konzept A) ist ein allgemeineres Konzept, das übergeordnete Prinzipien und Strategien umfasst, während \"digital marketing techniques\" (Konzept B) als spezifischere Ausprägung (Techniken/Methoden) darunter fällt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Digital Marketing\" (Konzept A) ist ein allgemeineres Konzept, das strategische Planung, Bewertung und Umsetzung umfasst, während \"digital marketing techniques\" (Konzept B) spezifische Methoden oder Werkzeuge innerhalb dieses Rahmens darstellt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/E.7",
+      "object_id": "http://data.europa.eu/esco/skill/3c03ee71-4a23-448f-b79e-81fd75d27dca",
+      "subject_label": "Business Change Management",
+      "object_label": "apply change management",
+      "gold": "EQUIVALENT",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Business Change Management\") ist ein spezifischerer, detaillierterer Ansatz, der die Implementierung und Überwachung von Veränderungen mit Fokus auf ICT-Lösungen und strukturelle/kulturelle Aspekte umfasst, während Konzept B (\"apply change management\") eine allgemeinere Definition von Change Management als Führungsaufgabe zur Minimierung von Störungen bietet.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Business Change Management\") ist ein spezifischerer, detaillierterer Ansatz, der konkrete Aspekte wie ICT-Lösungen, strukturelle/kulturelle Faktoren und Prozesskontinuität einbezieht, während Konzept B (\"apply change management\") eine allgemeinere, grundlegendere Managementaufgabe beschreibt, die Veränderungen antizipiert und Störungen minimiert.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Business Change Management\") ist ein spezifischerer, detaillierterer Ansatz, der über die allgemeine Definition von \"apply change management\" (Konzept B) hinausgeht, indem er konkrete Aspekte wie ICT-Lösungen, strukturelle/kulturelle Faktoren und Geschäftsnutzenbewertung einbezieht.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/E.8",
+      "object_id": "http://data.europa.eu/esco/skill/6833e58b-eceb-4599-9375-1b7e6ec64087",
+      "subject_label": "Information Security Management",
+      "object_label": "ensure information security",
+      "gold": "EQUIVALENT",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt ein umfassendes Management von Informationssicherheit (Strategien, Risikoanalyse, Incident-Review, Policy-Empfehlungen), während Konzept B sich auf die konkrete Sicherstellung der Vertraulichkeit von Informationen in einem spezifischen Kontext (Surveillance/Untersuchungen) beschränkt. Konzept B ist damit ein Spezialfall von Konzept A.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Information Security Management\") umfasst die strategische und operative Steuerung von Informationssicherheit inkl. Risikoanalyse, Policy-Entwicklung und kontinuierlicher Verbesserung, während Konzept B (\"ensure information security\") sich auf den spezifischen Aspekt des Schutzes vor unbefugtem Zugriff auf Informationen konzentriert.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Information Security Management\") umfasst die strategische, proaktive und umfassende Steuerung der Informationssicherheit, während Konzept B (\"ensure information security\") sich auf die konkrete Handlung des Schutzes vor unbefugtem Zugriff konzentriert – ein Teilaspekt des übergeordneten Managements.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/C.4",
+      "object_id": "http://data.europa.eu/esco/skill/a3ce2bf7-5562-4639-9b52-fdb4850a3904",
+      "subject_label": "Problem Management",
+      "object_label": "ICT problem management techniques",
+      "gold": "EQUIVALENT",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Problem Management\") ist ein allgemeineres Konzept, das spezifische Techniken wie \"ICT problem management techniques\" (Konzept B) umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Problem Management\" (Konzept A) ist ein allgemeineres Konzept, das die systematische Identifikation und Lösung von Problemen in Informationssystemen umfasst, während \"ICT problem management techniques\" (Konzept B) spezifische Methoden oder Techniken innerhalb dieses Rahmens beschreibt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Problem Management\") ist ein allgemeineres Konzept, das die systematische Identifikation und Behebung von Ursachen von Vorfällen umfasst, während Konzept B (\"ICT problem management techniques\") sich spezifisch auf Techniken im Bereich der Informations- und Kommunikationstechnologie bezieht, also ein Teilbereich von Konzept A ist.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/E.6",
+      "object_id": "http://data.europa.eu/esco/occupation/a28dff76-74df-46ee-929f-d1fffbb63cd7",
+      "subject_label": "ICT Quality Management",
+      "object_label": "ICT quality assurance manager",
+      "gold": "RELATED",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt die allgemeine Tätigkeit des ICT Quality Management, während Konzept B eine spezifische Rolle (ICT quality assurance manager) innerhalb dieses Rahmens darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt die allgemeine Aufgabe des ICT Quality Management, während Konzept B eine spezifische Rolle (ICT quality assurance manager) innerhalb dieses Rahmens darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt die allgemeine Rolle der ICT-Qualitätsmanagement-Implementierung, während Konzept B die spezifischere Position eines ICT-Qualitätsbeauftragten mit definierten Verantwortlichkeiten und Zertifizierungsaufgaben darstellt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/B.1",
+      "object_id": "http://data.europa.eu/esco/skill/33d49d4f-31ec-473f-9b8a-b555aa5116bb",
+      "subject_label": "Application Development",
+      "object_label": "iterative development",
+      "gold": "A_SUBSUMES_B",
+      "final": "B_SUBSUMES_A",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (Application Development) beschreibt einen spezifischen Entwicklungsprozess mit konkreten Aktivitäten (Kodieren, Testen, Dokumentieren, etc.), während Konzept B (iterative development) eine allgemeine Entwicklungsmethode darstellt, die in Konzept A als Teilprozess angewendet werden kann.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "\"iterative development\" ist eine spezifische Methode der Softwareentwicklung, die in \"Application Development\" als Teilprozess enthalten ist, aber nicht alle Aspekte von \"Application Development\" abdeckt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Application Development\" ist ein spezifischerer Prozess, der iterative Entwicklung als Teilmenge umfasst, während \"iterative development\" eine allgemeine Methode darstellt, die in verschiedenen Entwicklungsprozessen (inkl. Application Development) angewendet werden kann.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/B.3",
+      "object_id": "http://data.europa.eu/esco/skill/5d74614d-32c8-4ca4-9818-6980e52424b1",
+      "subject_label": "Testing",
+      "object_label": "plan software testing",
+      "gold": "A_SUBSUMES_B",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Testing\" (Konzept A) umfasst als allgemeineres Konzept die spezifischere Tätigkeit \"plan software testing\" (Konzept B), da Testplanung ein Teilaspekt des umfassenderen Testprozesses ist.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Testing\" (Konzept A) umfasst alle Aktivitäten zur systematischen Überprüfung von ICT-Systemen oder Nutzeranforderungen, während \"plan software testing\" (Konzept B) als spezifischer Teilbereich des Testens (Planung von Testverfahren) eine Untermenge davon darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Testing\" (Konzept A) umfasst alle Aktivitäten zur systematischen Überprüfung von ICT-Systemen oder Benutzeranforderungen, während \"plan software testing\" (Konzept B) als spezifischer Teilaspekt des Testens (nämlich die Planung) eine Untermenge davon darstellt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/A.6",
+      "object_id": "http://data.europa.eu/esco/skill/fae27053-8924-4bfd-b565-c9fe502044c9",
+      "subject_label": "Application Design",
+      "object_label": "system design",
+      "gold": "EQUIVALENT",
+      "final": "B_SUBSUMES_A",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "\"system design\" ist ein allgemeineres Konzept, das die Entwicklung von Systemen umfasst, während \"Application Design\" eine spezifische Ausprägung davon darstellt, die sich auf die Gestaltung von Anwendungen konzentriert.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Application Design\" ist ein spezifischer Teilbereich des \"system design\", der sich auf die Implementierung und Modellierung von Anwendungen konzentriert, während \"system design\" die allgemeine Gestaltung von Systemen umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "\"system design\" ist ein allgemeineres Konzept, das die Planung und Strukturierung von Systemen umfasst, während \"Application Design\" eine spezifische Ausprägung davon darstellt, die sich auf die Implementierung von Anwendungen konzentriert.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/E.8",
+      "object_id": "http://data.europa.eu/esco/skill/4918ec9a-0204-4935-8b09-b0112370daa8",
+      "subject_label": "Information Security Management",
+      "object_label": "establish an Information Security Management System",
+      "gold": "EQUIVALENT",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"establish an Information Security Management System\" ist ein spezifischer Teilaspekt von \"Information Security Management\", da letzteres die Implementierung, Überwachung und kontinuierliche Verbesserung von Sicherheitsmaßnahmen umfasst, während ersteres nur die Einrichtung eines Systems beschreibt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Information Security Management\") beschreibt die allgemeine Implementierung und Überwachung von Informationssicherheitsstrategien, während Konzept B (\"establish an Information Security Management System\") eine konkrete Handlung zur Umsetzung eines solchen Systems darstellt. Daher ist Konzept B ein Spezialfall von Konzept A.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Information Security Management\") beschreibt die allgemeine Umsetzung von Informationssicherheitsstrategien, während Konzept B (\"establish an Information Security Management System\") einen spezifischen Teilprozess (Aufbau eines ISMS) als Teilmenge dieser Strategien darstellt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/C.1",
+      "object_id": "http://data.europa.eu/esco/skill/c2296e2e-5fef-4f24-a24f-e5b3792268be",
+      "subject_label": "User Support",
+      "object_label": "provide ICT support",
+      "gold": "EQUIVALENT",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"User Support\" ist ein allgemeineres Konzept, das die Unterstützung von Nutzern bei Anfragen, Problemen und Leistungsoptimierung umfasst, während \"provide ICT support\" eine spezifischere Teilmenge darstellt, die sich auf die technische Unterstützung von IKT-Systemen konzentriert.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "\"provide ICT support\" ist ein spezifischerer Fall von \"User Support\", da ICT-Support eine Teilmenge der allgemeinen Benutzerunterstützung darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"User Support\" ist ein allgemeineres Konzept, das die Bereitstellung von ICT-Support umfasst, während \"provide ICT support\" eine spezifischere Teilmenge dieser Tätigkeit darstellt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/D.11",
+      "object_id": "http://data.europa.eu/esco/skill/42fcf80d-7b45-40f3-bd2f-5411c4c0dfa0",
+      "subject_label": "Needs Identification",
+      "object_label": "identify technological needs",
+      "gold": "EQUIVALENT",
+      "final": "B_SUBSUMES_A",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept B (\"identify technological needs\") ist ein spezifischer Teilaspekt von Konzept A (\"Needs Identification\"), der sich auf die Identifikation technologischer Anforderungen konzentriert, während Konzept A einen breiteren Prozess der Bedarfsanalyse und -klärung umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Needs Identification\") umfasst die aktive Identifikation und Klärung von Bedürfnissen (inkl. Stakeholder-Einbindung, Lösungsvorschlägen und Beratung), während Konzept B (\"identify technological needs\") sich spezifisch auf die Identifikation technologischer Bedürfnisse beschränkt – ein Teilaspekt von Konzept A.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept B (\"identify technological needs\") ist ein spezifischer Teilaspekt des umfassenderen Konzepts A (\"Needs Identification\"), das sich auf die Identifikation aller Arten von Bedürfnissen (inkl. technologischer) sowie deren Umsetzung bezieht.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/plan",
+      "object_id": "http://data.europa.eu/esco/skill/a2fef437-6719-47c2-8552-73b9fe81df86",
+      "subject_label": "PLAN",
+      "object_label": "plan ICT capacity",
+      "gold": "A_SUBSUMES_B",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"plan ICT capacity\" ist ein spezifischerer Teilbereich des allgemeinen Planungs-Konzepts in IT-Business-Strategien und -Dienstleistungen.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"plan ICT capacity\" ist ein spezifischerer Aspekt des allgemeinen Planungsbereichs (\"PLAN\"), der IT-Geschäftsstrategien und -dienste umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"plan ICT capacity\" ist ein spezifischer Aspekt des allgemeinen Themas \"PLAN\", das sich auf die Planung von IT-Geschäftsstrategien und -dienstleistungen bezieht.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/plan",
+      "object_id": "http://data.europa.eu/esco/skill/ed0718f6-5823-4c74-9749-2936c9c06203",
+      "subject_label": "PLAN",
+      "object_label": "develop audit plan",
+      "gold": "A_SUBSUMES_B",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"PLAN\" ist ein allgemeineres Konzept, das die Planung von IT-Geschäftsstrategien und -diensten umfasst, während \"develop audit plan\" eine spezifische Anwendung der Planung im Bereich der Audit-Vorbereitung darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"PLAN\") ist ein allgemeinerer Kompetenzbereich, der strategische IT-Geschäftsplanung umfasst, während Konzept B (\"develop audit plan\") eine spezifische Teilaktivität innerhalb dieses Bereichs beschreibt (Auditplanung).",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"PLAN\") ist ein allgemeineres Konzept, das die Planung von IT-Geschäftsstrategien und -dienstleistungen umfasst, während Konzept B (\"develop audit plan\") eine spezifische Ausprägung dieser Planung im Bereich der Auditplanung darstellt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/manage",
+      "object_id": "http://data.europa.eu/esco/skill/cb668e89-6ef5-4ff3-ab4a-506010e7e70b",
+      "subject_label": "MANAGE",
+      "object_label": "manage a team",
+      "gold": "A_SUBSUMES_B",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"MANAGE\") ist ein allgemeineres Konzept, das IT-Projektmanagement, Prozesse und Governance umfasst, während Konzept B (\"manage a team\") eine spezifische Ausprägung des Managements darstellt, die sich auf Teamführung und Personalmanagement konzentriert.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"MANAGE\") ist ein allgemeineres Konzept, das IT-Projektmanagement, Prozesse und Governance umfasst, während Konzept B (\"manage a team\") eine spezifische Ausprägung des Managements darstellt, die sich auf Teamführung und Personalmanagement konzentriert.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept B (manage a team) ist ein spezifischer Spezialfall von Konzept A (MANAGE), da es sich auf die Führung eines Teams innerhalb des breiteren Rahmens des IT-Projekt-, Prozess- und Governance-Managements konzentriert.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/manage",
+      "object_id": "http://data.europa.eu/esco/skill/41bf7ede-fc84-4a57-8c89-b548d11b0ba1",
+      "subject_label": "MANAGE",
+      "object_label": "manage business knowledge",
+      "gold": "A_SUBSUMES_B",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"MANAGE\") ist allgemeiner und umfasst das spezifischere Konzept B (\"manage business knowledge\"), da letzteres sich auf die gezielte Nutzung von Informationen und Tools zur Wissensgenerierung beschränkt, während MANAGE auch Projekt-, Prozess- und Governance-Management einschließt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"MANAGE\") ist ein allgemeinerer Begriff, der IT-Projektmanagement, Prozesse und Governance umfasst, während Konzept B (\"manage business knowledge\") eine spezifische Anwendung des Managements im Bereich der Wissensverarbeitung und -verteilung darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (MANAGE) ist ein allgemeinerer Begriff, der IT-Projekt-, Prozess- und Governance-Management umfasst, während Konzept B (manage business knowledge) eine spezifische Anwendung im Bereich der Wissensbewirtschaftung darstellt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/manage",
+      "object_id": "http://data.europa.eu/esco/skill/3c76296d-4bbd-44ba-8eaa-95bf275f79b7",
+      "subject_label": "MANAGE",
+      "object_label": "manage ICT project",
+      "gold": "A_SUBSUMES_B",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"MANAGE\") ist allgemeiner und umfasst das spezifischere Konzept B (\"manage ICT project\"), da das Management von IT-Projekten, Prozessen und Governance über die reine Planung, Organisation und Kontrolle von ICT-Projekten hinausgeht.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"MANAGE\") ist der allgemeinere Oberbegriff, der das spezifischere Konzept B (\"manage ICT project\") als Spezialfall umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"MANAGE\") ist ein allgemeinerer Begriff, der die Steuerung von IT-Projekten, Prozessen und Governance umfasst, während Konzept B (\"manage ICT project\") eine spezifische Ausprägung davon darstellt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/A.5",
+      "object_id": "http://data.europa.eu/esco/skill/ee3c1d54-f46a-43c7-a0f9-0ba3648164d0",
+      "subject_label": "Architecture Design",
+      "object_label": "design enterprise architecture",
+      "gold": "A_SUBSUMES_B",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (Architecture Design) ist ein spezifischer Teilbereich von Konzept B (design enterprise architecture), da Enterprise Architecture Design die übergeordnete Disziplin umfasst, die auch die technische Systemarchitektur (Konzept A) als Teilmenge einschließt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt die technische Umsetzung und Spezifizierung einer Systemarchitektur (inkl. Hardware, Software, Prozesse etc.), während Konzept B sich auf die Analyse der Geschäftsstruktur und logische Organisation von Geschäftsprozessen und IT-Infrastruktur konzentriert – damit ist Konzept B ein spezifischerer Teilaspekt der übergeordneten Architekturplanung in Konzept A.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt die technische Umsetzung und Spezifizierung von Systemarchitekturen (einschließlich Hardware, Software, Prozesse etc.), während Konzept B sich auf die Analyse der Geschäftsstruktur und logische Organisation von Geschäftsprozessen und IT-Infrastruktur konzentriert – damit ist Konzept B ein spezifischer Anwendungsfall von Konzept A im Bereich der Unternehmensarchitektur.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/E.2",
+      "object_id": "http://data.europa.eu/esco/skill/7111b95d-0ce3-441a-9d92-4c75d05c4388",
+      "subject_label": "Project and Portfolio Management",
+      "object_label": "project management",
+      "gold": "A_SUBSUMES_B",
+      "final": "B_SUBSUMES_A",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (Project and Portfolio Management) umfasst die Planung und Steuerung einzelner Projekte sowie ganzer Projektportfolios, während Konzept B (project management) sich nur auf die allgemeine Disziplin des Projektmanagements bezieht. Projektportfolio-Management ist damit ein spezifischerer Anwendungsfall von Projektmanagement.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (Project and Portfolio Management) ist ein Spezialfall von Konzept B (project management), da es zusätzlich die Steuerung von Projektportfolios und die Koordination mehrerer Projekte umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (\"Project and Portfolio Management\") ist ein spezifischerer Spezialfall von Konzept B (\"project management\"), da es zusätzlich zur Projektführung auch die Steuerung von Projektportfolios und die Koordination mehrerer Projekte umfasst, während Konzept B nur die allgemeine Disziplin der Projektführung beschreibt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/E.2",
+      "object_id": "http://data.europa.eu/esco/skill/0a9acb6b-1139-4be9-b431-3a80a959f2f4",
+      "subject_label": "Project and Portfolio Management",
+      "object_label": "Agile project management",
+      "gold": "A_SUBSUMES_B",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Project and Portfolio Management\" ist ein allgemeineres Konzept, das auch agile Ansätze umfasst, während \"Agile project management\" eine spezifische Methode innerhalb des Projektmanagements darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Project and Portfolio Management\" ist ein allgemeineres Konzept, das auch agile Methoden umfassen kann, während \"Agile project management\" eine spezifische Ausprägung davon darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Project and Portfolio Management\" ist ein allgemeinerer Begriff, der auch agile Projektmanagement-Methoden umfassen kann, während \"Agile project management\" eine spezifische Ausprägung davon darstellt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/B.3",
+      "object_id": "http://data.europa.eu/esco/skill/ea412de3-9d7a-4943-8d8c-c6d3c7495d0e",
+      "subject_label": "Testing",
+      "object_label": "execute integration testing",
+      "gold": "A_SUBSUMES_B",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"execute integration testing\" ist ein spezifischer Teilaspekt des allgemeinen \"Testing\"-Prozesses, der die Durchführung systematischer Testverfahren für ICT-Systeme oder Kundenanforderungen umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"execute integration testing\" ist ein spezifischer Teilaspekt des allgemeinen \"Testing\"-Prozesses, der systematische Testverfahren für ICT-Systeme umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"execute integration testing\" ist ein spezifischer Teilaspekt des allgemeinen \"Testing\"-Konzepts, da Integrationstests eine Unterkategorie systematischer Testverfahren darstellen.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/B.3",
+      "object_id": "http://data.europa.eu/esco/skill/53456d90-8c0d-4bd2-9f1b-312619b6e2a6",
+      "subject_label": "Testing",
+      "object_label": "hardware testing methods",
+      "gold": "A_SUBSUMES_B",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Testing\" (Konzept A) ist ein allgemeineres Konzept, das alle Formen von Testverfahren umfasst, während \"hardware testing methods\" (Konzept B) eine spezifische Unterkategorie davon darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Testing\" (Konzept A) ist ein allgemeineres Konzept, das \"hardware testing methods\" (Konzept B) als spezifische Methode umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Testing\" ist ein allgemeineres Konzept, das alle Formen des Testens umfasst, während \"hardware testing methods\" eine spezifische Unterart des Testens darstellt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/D.12",
+      "object_id": "http://data.europa.eu/esco/skill/736ef286-fbd3-4e5c-a4b4-d1e2008c9898",
+      "subject_label": "Digital Marketing",
+      "object_label": "plan digital marketing",
+      "gold": "A_SUBSUMES_B",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Digital Marketing\") umfasst die allgemeine Theorie und Praxis des digitalen Marketings, während Konzept B (\"plan digital marketing\") eine spezifische Teilaktivität (Planung) davon darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept B (\"plan digital marketing\") ist eine spezifische Teilhandlung von Konzept A (\"Digital Marketing\"), das die gesamte Strategieplanung und -umsetzung inkl. Evaluation und Datenschutz umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept B (\"plan digital marketing\") ist eine spezifische Teilhandlung (Planung) des umfassenderen Konzepts A (\"Digital Marketing\"), das alle Aspekte von digitalem Marketing inkl. Planung, Umsetzung und Evaluation abdeckt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/D.12",
+      "object_id": "http://data.europa.eu/esco/skill/ef069fe6-305b-4452-8f7d-0c572e98effc",
+      "subject_label": "Digital Marketing",
+      "object_label": "mobile marketing",
+      "gold": "A_SUBSUMES_B",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Digital Marketing\" ist ein allgemeineres Konzept, das auch \"mobile marketing\" als spezifische Unterkategorie umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Digital Marketing\" ist ein allgemeineres Konzept, das \"mobile marketing\" als spezifische Teilmenge umfasst, da mobiles Marketing eine Unterkategorie des digitalen Marketings darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Digital Marketing\" ist ein allgemeineres Konzept, das \"Mobile Marketing\" als spezifische Ausprägung umfasst, da Mobile Marketing eine Teilmenge der digitalen Marketingstrategien darstellt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/D.1",
+      "object_id": "http://data.europa.eu/esco/skill/86d2e2ea-1ba2-4aa6-b465-8a1f9abc81b8",
+      "subject_label": "Information Security Strategy Development",
+      "object_label": "apply information security policies",
+      "gold": "A_SUBSUMES_B",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt die strategische Entwicklung einer umfassenden Informationssicherheitsstrategie inkl. Rollen und Standards, während Konzept B die konkrete Umsetzung von Richtlinien und Methoden zur Einhaltung von Sicherheitsprinzipien fokussiert. Konzept B ist damit ein Spezialfall von Konzept A.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt die strategische Entwicklung von Informationssicherheit (umfassend Strategie, Kultur, Standards, Rollen), während Konzept B die konkrete Umsetzung von Richtlinien (Implementierung von Policies) als Teilaspekt davon abdeckt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Information Security Strategy Development\") umfasst die strategische Planung und Umsetzung von Sicherheitsmaßnahmen, während Konzept B (\"apply information security policies\") die konkrete Implementierung von Richtlinien und Methoden beschreibt – eine Teilmenge der strategischen Entwicklung.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/E.6",
+      "object_id": "http://data.europa.eu/esco/skill/7f0b1a66-ebaf-4c8a-b606-4c1844eb692e",
+      "subject_label": "ICT Quality Management",
+      "object_label": "attend to ICT systems quality",
+      "gold": "A_SUBSUMES_B",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"ICT Quality Management\") beschreibt die allgemeine Planung, Umsetzung und Optimierung von Qualitätsstrategien in der ICT, während Konzept B (\"attend to ICT systems quality\") eine spezifische Teilhandlung innerhalb dieses Rahmens darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt die strategische Planung und Umsetzung von ICT-Qualitätsmanagement, während Konzept B eine konkrete Handlung (Sicherstellung der ICT-Systemqualität) als Teilaspekt davon abdeckt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"ICT Quality Management\") beschreibt die allgemeine Planung, Implementierung und Optimierung von Qualitätsmanagementstrategien in der ICT, während Konzept B (\"attend to ICT systems quality\") eine spezifische Handlung (das \"Sich-Kümmern um\") innerhalb dieses Rahmens darstellt. Jede Instanz von B ist damit eine Instanz von A.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/B.6",
+      "object_id": "http://data.europa.eu/esco/skill/72a74f69-5cf1-43c5-99b9-62a444578919",
+      "subject_label": "Systems Engineering",
+      "object_label": "engineering processes",
+      "gold": "A_SUBSUMES_B",
+      "final": "B_SUBSUMES_A",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "\"engineering processes\" ist ein allgemeinerer Begriff, der die systematische Herangehensweise an Entwicklung und Wartung von Engineering-Systemen beschreibt, während \"Systems Engineering\" eine spezifische Ausprägung dieses Prozesses darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "\"engineering processes\" ist ein allgemeineres Konzept, das die systematische Entwicklung und Wartung von Engineering-Systemen umfasst, während \"Systems Engineering\" eine spezifische Ausprägung davon darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Systems Engineering\" ist ein spezifischer Teilbereich des \"engineering processes\", da es sich um eine systematische Methode innerhalb der Ingenieurprozesse handelt, die sich auf Software/Hardware-Entwicklung, Systemmodellierung und Tests konzentriert.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/E.1",
+      "object_id": "http://data.europa.eu/esco/skill/875eeec4-fc70-4e6a-80ef-4d18356976e3",
+      "subject_label": "Forecast Development",
+      "object_label": "forecast workload",
+      "gold": "A_SUBSUMES_B",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Forecast Development\" ist ein allgemeineres Konzept, das Marktanalyse und Unternehmenspotenzialbewertung umfasst, während \"forecast workload\" sich spezifisch auf die Planung von Arbeitsbelastung und Zeitmanagement bezieht, was eine Teilmenge der Vorhersageaktivitäten darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Forecast Development\" ist ein allgemeineres Konzept, das die Bewertung von Marktakzeptanz und Produktionspotenzial umfasst, während \"forecast workload\" sich spezifisch auf die Planung von Arbeitsbelastung und Zeitrahmen konzentriert.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Forecast Development\") umfasst die allgemeine Fähigkeit zur Prognoseentwicklung inkl. Marktanalyse und Ressourcenbewertung, während Konzept B (\"forecast workload\") sich spezifisch auf die Vorhersage von Arbeitslast und Zeitbedarf beschränkt – ein Teilaspekt von A.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/D.7",
+      "object_id": "http://data.europa.eu/esco/skill/e7219848-a27a-4bf4-8775-d367707be7c9",
+      "subject_label": "Sales Management",
+      "object_label": "sales strategies",
+      "gold": "A_SUBSUMES_B",
+      "final": "B_SUBSUMES_A",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (\"Sales Management\") beschreibt die operative Umsetzung und Steuerung von Verkaufsprozessen, während Konzept B (\"sales strategies\") die grundlegenden Prinzipien und Rahmenbedingungen für Verkaufsstrategien definiert – Konzept B ist damit das allgemeinere Konzept, das Konzept A als spezifische Anwendung umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (\"Sales Management\") ist eine spezifischere Ausprägung von Konzept B (\"sales strategies\"), da es konkrete Maßnahmen und Prozesse zur Umsetzung von Verkaufsstrategien beschreibt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (\"Sales Management\") ist ein spezifischerer Teilbereich von Konzept B (\"sales strategies\"), da Sales Management konkrete Maßnahmen und Prozesse zur Umsetzung von Verkaufsstrategien beschreibt, während sales strategies nur die grundlegenden Prinzipien und Ziele definiert.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/A.6",
+      "object_id": "http://data.europa.eu/esco/skill/b0096dc5-2e2d-4bc1-8172-05bf486c3968",
+      "subject_label": "Application Design",
+      "object_label": "design application interfaces",
+      "gold": "A_SUBSUMES_B",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Application Design\" umfasst die umfassende Analyse, Spezifikation und Aktualisierung eines Implementierungsmodells inkl. Schnittstellendesign, während \"design application interfaces\" nur einen Teilaspekt (die Schnittstellengestaltung) davon abdeckt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Application Design\") umfasst das spezifischere Konzept B (\"design application interfaces\") als Teilaspekt der Schnittstellengestaltung innerhalb des umfassenderen Anwendungsdesigns.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Application Design\" ist ein umfassenderer Prozess, der die Spezifikation, Aktualisierung und Umsetzung von Implementierungsmodellen (inkl. Schnittstellendesign) umfasst, während \"design application interfaces\" ein spezifischer Teilaspekt davon ist.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/B.5",
+      "object_id": "http://data.europa.eu/esco/skill/327d15c8-29ff-4ad4-a4fe-6536d777a45f",
+      "subject_label": "Documentation Production",
+      "object_label": "documentation types",
+      "gold": "A_SUBSUMES_B",
+      "final": "B_SUBSUMES_A",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (\"Documentation Production\") beschreibt den Prozess des Erstellens von Dokumentation, während Konzept B (\"documentation types\") sich auf die Arten/Kategorien von Dokumentation bezieht – Dokumentationstypen sind ein spezifischer Aspekt, der in den Prozess der Dokumentationserstellung fällt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt die konkrete Erstellung von Dokumentation, während Konzept B die Klassifizierung von Dokumentationstypen entlang des Produktlebenszyklus behandelt. Konzept B ist damit ein spezifischer Teilaspekt von Konzept A.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept B (documentation types) ist ein spezifischerer Aspekt von Konzept A (Documentation Production), da Dokumenttypen eine Teilmenge der Dokumentationserstellung darstellen.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/E.6",
+      "object_id": "http://data.europa.eu/esco/skill/94dd823c-148e-4614-a6e8-99249b16357d",
+      "subject_label": "ICT Quality Management",
+      "object_label": "ICT project management",
+      "gold": "A_SUBSUMES_B",
+      "final": "UNRESOLVED",
+      "votes_for_final": 0,
+      "runs_total": 3,
+      "confidence": 0.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"ICT Quality Management\" ist ein allgemeineres Konzept, das strategische Qualitätsmanagement-Prozesse umfasst, während \"ICT project management\" ein spezifischerer Teilbereich ist, der sich auf die Planung und Durchführung von Projekten konzentriert.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "\"ICT project management\" ist ein spezifischerer Teilbereich von \"ICT Quality Management\", da Projektmanagement eine Komponente des umfassenderen Qualitätsmanagements darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "ICT Quality Management und ICT Project Management sind thematisch verwandte Konzepte, aber keines ist ein Spezialfall des anderen.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/E.6",
+      "object_id": "http://data.europa.eu/esco/occupation/a28dff76-74df-46ee-929f-d1fffbb63cd7",
+      "subject_label": "ICT Quality Management",
+      "object_label": "ICT quality assurance manager",
+      "gold": "B_SUBSUMES_A",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept B (\"ICT quality assurance manager\") ist eine spezifische Rolle/Position, die sich auf die Umsetzung von Qualitätsmanagement im ICT-Bereich konzentriert, während Konzept A (\"ICT Quality Management\") das allgemeine Konzept des Qualitätsmanagements in der ICT beschreibt, das auch andere Aspekte (z.B. Strategie, Indikatoren) umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt die allgemeine Tätigkeit des Qualitätsmanagements in der ICT, während Konzept B eine spezifische Rolle (Qualitätsmanager) innerhalb dieses Bereichs darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"ICT Quality Management\") ist die allgemeine Disziplin der Planung und Umsetzung von Qualitätsstrategien, während Konzept B (\"ICT quality assurance manager\") eine spezifische Rolle/Position innerhalb dieses Rahmens darstellt, die konkrete Maßnahmen zur Qualitätssicherung umsetzt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/D.2",
+      "object_id": "http://data.europa.eu/esco/occupation/a28dff76-74df-46ee-929f-d1fffbb63cd7",
+      "subject_label": "ICT Quality Strategy Development",
+      "object_label": "ICT quality assurance manager",
+      "gold": "B_SUBSUMES_A",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (ICT Quality Strategy Development) beschreibt die strategische Ebene der Qualitätsentwicklung, während Konzept B (ICT quality assurance manager) eine spezifische Rolle innerhalb dieses Rahmens darstellt, die konkrete Umsetzung und Kontrolle verantwortet.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt die strategische Entwicklung von ICT-Qualitätsmanagement-Systemen, während Konzept B die operative Umsetzung durch eine spezifische Rolle (ICT-Qualitätsmanager) darstellt. Daher ist Konzept A das allgemeinere Konzept, das Konzept B als spezifische Ausprägung umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (ICT Quality Strategy Development) beschreibt die Entwicklung von Strategien für das Qualitätsmanagement, während Konzept B (ICT quality assurance manager) eine konkrete Rolle innerhalb dieses Rahmens darstellt, die Strategien umsetzt und überwacht. Daher ist Konzept B ein Spezialfall von Konzept A.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/B.2",
+      "object_id": "http://data.europa.eu/esco/occupation/07e60525-1aad-4099-aaf3-2c7014c92212",
+      "subject_label": "Component Integration",
+      "object_label": "integration engineer",
+      "gold": "B_SUBSUMES_A",
+      "final": "B_SUBSUMES_A",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (\"Component Integration\") beschreibt eine spezifische Tätigkeit (Integration von Komponenten), während Konzept B (\"integration engineer\") die Person bezeichnet, die diese Tätigkeit ausführt. Damit ist Konzept A ein Teilaspekt des Berufsprofils eines Integration Engineers.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Component Integration\") beschreibt die allgemeine Tätigkeit des Integrierens von Komponenten in Systeme, während Konzept B (\"integration engineer\") eine spezifische Berufsrolle darstellt, die diese Tätigkeit ausführt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept B (\"integration engineer\") beschreibt eine spezifische Berufsrolle, die die allgemeinen Aufgaben von Konzept A (\"Component Integration\") als Teil ihrer Tätigkeit umfasst.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/C.1",
+      "object_id": "http://data.europa.eu/esco/occupation/faed411a-f920-4100-86a8-b877928b429c",
+      "subject_label": "User Support",
+      "object_label": "user experience analyst",
+      "gold": "B_SUBSUMES_A",
+      "final": "UNRESOLVED",
+      "votes_for_final": 0,
+      "runs_total": 3,
+      "confidence": 0.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"User Support\" ist ein allgemeinerer Begriff, der technische Problemlösung und Service umfasst, während \"user experience analyst\" eine spezifische Rolle mit Fokus auf Analyse und Verbesserung der Nutzererfahrung darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (\"User Support\") ist ein Spezialfall von Konzept B (\"user experience analyst\"), da User Support sich auf die Reaktion auf Nutzeranfragen und -probleme konzentriert, während ein UX-Analyst darüber hinaus auch das Verhalten, die Emotionen und die Verbesserung der Nutzererfahrung systematisch analysiert.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "Die Konzepte beziehen sich auf unterschiedliche Aspekte der Nutzerinteraktion (technische Unterstützung vs. Analyse der Nutzererfahrung), sind aber thematisch verwandt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/E.3",
+      "object_id": "http://data.europa.eu/esco/occupation/7754d570-9519-48c2-b1c9-8e165f8bca0f",
+      "subject_label": "Risk Management",
+      "object_label": "cybersecurity risk manager",
+      "gold": "B_SUBSUMES_A",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept B (\"cybersecurity risk manager\") ist ein spezifischer Spezialfall von Konzept A (\"Risk Management\"), da der Cybersecurity-Risikomanager sich ausschließlich auf cybersecurity-bezogene Risiken konzentriert, während Konzept A alle Arten von Risiken (inkl. Geschäftsrisiken, Internet/Cloud-Risiken, mobile Geräte) umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept B (cybersecurity risk manager) ist ein spezifischer Spezialfall von Konzept A (Risk Management), da es sich auf cybersecurity-bezogene Risiken in ICT-Infrastrukturen konzentriert, während Konzept A allgemeiner alle Risiken in Informationssystemen abdeckt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept B (\"cybersecurity risk manager\") ist ein spezifischer Spezialfall von Konzept A (\"Risk Management\"), da es sich auf ICT-Infrastrukturen und cybersecurity-spezifische Risiken konzentriert, während Konzept A allgemeiner alle Risiken in Informationssystemen abdeckt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/B.2",
+      "object_id": "http://data.europa.eu/esco/occupation/731f38f1-b08f-4dd5-a25e-f8627c038273",
+      "subject_label": "Component Integration",
+      "object_label": "ICT integration tester",
+      "gold": "B_SUBSUMES_A",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt die allgemeine Integration von Komponenten in ein System (inkl. Planung, Tests, Dokumentation), während Konzept B eine spezifische Rolle (Tester) mit Fokus auf Integrationstests fokussiert. Jede Instanz von B ist damit eine Instanz von A.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Component Integration\") ist der übergeordnete Prozess, der das allgemeine Ziel der Integration von Komponenten beschreibt, während Konzept B (\"ICT integration tester\") eine spezifische Rolle innerhalb dieses Prozesses darstellt, die sich auf das Testen von integrierten Systemen konzentriert.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt den allgemeinen Prozess der Integration von Komponenten in ein System, während Konzept B eine spezifische Rolle (Tester) mit Fokus auf Integrationstests fokussiert.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/B.1",
+      "object_id": "http://data.europa.eu/esco/occupation/2ed56c3f-61d6-4f7e-9ef8-8849eb102e4c",
+      "subject_label": "Application Development",
+      "object_label": "mobile application developer",
+      "gold": "B_SUBSUMES_A",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (Application Development) beschreibt die allgemeine Tätigkeit der Anwendungsentwicklung, während Konzept B (mobile application developer) eine spezifische Rolle innerhalb dieses Bereichs darstellt, die sich auf mobile Anwendungen konzentriert.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (Application Development) umfasst die allgemeine Entwicklung von Anwendungen inkl. mobiler Anwendungen, während Konzept B (mobile application developer) sich spezifisch auf die Entwicklung mobiler Anwendungen beschränkt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept B (\"mobile application developer\") ist ein spezifischerer Spezialfall von Konzept A (\"Application Development\"), da mobile Anwendungsentwicklung eine Teilmenge der allgemeinen Anwendungsentwicklung darstellt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/A.6",
+      "object_id": "http://data.europa.eu/esco/occupation/456ed487-02f2-45c9-9213-d0fd8e9a069d",
+      "subject_label": "Application Design",
+      "object_label": "ICT application configurator",
+      "gold": "B_SUBSUMES_A",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (Application Design) umfasst die gesamte Planung, Spezifikation und Umsetzung von Anwendungen inkl. Kostenabschätzung, Modellierung und Validierung, während Konzept B (ICT application configurator) sich auf die technische Konfiguration bestehender Systeme beschränkt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept B (ICT application configurator) ist ein spezifischer Anwendungsfall von Konzept A (Application Design), da die Konfiguration von Anwendungen ein Teilbereich des umfassenderen Designprozesses ist.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Application Design\") umfasst die gesamte Bandbreite der Analyse, Spezifikation und Aktualisierung eines Implementierungsmodells inkl. Kostenabschätzung, Modellierung, Interoperabilitäts- und Sicherheitsaspekten sowie Pilotierung – während Konzept B (\"ICT application configurator\") sich auf die technische Konfiguration von Anwendungen (Parameter, Regeln, Module) beschränkt und damit eine Teilmenge von Konzept A darstellt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/D.10",
+      "object_id": "http://data.europa.eu/esco/occupation/812c217d-32b7-4f6a-9faf-993d3577ac7f",
+      "subject_label": "Information and Knowledge Management",
+      "object_label": "knowledge engineer",
+      "gold": "B_SUBSUMES_A",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "\"knowledge engineer\" ist ein spezifischer Beruf, der sich auf die technische Umsetzung von Wissensmanagement konzentriert, während \"Information and Knowledge Management\" ein allgemeineres Konzept ist, das auch organisatorische und strategische Aspekte umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Information and Knowledge Management\") ist ein allgemeineres Konzept, das die strategische Organisation und Nutzung von Wissen umfasst, während Konzept B (\"knowledge engineer\") eine spezifische Rolle beschreibt, die sich auf die technische Umsetzung und Wartung von Wissenssystemen konzentriert.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (Information and Knowledge Management) ist ein allgemeinerer Begriff, der die organisatorische und strategische Nutzung von Wissen umfasst, während Konzept B (knowledge engineer) eine spezifische Rolle darstellt, die sich auf die technische Umsetzung und Systemintegration von Wissen konzentriert.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/E.8",
+      "object_id": "http://data.europa.eu/esco/occupation/0464b062-cea6-4164-b10d-956c61956ae7",
+      "subject_label": "Information Security Management",
+      "object_label": "ICT security administrator",
+      "gold": "B_SUBSUMES_A",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Information Security Management\") ist ein allgemeineres Konzept, das strategische Planung, Überwachung und kontinuierliche Verbesserung umfasst, während Konzept B (\"ICT security administrator\") eine spezifische Rolle mit operativen Sicherheitsmaßnahmen beschreibt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Information Security Management\") ist der übergeordnete Begriff, der strategische Planung, Überwachung und kontinuierliche Verbesserung umfasst, während Konzept B (\"ICT security administrator\") eine spezifische Rolle mit operativen Sicherheitsmaßnahmen beschreibt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Information Security Management\") ist ein allgemeineres Konzept, das strategische Planung und Überwachung umfasst, während Konzept B (\"ICT security administrator\") eine spezifische Rolle innerhalb dieses Bereichs beschreibt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/B.2",
+      "object_id": "http://data.europa.eu/esco/occupation/bd9d395a-d587-45c6-8d72-ceef226df9e1",
+      "subject_label": "Component Integration",
+      "object_label": "ICT system integration consultant",
+      "gold": "B_SUBSUMES_A",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt die allgemeine Tätigkeit der Systemintegration, während Konzept B eine spezifische Rolle (Berater) mit Fokus auf Beratung und organisatorische Aspekte darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Component Integration\") beschreibt den allgemeinen Prozess des Integrierens von Komponenten in Systeme, während Konzept B (\"ICT system integration consultant\") eine spezifische Berufsrolle darstellt, die diese Integration als Dienstleistung durchführt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Component Integration\" ist ein allgemeinerer Begriff, der die Integration von Hardware, Software oder anderen Komponenten umfasst, während \"ICT system integration consultant\" eine spezifische Rolle oder Funktion im Bereich der ICT-Systemintegration darstellt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/E.7",
+      "object_id": "http://data.europa.eu/esco/occupation/fe0fa514-b48d-4a53-9757-a283c0baacf0",
+      "subject_label": "Business Change Management",
+      "object_label": "ICT business analyst",
+      "gold": "B_SUBSUMES_A",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Business Change Management\") umfasst die allgemeine Steuerung von Veränderungen in Organisationen, während Konzept B (\"ICT business analyst\") sich spezifisch auf die Analyse und Gestaltung von ICT-Prozessen und -Systemen konzentriert.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (Business Change Management) ist allgemeiner und umfasst die spezifischen Aufgaben von Konzept B (ICT business analyst), die sich auf Analyse und Design von Prozessen/Systemen sowie Anforderungsmanagement konzentrieren.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept B (ICT business analyst) beschreibt eine spezifischere Rolle mit Fokus auf Analyse und Design von Prozessen/Systemen sowie Anforderungserfassung, während Konzept A (Business Change Management) die umfassendere Aufgabe der Steuerung von Veränderungen inkl. struktureller/kultureller Aspekte und Kontinuitätsmanagement abdeckt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/D.1",
+      "object_id": "http://data.europa.eu/esco/occupation/0464b062-cea6-4164-b10d-956c61956ae7",
+      "subject_label": "Information Security Strategy Development",
+      "object_label": "ICT security administrator",
+      "gold": "B_SUBSUMES_A",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt die strategische Ebene der Informationssicherheit (Entwicklung von Richtlinien, Rollen, Standards), während Konzept B die operative Umsetzung (konkrete Maßnahmen zum Schutz vor Zugriffen) abdeckt. Jeder ICT-Sicherheitsadministrator handelt im Rahmen einer solchen Strategie, aber nicht jede Strategie wird direkt von einem Administrator umgesetzt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (Informationssicherheitsstrategieentwicklung) beschreibt die strategische Planung und Umsetzung einer übergeordneten Sicherheitsarchitektur, während Konzept B (ICT-Sicherheitsadministrator) eine konkrete Rolle innerhalb dieser Strategie darstellt, die spezifische Maßnahmen umsetzt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt die strategische Entwicklung von Informationssicherheit (umfassend, organisatorisch), während Konzept B eine konkrete Rolle (ICT-Sicherheitsadministrator) mit operativen Maßnahmen fokussiert. Jede Instanz von B (z.B. ein Administrator) ist Teil der Umsetzung von A (Strategie), aber nicht umgekehrt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/E.8",
+      "object_id": "http://data.europa.eu/esco/occupation/276ba420-ef09-4a0e-b215-2c2e2f80ad28",
+      "subject_label": "Information Security Management",
+      "object_label": "chief ICT security officer",
+      "gold": "B_SUBSUMES_A",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept B (\"chief ICT security officer\") ist eine spezifische Rolle/Position, die sich auf die Umsetzung von Konzept A (\"Information Security Management\") konzentriert, während Konzept A die allgemeine Strategie und Umsetzung umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"chief ICT security officer\" ist eine spezifische Rolle innerhalb des breiteren Konzepts \"Information Security Management\", das strategische und operative Aspekte der Informationssicherheit umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Information Security Management\") beschreibt die allgemeine Disziplin der Informationssicherheit, während Konzept B (\"chief ICT security officer\") eine spezifische Rolle innerhalb dieses Bereichs darstellt, die konkrete Verantwortlichkeiten und Aufgaben umfasst.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/D.2",
+      "object_id": "http://data.europa.eu/esco/occupation/a7c1d23d-aeca-4bee-9a08-5993ed98b135",
+      "subject_label": "ICT Quality Strategy Development",
+      "object_label": "ICT system developer",
+      "gold": "B_SUBSUMES_A",
+      "final": "B_SUBSUMES_A",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "RELATED",
+          "reasoning": "Konzept A bezieht sich auf die Entwicklung von ICT-Qualitätsstrategien und -management, während Konzept B die technische Wartung und Verbesserung von ICT-Systemen umfasst – beide sind thematisch verwandt, aber nicht hierarchisch untergeordnet.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A beschreibt strategische Tätigkeiten im ICT-Qualitätsmanagement, während Konzept B konkrete operative Tätigkeiten der Systementwicklung umfasst. Konzept A ist damit das allgemeinere Konzept, das Konzept B als spezifischen Anwendungsfall einschließt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A beschreibt strategische Entwicklung von ICT-Qualitätsmanagement, während Konzept B konkrete Umsetzung durch Systementwicklung und -wartung abdeckt. Konzept A ist damit das allgemeinere Konzept, das Konzept B als spezifische Anwendung einschließt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/E.6",
+      "object_id": "http://data.europa.eu/esco/occupation/4b3201cb-ffc5-4f61-9fc3-5c0f0038fa5f",
+      "subject_label": "ICT Quality Management",
+      "object_label": "ICT business analysis manager",
+      "gold": "B_SUBSUMES_A",
+      "final": "B_SUBSUMES_A",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (ICT Quality Management) ist ein Spezialfall von Konzept B (ICT business analysis manager), da Qualitätsmanagement eine Teilaufgabe der Geschäftsanalyse im ICT-Bereich darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (ICT Quality Management) ist ein Teilbereich des ICT-Business-Analyse-Managements (Konzept B), da Qualitätsmanagement eine spezifische Funktion innerhalb der umfassenderen Rolle des Business-Analyse-Managers darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (ICT Quality Management) ist ein spezifischer Teilbereich der Aufgaben von Konzept B (ICT business analysis manager), da Qualitätsmanagement im ICT-Bereich eine Teilfunktion der Geschäftsanalyse und -umsetzung darstellt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/C.2",
+      "object_id": "http://data.europa.eu/esco/occupation/3b1ea27c-781c-41eb-821f-214285260dd2",
+      "subject_label": "Change Support",
+      "object_label": "ICT change and configuration manager",
+      "gold": "B_SUBSUMES_A",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept B (ICT change and configuration manager) beschreibt eine spezifischere Rolle mit Fokus auf Organisation und Implementierung von Change-Management-Prozessen, während Konzept A (Change Support) die allgemeiner gehaltene Aufgabe der Beratung, Umsetzung und Kontrolle von Änderungen umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept B (\"ICT change and configuration manager\") beschreibt eine spezifischere Rolle mit Fokus auf den gesamten Lebenszyklus von ICT-Systemen, während Konzept A (\"Change Support\") eine breitere Aufgabe mit Schwerpunkt auf der Umsetzung und Kontrolle von Änderungen sowie der Einhaltung von Sicherheitsrichtlinien umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A (\"Change Support\") beschreibt eine spezifische Rolle mit Fokus auf Beratung, Umsetzung und Kontrolle von Änderungen in ICT-Systemen unter Einhaltung von Sicherheitsrichtlinien, während Konzept B (\"ICT change and configuration manager\") die allgemeine Rolle der Organisation und Durchführung von Change-Prozessen über den gesamten Lebenszyklus von ICT-Assets umfasst. Konzept A ist damit ein Spezialfall von Konzept B.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/A.3",
+      "object_id": "http://data.europa.eu/esco/occupation/4b3201cb-ffc5-4f61-9fc3-5c0f0038fa5f",
+      "subject_label": "Business Plan Development",
+      "object_label": "ICT business analysis manager",
+      "gold": "B_SUBSUMES_A",
+      "final": "B_SUBSUMES_A",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (Business Plan Development) ist ein Spezialfall von Konzept B (ICT business analysis manager), da die Entwicklung eines Business Plans eine Teilaufgabe der ICT-basierten Geschäftsanalyse und -umsetzung ist.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept B ist spezifischer, da es sich auf die Analyse und Umsetzung von ICT-Lösungen für Geschäftsbedürfnisse konzentriert, während Konzept A die allgemeine Entwicklung von Geschäftsplänen umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept B (ICT business analysis manager) ist spezifischer, da es sich auf die Analyse und Umsetzung von ICT-Lösungen für Geschäftsbedürfnisse konzentriert, während Konzept A (Business Plan Development) die allgemeine Entwicklung und Struktur eines Geschäftsplans umfasst.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/A.1",
+      "object_id": "http://data.europa.eu/esco/occupation/fe0fa514-b48d-4a53-9757-a283c0baacf0",
+      "subject_label": "IS and Business Strategy Alignment",
+      "object_label": "ICT business analyst",
+      "gold": "B_SUBSUMES_A",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt strategische Ausrichtung und Entscheidungsfindung auf Unternehmensebene, während Konzept B spezifischere operative Aufgaben wie Analyse und Umsetzung von Anforderungen umfasst, die unter die strategische Ausrichtung fallen.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt strategische Ausrichtung und Entscheidungen auf Unternehmensebene, während Konzept B sich auf die operative Analyse und Umsetzung von Geschäftsprozessen und Systemen konzentriert. Konzept B ist damit ein spezifischerer Anwendungsfall von Konzept A.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept A beschreibt strategische Ausrichtung und Entscheidungsfindung auf Unternehmensebene, während Konzept B sich auf die operative Analyse und Umsetzung von Geschäftsprozessen mit ICT-Bezug konzentriert. Konzept B ist damit ein spezifischerer Anwendungsfall von Konzept A.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/E.2",
+      "object_id": "http://data.europa.eu/esco/occupation/3b1ea27c-781c-41eb-821f-214285260dd2",
+      "subject_label": "Project and Portfolio Management",
+      "object_label": "ICT change and configuration manager",
+      "gold": "B_SUBSUMES_A",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (Project and Portfolio Management) ist ein spezifischerer Teilbereich von Konzept B (ICT change and configuration manager), da Portfolio- und Projektmanagement eine spezifische Management-Disziplin innerhalb des breiteren Aufgabengebiets der ICT-Veränderungs- und Konfigurationssteuerung darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"Project and Portfolio Management\" ist ein übergeordneter Begriff, der die Planung und Steuerung von Projekten und Portfolios umfasst, während \"ICT change and configuration manager\" eine spezifische Rolle innerhalb dieses Rahmens beschreibt, die sich auf die Verwaltung von Änderungen und Konfigurationen in ICT-Systemen konzentriert.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "Konzept B (ICT change and configuration manager) ist ein spezifischer Teilbereich von Konzept A (Project and Portfolio Management), da Projektportfolio-Management die übergeordnete Steuerung und Koordination von Projekten (inkl. Change- und Konfigurationsmanagement) umfasst.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/build",
+      "object_id": "http://data.europa.eu/esco/skill/d54a1355-05c8-45eb-9c42-267d2cfcdf44",
+      "subject_label": "BUILD",
+      "object_label": "provide technical training",
+      "gold": "RELATED",
+      "final": "A_SUBSUMES_B",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"provide technical training\" ist ein spezifischer Teilaspekt des allgemeineren Kompetenzbereichs \"BUILD\", da das Erklären und Demonstrieren von Technik im Rahmen von IT-Anwendungs- und Systementwicklung erfolgt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "A_SUBSUMES_B",
+          "reasoning": "\"BUILD\" ist ein allgemeineres Konzept zur Erstellung von IT-Anwendungen und -Systemen, während \"provide technical training\" eine spezifische Tätigkeit innerhalb dieses Bereichs darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "\"provide technical training\" ist ein spezifischer Anwendungsfall von \"BUILD\", da das Erklären und Demonstrieren von Systemfunktionen eine Teilaktivität im Prozess des Bauens von IT-Anwendungen und -Systemen darstellt.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/A.2",
+      "object_id": "http://data.europa.eu/esco/skill/cb668e89-6ef5-4ff3-ab4a-506010e7e70b",
+      "subject_label": "Service Level Management",
+      "object_label": "manage a team",
+      "gold": "RELATED",
+      "final": "B_SUBSUMES_A",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (\"Service Level Management\") ist ein Spezialfall von Konzept B (\"manage a team\"), da Service Level Management eine spezifische Managementaufgabe innerhalb der Teamführung darstellt, die sich auf die Vereinbarung und Überwachung von Leistungsstandards konzentriert.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (\"Service Level Management\") ist ein spezifischer Teilbereich des übergeordneten Konzepts B (\"manage a team\"), da Teamführung auch Service Level Management als eine von vielen Aufgaben umfassen kann, aber nicht umgekehrt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "Konzept A (Service Level Management) bezieht sich auf die Definition und Verwaltung von Leistungsvereinbarungen, während Konzept B (manage a team) die Führung und Motivation von Mitarbeitern sowie die Kommunikation innerhalb eines Teams umfasst – beide sind thematisch verwandt (z.B. im Bereich IT-Service-Management oder Personalführung), aber keines ist ein Spezialfall des anderen.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/A.2",
+      "object_id": "http://data.europa.eu/esco/skill/83218cac-3599-417e-93d2-26013cdccd98",
+      "subject_label": "Service Level Management",
+      "object_label": "service-oriented modelling",
+      "gold": "RELATED",
+      "final": "RELATED",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "\"service-oriented modelling\" ist eine spezifische Methode oder ein Ansatz, der im Rahmen des \"Service Level Management\" angewendet wird, um die definierten Service-Levels zu modellieren und umzusetzen.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "\"Service Level Management\" (Konzept A) bezieht sich auf die Definition und Verwaltung von Service-Level-Agreements, während \"service-oriented modelling\" (Konzept B) die Modellierung von Dienstleistungen im Sinne einer serviceorientierten Architektur oder Methodik beschreibt – beide sind thematisch verwandt (Service-Domäne), aber nicht hierarchisch untergeordnet.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "\"Service Level Management\" bezieht sich auf die Definition und Verwaltung von Leistungsvereinbarungen, während \"service-oriented modelling\" die Modellierung von Dienstleistungen im Allgemeinen beschreibt – beide sind thematisch verwandt, aber nicht hierarchisch über- oder untergeordnet.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/A.3",
+      "object_id": "http://data.europa.eu/esco/skill/11eebd42-44ab-401d-8a2c-bdb9fc9beb50",
+      "subject_label": "Business Plan Development",
+      "object_label": "information security strategy",
+      "gold": "RELATED",
+      "final": "RELATED",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "RELATED",
+          "reasoning": "Die Konzepte sind thematisch verwandt (strategische Planung und strategische Ausrichtung), aber weder äquivalent noch ist eines ein Spezialfall des anderen.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "\"Business Plan Development\" (ecf) und \"information security strategy\" (esco_skeleton_oberhuber) sind thematisch verwandt (beide beziehen sich auf strategische Planung), aber nicht äquivalent oder hierarchisch übergeordnet/untergeordnet.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "\"Business Plan Development\" und \"information security strategy\" sind thematisch verwandt (beide strategische Planungsprozesse), aber weder äquivalent noch ist eines ein Spezialfall des anderen.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/A.8",
+      "object_id": "http://data.europa.eu/esco/skill/bec4359e-cb92-468f-a997-8fb28e32fba9",
+      "subject_label": "Sustainable Development",
+      "object_label": "ICT project management methodologies",
+      "gold": "RELATED",
+      "final": "RELATED",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "RELATED",
+          "reasoning": "\"Sustainable Development\" (Konzept A) ist ein übergreifendes Konzept zur ökologischen Verantwortung, während \"ICT project management methodologies\" (Konzept B) eine spezifische Disziplin darstellt, die zwar Nachhaltigkeitsaspekte integrieren kann, aber nicht zwingend darauf beschränkt ist.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "\"Sustainable Development\" (Konzept A) thematisiert ökologische Verantwortung und Nachhaltigkeit in ICT-Projekten, während \"ICT project management methodologies\" (Konzept B) allgemeine Methoden des Projektmanagements in der ICT beschreibt – eine thematische Überschneidung besteht, aber keine Ober-/Unterbegriffsbeziehung.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "\"Sustainable Development\" (Konzept A) behandelt ökologische Verantwortung im ICT-Kontext, während \"ICT project management methodologies\" (Konzept B) eine methodische Disziplin darstellt – thematisch verwandt, aber keine Ober-/Unterbegriffsbeziehung.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/B.4",
+      "object_id": "http://data.europa.eu/esco/skill/e6b8f934-7f35-4dc6-9a64-f6c43acdc00b",
+      "subject_label": "Solution Deployment",
+      "object_label": "software components suppliers",
+      "gold": "RELATED",
+      "final": "RELATED",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (\"Solution Deployment\") beschreibt eine spezifische Handlung im Rahmen der Implementierung von Lösungen, während Konzept B (\"software components suppliers\") eine allgemeine Rolle oder Funktion im Bereich Softwarekomponenten darstellt, die auch andere Tätigkeiten umfassen kann.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "Konzept A beschreibt eine spezifische Handlung (Lösungseinsatz), während Konzept B eine Akteursrolle (Lieferanten von Softwarekomponenten) bezeichnet – thematisch verwandt (beide im IT-Bereich), aber keine Ober-/Unterbegriffsbeziehung.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "Konzept A beschreibt eine Handlung (Lösungseinsatz), Konzept B eine Rolle (Lieferanten von Softwarekomponenten), die thematisch verwandt sind, aber keine hierarchische Beziehung aufweisen.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/B.5",
+      "object_id": "http://data.europa.eu/esco/skill/21c5790c-0930-4d74-b3b0-84caf5af12ea",
+      "subject_label": "Documentation Production",
+      "object_label": "manage budgets",
+      "gold": "RELATED",
+      "final": "RELATED",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "RELATED",
+          "reasoning": "Die Konzepte \"Documentation Production\" und \"manage budgets\" sind thematisch verwandt (beide betreffen administrative Prozesse in einem Unternehmen), aber keines ist ein Spezialfall des anderen.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "Die Konzepte \"Documentation Production\" (Erstellung von Dokumentation) und \"manage budgets\" (Budgetverwaltung) sind thematisch verwandt (beide fallen in den Bereich der Verwaltung und Organisation), aber keines ist ein Spezialfall des anderen.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "\"Documentation Production\" und \"manage budgets\" sind thematisch verwandt (beides betrifft administrative Tätigkeiten in einem Unternehmen), aber keines ist ein Spezialfall des anderen.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/C.1",
+      "object_id": "http://data.europa.eu/esco/skill/be64bb4c-84ac-4c83-8cc7-fc8593e15136",
+      "subject_label": "User Support",
+      "object_label": "test system accessibility for users with special needs",
+      "gold": "RELATED",
+      "final": "RELATED",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "RELATED",
+          "reasoning": "Konzept A beschreibt allgemeine Benutzerunterstützung, während Konzept B eine spezifische Teilaufgabe (Barrierefreiheitstests) fokussiert, ohne dass eine Ober-Unterbegriff-Relation besteht.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "\"User Support\" umfasst allgemeine Nutzeranfragen und -probleme, während \"test system accessibility for users with special needs\" eine spezifische Teilaufgabe (Barrierefreiheitstest) darstellt, die thematisch verwandt, aber nicht hierarchisch über- oder untergeordnet ist.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "Konzept A beschreibt allgemeine Benutzerunterstützung, während Konzept B eine spezifische Teilaufgabe (Barrierefreiheitstests) davon adressiert, ohne dass eine klare Ober-Unterbegriffsbeziehung besteht.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://data.bmbf.de/dqr/L6_Knowledge",
+      "object_id": "http://data.europa.eu/esco/skill/0dc7aa1b-b5af-4f4b-81ce-ee22ed8b6926",
+      "subject_label": "Knowledge – Level 6",
+      "object_label": "assess ICT knowledge",
+      "gold": "RELATED",
+      "final": "RELATED",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "\"assess ICT knowledge\" ist ein spezifischer Teilbereich des Wissens (Level 6), der die Bewertung von ICT-Kenntnissen umfasst, während \"Knowledge – Level 6\" ein allgemeineres Konzept ist.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "\"Knowledge – Level 6\" ist ein allgemeines Konzept über breites Wissen, während \"assess ICT knowledge\" ein spezifischer Teilbereich (Bewertung von IKT-Wissen) darstellt, der thematisch verwandt, aber nicht direkt hierarchisch über- oder untergeordnet ist.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "\"Knowledge – Level 6\" ist ein allgemeines Konzept über breites Wissen, während \"assess ICT knowledge\" ein spezifischer Teilbereich (Bewertung von ICT-Wissen) darstellt, der thematisch verwandt, aber nicht direkt hierarchisch untergeordnet ist.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/C.4",
+      "object_id": "http://data.europa.eu/esco/skill/6eff134b-e34f-4d6e-a6e8-5e47cf2228d0",
+      "subject_label": "Problem Management",
+      "object_label": "risk management",
+      "gold": "RELATED",
+      "final": "B_SUBSUMES_A",
+      "votes_for_final": 2,
+      "runs_total": 3,
+      "confidence": 0.6666666666666666,
+      "runs": [
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "\"risk management\" ist ein Oberbegriff von \"Problem Management\", da Problem Management ein spezifischer Teilbereich des Risikomanagements ist, der sich auf die Identifikation und Beseitigung von Ursachen von Vorfällen konzentriert.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "Problem Management fokussiert auf die Identifikation und Behebung von Ursachen spezifischer Vorfälle in IT-Systemen, während Risk Management breiter angelegt ist und alle Arten von Risiken (auch außerhalb von IT) identifiziert, bewertet und priorisiert. Beide sind thematisch verwandt (beide befassen sich mit Risikominimierung und Ursachenanalyse), aber keines ist ein Spezialfall des anderen.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "\"risk management\" ist ein allgemeinerer Prozess, der auch das \"Problem Management\" als Teilbereich umfasst, da Problem Management spezifisch auf die Identifikation und Beseitigung von Ursachen von Vorfällen in IT-Systemen abzielt, während \"risk management\" alle Risikoarten und deren Quellen adressiert.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/D.8",
+      "object_id": "http://data.europa.eu/esco/skill/7111b95d-0ce3-441a-9d92-4c75d05c4388",
+      "subject_label": "Contract Management",
+      "object_label": "project management",
+      "gold": "RELATED",
+      "final": "B_SUBSUMES_A",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "\"Project management\" ist ein allgemeineres Konzept, das \"Contract management\" als spezifischen Teilbereich umfasst, da Vertragsmanagement eine Teilaufgabe im Projektmanagement darstellt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "\"Contract Management\" ist eine spezifische Anwendung von \"Project Management\" im Bereich der Vertragsabwicklung und -überwachung, während \"Project Management\" als allgemeineres Konzept alle Projektaktivitäten umfasst.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "B_SUBSUMES_A",
+          "reasoning": "Konzept A (Contract Management) ist ein spezifischer Anwendungsfall von Konzept B (Project Management), da Vertragsmanagement eine Teilmenge des Projektmanagements darstellt, die sich auf vertragliche Aspekte innerhalb von Projekten konzentriert.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/E.4",
+      "object_id": "http://data.europa.eu/esco/skill/7111b95d-0ce3-441a-9d92-4c75d05c4388",
+      "subject_label": "Relationship Management",
+      "object_label": "project management",
+      "gold": "RELATED",
+      "final": "RELATED",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "RELATED",
+          "reasoning": "Relationship Management und Project Management sind thematisch verwandt (beide beinhalten Kommunikation, Stakeholder-Interaktion und organisatorische Prozesse), aber keines ist ein Spezialfall des anderen.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "\"Relationship Management\" und \"project management\" sind thematisch verwandt (beide beinhalten Kommunikation und Stakeholder-Interaktion), aber \"project management\" ist kein Spezialfall von \"Relationship Management\" und umgekehrt.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "Relationship Management und project management sind thematisch verwandt (beide beinhalten Kommunikation und Stakeholder-Interaktion), aber keines ist ein Spezialfall des anderen.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/D.9",
+      "object_id": "http://data.europa.eu/esco/skill/33d49d4f-31ec-473f-9b8a-b555aa5116bb",
+      "subject_label": "Personnel Development",
+      "object_label": "iterative development",
+      "gold": "RELATED",
+      "final": "RELATED",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "RELATED",
+          "reasoning": "\"Personnel Development\" (ecf) beschreibt einen übergeordneten Prozess der Kompetenzentwicklung, während \"iterative development\" (esco_skeleton_oberhuber) eine spezifische Methode oder ein Paradigma der Entwicklung darstellt, ohne direkten Bezug zur Personalentwicklung.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "\"Personnel Development\" (ecf) bezieht sich auf die systematische Förderung von Kompetenzen, während \"iterative development\" (esco_skeleton_oberhuber) eine Methode der schrittweisen Verbesserung beschreibt, die thematisch verwandt, aber nicht hierarchisch über- oder untergeordnet ist.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "\"Personnel Development\" (ecf) bezieht sich auf die Planung und Umsetzung von Kompetenzaufbau, während \"iterative development\" (esco_skeleton_oberhuber) ein methodisches Vorgehen beschreibt, das nicht zwingend mit Personalentwicklung verbunden ist. Die Konzepte sind thematisch verwandt (beide im Bereich Lernen/Entwicklung), aber nicht hierarchisch oder äquivalent.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    },
+    {
+      "subject_id": "http://hr-qde.org/harmonised/ecf/D.12",
+      "object_id": "http://data.europa.eu/esco/skill/397da142-ab35-48fe-b154-7c38f447adfb",
+      "subject_label": "Digital Marketing",
+      "object_label": "digital systems",
+      "gold": "RELATED",
+      "final": "RELATED",
+      "votes_for_final": 3,
+      "runs_total": 3,
+      "confidence": 1.0,
+      "runs": [
+        {
+          "relation": "RELATED",
+          "reasoning": "\"Digital Marketing\" (ecf) ist ein spezialisiertes Anwendungsfeld der \"digital systems\" (esco_skeleton_oberhuber), aber nicht alle digitalen Systeme sind Marketing-Systeme oder -Strategien.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "\"Digital Marketing\" (Konzept A) ist thematisch verwandt mit \"digital systems\" (Konzept B), da digitales Marketing digitale Systeme nutzt, aber nicht alle digitalen Systeme sind Marketing-bezogen.",
+          "model": "mistral-small-2603"
+        },
+        {
+          "relation": "RELATED",
+          "reasoning": "\"Digital Marketing\" (Konzept A) ist thematisch verwandt mit \"digital systems\" (Konzept B), da Marketingstrategien digitale Systeme nutzen, aber weder ist eines ein Oberbegriff des anderen noch bezeichnen sie dasselbe Konzept.",
+          "model": "mistral-small-2603"
+        }
+      ]
+    }
+  ]
+}

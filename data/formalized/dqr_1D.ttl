@@ -1,0 +1,129 @@
+# ============================================================================
+# DQR -- Variante 1D (8 Niveaus)
+# Niveauindikatoren DE: amtliche DQR-Matrix (data/formalized/dqr_3.ttl).
+# Dimensionsdeskriptoren DE: data/formalized/dqr_levelProposal.ttl
+# (verifiziert gegen https://www.dqr.de, Niveau-Detailseiten 1-8).
+# Erzeugt von scripts/22_build_eqf_dqr_granularity_variants.py -- nicht von Hand editieren.
+# URI-Basis harm-dqr: = http://hr-qde.org/harmonised/source/dqr/ ;
+# je Konzept owl:sameAs auf die data.bmbf.de-Original-URI (Bruecke).
+# Traegt den DQR<->EQF-Crosswalk (Praedikate = eval/G_struct.json):
+#   harm-dqr:L{n}            skos:exactMatch  eqf:Level{n}
+#   harm-dqr:L{n}_Knowledge  skos:exactMatch  eqf:L{n}_Knowledge
+#   harm-dqr:L{n}_Skills     skos:exactMatch  eqf:L{n}_Skills
+#   harm-dqr:L{n}_SocialCompetence / _Autonomy  skos:narrowMatch  eqf:L{n}_ResponsibilityAutonomy
+# ============================================================================
+
+@prefix eqf: <http://data.europa.eu/snb/eqf/> .
+@prefix harm-dqr: <http://hr-qde.org/harmonised/source/dqr/> .
+@prefix harm: <http://hr-qde.org/harmonised/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+harm-dqr:DQRScheme a skos:ConceptScheme ;
+    skos:prefLabel "Deutscher Qualifikationsrahmen für lebenslanges Lernen"@de , "German Qualifications Framework for Lifelong Learning"@en ;
+    skos:hasTopConcept harm-dqr:L1 , harm-dqr:L2 , harm-dqr:L3 , harm-dqr:L4 , harm-dqr:L5 , harm-dqr:L6 , harm-dqr:L7 , harm-dqr:L8 .
+
+# --- DQR Niveau 1 ----------------------------------------
+harm-dqr:L1 a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L1> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:prefLabel "DQR-Niveau 1"@de , "DQR Level 1"@en ;
+    skos:definition "Kompetenzen zur Erfüllung einfacher Anforderungen in einem überschaubaren und stabil strukturierten Lern- oder Arbeitsbereich. Die Erfüllung der Aufgaben erfolgt unter Anleitung."@de ;
+    harm-dqr:levelNumber "1"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L1" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:Level1 .
+
+# --- DQR Niveau 2 ----------------------------------------
+harm-dqr:L2 a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L2> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:prefLabel "DQR-Niveau 2"@de , "DQR Level 2"@en ;
+    skos:definition "Kompetenzen zur fachgerechten Erfüllung grundlegender Anforderungen in einem überschaubaren und stabil strukturierten Lern- oder Arbeitsbereich. Die Erfüllung der Aufgaben erfolgt weitgehend selbstständig unter Anleitung."@de ;
+    skos:broader harm-dqr:L1 ;
+    harm-dqr:levelNumber "2"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L2" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:Level2 .
+
+# --- DQR Niveau 3 ----------------------------------------
+harm-dqr:L3 a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L3> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:prefLabel "DQR-Niveau 3"@de , "DQR Level 3"@en ;
+    skos:definition "Kompetenzen zur selbstständigen Erfüllung fachlicher Anforderungen in einem noch überschaubaren und zum Teil offen strukturierten Lernbereich oder beruflichen Tätigkeitsfeld."@de ;
+    skos:broader harm-dqr:L2 ;
+    harm-dqr:levelNumber "3"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L3" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:Level3 .
+
+# --- DQR Niveau 4 ----------------------------------------
+harm-dqr:L4 a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L4> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:prefLabel "DQR-Niveau 4"@de , "DQR Level 4"@en ;
+    skos:definition "Kompetenzen zur selbstständigen Planung und Bearbeitung fachlicher Aufgabenstellungen in einem umfassenden, sich verändernden Lernbereich oder beruflichen Tätigkeitsfeld."@de ;
+    skos:broader harm-dqr:L3 ;
+    harm-dqr:levelNumber "4"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L4" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:Level4 .
+
+# --- DQR Niveau 5 ----------------------------------------
+harm-dqr:L5 a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L5> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:prefLabel "DQR-Niveau 5"@de , "DQR Level 5"@en ;
+    skos:definition "Kompetenzen zur selbstständigen Planung und Bearbeitung umfassender fachlicher Aufgabenstellungen in einem komplexen, spezialisierten, sich verändernden Lernbereich oder beruflichen Tätigkeitsfeld."@de ;
+    skos:broader harm-dqr:L4 ;
+    harm-dqr:levelNumber "5"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L5" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:Level5 .
+
+# --- DQR Niveau 6 ----------------------------------------
+harm-dqr:L6 a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L6> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:prefLabel "DQR-Niveau 6"@de , "DQR Level 6"@en ;
+    skos:definition "Kompetenzen zur Planung, Bearbeitung und Auswertung von umfassenden fachlichen Aufgaben- und Problemstellungen sowie zur eigenverantwortlichen Steuerung von Prozessen in Teilbereichen eines wissenschaftlichen Faches oder in einem beruflichen Tätigkeitsfeld."@de ;
+    skos:broader harm-dqr:L5 ;
+    harm-dqr:levelNumber "6"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L6" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:Level6 .
+
+# --- DQR Niveau 7 ----------------------------------------
+harm-dqr:L7 a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L7> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:prefLabel "DQR-Niveau 7"@de , "DQR Level 7"@en ;
+    skos:definition "Kompetenzen zur Bearbeitung neuer komplexer Aufgaben- und Problemstellungen sowie zur eigenverantwortlichen Steuerung von Prozessen in einem wissenschaftlichen Fach oder in einem strategieorientierten beruflichen Tätigkeitsfeld."@de ;
+    skos:broader harm-dqr:L6 ;
+    harm-dqr:levelNumber "7"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L7" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:Level7 .
+
+# --- DQR Niveau 8 ----------------------------------------
+harm-dqr:L8 a skos:Concept ;
+    owl:sameAs <http://data.bmbf.de/dqr/L8> ;
+    skos:inScheme harm-dqr:DQRScheme ;
+    skos:prefLabel "DQR-Niveau 8"@de , "DQR Level 8"@en ;
+    skos:definition "Kompetenzen zur Gewinnung von Forschungserkenntnissen in einem wissenschaftlichen Fach oder zur Entwicklung innovativer Lösungen und Verfahren in einem beruflichen Tätigkeitsfeld."@de ;
+    skos:broader harm-dqr:L7 ;
+    harm-dqr:levelNumber "8"^^xsd:integer ;
+    harm:derivedFrom harm:kqr_dqr ;
+    harm:sourceIdentifier "L8" ;
+    a harm:LevelConcept ;
+    skos:exactMatch eqf:Level8 .

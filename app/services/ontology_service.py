@@ -4,14 +4,14 @@ Analog zu classification_service: keine direkten Pipeline-Importe
 in api/routes/, Orchestrierung ausschließlich hier.
 
 Persistenz: data/projects/{project_id}/clusters.json (ClusterResult-Liste
-als JSON, ADR-02), analog zu mappings.json. Zusätzlich wird die aus dem
+als JSON, ADR-13), analog zu mappings.json. Zusätzlich wird die aus dem
 Kondensationsbaum extrahierte Eltern-Kind-Zuordnung
 (dag_builder.condensation_tree_to_dag) in
 data/projects/{project_id}/clusters_dag.json abgelegt, da das
 hdbscan.HDBSCAN-Objekt selbst nicht JSON-serialisierbar ist und daher nicht
 wie die Embeddings-Caches in kqr_service ausschließlich im Prozessspeicher
 gehalten werden kann, ohne den DAG nach einem uvicorn---reload-Neustart zu
-verlieren. In-Memory-Caches sind nach project_id kodiert (ADR-04).
+verlieren. In-Memory-Caches sind nach project_id kodiert (ADR-13).
 """
 
 from __future__ import annotations

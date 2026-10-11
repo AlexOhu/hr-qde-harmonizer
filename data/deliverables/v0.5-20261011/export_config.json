@@ -1,0 +1,16 @@
+{
+  "exported_utc": "2026-10-11T20:22:12.009918+00:00",
+  "version": "0.5",
+  "project_id": "saeule_d_lieferung_v0_5_klassifikation_v0_4_kuratierte_integrationsentscheidungen_20261011T192329Z",
+  "project_name": "Saeule D Lieferung v0.5 (Klassifikation v0.4, kuratierte Integrationsentscheidungen)",
+  "parent_project_id": "saeule_d_lieferung_v0_4_t_0_mistral_small_2603_20261004T185355Z",
+  "git_head": "f2b5a5b4cf6b39c29f9a70a69524756acad4f7b0",
+  "git_dirty_tracked_files": 17,
+  "disjoint_decisions_in_project": 3,
+  "disjoint_decisions_in_delivery": 3,
+  "harmonised_by_strategy": {
+    "attach_to_skeleton": 2,
+    "own_class": 1
+  },
+  "note": "run_config.json beschreibt den Klassifikationslauf, diese Datei den Export."
+}

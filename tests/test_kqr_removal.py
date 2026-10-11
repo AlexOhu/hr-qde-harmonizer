@@ -1,6 +1,6 @@
 """
 Tests fuer das KQR-Entfernen-Feature: zwei bewusst getrennte Operationen
-(vgl. ADR-01 in app/services/project_service.py).
+(vgl. ADR-13 in app/services/project_service.py).
 
 a) project_service.remove_kqr_from_project() -- projekt-scoped, guenstig,
    reversibel: der KQR bleibt in der globalen Registry, nur die Referenz
@@ -140,7 +140,7 @@ def test_remove_kqr_from_project_blocked_on_snapshot_project(project_with_classi
 def test_remove_kqr_from_project_leaves_global_registry_untouched(project_with_classified_pair):
     """Ein entfernter KQR bleibt global registriert, formalisiert und
     eingebettet -- er laesst sich spaeter erneut zu einem Projekt
-    hinzufuegen (ADR-01)."""
+    hinzufuegen (ADR-13)."""
     project, _hub_kqr, satellite_kqr = project_with_classified_pair
 
     project_service.remove_kqr_from_project(project.project_id, satellite_kqr.id, author="Alex")

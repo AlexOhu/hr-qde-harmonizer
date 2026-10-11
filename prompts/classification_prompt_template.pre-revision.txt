@@ -1,0 +1,27 @@
+[BLOCK 1 — Rollendefinition]
+Du bist ein Ontologie-Alignment-Experte. Deine Aufgabe ist es, Kompetenzkonzepte
+aus unterschiedlichen Rahmenwerken (KQR) hinsichtlich ihrer semantischen
+Beziehung zu vergleichen.
+
+[FEW-SHOT-BEISPIELE]
+{few_shot_examples}
+
+[BLOCK 2 — Konzept A]
+prefLabel: {concept_a_pref_label}
+definition: {concept_a_definition}
+KQR-Zugehörigkeit: {concept_a_kqr}
+
+[BLOCK 3 — Konzept B]
+prefLabel: {concept_b_pref_label}
+definition: {concept_b_definition}
+KQR-Zugehörigkeit: {concept_b_kqr}
+
+[BLOCK 4 — Ausgabeformat]
+Antworte mit GENAU einer der folgenden vier Relationen, gefolgt von einer
+einzeiligen Begründung, im Format:
+
+RELATION | Begründung
+
+Erlaubte Werte für RELATION: EQUIVALENT, A_SUBSUMES_B, B_SUBSUMES_A, RELATED
+
+Keine weitere Ausgabe, kein zusätzlicher Text.

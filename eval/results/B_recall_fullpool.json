@@ -1,0 +1,95 @@
+{
+  "_meta": {
+    "k_values": [
+      5,
+      10,
+      15,
+      20,
+      30,
+      50,
+      100
+    ],
+    "note": "Rang gegen vollstaendigen Ziel-KQR; E1-Pool = nur Goldobjekte"
+  },
+  "G_manual": {
+    "target_kqr": "esco_skeleton_oberhuber",
+    "pool_size_full": 1302,
+    "pool_size_e1_style": 25,
+    "pairs_total": 74,
+    "pairs_evaluable": 26,
+    "recall_full": {
+      "5": 0.6153846153846154,
+      "10": 0.7692307692307693,
+      "15": 0.8461538461538461,
+      "20": 0.8846153846153846,
+      "30": 0.8846153846153846,
+      "50": 0.9615384615384616,
+      "100": 0.9615384615384616
+    },
+    "recall_e1_style": {
+      "5": 0.9615384615384616,
+      "10": 0.9615384615384616,
+      "15": 0.9615384615384616,
+      "20": 1.0,
+      "30": 1.0,
+      "50": 1.0,
+      "100": 1.0
+    },
+    "median_rank_full": 3.5,
+    "max_rank_full": 196
+  },
+  "G_manual@956": {
+    "target_kqr": "esco_v1_2_ict_ausschnitt",
+    "pool_size_full": 956,
+    "pool_size_e1_style": 57,
+    "pairs_total": 74,
+    "pairs_evaluable": 68,
+    "recall_full": {
+      "5": 0.4852941176470588,
+      "10": 0.6911764705882353,
+      "15": 0.8088235294117647,
+      "20": 1.0,
+      "30": 1.0,
+      "50": 1.0,
+      "100": 1.0
+    },
+    "recall_e1_style": {
+      "5": 0.8382352941176471,
+      "10": 1.0,
+      "15": 1.0,
+      "20": 1.0,
+      "30": 1.0,
+      "50": 1.0,
+      "100": 1.0
+    },
+    "median_rank_full": 6.0,
+    "max_rank_full": 20
+  },
+  "G_struct": {
+    "target_kqr": "eqf_2d",
+    "pool_size_full": 32,
+    "pool_size_e1_style": 24,
+    "pairs_total": 32,
+    "pairs_evaluable": 32,
+    "recall_full": {
+      "5": 0.8125,
+      "10": 0.90625,
+      "15": 0.90625,
+      "20": 0.9375,
+      "30": 1.0,
+      "50": 1.0,
+      "100": 1.0
+    },
+    "recall_e1_style": {
+      "5": 0.875,
+      "10": 0.90625,
+      "15": 0.9375,
+      "20": 1.0,
+      "30": 1.0,
+      "50": 1.0,
+      "100": 1.0
+    },
+    "median_rank_full": 2.0,
+    "max_rank_full": 26
+  }
+}

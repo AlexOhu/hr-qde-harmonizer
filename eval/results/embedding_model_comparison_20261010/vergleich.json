@@ -1,0 +1,123 @@
+{
+  "models": {
+    "mpnet": {
+      "model_id": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+      "revision": "4328cf26390c98c5e3c738b4460a05b95f4911f5",
+      "total_seconds": 39.73974839999573,
+      "peak_process_rss_bytes": 1305337856
+    },
+    "e5": {
+      "model_id": "intfloat/multilingual-e5-large-instruct",
+      "revision": "274baa43b0e13e37fafa6428dbc7938e62e5c439",
+      "total_seconds": 876.1538765000005,
+      "peak_process_rss_bytes": 1529413632
+    }
+  },
+  "runtime_ratio_e5_over_mpnet": 22.047292994439154,
+  "rank_delta_definition": "e5_rank - mpnet_rank; negative means E5 improved",
+  "hit_switch_definition": {
+    "gained": "MPNet miss, E5 hit",
+    "lost": "MPNet hit, E5 miss"
+  },
+  "goldsets": {
+    "G_manual": {
+      "pairs_evaluable": 26,
+      "rank_summary": {
+        "mpnet_median": 3.5,
+        "e5_median": 5.5,
+        "mpnet_max": 196,
+        "e5_max": 326,
+        "improved": 5,
+        "equal": 5,
+        "worse": 16,
+        "median_delta": 1.0,
+        "mean_delta": 22.192307692307693
+      },
+      "by_k": {
+        "5": {"mpnet": 0.6153846153846154, "e5": 0.5, "delta": -0.11538461538461542, "gained": 1, "lost": 4},
+        "10": {"mpnet": 0.7692307692307693, "e5": 0.5769230769230769, "delta": -0.1923076923076924, "gained": 0, "lost": 5},
+        "15": {"mpnet": 0.8461538461538461, "e5": 0.5769230769230769, "delta": -0.2692307692307693, "gained": 0, "lost": 7},
+        "20": {"mpnet": 0.8846153846153846, "e5": 0.6153846153846154, "delta": -0.26923076923076916, "gained": 0, "lost": 7},
+        "30": {"mpnet": 0.8846153846153846, "e5": 0.7307692307692307, "delta": -0.15384615384615385, "gained": 0, "lost": 4},
+        "50": {"mpnet": 0.9615384615384616, "e5": 0.8076923076923077, "delta": -0.15384615384615385, "gained": 0, "lost": 4},
+        "100": {"mpnet": 0.9615384615384616, "e5": 0.9230769230769231, "delta": -0.038461538461538436, "gained": 1, "lost": 2}
+      }
+    },
+    "G_manual@956": {
+      "pairs_evaluable": 68,
+      "rank_summary": {
+        "mpnet_median": 6.0,
+        "e5_median": 12.0,
+        "mpnet_max": 20,
+        "e5_max": 216,
+        "improved": 11,
+        "equal": 13,
+        "worse": 44,
+        "median_delta": 6.5,
+        "mean_delta": 30.235294117647058
+      },
+      "by_k": {
+        "5": {"mpnet": 0.4852941176470588, "e5": 0.3088235294117647, "delta": -0.1764705882352941, "gained": 3, "lost": 15},
+        "10": {"mpnet": 0.6911764705882353, "e5": 0.4411764705882353, "delta": -0.25, "gained": 3, "lost": 20},
+        "15": {"mpnet": 0.8088235294117647, "e5": 0.5441176470588235, "delta": -0.26470588235294124, "gained": 2, "lost": 20},
+        "20": {"mpnet": 1.0, "e5": 0.5441176470588235, "delta": -0.4558823529411765, "gained": 0, "lost": 31},
+        "30": {"mpnet": 1.0, "e5": 0.6617647058823529, "delta": -0.3382352941176471, "gained": 0, "lost": 23},
+        "50": {"mpnet": 1.0, "e5": 0.7794117647058824, "delta": -0.22058823529411764, "gained": 0, "lost": 15},
+        "100": {"mpnet": 1.0, "e5": 0.8529411764705882, "delta": -0.1470588235294118, "gained": 0, "lost": 10}
+      }
+    },
+    "G_struct": {
+      "pairs_evaluable": 32,
+      "rank_summary": {
+        "mpnet_median": 2.0,
+        "e5_median": 1.0,
+        "mpnet_max": 26,
+        "e5_max": 6,
+        "improved": 18,
+        "equal": 10,
+        "worse": 4,
+        "median_delta": -1.0,
+        "mean_delta": -2.71875
+      },
+      "by_k": {
+        "5": {"mpnet": 0.8125, "e5": 0.96875, "delta": 0.15625, "gained": 5, "lost": 0},
+        "10": {"mpnet": 0.90625, "e5": 1.0, "delta": 0.09375, "gained": 3, "lost": 0},
+        "15": {"mpnet": 0.90625, "e5": 1.0, "delta": 0.09375, "gained": 3, "lost": 0},
+        "20": {"mpnet": 0.9375, "e5": 1.0, "delta": 0.0625, "gained": 2, "lost": 0},
+        "30": {"mpnet": 1.0, "e5": 1.0, "delta": 0.0, "gained": 0, "lost": 0},
+        "50": {"mpnet": 1.0, "e5": 1.0, "delta": 0.0, "gained": 0, "lost": 0},
+        "100": {"mpnet": 1.0, "e5": 1.0, "delta": 0.0, "gained": 0, "lost": 0}
+      }
+    },
+    "G_levels": {
+      "pairs_evaluable": 113,
+      "rank_summary": {
+        "mpnet_median": 3.0,
+        "e5_median": 3.0,
+        "mpnet_max": 6,
+        "e5_max": 6,
+        "improved": 39,
+        "equal": 39,
+        "worse": 35,
+        "median_delta": 0,
+        "mean_delta": -0.12389380530973451
+      },
+      "by_k": {
+        "1": {"mpnet": 0.22123893805309736, "e5": 0.21238938053097345, "delta": -0.008849557522123908, "gained": 11, "lost": 12},
+        "3": {"mpnet": 0.5752212389380531, "e5": 0.6017699115044248, "delta": 0.026548672566371723, "gained": 23, "lost": 20},
+        "5": {"mpnet": 0.8938053097345132, "e5": 0.8938053097345132, "delta": 0.0, "gained": 6, "lost": 6},
+        "8": {"mpnet": 1.0, "e5": 1.0, "delta": 0.0, "gained": 0, "lost": 0}
+      }
+    }
+  },
+  "tokenization": {
+    "mpnet": {
+      "max_sequence_length": 128,
+      "truncated": {"queries": 2, "dqr_1d": 0, "eqf_2d": 1, "esco_skeleton_oberhuber": 0, "esco_v1_2_ict_ausschnitt": 3}
+    },
+    "e5": {
+      "max_sequence_length": 512,
+      "truncated": {"queries": 0, "dqr_1d": 0, "eqf_2d": 0, "esco_skeleton_oberhuber": 0, "esco_v1_2_ict_ausschnitt": 0}
+    }
+  }
+}

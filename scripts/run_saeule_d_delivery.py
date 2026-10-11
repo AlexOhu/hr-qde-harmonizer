@@ -1,12 +1,13 @@
 """
-Abgabepfad Saeule D: voller Pipeline-Lauf gegen die gelieferte
-ESCO-Referenzmenge (``esco_skeleton_oberhuber``, 1302 Skills) und Erzeugung
-der drei Lieferartefakte nach ``MASTERAND_OBERHUBER.md`` v0.2.
+Abgabepfad Saeule D: Export gegen die gelieferte ESCO-Referenzmenge
+(``esco_skeleton_oberhuber``, 1302 Skills) und Erzeugung der drei
+Lieferartefakte.
 
   Paar 1  e-CF  <-> ESCO-Skelett   scope=all            -> volle Pipeline
-  Paar 2  dqr_3 <-> ESCO-Skelett   scope=container_only  -> nur Skelett-Ableitung
+  Paar 2  e-CF-Dimension-3 <-> dqr_1d -> deterministischer Level-Shortcut
 
-Ergebnis (in ``data/projects/<pid>/delivery/`` und im Repo-Root):
+Ergebnis (in ``data/projects/<pid>/delivery/``, Kopie samt run_config.json
+unter ``data/deliverables/v{V}-{JJJJMMTT}/``):
   oberhuber-harmonised-ontology-v{V}.ttl
   oberhuber-mappings-v{V}.ttl
   oberhuber-integration-strategy-v{V}.md
@@ -50,25 +51,113 @@ from app.services import (
 ROOT = Path(__file__).resolve().parents[1]
 HUB = "esco_skeleton_oberhuber"
 ECF = "ecf"
-DQR = "dqr_3"
-KQR_SCOPES = {ECF: "all", DQR: "container_only"}
+ECF_LEVEL = "ecf_level"
+DQR = "dqr_1d"
+KQR_SCOPES = {ECF: "all"}
 PROJECT_NAME = "Saeule D Lieferung (Informatik-Korridor)"
-VERSION = "0.2"
+VERSION = "0.3"
 
 SHAPE = ROOT / "hrqde-shape-harmonisation.ttl"
 SCHEMA = ROOT / "hrqde-harmonisation-schema.ttl"
 
-LIMITATIONS = [
+LIMITATIONS_FIXED = [
     "Offene Reviews (RELATED/UNRESOLVED) fallen aus den Artefakten; die "
     "Einzelentscheidungen stehen aus (Coverage-Nenner beruecksichtigt sie).",
-    "Disjunkte e-CF-Konzepte tragen den automatischen Vorschlag `own_class` "
-    "(`disjoint_service.suggest_strategy`); die vollstaendige manuelle "
-    "Einzelpruefung steht aus.",
     "Kein `harm:HarmonisedCluster`: HDBSCAN erreichte keine navigierbare "
     "Hierarchie (Negativbefund, Kapitel 6).",
-    "Kein `EQUIVALENT`-Mapping im Gesamtdatensatz (LLM-Richtungsverzerrung, "
-    "Kapitel 6).",
+    "Die e-CF-Dimension-3-zu-DQR-Mappings sind normative, deterministische "
+    "LevelMappings aus e-CF 3.0 (CWA 16234-1:2014), kein LLM-Ergebnis.",
 ]
+
+
+def build_limitations(project_id: str) -> list[str]:
+    """Feste Einschraenkungen plus eine am Ergebnis gemessene Aussage zu
+    EQUIVALENT, damit der Text nie etwas behauptet, das die Daten des Laufs
+    nicht tragen."""
+    results = mapping_service._get_classification_results(project_id)
+    n_equiv = sum(1 for r in results if r.final_relation and r.final_relation.value == "EQUIVALENT")
+    if n_equiv == 0:
+        equiv = ("Kein `EQUIVALENT`-Mapping im Gesamtdatensatz: Das Klassifikationsmodell "
+                 "ordnet keines der Paare als aequivalent ein (Kapitel 5 und 6).")
+    else:
+        equiv = (f"Nur {n_equiv} von {len(results)} klassifizierten Paaren erhielten "
+                 "`EQUIVALENT`; die Erkennung von Aequivalenz bleibt unzuverlaessig "
+                 "(Kapitel 5 und 6).")
+    return [*LIMITATIONS_FIXED, disjoint_limitation(project_id), equiv]
+
+
+def disjoint_limitation(project_id: str) -> str:
+    """Aussage zu den Integrationsentscheidungen, gemessen am Projektbestand.
+    Ohne gespeicherte Entscheidung schreibt der Export die Rueckfallstrategie
+    `own_class`; das ist kein Vorschlag von suggest_strategy()."""
+    disjoint = [c for c in disjoint_service.list_disjoint_concepts_for_pair(
+        ECF, HUB, project_id=project_id) if c.kqr_id == ECF]
+    decided = {d.concept_id: d for d in disjoint_service.list_decisions(project_id)}
+    n_total = len(disjoint)
+    n_decided = sum(1 for c in disjoint if c.uri in decided)
+    if n_total == 0:
+        return "Keine disjunkten e-CF-Konzepte im Paar e-CF <-> ESCO-Skelett."
+    if n_decided == n_total:
+        authors = sorted({decided[c.uri].author for c in disjoint})
+        return (f"Die Integrationsstrategien der {n_total} disjunkten e-CF-Konzepte sind "
+                f"einzeln entschieden und begruendet (Autor: {', '.join(authors)}). "
+                "Das Schema kennt keine eigene Property fuer die Ankerklasse; sie steht "
+                "im `rdfs:comment` des `harm:HarmonisedConcept` und in Abschnitt 2.")
+    return (f"{n_total - n_decided} von {n_total} disjunkten e-CF-Konzepten haben keine "
+            "gespeicherte Integrationsentscheidung und tragen die Rueckfallstrategie "
+            "`own_class` des Exports, nicht den Vorschlag von "
+            "`disjoint_service.suggest_strategy`.")
+
+
+def _dirty_count() -> int | str:
+    """Anzahl uncommitteter Aenderungen an getrackten Dateien (der Lauf gilt
+    fuer den Stand der Arbeitskopie, nicht nur fuer den Commit)."""
+    import subprocess
+
+    try:
+        out = subprocess.run(["git", "status", "--porcelain=v1", "--untracked-files=no"],
+                             cwd=ROOT, capture_output=True, text=True, check=True).stdout
+        return len(out.splitlines())
+    except Exception:
+        return "unbekannt"
+
+
+def write_run_config(project_id: str) -> Path:
+    """Haelt die Konfiguration des Laufs neben den Lieferdateien fest."""
+    import hashlib
+    import json
+    import subprocess
+    from datetime import datetime, timezone
+
+    from app.config import settings
+
+    template = ROOT / "prompts" / "classification_prompt_template.txt"
+    try:
+        commit = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True,
+                                text=True, check=True).stdout.strip()
+    except Exception:
+        commit = "unbekannt"
+    cfg = {
+        "started_utc": datetime.now(timezone.utc).isoformat(),
+        "project_name": PROJECT_NAME,
+        "version": VERSION,
+        "git_head": commit,
+        "git_dirty_tracked_files": _dirty_count(),
+        "llm_providers": settings.llm_providers,
+        "mistral_model": settings.mistral_model,
+        "classification_temperature": settings.classification_temperature,
+        "classification_runs_per_pair": settings.classification_runs_per_pair,
+        "ann_top_k": settings.ann_top_k,
+        "embedding_model": settings.embedding_model,
+        "prompt_template_sha256_16": hashlib.sha256(template.read_bytes()).hexdigest()[:16],
+        "few_shot": "aus Struktur-Shortcuts des Paares (e-CF <-> ESCO-Skelett: 0 Treffer, "
+                    "Prompt-Text '(keine Crosswalk-Beispiele verfuegbar)')",
+    }
+    out_dir = project_service.get_project_data_dir(project_id) / "delivery"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    path = out_dir / "run_config.json"
+    path.write_text(json.dumps(cfg, indent=2, ensure_ascii=False), encoding="utf-8")
+    return path
 
 
 def ensure_project() -> str:
@@ -78,13 +167,13 @@ def ensure_project() -> str:
             return project.project_id
     project = project_service.create_project(
         name=PROJECT_NAME,
-        kqr_ids=[HUB, ECF, DQR],
+        kqr_ids=[HUB, ECF, ECF_LEVEL, DQR],
         kqr_scopes=KQR_SCOPES,
         description=(
             "Abgabepfad Saeule D. Hub = esco_skeleton_oberhuber (1302 Skills, "
             "gelieferte Referenzmenge). e-CF scope=all durch die volle "
-            "Pipeline; dqr_3 scope=container_only -> Skelett. Grundlage fuer "
-            "oberhuber-harmonised-ontology-v0.2.ttl."
+            "Pipeline; Dimension 3 wird deterministisch gegen dqr_1d materialisiert. "
+            f"Grundlage fuer oberhuber-harmonised-ontology-v{VERSION}.ttl."
         ),
         hub_kqr_id=HUB,
     )
@@ -95,7 +184,7 @@ def ensure_project() -> str:
 def run_pipeline(project_id: str, poll_s: float) -> dict[str, dict]:
     mapping_service.reload(project_id)
     final: dict[str, dict] = {}
-    for sat in (ECF, DQR):
+    for sat in (ECF,):
         job_id = classification_service.start_classification_job(sat, HUB, project_id=project_id)
         while True:
             time.sleep(poll_s)
@@ -115,20 +204,70 @@ def run_pipeline(project_id: str, poll_s: float) -> dict[str, dict]:
 def do_export(project_id: str) -> dict:
     mapping_service.reload(project_id)
     k_mappings = mapping_service._get_mappings(project_id)
-    ecf_graph = kqr_service.get_graph(ECF)
+    ecf_graph = kqr_service.get_graph(ECF_LEVEL)
     disjoint_decisions = disjoint_service.list_decisions(project_id)
     coverage = mapping_service.get_coverage_summary(project_id=project_id)
 
     out_dir = project_service.get_project_data_dir(project_id) / "delivery"
     bundle = write_delivery(
         out_dir, ecf_graph, k_mappings, disjoint_decisions,
-        coverage=coverage, limitations=LIMITATIONS, version=VERSION,
+        coverage=coverage, limitations=build_limitations(project_id), version=VERSION,
     )
+    # Snapshot unter data/deliverables/ (versioniert), nicht im Repo-Root.
+    from datetime import datetime, timezone
+    snapshot_dir = (ROOT / "data" / "deliverables"
+                    / f"v{VERSION}-{datetime.now(timezone.utc):%Y%m%d}")
+    snapshot_dir.mkdir(parents=True, exist_ok=True)
     for stats in bundle.values():
-        dst = ROOT / Path(stats["path"]).name
+        dst = snapshot_dir / Path(stats["path"]).name
         shutil.copyfile(stats["path"], dst)
-        stats["root_copy"] = str(dst)
+        stats["snapshot_copy"] = str(dst)
+    export_config = write_export_config(project_id, bundle)
+    for cfg in (out_dir / "run_config.json", export_config):
+        if cfg.exists():
+            shutil.copyfile(cfg, snapshot_dir / cfg.name)
+    # data/projects/ ist nicht versioniert. Die Integrationsentscheidungen und
+    # die Herkunft eines abgeleiteten Projekts gehoeren aber zur Provenienz der
+    # Lieferung und werden deshalb neben die Artefakte kopiert.
+    project_dir = project_service.get_project_data_dir(project_id)
+    for name in ("disjoint_decisions.json", "derivation.json"):
+        if (project_dir / name).exists():
+            shutil.copyfile(project_dir / name, snapshot_dir / name)
     return bundle
+
+
+def write_export_config(project_id: str, bundle: dict) -> Path:
+    """Haelt den Stand des Exports fest. run_config.json beschreibt den
+    Klassifikationslauf; bei --export-only (oder einem abgeleiteten Projekt)
+    stammt sie aus einem frueheren Lauf und sagt nichts ueber den Code des
+    Exports aus."""
+    import json
+    import subprocess
+    from datetime import datetime, timezone
+
+    try:
+        commit = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True,
+                                text=True, check=True).stdout.strip()
+    except Exception:
+        commit = "unbekannt"
+    project = project_service.get_project(project_id)
+    decisions = disjoint_service.list_decisions(project_id)
+    cfg = {
+        "exported_utc": datetime.now(timezone.utc).isoformat(),
+        "version": VERSION,
+        "project_id": project_id,
+        "project_name": project.name,
+        "parent_project_id": project.parent_project_id,
+        "git_head": commit,
+        "git_dirty_tracked_files": _dirty_count(),
+        "disjoint_decisions_in_project": len(decisions),
+        "disjoint_decisions_in_delivery": bundle["integration_strategy"].get("disjoint_documented"),
+        "harmonised_by_strategy": bundle["ontology"].get("harmonised_by_strategy"),
+        "note": "run_config.json beschreibt den Klassifikationslauf, diese Datei den Export.",
+    }
+    path = project_service.get_project_data_dir(project_id) / "delivery" / "export_config.json"
+    path.write_text(json.dumps(cfg, indent=2, ensure_ascii=False), encoding="utf-8")
+    return path
 
 
 def run_shacl(ttl_path: str) -> dict:
@@ -170,17 +309,18 @@ def stats_block(project_id: str, jobs: dict[str, dict], bundle: dict) -> bool:
     print(f"  Review offen: {len(open_m)}   davon ohne Mehrheitsentscheid: {len(unresolved)}")
     print(f"  Mappings gesamt: {len(mappings)}")
     print("\nARTEFAKT 1  Ontologie")
-    print(f"  {onto['root_copy']}")
+    print(f"  {onto['snapshot_copy']}")
     print(f"  Tripel {onto['triples']}   e-CF-Konzepte {onto['ecf_concepts']} "
-          f"(+ {onto['ecf_areas']} Bereiche)   HarmonisedConcept {onto['harmonised_concepts']}")
+          f"(+ {onto['ecf_areas']} Bereiche), LevelConcept {onto.get('ecf_level_concepts', 0)} "
+          f"   HarmonisedConcept {onto['harmonised_concepts']}")
     print(f"  Strategien: {onto['harmonised_by_strategy']}")
     print("\nARTEFAKT 2  Mappings")
-    print(f"  {maps['root_copy']}")
+    print(f"  {maps['snapshot_copy']}")
     print(f"  HubMapping {maps['hub_mappings']}  (>= 0,67: {maps['hub_mappings_above_threshold_067']})  "
           f"LevelMapping {maps['level_mappings']}  OccupationMapping {maps['occupation_mappings']}")
     print(f"  Praedikate: {maps['hub_mappings_by_predicate']}")
     print("\nARTEFAKT 3  Integrationsstrategie")
-    print(f"  {strat['root_copy']}")
+    print(f"  {strat['snapshot_copy']}")
 
     print("\nSHACL-VALIDIERUNG (kanonisch: hrqde-shape-harmonisation.ttl + Schema)")
     ok = True
@@ -208,16 +348,30 @@ def main() -> None:
     parser.add_argument("--export-only", action="store_true",
                         help="nur Artefakte aus vorhandenem Projektbestand")
     parser.add_argument("--poll-interval", type=float, default=10.0)
+    parser.add_argument("--project-name", default=None,
+                        help="Projektname (Standard: Name des Abgabeprojekts v0.3). "
+                             "Ein neuer Name legt ein neues Projekt an, das nichts "
+                             "aus frueheren Klassifikationen wiederverwendet.")
+    parser.add_argument("--version", default=None,
+                        help="Lieferversion (Standard 0.3)")
     args = parser.parse_args()
 
+    global PROJECT_NAME, VERSION
+    if args.project_name:
+        PROJECT_NAME = args.project_name
+    if args.version:
+        VERSION = args.version
+
     project_id = ensure_project()
+    if not args.plan_only and not args.export_only:
+        print(f"Laufkonfiguration: {write_run_config(project_id)}")
 
     if args.plan_only:
         # Job starten und pollen, bis die Kandidatenableitung (total_pairs)
         # steht, dann pausieren -> keine LLM-Kosten. Das Embedding von 1302
         # Hub-Konzepten braucht laenger als ein fixes sleep.
         mapping_service.reload(project_id)
-        for sat in (ECF, DQR):
+        for sat in (ECF,):
             job_id = classification_service.start_classification_job(sat, HUB, project_id=project_id)
             deadline = time.time() + 600
             prog = classification_service.get_job_progress(job_id, project_id=project_id)

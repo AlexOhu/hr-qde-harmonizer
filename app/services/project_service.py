@@ -8,7 +8,7 @@ Persistenz-Design:
     disjoint_decisions.json, clusters.json, clusters_dag.json, sssom/, ontology/
 - Globale KQR-Daten (kqr_registry.json, formalized/, raw/, Embeddings)
   bleiben unverändert unter data/ — sie werden zwischen Projekten geteilt
-  (ADR-01).
+  (ADR-13).
 
 Namenskonvention: project_id ist ein slugifizierter Name + Zeitstempel-Suffix,
 z.B. "esco_ecf_dqr_20260730T142233Z".
@@ -29,7 +29,7 @@ logger = logging.getLogger(__name__)
 
 DATA_DIR = Path(__file__).resolve().parents[2] / "data"
 
-# Datendateien/-verzeichnisse, die pro Projekt gehalten werden (vgl. ADR-02).
+# Datendateien/-verzeichnisse, die pro Projekt gehalten werden (vgl. ADR-13).
 _LEGACY_FILES = (
     "mappings.json",
     "classification_results.json",
@@ -164,7 +164,7 @@ def remove_kqr_from_project(
     project_id: str, kqr_id: str, author: str, justification: str | None = None
 ) -> dict:
     """
-    Entfernt einen KQR aus einem einzelnen Projekt (ADR-01: KQR-Rohdaten
+    Entfernt einen KQR aus einem einzelnen Projekt (ADR-13: KQR-Rohdaten
     sind projektuebergreifend global, Projekte referenzieren nur kqr_ids).
     Anders als kqr_service.delete_kqr() ist dies eine guenstige, reversible
     Operation: der KQR bleibt in der globalen Registry erhalten und kann
